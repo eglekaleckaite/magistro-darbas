@@ -1,0 +1,405 @@
+%\documentclass[pdf,lt,slideColor,colorBG,noaccumulate,nototal,final]{prosper}
+%% Norint matyti lietuviskas raides reikia susiinstaliuoti lietuvybes
+%% arba unikodo palaikyma. Sitas dokumentas yra standartinėje ISO-8859-13 koduoteje. 
+\documentclass[utf8,hyperref={unicode}]{beamer}
+%\documentclass[utf8]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+  % \usecolortheme{dove} 
+
+  % or whatever (possibly just delete it)
+   \setbeamertemplate{footline}
+   {%
+     \leavevmode%
+    \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm 	plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle \hfill p.
+	\insertpagenumber\enspace iš \insertdocumentendpage\enspace
+    \end{beamercolorbox}}%
+  \vskip0pt%
+}
+%\hfill\insertshorttitle\enspace -- p. \insertpagenumber\enspace iš
+%\insertdocumentendpage\enspace%
+%   }
+    
+}
+ \setbeamertemplate{navigation symbols}{}
+
+
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{theorem}
+\usepackage{bm}
+\usepackage{lmodern}
+\usepackage{graphicx}
+
+\newcommand{\ab}[1]{#1_{\alpha}}
+\newcommand{\wab}[2][\delta]{w_{\alpha}(#2,#1)}
+\newcommand{\normab}[1]{\lVert#1\rVert_{\alpha}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\sprod}[1]{\langle #1 \rangle}
+\DeclareMathOperator{\diam}{diam}
+%\renewcommand{\theenumi}{\roman{enumi}}
+%\renewcommand{\labelenumi}{\theenumi)}
+\theoremstyle{change}\newtheorem{teorema}{Teiginys}
+\theoremstyle{change}\newtheorem{salyga}{}
+%	\vspace*{20pt}
+%	\vspace*{20pt}
+\DeclareMathOperator{\seq}{seq}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\ds}[1]{\displaystyle{#1}}
+\newcommand{\dlt}[2]{\Delta^{(#1)}_{#2}}
+\newcommand{\norms}[1]{\lVert#1\rVert_{\alpha}^{\seq}}
+\newcommand{\normh}[1]{\lVert#1\rVert}
+\newcommand{\norma}[1]{\lVert #1\rVert_{\alpha}}
+
+\newcommand{\skirt}[2]{\Delta^{(#1)}_{#2}}
+\newcommand{\cp}{\buildrel P\over\longrightarrow}
+\renewcommand{\theenumi}{\roman{enumi}}
+\newcommand{\R}{\mathbb{R}}
+%\newcommand{\E}{\mathbf{E}\,} % expectation operator
+\newcommand{\bv}{\bm{v}}
+
+\newcommand{\T}{T}
+\newcommand{\n}{{\bm{n}}}
+\newcommand{\jj}{{\bm{j}}}
+\newcommand{\kk}{{\bm{k}}}
+\newcommand{\bt}{\bm{t}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\B}{\bm{B}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bi}{\bm{i}}
+\newcommand{\p}{\bm{\pi}}
+\newcommand{\one}{{\bm{1}}}
+
+\newcommand{\nni}{{\bm{n},\bm{i}}}
+\newcommand{\nj}{{\bm{n},\bm{j}}}
+\newcommand{\nk}{{\bm{n},\bm{k}}}
+\newcommand{\kn}{\bm{k}_{\bm{n}}}
+
+\newcommand{\vv}{\bm{\mathrm{v}}}
+\newcommand{\vr}{{\mathrm{v}}}
+\newcommand{\uu}{\bm{\mathrm{u}}}
+\newcommand{\ur}{{\mathrm{u}}}
+
+
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\snk}{\sigma^2_{\bm{n},\bm{k}}}
+\newcommand{\snj}{\sigma^2_{\bm{n},\bm{j}}}
+
+\newcommand{\Rnj}{R_{\bm{n},\bm{j}}}
+\newcommand{\Rnk}{R_{\bm{n},\bm{k}}}
+
+\newcommand{\HH}{\mathrm{H}} % a set of notations for Holder spaces
+\newcommand{\Ha}{\HH_{\alpha}}
+\newcommand{\Hab}{\HH_{\alpha,\beta}}
+\newcommand{\Habo}{\HH_{\alpha,\beta}^o}
+\newcommand{\Hao}{\HH_{\alpha}^o}
+\newcommand{\m}{\mathrm{m}}
+\newcommand{\s}{\bm{s}}
+
+
+\title[FCRT serijų schemai]{Funkcinė centrinė ribinė teorema serijų schemai}
+%\shorttitle{FCRT daugiamačio indekso procesams}
+\author[Zemlys]{Vaidotas Zemlys}
+\institute[Vilnius University] {
+    
+    Vilniaus Universitetas
+    \and
+    
+    Université des Sciences et Technologies de Lille
+ }
+\date{2007 gegužės 8 d.}
+
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sumavimo procesai} 
+    \begin{itemize}
+	\item Vienmatis
+	    \begin{align*}
+		\xi_n(t)=S_{[nt]}+(nt-[nt])X_{[nt]+1}
+	    \end{align*}
+	\item Gardelė:
+	     \begin{align*}
+	    R_{\bm{n},\bm{j}} := [(j_1-1)/n_1, j_1/n_1]\times\cdots\times
+[(j_d-1)/n_d, j_d/n_d].
+	    \end{align*}
+
+	\item Daugiamatis:
+	    \begin{align*}
+		\xi_{\bm{n}}(\bm{t})=\sum_{\bm{1}\le \bm{j}\le
+		\bm{n}}|R_{\bm{n},\bm{j}}|^{-1}|R_{\bm{n},\bm{j}}\cap
+		[0,\bm{t}]|X_{\bm{j}}	
+	    \end{align*}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Sumavimo proceso konstrukcijos paaiškinimas} 
+    \includegraphics{Rect.ps}
+    \begin{align*}
+	X=\frac{(1-a)(1-b)}{cd}A+\frac{a(1-b)}{cd}B+\frac{b(1-a)}{cd}D+
+	\frac{ab}{cd}C
+    \end{align*}
+\end{frame}
+
+\begin{frame}
+    \frametitle{FCRT} 
+	\begin{itemize}
+	    \item Vienmačio argumento
+		\begin{align*}
+		    \frac{1}{\sqrt{n}}\xi_n\to W \text{ erdvėje } C([0,1])
+		\end{align*}
+	    \item Daugiamačio argumento
+		\begin{align*}
+		    \frac{1}{\sqrt{n_1\dots n_d}}\xi_{\bm{n}}\to W \text{
+		    erdvėje } C([0,1]^d)
+		\end{align*}
+	\end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Hiolderio erdvės} 
+    \begin{itemize}
+	   \item ${H}^o_\alpha\bigl([0,1]^d\bigr)$, $0<\alpha\le 1$ yra aibė tokių realių tolydžių
+	funkcijų $x:[0,1]^d\to \mathbb{R}$, kurioms $\lim_{\delta\to   0}\wab{x}=0$, čia
+	\begin{align*} %\label{f:walpha}
+	    \wab{x}=\sup_{\bm{t},\bm{s}\in[0,1]^d,0<|\bm{t}-\bm{s}|<\delta}
+	    \dfrac{|x(\bm{t})-x(\bm{s})|}{|\bm{t}-\bm{s}|^\alpha}.
+        \end{align*}
+	\item Separabili Banacho erdvė su norma
+	    \begin{align*}
+	    \normab{x}=|x(0)|+\wab[1]{x}.
+	    \end{align*}
+       \end{itemize}
+
+\end{frame}
+\begin{frame}
+    \frametitle{Sąlygos} 
+    \begin{itemize}
+	\item $C([0,1]^d)$. Tokios pačios kaip ir CRT, $EX_{1}^2<\infty$.
+	    Prokhorov (1956), Alexander ir Pyke (1986).
+	\item $H_\alpha([0,1])$ :
+	    \begin{align*}
+		\lim_{t\to\infty}t^pP(|X_1|>t)=0
+	    \end{align*}
+	    Račkauskas ir Suquet (2001), čia $p=1/(1/2-\alpha)$.
+	\item $H_\alpha([0,1]^d)$:
+	    \begin{align*}
+		\sup_{t>0}t^pP(|X_1|>t)<\infty
+	    \end{align*}
+	    Račkauskas, Suquet, Zemlys (2006).
+
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Serijų schema} 
+    \begin{itemize}
+	\item $\{X_{n,k},1\le k\le k_n, n\in \mathbb{N}\}$. Kiekvienam
+	    $n$, $X_{n,k}$ nepriklausomi.
+	\item Įprastinė konstrukcija „netinka“:
+	    \begin{align*}
+		E\xi_n(t)^2\approx\sum_{k=1}^{[nt]}\sigma^2_{n,k}
+	    \end{align*}
+	    čia $\sigma_{n,k}^2=EX_{n,k}^2$.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Adaptyvi konstrukcija vienmačiu atveju} 
+    \begin{itemize}
+	\item $b_n(k)=\sum_{j=1}^{k}\sigma^2_{n,j}$. 
+	\item Tegu $b_n(k_n)=1$, tada
+	    \begin{align*}
+		\xi_n(t)=S_n(k-1)+(t-b_n(k-1))\sigma^2_{n,k}X_{n,k},
+	    \end{align*}
+	kai  $b_n(k-1)< t\le b_n(k)$.
+
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Sąlygos} 
+    \begin{itemize}
+	\item $C([0,1])$, kaip ir CRT, 
+	    \begin{align*}
+		&\max_{1\le k\le k_n} \sigma^2_{n,k}\to 0\\
+		&\sum_{k=1}^{k_n} EX_{n,k}^2I(|X_{n,k}|>\eps)\to 0
+	    \end{align*}
+	    Araujo ir Gine (1980)
+	\item $H_{\alpha}^o([0,1])$, $q>p=1/(1/2-\alpha)$, 
+	    \begin{align*}
+		\sum_{k=1}^{k_n}\sigma_{n,k}^{-2q\alpha} EX_{n,k}^q\to 0,
+	    \end{align*}
+	    Račkauskas ir Suquet (2003)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Netolygi gardelė daugiamačiu atveju} 
+    \begin{itemize}
+	\item $(X_{\bm{n},\bm{k}},\; \bm{1}\le \bm{j}\le \bm{k}_{\bm{n}}),\; \bm{n}\in
+    \mathbb{N}^d$
+\item 
+    \begin{align*}
+    S_\n(\bm{k})=\sum_{\bm{j}\le \bm{k}}X_\nj,\quad b_\n(\bm{k})=\sum_{\bm{j}\le
+    \bm{k}}\snk
+\end{align*}
+
+	\item $ b_i(k)=b_\n(k^1_\n,\dots,k^{i-1}_\n,k,k^{i+1}_\n,\dots,k^d_\n)$
+	\item Netolygi gardelė: 
+	    \begin{align*}
+    \Rnj :=\bigg[b_1(j_1-1),\; b_1(j_1)\bigg)\times \dots\times
+    \bigg[b_d(j_d-1),\;b_d(j_d)\bigg)
+\end{align*}
+	 
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Rezultatas} 
+    \begin{itemize}
+	\item Sumavimo procesas
+   \begin{align*}
+		\xi_{\bm{n}}(\bm{t})=\sum_{\bm{1}\le \bm{j}\le
+		\bm{n}}|R_{\bm{n},\bm{j}}|^{-1}|R_{\bm{n},\bm{j}}\cap
+		[0,\bm{t}]|X_{\bm{j}}	
+    \end{align*}
+	\item Funkcinė centrinė ribinė teorema:
+	    \begin{align*}
+		\xi_\n\to W \text{ erdvėje } \ab{H}([0,1]^d),
+	    \end{align*}
+	    kai $\m(\bm{n})\to\infty$.
+    \end{itemize}
+ \end{frame}
+
+\begin{frame}
+    \frametitle{Sąlygos tirštumui} 
+    \begin{itemize}
+	\item Begalinio mažumo sąlyga:
+	   \begin{align*}
+		\max_{1\le l\le d}\max_{1\le k_l\le k^l_\n}\Delta b_l(k_l) \to 0,
+	    \text{ kai } \m(\bm{n})\to \infty
+	\end{align*}
+    \item Momentinė sąlyga:
+	
+	\begin{align*}
+    \lim_{\m(\n)\to\infty}
+    \sum_{\one\le \bm{k}\le\kn}\sigma_{\nk}^{-2q\alpha}E|X_\nk|^q=0,
+\end{align*}
+    čia $q>p:=1/(1/2-\alpha)$.
+    \end{itemize}
+ 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Apibrėžimai} 
+    Kiekvienai funkcijai $x\in {H}^o_\alpha([0,1]^d)$:
+    \begin{align*}
+	\lambda_{0,\bm{v}}(x)&=x(\bm{v}),\quad \bm{v}\in V_0,\notag \\
+	\lambda_{j,\bm{v}}(x)&=x(\bm{v})-\dfrac{1}{2}(x(\bm{v}^-)+x(\bm{v}^+)),\quad
+	\bm{v}\in V_j,\ \ j\ge 1,
+    \end{align*}
+    čia $V_j=W_j\backslash W_{j-1}$, $W_j=\{k2^{-j};0\le k\le 2^j\}^d$.
+\begin{align*}
+  v_i^\pm=
+  \begin{cases}
+    v_i\pm2^j, & \text{kai}\; k_i\; \text{yra nelyginis};  \\
+     v_i,& \text{kai}\; k_i\; \text{yra lyginis}.
+  \end{cases}
+\end{align*}    
+\end{frame}
+\begin{frame}
+    \frametitle{Tirštumo kriterijus} 
+   \begin{teorema}\label{t:tight}
+    Tegu $\{\phi_{\bm{n}}, \bm{n}\in\mathbb{N}^d\}$ ir $\phi$ yra atsitiktiniai
+    elementai su reikšmėmis erdvėje $H^o_\alpha([0,1]^d).$ Tarkime yra tenkinamos
+    sąlygos.
+\begin{itemize}
+    \item[i)] Kiekvienam diadiniam $\bm{t}\in [0,1]^d$, 
+	 apibendrinta seka $\phi_{\bm{n}}(t)$ yra
+	asimptotiškai tiršta.
+   \item[ii)]  Kiekvienam $\eps>0$
+    \begin{align*}
+        \lim_{J\to \infty} \limsup_{\bm{n}\to\infty}P(\sup_{j\ge J}2^{\alpha j}\max_{\bm{v}\in
+        V_j}|\lambda_{j,\bm{v}}(\phi_{\bm{n}})|>\eps) = 0.
+    \end{align*}
+\end{itemize}
+Tada apibendrinta seka $\phi_{\bm{n}}$ yra asimptotiškai tiršta erdvėje
+$\ab{H}^o([0,1]^d)$.
+\end{teorema}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Prielaidos baigtiniamačių pasiskirstymų konvergavimui} 
+    \begin{itemize}
+	\item $\mathcal{J}$ visos baigtinės aibių $\{[0,\bm{t}]\}$
+	    sankirtos.
+	    
+	\item ``Dispersijos matas'':
+	  \begin{align*}
+	     \mu_\n(C)=\sum_{\bm{1}\le\bm{k}\le\kn}\one\{\B(\bm{k})\in C\} \snk
+	    \end{align*}
+	\item Prielaida:	kiekvienam  $C\in \mathcal{J}$ 
+	    \begin{align*}
+		\lim_{\m(\bm{n})\to\infty}\mu_\n(C)\to |C|.
+	    \end{align*}
+  
+    \end{itemize}
+   \end{frame}
+\begin{frame}
+    \frametitle{Baigtiniamačių skirstinių problema} 
+    \begin{itemize}
+	\item Serijų schema: $\kn=(2n,2n)$
+     \begin{align*}
+	\sigma_{\n,\bm{k}}&=\frac{1}{10n^2}, \bm{k}\le (n,n)\\
+	\sigma_{\n,\bm{k}}&=\frac{3}{10n^2}, \bm{k}\in
+	\{1,\dots,2n\}^2\backslash\{1,\dots,n\}^2\\
+    \end{align*}
+    \item $E\xi_\n^2(1/2,1/2)=1/10$, kai $EW^2(1/2,1/2)=1/4$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Goldie ir Greenwood (1986) rezultatas}
+	\begin{itemize}
+	    \item Naudojama tolygi gardelė. Reikalaujama baigtiniamačių
+		skirstinių konvergavimo.
+	    \item FCRT tolydžių funkcijų erdvėje.  
+	    \item Momentinė sąlyga: seka $(n^{d/2}X_{n,k})^s$ turi būti tolygiai
+		integruojama, kuriam nors $s>2$.
+	\end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Bickel ir Wichura (1971) rezultatas} 
+    \begin{itemize}
+	\item Atvejis $d=2$, $EX^2_{\n,(i,j)}=a_ib_j$.
+	\item \begin{align*}
+		S_n(t_1,t_2)=\sum_{i\le A_n(t_1)}\sum_{j\le
+		B_n(t_2)}X_{n,(i,j)}.
+	    \end{align*}
+	\item Jei tenkinama Lindebergo ir begalinio mažumo sąlyga,
+	    $S_n(\bm{t})$ konverguoja į Vynerio paklodę erdvėje $D([0,1]^2)$.		          \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Tolimesni planai} 
+    \begin{itemize}
+	\item Sąlygos tolygiai gardelei.
+	\item Momentinių sąlygų susilpninimas.
+	\item Alternatyvi gardelės konstrukcija.
+    \end{itemize}
+\end{frame}
+
+\end{document}
+

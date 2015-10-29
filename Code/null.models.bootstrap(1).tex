@@ -1,0 +1,82 @@
+\documentclass[a4paper]{article}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[T1]{fontenc}
+\usepackage[lithuanian]{babel}
+\title{HLM modeliai TIMSS duomenims\\Nulinis modelis įvertintas keliais būdais}
+\author{Eglė Kaleckaitė}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage[pdftex,bookmarks=TRUE]{hyperref}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{theorem}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{bm}
+\usepackage{epsfig}
+
+\newcommand{\R}{R}
+
+\usepackage[noae]{Sweave}
+\begin{document}
+\input{null.models.bootstrap-concordance}
+
+\maketitle
+\section{Besalyginis (nulinis) modelis}
+
+Pradžioje pagalvojau, kad reikia su paprasčiausiu modeliu pažaisti:
+\[ \left\{
+  \begin{array}{l l}
+    Y_{ijk} = \pi_{0jk}+r_{ijk}; \\
+    \pi_{0jk} = \beta_{0k} + \delta_{0jk};\\
+    \beta_{0k} = \gamma_{000} + u_{0k};
+  \end{array} \right.\]
+Įvertinau su REML, tuomet su saviranka n iš n REML, dar m iš n REML ir galiausiai n iš n atsižvelgiant į hierarchinę struktūra. R'e nebuvo implementuota 3 sluoksnių saviranka, tai padariau klasėms ir mokykloms atskirai. $R = 100$, $m = 1000$ ir $n = 4566$. Bandžiau su HLM7 vertint, bet studentiška versija neleidžia trijų lygių modelio vertint.
+\section{Rezultatai}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{cccccc}
+  \hline
+ & REML & nnREML & mnREML & nnIDclassREMSL & nnIDschoolREML \\ 
+  \hline
+$\gamma_{000}$ & 505.58 & 505.70 & 507.93 & 505.59 & 505.61 \\ 
+  $\tau_{\pi 00}$ & 719.21 & 966.45 & 960.55 & 968.76 & 967.03 \\ 
+  $\tau_{\beta 00}$ & 916.94 & 931.29 & 906.36 & 930.67 & 935.44 \\ 
+  $\sigma^2$ & 4200.4 & 3959.8 & 3959.1 & 3960.0 & 3959.6 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+Net ir sunku pasakyti, ar rezultatai, skiriasi, bet su saviranka visada mažesnis $\sigma^2$. bet čia neaišku, ar galima taip lygint ir ar neperdauginu laisvės laipsnių. Visur, kur saviranka, R kartų prasuku REML ir suskaičiuoju fiksuotus ir atsitiktinius efektus suvidurkindama. Tai padarau 5 plausible values ir vėl pagal formules suvidurkinu. Gal visgi reikėjo kiekvienai bootstrap imčiai vertinti visas 5 plausible values.
+
+
+\section{Besąlyginis (nulinis) modelis 2 lygių}
+Toliau dar padariau 2 lygių nulinį modelį, kad su HLM7 (REML su svoriais) būtų galima palygint.
+\[ \left\{
+  \begin{array}{l l}
+    Y_{ij} = \beta_{0j}+r_{ij}; \\
+    \beta_{0j} = \gamma_{00} + u_{0j};
+  \end{array} \right.\]
+Įretinau su REML, tuomet su saviranka n iš n REML, dar m iš n REML ir galiausiai n iš n atsižvelgiant į hierarchinę struktūra bei HLM7 REML su svoriais. $m = 1000$ ir $n = 4566$.
+\section{Rezultatai}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{cccccc}
+  \hline
+ & REML & nnREML & mnREML & nnIDclassREML & HLM7 su svoriais\\ 
+  \hline
+$\gamma_{00}$ & 507.16 & 507.12 & 508.90 & 507.03& 499.25\\ 
+  $\tau_{\beta 00}$ & 1615.13 & 1877.78 & 1863.90 & 1877.64 & 1653.71\\ 
+$ \sigma^2$ & 4201 & 3961 & 3958 & 3961 & 4298.23\\ 
+   \hline
+\end{tabular}
+\end{table}
+Vėl matosi, kad $\sigma^2$ yra mažesnis savirankos metodu. Bet $\gamma_{00}$ vertinant su svoriais skiriasi nuo visų kitų.
+
+\end{document}

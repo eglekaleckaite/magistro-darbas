@@ -1,0 +1,80 @@
+ECHO    0
+NOTE    *****************************************************************
+NOTE      MLwiN macro created by rtomlwin command
+NOTE    *****************************************************************
+
+NOTE    Initialise MLwiN storage
+INIT    3 6000 2500 12 20
+MONI    0
+NOTE    Import the R data into MLwiN
+RSTA    'C:/Users/Egle/Desktop/Magistro darbas/Code/MLwiN output/dtafile_1bc451436049.dta'
+NOTE   Specify the response variable
+RESP    'BSMMAT01'
+
+NOTE   Specify the level identifier(s)
+IDEN 2    'IDSCHOOL'
+IDEN 1    'IDSTUD'
+
+NOTE   Specify covariate(s) used anywhere in the model
+ADDT    'cons'
+
+
+NOTE   Specify random part covariate(s)
+SETV  1   'cons'
+
+NOTE   Set estimation method
+METH 1
+LINE  0 1
+
+NOTE   Specify sampling weights at level 2
+WEIG 2 1 'SCHWGT'
+
+NOTE   Raw weighting
+WEIG 2 2 c1702
+WEIG 1
+
+NOTE   Specify sampling weights at level 1
+WEIG 1 1 'STUDWGT'
+
+NOTE   Raw weighting
+WEIG 1 2 c1701
+WEIG 1
+
+NOTE   Create the standardised weights
+WEIG
+
+NOTE   Turn on sandwich estimators for the fixed part parameter standard errors
+FSDE 2
+
+NOTE   Turn on sandwich estimators for the random part parameter standard errors
+RSDE 2
+
+PREF   0
+POST   0
+NOTE   Fit the model
+STAR
+BATC 1
+NEXT
+MONI 1
+ITNU 0 b21
+CONV b22
+
+NOTE    *****************************************************************
+
+NOTE    *****************************************************************
+NOTE       Export the model results to R
+NOTE    *****************************************************************
+NAME   c1300 '_Stats'
+LIKE   b100
+EDIT 3 c1300 b100
+EDIT 7 c1300 b21
+EDIT 8 c1300 b22
+NAME   c1098 '_FP_b'
+NAME   c1099 '_FP_v'
+NAME   c1096 '_RP_b'
+NAME   c1097 '_RP_v'
+NAME   c1094 '_esample'
+SUM '_esample' b1
+EDIT 9 c1300 b1
+PSTA 'C:/Users/Egle/Desktop/Magistro darbas/Code/MLwiN output/IGLSfile_1bc448475fae.dta' '_FP_b' '_FP_v' '_RP_b' '_RP_v' '_Stats'
+EXIT

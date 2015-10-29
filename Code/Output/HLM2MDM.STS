@@ -1,0 +1,55 @@
+
+                      LEVEL-1 DESCRIPTIVE STATISTICS
+
+ VARIABLE NAME       N       MEAN         SD         MINIMUM      MAXIMUM
+  BSMMAT01          4151     509.32      75.55       255.15       773.71
+    IDSTUD          4151    1797723.32    2721077.69    400202.00    21340225.00
+   IDCLASS          4151    17977.10    27210.78      4002.00    213402.00
+      SSEX          4151       0.50       0.50         0.00         1.00
+  STHMWRK2          4151       0.38       0.49         0.00         1.00
+     SMENG          4151       9.60       1.81         3.27        14.34
+    SMCONF          4151       9.90       1.96         3.18        15.82
+   SHEDRES          4151      10.58       1.49         4.95        14.02
+    TASEKM          4151      10.18       1.50         4.99        16.21
+   TMOKAPL          4151       9.78       1.36         5.91        13.22
+     TCONF          4151      11.13       1.28         5.07        11.99
+    TBENDR          4151       9.47       1.57         4.85        12.71
+    MDYDIS          4151     710.32     289.64        63.00      1507.00
+   MSUDET1          4151       0.35       0.48         0.00         1.00
+   MSUDET2          4151       0.38       0.49         0.00         1.00
+   MSUDET3          4151       0.27       0.44         0.00         1.00
+  MINCOME1          4151       0.01       0.10         0.00         1.00
+  MINCOME2          4151       0.58       0.49         0.00         1.00
+  MINCOME3          4151       0.41       0.49         0.00         1.00
+   MVIETA1          4151       0.00       0.06         0.00         1.00
+   MVIETA2          4151       0.21       0.41         0.00         1.00
+   MVIETA3          4151       0.32       0.47         0.00         1.00
+   MVIETA4          4151       0.08       0.28         0.00         1.00
+   MVIETA5          4151       0.38       0.48         0.00         1.00
+   STUDWGT          4151       2.19       0.83         1.00         5.50
+    SCHWGT          4151       3.82       3.44         1.28        26.61
+  IDSTRATE          4151       9.38       1.98         5.00        12.00
+
+
+                      LEVEL-2 DESCRIPTIVE STATISTICS
+
+ VARIABLE NAME       N       MEAN         SD         MINIMUM      MAXIMUM
+    MDYDIS           128     618.30     324.10        63.00      1507.00
+   MSUDET1           128       0.39       0.49         0.00         1.00
+   MSUDET2           128       0.40       0.49         0.00         1.00
+   MSUDET3           128       0.21       0.41         0.00         1.00
+  MINCOME1           128       0.01       0.09         0.00         1.00
+  MINCOME2           128       0.50       0.50         0.00         1.00
+  MINCOME3           128       0.49       0.50         0.00         1.00
+   MVIETA1           128       0.02       0.12         0.00         1.00
+   MVIETA2           128       0.32       0.47         0.00         1.00
+   MVIETA3           128       0.27       0.45         0.00         1.00
+   MVIETA4           128       0.08       0.27         0.00         1.00
+   MVIETA5           128       0.31       0.47         0.00         1.00
+    SCHWGT           128       5.70       5.92         1.28        26.61
+  IDSTRATE           128       9.64       1.89         5.00        12.00
+
+MDM template:  C:\Users\Egle\Desktop\minque\Magistro darbas\Code\Output\pataisyta.mdmt
+MDM file name: pataisyta
+Date:          Dec 16, 2013
+Time:          09:58:48

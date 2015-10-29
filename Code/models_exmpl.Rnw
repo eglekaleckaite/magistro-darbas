@@ -1,0 +1,142 @@
+\documentclass[a4paper]{article}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[T1]{fontenc}
+\usepackage[lithuanian]{babel}
+\title{HLM modeliai TIMSS duomenims\\Pavyzdžiai}
+\author{Eglė Kaleckaitė}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage[pdftex,bookmarks=TRUE]{hyperref}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{theorem}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{bm}
+\usepackage{epsfig}
+
+\newcommand{\R}{R}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\maketitle
+\section{Klausimas}
+<<echo=FALSE, results=hide>>=
+# [noae]
+rm(list = ls())
+library(nlme)
+library(plyr)
+library(gdata)
+library(lme4)
+library(mitools)
+library(lmerTest)
+library(robustlmm)
+load("data.2003.RData")
+source("10code.R")
+Sys.setlocale("LC_ALL", "Lithuanian")
+
+### 1 modelis
+varb <- c("IDSCHOOL", "MVIETOVE", "MDYDIS", "MTYPE", "SES", "MSOCR2")
+d2003 <- list(data.2003[,c("BSMMAT01", varb)], data.2003[,c("BSMMAT02", varb)], 
+              data.2003[,c("BSMMAT03", varb)], data.2003[,c("BSMMAT04", varb)],
+              data.2003[,c("BSMMAT05", varb)])
+d2003 <- llply(d2003, function(x) {names(x) <- gsub("0[1-5]", "", names(x));return(x)})
+corr1 <- cor(data.2003[,c("MVIETOVE", "MDYDIS", "MTYPE", "SES", "MSOCR2")], use = "pairwise.complete.obs")
+d2003 <- imputationList(d2003)
+
+models<-with(d2003, lmer(BSMMAT ~ 1+MVIETOVE+MDYDIS+MTYPE+SES+(1+SES|IDSCHOOL)))
+
+@
+Trumpai surašysiu modelių pavyzdžius. Galbūt iš to bus kas aiškaus. Dudaitė nagrinėjo tik labai paprasto tipo modelius:
+\[ \left\{
+  \begin{array}{l l}
+    Y_{ij} = \beta_{0j}+r_{ij}; \\
+    \beta_{0j} = \gamma_{00} + \gamma_{01}\times X_{j}+u_{0j};
+  \end{array} \right.\]
+Aš pabandžiau sudėti visus (Dudaitės naudotus) mokyklos kintamuosius bei įtraukti SES (socioekonominė mokinio situacija) kintamąjį. Tokie kintamieji kaip SES ir socialiai remtinų mokinių dalis mokykloje susiję. Tokio modelio nei R, nei HLM7 negalėjo įvertinti. Tad socialiai remtinų mokinių dalies neįtraukiau. Apačioje pateiktas modelio summary:
+\[ \left\{
+  \begin{array}{l l}
+    (mat.rast)_{ij} = \beta_{0j}+\beta_{1j}\times SES_{ij}+r_{ij}; \\
+    \beta_{0j} = \gamma_{00} + \gamma_{01}\times (mok.dydis)_{j}+ \gamma_{02}\times (mok.vietove)_{j}+ \gamma_{03}\times (mok.tipas)_{j}+u_{0j};\\
+    \beta_{1j} = \gamma_{10}+u_{1j}
+  \end{array} \right.\]
+@
+<<echo=FALSE>>=
+MIsummary(models)
+@ 
+Deja, tokie kintamieji kaip mokyklos vietovė ir dydis pasirodė koreliuoti, todėl pasilikau tik mokyklos dydį. Apačioje pateiktas modelio summary:
+@
+<<echo=FALSE, results=hide>>=
+models1<-with(d2003, lmer(BSMMAT ~ 1+MDYDIS+MTYPE+SES+(1+SES|IDSCHOOL)))
+@
+<<echo=FALSE>>=
+MIsummary(models1)
+@
+Šis modelis atrodo visai neblogai.
+
+Dar turiu paminėti, kad p-values čia yra gautos aproksimuojant laisvės laipsnius. Be to, pati rašiau multiple imputations suvedimą į vieną modelį pagal HLM7 dokumentaciją ir straipsnius. Tai nežinau, kiek šie rezultatai patikimi.
+
+Jei palikti tik SES:
+@
+<<echo=FALSE, results=hide>>=
+models2<-with(d2003, lmer(BSMMAT ~ 1+SES+(1+SES|IDSCHOOL)))
+@
+<<echo=FALSE>>=
+MIsummary(models2)
+@
+Jei tik mokyklos kintamieji:
+@
+<<echo=FALSE, results=hide>>=
+models3<-with(d2003, lmer(BSMMAT ~ 1+MDYDIS+MTYPE+(1|IDSCHOOL)))
+@
+<<echo=FALSE>>=
+MIsummary(models3)
+@
+Iš tikrųjų nematau daugiau kitų priežasčių dėl negalėjimo sudaryti vieną modelį, kaip tik koreliuoti kintamieji.
+@
+\section{Klausimas}
+Jei modelius sudaryti tik Vilniui:
+@
+<<echo=FALSE, results=hide>>=
+data.2003 <- subset(data.2003, MVIETOVE == 4)
+corr2 <- cor(data.2003[,c("MDYDIS", "MTYPE", "SES", "MSOCR2")], use = "pairwise.complete.obs")
+d2003 <- list(data.2003[,c("BSMMAT01", varb)], data.2003[,c("BSMMAT02", varb)], 
+              data.2003[,c("BSMMAT03", varb)], data.2003[,c("BSMMAT04", varb)],
+              data.2003[,c("BSMMAT05", varb)])
+d2003 <- llply(d2003, function(x) {names(x) <- gsub("0[1-5]", "", names(x));return(x)})
+
+d2003 <- imputationList(d2003)
+
+models4<-with(d2003, lmer(BSMMAT ~ 1+MDYDIS+MTYPE+SES+MSOCR2+(1+SES|IDSCHOOL)))
+@
+<<echo=FALSE>>=
+MIsummary(models4)
+@
+Arba:
+<<echo=FALSE, results=hide>>=
+
+models5<-with(d2003, lmer(BSMMAT ~ 1+MDYDIS+MTYPE+SES+(1+SES|IDSCHOOL)))
+@
+<<echo=FALSE>>=
+MIsummary(models5)
+@
+Jei imamas vien Vilnius, tai rezultatai kažkiek skiriasi. Buvę reikšmingi kintamieji, tampa nebereikšmingi.
+@
+\section{Klausimas}
+Dėl kintamųjų koreliacijos. Panašu, kad mokyklos kintamieji kažkiek koreliuoti. Didžiausia korialiacija tarp mokyklos vietovės ir mokyklos dydžio. Bendrai:
+@
+<<echo=FALSE>>=
+print(corr1)
+@
+Vilniuje:
+@
+<<echo=FALSE>>=
+print(corr2)
+@
+Imant tik Vilnių gaunam netgi priešngus kintąmųjų ryšius.
+\end{document}

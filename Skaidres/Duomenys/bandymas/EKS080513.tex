@@ -1,0 +1,440 @@
+%\documentclass[pdf,lt,slideColor,colorBG,noaccumulate,nototal,final]{prosper}
+%% Norint matyti lietuviskas raides reikia susiinstaliuoti lietuvybes
+%% arba unikodo palaikyma. Sitas dokumentas yra standartinėje ISO-8859-13 koduoteje. 
+\documentclass[utf8,hyperref={unicode}]{beamer}
+%\documentclass[utf8]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+  % \usecolortheme{dove} 
+
+  % or whatever (possibly just delete it)
+   \setbeamertemplate{footline}
+   {%
+     \leavevmode%
+    \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm 	plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle \hfill p.
+	\insertpagenumber\enspace iš \insertdocumentendpage\enspace
+    \end{beamercolorbox}}%
+  \vskip0pt%
+}
+%\hfill\insertshorttitle\enspace -- p. \insertpagenumber\enspace iš
+%\insertdocumentendpage\enspace%
+%   }
+    
+}
+ \setbeamertemplate{navigation symbols}{}
+
+
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{theorem}
+\usepackage{bm}
+\usepackage{graphicx}
+
+\newcommand{\ab}[1]{#1_{\alpha}}
+\newcommand{\wab}[2][\delta]{w_{\alpha}(#2,#1)}
+\newcommand{\normab}[1]{\lVert#1\rVert_{\alpha}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\sprod}[1]{\langle #1 \rangle}
+\DeclareMathOperator{\diam}{diam}
+%\renewcommand{\theenumi}{\roman{enumi}}
+%\renewcommand{\labelenumi}{\theenumi)}
+\theoremstyle{change}\newtheorem{teorema}{Teiginys}
+\theoremstyle{change}\newtheorem{salyga}{}
+%	\vspace*{20pt}
+%	\vspace*{20pt}
+\DeclareMathOperator{\seq}{seq}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\ds}[1]{\displaystyle{#1}}
+\newcommand{\dlt}[2]{\Delta^{(#1)}_{#2}}
+\newcommand{\norms}[1]{\lVert#1\rVert_{\alpha}^{\seq}}
+\newcommand{\normh}[1]{\lVert#1\rVert}
+\newcommand{\norma}[1]{\lVert #1\rVert_{\alpha}}
+
+\newcommand{\skirt}[2]{\Delta^{(#1)}_{#2}}
+\newcommand{\cp}{\buildrel P\over\longrightarrow}
+\renewcommand{\theenumi}{\roman{enumi}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbf{E}\,} % expectation operator
+\newcommand{\bv}{\bm{v}}
+
+\newcommand{\T}{T}
+\newcommand{\n}{{\bm{n}}}
+\newcommand{\jj}{{\bm{j}}}
+\newcommand{\kk}{{\bm{k}}}
+\newcommand{\bt}{\bm{t}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\B}{\bm{B}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bi}{\bm{i}}
+\newcommand{\p}{\bm{\pi}}
+\newcommand{\one}{{\bm{1}}}
+
+\newcommand{\nni}{{\bm{n},\bm{i}}}
+\newcommand{\nj}{{\bm{n},\bm{j}}}
+\newcommand{\nk}{{\bm{n},\bm{k}}}
+\newcommand{\kn}{\bm{k}_{\bm{n}}}
+
+\newcommand{\vv}{\bm{\mathrm{v}}}
+\newcommand{\vr}{{\mathrm{v}}}
+\newcommand{\uu}{\bm{\mathrm{u}}}
+\newcommand{\ur}{{\mathrm{u}}}
+
+
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\snk}{\sigma^2_{\bm{n},\bm{k}}}
+\newcommand{\snj}{\sigma^2_{\bm{n},\bm{j}}}
+
+\newcommand{\Rnj}{R_{\bm{n},\bm{j}}}
+\newcommand{\Rnk}{R_{\bm{n},\bm{k}}}
+
+\newcommand{\HH}{\mathrm{H}} % a set of notations for Holder spaces
+\newcommand{\Ha}{\HH_{\alpha}}
+\newcommand{\Hab}{\HH_{\alpha,\beta}}
+\newcommand{\Habo}{\HH_{\alpha,\beta}^o}
+\newcommand{\Hao}{\HH_{\alpha}^o}
+\newcommand{\m}{\mathrm{m}}
+\newcommand{\s}{\bm{s}}
+
+\newcommand{\bb}{\bm{\beta}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\indf}[1]{\mathbf{1}\left( #1 \right)}
+
+\title[HLM modeliai TIMSS duomenims]{HLM modeliai TIMSS duomenims: Duomenys}
+%\shorttitle{FCRT daugiamačio indekso procesams}
+\author[Eglė]{Eglė Kaleckaitė}
+\institute[Vilnius Universitetas]
+
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Uždavinys} 
+    \begin{itemize}
+	\item Ar modelis
+	\begin{align*}%\label{m:genpan}
+		y_{it}=\alpha_i+\bx_{it}'\bm\beta +u_{it},
+	\end{align*}
+	yra adekvatus?
+    \item Alternatyvus modelis:
+	\begin{align*}%\label{m:genpanch}
+    y_{it}=\begin{cases}
+	\alpha_i+\bx_{it}'\bm\beta_0 +u_{it}, \text{ for }(i,t)\in
+	I,\\
+	\alpha_i+\bx_{it}'\bm\beta_1 +u_{it}, \text{ for }(i,t)\in I^c,
+    \end{cases}
+\end{align*}
+    čia $I$ - indeksų aibė.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Vidurkio pasikeitimas vienmačiu atveju} 
+    \begin{itemize}
+	\item Turint imtį norime testuoti ar tam tikrame taške įvyko
+	    pasikeitimas
+	\item Nulinė ir alternatyvi hipotezės:
+	    \begin{align*}
+		H_0&: EX_i=\mu_0
+		\intertext{prieš}
+		H_A&:\exists k^* \text{ toks kad } EX_i=\mu_0+(\mu_1-\mu_0)\indf{k^*< i\le n} 
+	    \end{align*}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Jei pasikeitimas taškas žinomas} 
+    \begin{itemize}
+ 	\item Paprasta idėja: lyginam vidurkius.
+	    \begin{align*}
+		\frac{1}{k^*}S_{k^*}-\frac{1}{n-k^*}\left(S_{n}-S_{k^*}\right)=
+		\frac{n}{k^*(n-k^*)}\left(S_{k^*}-\frac{k^*}{n}S_{n}\right)
+	    \end{align*}
+	\item Pažymėkime
+	    \begin{align*}
+		R=(S_{k^*}-\frac{k^*}{n}S_n)%=n^{-1/2}\left(1-\frac{k}{n}\right)S_k-\frac{k}{n}(S_n-S_k)
+	    \end{align*}
+	\item Tegu $k^*/n\to c$. Tada dėl CRT turime 
+	    \begin{align*}
+		n^{-1/2}R\to N(0,\sigma^2c(1-c))
+	    \end{align*}
+	\item Prie alternatyvos
+	    \begin{align*}
+		n^{-1/2}R=n^{1/2}\frac{k^*}{n}\left(1-\frac{k^*}{n}\right)(\mu_1-\mu_0)+O_P(1)\to\infty
+	    \end{align*}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Pasikeitimo taškas nežinomas} 
+    \begin{itemize}
+	\item Jei nežinome kur pasikeitimas, ``ieškome'' jo:
+	    \begin{align*}
+		Q=\max_{1<k<n}|S_{k}-\frac{k}{n}S_n|
+	    \end{align*}
+	\item Jeigu $\xi_n=S_{[nt]}+(nt-[nt])X_{[nt]+1}:$
+	    \begin{align*}
+		Q=\max_{1<k<n}|\xi_{n}(k/n)-k/n\xi_n(1)|
+	    \end{align*}
+	\item Taigi $Q$  yra  $\xi_n$ funkcionalas 	  
+	    \begin{align*}
+		Q=f(\xi_{n}), \text{ čia } f(x)=\sup_{0<t<1}|x(t)-x(1)|
+	    \end{align*}
+	\item Funkcionalas $f:C[0,1]\to R$ yra tolydus erdvėje $C([0,1])$.
+	\item Pritaikius invariantiškumo principą kartu su tolydaus atvaizdžio teorema  
+	    \begin{align*}
+		n^{-1/2}Q\xrightarrow{D} \sup_{0<t<1}|W(t)-tW(1)|
+	    \end{align*}
+	    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Epideminės alternatyvos}
+    \begin{itemize}
+	\item Norim testuoti epidemiją: vidurkis pasikeitė  ir po to grįžta.	
+	\item Alternatyvi hipotezė:  $EX_i=\mu_0+(\mu_1-\mu_0)\indf{k^*< i\le
+	    m^*}$ 
+	\item Ta pati argumentacija:
+	    \begin{align*}
+		UI(n,\alpha)=\max_{1\le i<
+		j\le n}\frac{|S_{j}-S_{i}-(j-i)/nS_n|}{[(j-i)/n]^\alpha}
+	    \end{align*}
+	\item Funkcionalas netolydus $C[0,1]$, bet tolydus $\Hao([0,1])$
+\end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Kodėl dalinti?}
+    \begin{itemize}
+	\item Nustatytos epidemijos ilgis priklauso nuo $\alpha$.	
+	\item Prie alternatyvos   
+	    \begin{align*}
+		n^{-1/2}UI(n,\alpha)\ge 
+		\frac{l^{*(1-\alpha)}}{n^{1/2-\alpha}}\left(1-\frac{l^*}{n}\right)|\mu_1-\mu_0|+O_P(1)
+	    \end{align*}
+	\item Jei $l^*=n^\gamma$ tai 
+	    \begin{align*}
+		n^{-1/2}UI(n,\alpha)\to \infty \text{ kai }
+		\gamma>\frac{1/2-\alpha}{1-\alpha}
+	    \end{align*}
+%	\item Note $0<\alpha<1/2$, since $W$ ``lives only'' in $\Hao([0,1])$ for
+%	    $\alpha<1/2$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Dvimatis atvejis} 
+    
+    \begin{itemize}
+	\item Kažkuriame laiko intervale pasikeitimas įvyksta visiems individams
+	\item Stebėjimo pradžioje pasikeitimas įvyksta tik kai kuriems
+	    individams
+	\item Stebėjimo pabaigoje pasikeitimas įvyksta tik kai kuriems
+	    individams
+    \end{itemize}
+
+\end{frame}
+\begin{frame}
+    \frametitle{Stačiakampės alternatyvos} 
+    Panelinių duomenų imtis $\{X_{ij}, i=1,\dots,n;j=1,\dots,m\}$
+    \begin{itemize}
+	\item  $(H_0):$ Visų {$X_{ij}$ vidurkis yra $\mu_{0}$.}
+	\item  $(H_A):$ {Egzistuoja sveiki skaičiai $1<a^*\le b^*<n$, 
+$1<c^*\le d^*<m$} ir konstanta $\mu_1\neq \mu_0$ tokia, kad
+\begin{align*}
+    \E X_{ij}=\mu_0+\mu_1\indf{(i,j)\in[a^*,b^*]\times[c^*,d^*]\cap \mathbb{N}^2}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Pasikeitimo stačiakampis žinomas} 
+    \begin{itemize}
+	\item Lyginam vidurkius: 
+	\begin{align*}
+	R=\sum_{i=1}^n\sum_{j=1}^mX_{ij}
+    \indf{\left(\frac{i}{n},\frac{j}{m}\right)\in D^*}-
+    \frac{k^*l^*}{nm}\sum_{i=1}^n\sum_{j=1}^mX_{ij},
+\end{align*}
+    čia $k^*=b^*-a^*$, $l=d^*-c^*$.
+\item Prie nulinės hipotezės  	
+    \begin{align*}
+    (nm)^{-1/2}R\to N(0,\sigma^2|D^*|(1-|D^*|))
+\end{align*}
+kai $n\wedge m\to\infty$. 
+ \item Prie alternatyvos  
+    \begin{align*}
+    (nm)^{-1/2}R=(nm)^{1/2}\frac{k^*l^*}{nm}\left(1-\frac{k^*l^*}{nm}
+    \right) (\mu_1-\mu_0) +O_P(1).
+\end{align*}
+   \item  Statistika diverguos, kai  $k^*=O(n^{\gamma})$ ir $l^*=O(m^\delta)$ su  $\gamma,\delta>1/2$.
+  \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Kaip normuoti?} 
+    \begin{itemize}
+	\item Vienmačiu atveju normuojame skirtumu, funkcionalas tolydus
+	    Hiolderio erdvėje.
+	\item Dvimačiu atveju normuojame diametru, funkcionalas tolydus
+	    Hiolderio erdvėje.
+    \end{itemize}
+ \end{frame}
+ \begin{frame}
+     \frametitle{Normavimas diametru} 
+   \begin{itemize}
+	\item Testinė statistika
+	    \begin{align*}
+		DUI(nm,\alpha)=\max_{\substack{1\le a<b\le n\\  1\le c< d\le m}} 
+    \frac{|\Delta^1_{b-a}\Delta^2_{d-c}S_{bd}-(s_{b}-s_{a})
+    (t_{d}-t_{c})S_{nm}|}{\max\{s_{b}-s_{a},t_{d}-t_{c}\}^\alpha}
+	    \end{align*}
+	čia $s_i=i/n$, $t_j=j/m$,  $i=1,\dots,n$, $j=1,\dots,m$ ir
+	\begin{align*}
+	    \Delta^1_{b-a}\Delta^2_{d-c}S_{bd}
+	    =S_{bd}-S_{ad}-S_{bc}+S_{ac}
+	\end{align*}
+   \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Ribinis pasiskirstymas} 
+    \begin{itemize}
+	\item Kiekvienam $n$ ir $m$ $DUI(nm,\alpha)$ yra tolydus funkcionalas
+	    $\Hao([0,1]^2)$, kurio riba yra funkcionalas $T_\alpha$
+	   \begin{center}
+		$T_{\alpha}(x)=\sup_{\bm{0}\le \bm{s}<\bm{t}\le
+		\bm{1}}\frac{|x(\bm{t})-x(s_1,t_2)-x(t_1,s_2)+x(\bm{s})-(t_1-s_1)(t_2-s_2)x(1,1)|}{|\bm{t}-\bm{s}|^\alpha}$
+	    \end{center}
+	\item Invariantiškumo principas duoda	
+	    \begin{align*}
+		(nm)^{-1/2}DUI(nm,\alpha)\to T_{\alpha}(W),
+	    \end{align*}
+	čia $W$ - Vynerio paklodė.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Elgesys prie alternatyvos} 
+    Jei $X_{ij}$ yra nepriklausomi ir
+    $\sigma_0^2=\sup_{\bm{n}}var(X_{\bm{n}})<\infty$ bei
+    \begin{align*}%\label{c:hndm}
+	\lim_{\bm{n}\to\infty}
+	(nm)^{1/2}\frac{h_{nm}}{d_{nm}^\alpha}|\mu_1-\mu_0|\to\infty, 
+    \end{align*}
+čia
+    \begin{align*}
+	h_{nm}=\frac{k^*l^*}{nm}\left(1-\frac{k^*l^*}{nm}\right) 
+	\text{ ir }
+	d_{nm}=\max\left\{\frac{k^*}{n},\frac{l^*}{m}\right\},
+    \end{align*}
+tai
+\begin{align*}%\label{l:duih1}
+    (nm)^{-1/2}DUI(nm,\alpha)\to\infty
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Epidemijų ilgumas} 
+    \begin{itemize}
+	\item Vienmačiu atveju galima epidemijos ilgis $n^{\frac{1-2\alpha}{2-2\alpha}}$.
+	\item Dvimačiu atveju tarkime, kad  $k^*=n^\gamma$, 
+$l^*=m^\delta$ ir kad $\mu_1-\mu_0$ nepriklauso nuo $(n,m)$. Tada
+    \begin{align*}
+     \frac{n^{\gamma-1/2}m^{\delta-1/2}}{[n^{\gamma-1}\vee
+     m^{\delta-1}]^\alpha}\to \infty
+	\end{align*}
+    \item Jei $n^{\gamma-1}>m^{\delta-1}$ tai
+\begin{align*}
+    n^{\gamma(1-\alpha)+\alpha-1/2} m^{\delta-1/2}\to\infty
+\end{align*}
+   \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Regresija vienmatis atvejis}
+    Nulinė hipotezė	
+    \begin{align}\label{m:uni}
+    y_t=\bx_{t}'\bb+u_t
+\end{align}
+Alternatyva
+\begin{align}\label{m:unialt}
+    y_t=\begin{cases}
+	    \bx_{t}'\bb_0+u_t, t=1,\dots,t_0,\\
+	    \bx_t'\bb_1+u_t, t=t_0+1,\dots,T.
+    \end{cases}
+\end{align}
+
+    \begin{itemize}
+	\item CUSUM statistikos, Brown, Durbin, Watson (1975) normalių paklaidų
+	    atveju, rekursinėm liekanoms.
+	\item Sen (1982), i. i. d. paklaidų atveju.
+	\item Kramer, Ploberger (1992), įprastoms liekanoms.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Panelinių duomenų regresija} 
+    \begin{itemize}
+	\item Įprasta regresija
+	    \begin{align*}
+		y_{it}=\bx_{it}\bb+u_{it},\quad i=1,\dots,n; t=1,\dots,T
+	    \end{align*}
+	\item Fiksuotų efektų regresija
+	    \begin{align*}
+		y_{it}=\mu_i+\bx_{it}\bb+u_{it},\quad i=1,\dots,n; t=1,\dots,T
+	    \end{align*}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Invariantiškumo principas} 
+	Jeigu $u_{it}$ tenkina invariantiškumo principą:
+	    \begin{align*}
+		(nT)^{-1/2}\xi_{nT}\xrightarrow{D} W
+	    \end{align*}
+	    tai
+
+    \begin{itemize}
+	\item Įprastai regresijai
+	    \begin{align*}
+		(nT)^{-1/2}\xi_{nT}^{(OLS)}(u,v) \to W(u,v)-uvW(1,1)
+	    \end{align*}
+	\item Fiksuotų efektų regresijai
+	    \begin{align*}
+		(nT)^{-1/2}\xi_{nT}^{(FE)}(u,v) \to W(u,v)-vW(u,1)
+	    \end{align*}
+
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Lokalios alternatyvos} 
+Suppose 
+	    \begin{align*}
+			\bb_{ij}=\bb+\frac{1}{\sqrt{nm}}\bm{g}\left(\frac{i}{n},\frac{j}{m}\right)
+	    \end{align*}
+
+    \begin{itemize}
+	\item Įprasta regresija
+	    \begin{align*}
+		(nT)^{-1/2}\xi_{nT}^{(OLS)}(t,s)\xrightarrow{D}
+		W(t,s)-tsW(1,1)\\+
+	\int_0^t\int_0^s\bm{c}'\bm{g}(u,v)dudv-ts\bm{c}'\int_0^1\int_0^1\bm{g}(u,v)dudv
+	    \end{align*}
+	\item Fiksuotų efektų regresija
+	    \begin{align*}
+	(nT)^{-1/2}\xi_{nT}^{(FE)}(t,s)\xrightarrow{D} W(t,s)-sW(t,1)\\+
+	\int_0^t\int_0^s\bm{c}'\bm{g}(u,v)dudv-s\int_0^t\int_0^1\bm{c}'\bm{g}(u,v)dudv,
+	    \end{align*}
+    \end{itemize}
+\end{frame}
+
+
+\end{document}
+

@@ -1,0 +1,152 @@
+<html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript">window.sendToApp = function(data, ctid) {var doc = window.document;var event = doc.createEvent('MessageEvent');event.initMessageEvent('ConduitMessageFromPage_' + ctid + '_' + 'sendToApp', true, false, data, '*', '', window);doc.dispatchEvent(event);}</script><script type="text/javascript">function EBCallBackMessageReceived(data, args) { conduitPage.sendRequest(data.ctid, data.appId, data.topic, args);} if (!conduitPage) { var conduitPage = (function () {  var registeredEvents = {},  objIndex = 0;  var listenersObj = {};  var JSON; JSON || (JSON = {});(function() { function k(a) { return a < 10 ? "0" + a : a } function o(a) { p.lastIndex = 0; return p.test(a) ? '"' + a.replace(p, function(a) { var c = r[a]; return typeof c === "string" ? c : "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4) }) + '"' : '"' + a + '"' } function l(a, j) { var c, d, h, m, g = e, f, b = j[a]; b && typeof b === "object" && typeof b.toJSON === "function" && (b = b.toJSON(a)); typeof i === "function" && (b = i.call(j, a, b)); switch (typeof b) {  case "string": return o(b); case "number": return isFinite(b) ? String(b) : "null"; case "boolean": case "null": return String(b); case "object": if (!b) return "null";  e += n; f = []; if (Object.prototype.toString.apply(b) === "[object Array]") { m = b.length; for (c = 0; c < m; c += 1) f[c] = l(c, b) || "null"; h = f.length === 0 ? "[]" : e ? "[\n" + e + f.join(",\n" + e) + "\n" + g + "]" : "[" + f.join(",") + "]"; e = g; return h } if (i && typeof i === "object") { m = i.length; for (c = 0; c < m; c += 1) typeof i[c] === "string" && (d = i[c], (h = l(d, b)) && f.push(o(d) + (e ? ": " : ":") + h)) } else for (d in b) Object.prototype.hasOwnProperty.call(b, d) && (h = l(d, b)) && f.push(o(d) + (e ? ": " : ":") + h); h = f.length === 0 ? "{}" : e ? "{\n" + e + f.join(",\n" + e) + "\n" + g + "}" : "{" + f.join(",") +"}"; e = g; return h } } if (typeof Date.prototype.toJSON !== "function") Date.prototype.toJSON = function() { return isFinite(this.valueOf()) ? this.getUTCFullYear() + "-" + k(this.getUTCMonth() + 1) + "-" + k(this.getUTCDate()) + "T" + k(this.getUTCHours()) + ":" + k(this.getUTCMinutes()) + ":" + k(this.getUTCSeconds()) + "Z" : null }, String.prototype.toJSON = Number.prototype.toJSON = Boolean.prototype.toJSON = function() { return this.valueOf() }; var q = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,p = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g, e, n, r = { "\u0008": "\\b", "\t": "\\t", "\n": "\\n", "\u000c": "\\f", "\r": "\\r", '"': '\\"', "\\": "\\\\" }, i; if (typeof JSON.stringify !== "function") JSON.stringify = function(a, j, c) { var d; n = e = ""; if (typeof c === "number") for (d = 0; d < c; d += 1) n += " "; else typeof c === "string" && (n = c); if ((i = j) && typeof j !== "function" && (typeof j !== "object" || typeof j.length !== "number")) throw Error("JSON.stringify"); return l("",{ "": a })}; if (typeof JSON.parse !== "function") JSON.parse = function(a, e) { function c(a, d) { var g, f, b = a[d]; if (b && typeof b === "object") for (g in b) Object.prototype.hasOwnProperty.call(b, g) && (f = c(b, g), f !== void 0 ? b[g] = f : delete b[g]); return e.call(a, d, b) } var d, a = String(a); q.lastIndex = 0; q.test(a) && (a = a.replace(q, function(a) { return "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4) })); if (/^[\],:{}\s]*$/.test(a.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, "@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,"]").replace(/(?:^|:|,)(?:\s*\[)+/g, ""))) return d = eval("(" + a + ")"), typeof e === "function" ? c({ "": d }, "") : d; throw new SyntaxError("JSON.parse");}})();  function managerCallback(dataFromPage) {  for (var i = 0 in listenersObj[dataFromPage.topic]) {   listenersObj[dataFromPage.topic][i](dataFromPage.data);   delete listenersObj[dataFromPage.topic][i];  }  }  function addCallback(topic, callback) {  if (!listenersObj[topic]) {   listenersObj[topic] = [];  }  listenersObj[topic].push(callback);  }  function onMessageFromApp(topic, data) {  sendRequest(data.ctid, null, topic, data.userData, function () { }, true, data.cbId);  }  this.sendMessageToApp = {  addListener: function (callback) {   onRequest(null, null, "pageSendRequest", callback);  }  };  function sendRequest(ctid, appId, topic, data, callback, fromApp, cbId) {  if (typeof (topic) !== "string" ) {   return { errorMessage: "Invalid topic, expected a string.", errorCode: 100 };  }  if (typeof (data) !== "string") {   return { errorMessage: "Invalid data, expected a string.", errorCode: 100 };  }  if (appId) topic = ctid + "_" + appId + "_tabs_" + topic;  if (!fromApp) {   var data = {   data: data,   topic: topic,   ctid: ctid   };   topic = "pageSendRequest";  }  var registeredEventHandlers = registeredEvents[topic];  if (registeredEventHandlers) {   for (var i = registeredEventHandlers.length - 1; i >= 0; i--) {   try {    if (callback && !fromApp) {    addCallback(data.topic, callback);    }    registeredEventHandlers[i].handler.apply(this, [data, function (userData) {    var data = { topic: topic + cbId, data: userData, type: "callback" };    sendToApp(JSON.stringify(data), ctid);    } ]);   } catch (error) {    ;   }   }  }  return true;  }  function onRequest(ctid, appId, topic, callback) {  if (typeof (topic) !== "string") {   return { errorMessage: "Invalid topic, expected a string.", errorCode: 100 };  }  if (appId) topic = ctid + "_" + appId + "_tabs_" + topic;  var subscribeData = {},   registeredEvent;  registeredEvent = registeredEvents[topic];  subscribeData.handler = callback;  if (!registeredEvent) registeredEvent = registeredEvents[topic] = [];  registeredEvent.push(subscribeData);  return true;  }  sendMessageToApp.addListener(function (data) {  sendToApp(JSON.stringify(data), data.ctid);  });  return {  onMessageFromApp: onMessageFromApp,  sendRequest: sendRequest,  onRequest: { addListener: onRequest },  managerCallback: managerCallback,  JSON: JSON  }; })(); }</script></head><body fgcolor="000000" bgcolor="FFFFFF">
+<h1>
+  <table width="99%">
+    <tbody><tr>
+      <td width="25%">Program:</td>
+      <td align="right" width="75%">HLM 7 Hierarchical Linear and Nonlinear Modeling</td>
+    </tr>
+    <tr>
+      <td width="25%">Authors:</td>
+      <td align="right" width="75%">Stephen Raudenbush, Tony Bryk, &amp; Richard Congdon</td>
+    </tr>
+    <tr>
+      <td width="25%">Publisher:</td>
+      <td align="right" width="75%">Scientific Software International, Inc. (c) 2010</td>
+    </tr>
+    <tr>
+      <td>
+      </td><td align="right"> techsupport@ssicentral.com<br>www.ssicentral.com </td>
+    </tr>
+  </tbody></table>
+  <hr>
+</h1>
+<h2>
+  <table width="50%">
+    <tbody><tr>
+      <td width="25%">Module:</td>
+      <td align="right" width="75%">HLM2S.EXE (7.01.21202.1001)</td>
+    </tr>
+    <tr>
+      <td width="25%">Date:</td>
+      <td align="right" width="75%">22 November 2013, Friday</td>
+    </tr>
+    <tr>
+      <td width="25%">Time:</td>
+      <td align="right" width="75%">13:46: 9</td>
+    </tr>
+  </tbody></table>
+  <hr>
+</h2>
+<br>
+<br>
+<h2>Specifications for this HLM2 run</h2>  Problem Title: no title<br>
+<br>
+  The data source for this run  = dnull<br>
+  The command file for this run = C:\Users\Egle\AppData\Local\Temp\whlmtemp.hlm<br>
+  Output file name              = C:\Users\Egle\Desktop\Magistro darbas\Data\2011\hlm2.html<br>
+  The maximum number of level-1 units = 4747<br>
+  The maximum number of level-2 units = 141<br>
+  The maximum number of iterations = 100<br>
+<br>
+  Method of estimation: full maximum likelihood<br>
+<h4> Weighting Specification</h4>
+<table style="border-collapse:collapse;border:none" border="1" cellpadding="3">
+<tbody><tr>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="left">&nbsp;</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="left">Weighting?</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="left">Weight<br>Variable</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="left">Normalized?</td></tr>
+</tbody><tbody><tr>
+<td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="left">Level 1</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="center">yes</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="right">  TOTWGT    </td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="center">yes</td></tr>
+<tr><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="left">Level 2</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="center">yes</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="right">  SCHWGT    </td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="center">yes</td></tr>
+<tr><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="left">Precision</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="center">no</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="center">&nbsp;</td></tr></tbody></table><br>
+  The outcome variable is BSMMAT01    <br>
+<h3>Summary of the model specified</h3>
+<h4>Level-1 Model</h4>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>BSMMAT01</i><sub><small><i>ij</i></small></sub> = <i>β</i><sub><small><i>0j</i></small></sub> + <i>r</i><sub><small><i>ij</i></small></sub>
+<br>
+<h4>Level-2 Model</h4>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>β</i><sub><small><i>0j</i></small></sub> = <i>γ</i><sub><small><i>00</i></small></sub> + <i>u</i><sub><small><i>0j</i></small></sub><br>
+<h4>Mixed Model</h4>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>BSMMAT01</i><sub><small><i>ij</i></small></sub> = <i>γ</i><sub><small><i>00</i></small></sub>&nbsp; + <i>u</i><sub><small><i>0j</i></small></sub>+ <i>r</i><sub><small><i>ij</i></small></sub><br>
+
+<h2>Final Results - Iteration 7</h2><b>Iterations stopped due to small change in likelihood function</b><br>
+<br>
+ σ<sup>2</sup> =   4962.02979<br>
+<br>
+ Standard error of σ<sup>2</sup> =    103.38905<br>
+<br>
+τ<table border="0" cellpadding="0"><tbody><tr><td>INTRCPT1,<i>β</i><sub><small><i>0</i></small></sub>&nbsp;&nbsp;</td><td align="right">&nbsp;&nbsp;  1346.51532</td></tr></tbody></table>
+<br>
+Standard error of τ<table border="0" cellpadding="0"><tbody><tr><td>INTRCPT1,<i>β</i><sub><small><i>0</i></small></sub>&nbsp;&nbsp;</td><td align="right">&nbsp;&nbsp;   175.41806</td></tr></tbody></table>
+<br>
+<table style="border-collapse:collapse;border:none" border="1" cellpadding="3">
+<tbody><tr>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="left">Random level-1 coefficient</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt">&nbsp;&nbsp;Reliability estimate</td>
+</tr></tbody><tbody>
+<tr><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt"> INTRCPT1,<i>β</i><sub><small><i>0</i></small></sub></td><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="center">0.912</td></tr>
+</tbody></table>
+The value of the log-likelihood function at iteration 7 = -2.711541E+004<br>
+<h4> Final estimation of fixed effects:<br>
+</h4><table style="border-collapse:collapse;border:none" border="1" cellpadding="3">
+<tbody><tr>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="left">Fixed Effect</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;Coefficient</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;Standard<br> error</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;<i>t</i>-ratio</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;Approx.<br><i>d.f.</i></td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;<i>p</i>-value</td>
+</tr>
+</tbody><tbody>
+<tr><td colspan="6" style="border:none;padding:0in 5.4pt 0in 5.4pt" align="left"> For       INTRCPT1, <i>β</i><sub><small><i>0</i></small></sub>
+</td></tr>
+<tr><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt">&nbsp;&nbsp;&nbsp;&nbsp;INTRCPT2, <i>γ</i><sub><small><i>00</i></small></sub> </td><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right" valign="bottom">   483.908433</td>
+<td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right" valign="bottom">  4.884743</td>
+<td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right" valign="bottom">  99.065</td>
+<td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right" valign="bottom">140</td>
+<td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right" valign="bottom">&lt;0.001</td>
+</tr></tbody></table>
+<br>
+<h4> Final estimation of fixed effects<br>
+ (with robust standard errors)
+</h4><table style="border-collapse:collapse;border:none" border="1" cellpadding="3">
+<tbody><tr>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="left">Fixed Effect</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;Coefficient</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;Standard<br> error</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;<i>t</i>-ratio</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;Approx.<br><i>d.f.</i></td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;<i>p</i>-value</td>
+</tr>
+</tbody><tbody>
+<tr><td colspan="6" style="border:none;padding:0in 5.4pt 0in 5.4pt" align="left"> For       INTRCPT1, <i>β</i><sub><small><i>0</i></small></sub>
+</td></tr>
+<tr><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt">&nbsp;&nbsp;&nbsp;&nbsp;INTRCPT2, <i>γ</i><sub><small><i>00</i></small></sub> </td><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right" valign="bottom">   483.908433</td>
+<td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right" valign="bottom">  4.500831</td>
+<td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right" valign="bottom"> 107.515</td>
+<td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right" valign="bottom">140</td>
+<td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right" valign="bottom">&lt;0.001</td>
+</tr></tbody></table>
+<br>
+
+<h4>Final estimation of variance components</h4>
+<table style="border-collapse:collapse;border:none" border="1" cellpadding="3">
+<tbody><tr>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="left">Random Effect</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">Standard<br>&nbsp;Deviation</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">Variance<br>&nbsp;Component</td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">&nbsp;&nbsp;<i>d.f.</i></td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="center">χ<sup><small>2</small></sup></td>
+<td style="border:none;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right"><i>p</i>-value</td>
+</tr>
+</tbody><tbody>
+<tr><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="right"> INTRCPT1, <i>u</i><sub><small><i>0</i></small></sub></td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="right">    36.69490</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="right">  1346.51532</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="right"> 140</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="right">  1646.00752</td><td style="border:none;padding:0in 5.4pt 0in 5.4pt" align="right">&lt;0.001</td></tr>
+<tr><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">level-1, <i>r</i></td><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">    70.44168</td><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt" align="right">  4962.02979</td><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt">&nbsp;</td><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt">&nbsp;</td><td style="border:none;border-bottom:solid windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt">&nbsp;</td></tr>
+</tbody></table>
+<h4>Statistics for the current model</h4>
+ Deviance                       = 54230.817580<br>
+ Number of estimated parameters = 3<br>
+
+</body></html>

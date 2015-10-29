@@ -1,0 +1,431 @@
+\documentclass[utf8,hyperref={unicode,pdftex}]{beamer}
+%\documentclass[utf8]{beamer}
+
+\mode<presentation>
+{
+\usetheme{Warsaw}
+}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage[utf8]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{multirow}
+
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+
+\title[\hspace{130pt} p. \insertpagenumber\enspace iš \insertdocumentendpage\enspace ]{HLM modeliai TIMSS duomenims}
+\author[ E. Kaleckaitė]{Eglė Kaleckaitė\\
+Vadovas: Vydas Čekanavičius}
+\institute{Vilniaus Universitetas, Matematikos ir Informatikos Fakultetas}
+\date{2013 gruodžio 11d.}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+\begin{frame}
+\frametitle{Turinys}
+\Large
+\begin{enumerate}
+\item Įvadas: TIMSS ir HLM
+\item TIMSS Lietuvos atveju
+\item Turimi duomenys ir jų problemos
+\item Vertinimo procedūros
+\item Rezultatai ir išvados
+\end{enumerate}
+\end{frame}
+%\section{Įvadas}
+\begin{frame}
+\frametitle{Įvadas: TIMSS}
+\begin{itemize}
+\item TIMSS - Tarptautinis matematikos ir gamtos mokslų tyrimas (\textit{angl. Trends in International Mathematics and Science Study});
+\item IEA - Tarptautinė švietimo pasiekimų vertinimo asociacija (\textit{angl. International Association of the Evaluation of Educational Achievement});
+\item Vykdomas kas keturis metus;
+\item Dalyvauja šalys iš visų žemynų (apie 70);
+\item Sudaroma dviejų pakopų sluoksninė lizdinė imtis kiekvienoje šalyje pagal jos poreikius ir TIMSS standartus;
+\item Apklausiami atrinkti mokiniai ir jų tėvai, mokytojai bei mokyklos.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Įvadas: HLM}
+\begin{itemize}
+\item HLM - hierarchinis tiesinis modelis (\textit{angl. Hierarchical Linear Model});
+\item Dviejų lygių modelio pavidalas: 
+\[ \left\{
+  \begin{array}{l}
+    Y_{ij} = \beta_{0j}+\sum^P_{p = 1} \beta_{pj}\times X_{pij}+\varepsilon_{ij}; \\
+    \beta_{pj} = \gamma_{p0} + \sum^{Q_p}_{q=1}\gamma_{pq}\times W_{pqj}+u_{pj};\ \forall p = 0 , \dots, P,
+  \end{array} \right.\]
+kur\\
+\begin{small}
+$j$ - j-otoji grupė;\\
+$i$ - i-tasis individas j-tojoje grupėje;\\
+$\beta_{0j}$ - atsitiktinis postūmis;\\
+$\beta_{pj}$ - atsitiktinis posvyris;\\
+$\gamma_{pq}$ - fiksuoti efektai;\\
+$X_{pij}$ - pirmo lygio kintamieji;\\
+$W_{pqj}$ - antro lygio kintamieji;\\
+$Y_{ij}$ - aiškinamasis kintamasis.
+\end{small}
+\small
+\item Bendras modelio pavidalas (jungtinė lygtis):
+\[ 
+    Y_{ij} =\sum^P_{p = 1} \sum^{Q_p}_{q=1}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 1} X_{pij}\times u_{pj}+\epsilon_{ij}; 
+ \]
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{TIMSS Lietuvoje}
+\begin{itemize}
+\item Lietuvoje TIMSS tyrimą vykdo ir pagrindines analizes bei suvestines atlieka \textit{Nacionalinis egzaminų centras};
+\item J. Dudaitė. \textit{Pagrindinės mokyklos matematikos mokymosi rezultatų pokyčių vertinimas edukacinės paradigmos virsmo sąlygomis}, Daktaro disertaciją, 2008
+\item G. Akyuz, G. Berberoglu, \textit{Teacher and Classroom Characteristics and Their Relations to Mathematics Achievement of the Students in the TIMSS}, New Horizons in Education, 2010
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{J. Dudaitės sudaryti modeliai}
+HLM modeliai buvo sudaryti atskirai kiekvienam kintamajam:
+\[ \left\{
+  \begin{array}{l l}
+    Y_{ij} = \beta_{0j}+\varepsilon_{ij}; \\
+    \beta_{0j} = \gamma_{00} + \gamma_{01}\times W_{j}+u_{0j};
+  \end{array} \right.\]
+\small
+čia $i$ - žymi $i$-tajį mokinį,\\
+$j$ - $j$-tają mokyklą/klasę/mokytoją,\\
+$Y_{ij}$ - $i$-tojo mokinio iš $j$-tosios mokyklos/klasės/mokytojo matematinio raštingumo rezultatas,\\
+$\beta_{0j}$ - $j$-tosios mokyklos/klasės/mokytojo įnašas,\\
+$r_{ij}$ - pirmo lygio paklaidos,\\
+$\gamma_{00}$ - vidutinis mokyklų/klasių/ mokytojų įnašas,\\
+$\gamma_{01}$ - vidutinis mokyklų/klasių/ mokytojų nuolydis,\\
+$W_j$ - antro lygio kintamasis, \\
+$u_{0j}$ - antro lygio paklaidos.
+\end{frame}
+
+\begin{frame}
+\frametitle{Akyuz ir Berberoglu sudarytas modelis}
+Šie autoriai sudarė tik vieną modelį:
+\[ \left\{
+  \begin{array}{l}
+    Y_{ij} = \beta_{0j}+\beta_{1j}\times X_{ij}+\varepsilon_{ij}; \\
+    \beta_{0j} = \gamma_{00} + \gamma_{01}\times W_{1j}+\dots+\gamma_{0m}\times W_{mj}+u_{0j};\\
+    \beta_{1j} = \gamma_{10} + u_{1j};
+  \end{array} \right.\]
+\small
+čia $i$ - žymi $i$-tajį mokinį,\\
+$j$ - $j$-tają mokyklą/klasę/mokytoją,\\
+$Y_{ij}$ - $i$-tojo mokinio iš $j$-tosios mokyklos/klasės/mokytojo matematinio raštingumo rezultatas,\\
+$\beta_{0j}$ - $j$-tosios mokyklos/klasės/mokytojo įnašas,\\
+$\beta_{1j}$ - atsitiktinis posvyris,\\
+$X_{ij}$ - pirmo lygio kintamasis, šiuo atveju, namų edukaciniai ištekliai, \\
+$r_{ij}$ - pirmo lygio paklaidos,\\
+$\gamma_{00}$ - vidutinis mokyklų/klasių/ mokytojų įnašas,\\
+$\gamma_{01}$ - vidutinis mokyklų/klasių/ mokytojų nuolydis,\\
+$W_{mj}$ - antro lygio kintamasis, \\
+$u_{0j}$ - atsitiktinis efektas,\\
+$u_{1j}$ - atsitiktinis efektas.
+\end{frame}
+
+\begin{frame}
+\frametitle{Bendresnis HLM pavidalas bei modelio prielaidos (1)}
+Tegu turime $N$ pirmo lygio individų, kurie yra natūraliai suskaidyti į $J$ grupių (mokyklų). Kiekvienoje iš $J$ grupių yra $n_j$ individų, kur $\sum^J_{j=1} n_j = N$.
+\[\mathbb{Y}_j=\mathbb{X}_j\beta_j+\varepsilon_j;
+\]
+Antrame lygyje:
+\[ \beta_{jk}=\omega'_{jk}\gamma_{j}+u_{jk},
+\]
+čia
+\[
+\mathbb{W}_{j} =
+ \begin{pmatrix}
+ \omega'_{j1}  &0 & \cdots &0 \\
+ 0 &\omega'_{j2} & \cdots & 0 \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  0 &0 & \cdots & \omega'_{jq}
+ \end{pmatrix} = \omega'_{j1}\oplus \omega'_{j2}\oplus \cdots \oplus \omega'_{jq};
+\]
+\[ \gamma = (\gamma'_1, \gamma'_2, \dots, \gamma'_q)'; \ u_j = (u_{j1}, u_{j2}, \dots, u_{jq})'\]
+Tada
+\[\beta_j=\mathbb{W}_j\gamma+u_j\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Bendresnis HLM pavidalas bei modelio prielaidos (2)}
+Įstatome $\beta_j$ 
+\begin{large}
+\begin{equation}
+\mathbb{Y}_j=\mathbb{X}_j \mathbb{W}_j\gamma+\mathbb{X}_j u_j+\varepsilon_j
+\end{equation}
+\end{large}
+Prielaidos:
+\begin{itemize}
+\item $\varepsilon_{ij} \sim \mathcal{N}(0, \sigma^2\mathbb{I}_{n_j})$
+\item $Cov(X_{qj},\varepsilon_{qj})=0, \forall q$ 
+\item $u_j = (u_{j1}, u_{j2}, \dots, u_{jq})' \overset{iid}{\sim} \mathcal{N}(0,T)$
+\item $Cov(\mathbb{W}_{j}, u_j)=0$
+\item $Cov(\varepsilon_j, u_j)=0$
+\item $Cov(\mathbb{X}_j, u_j)=0$
+\item $Cov(\mathbb{W}_j, \varepsilon_j)=0$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bendresnis HLM pavidalas bei modelio prielaidos (3)}
+\small
+Tokį modelį galima perrašyti standartiniu dispersijos komponenčių modelio pavidalu:
+\[
+\mathbf{Y}_j=\begin{pmatrix}
+Y_{1j}\\
+Y_{2j}\\
+\cdots\\
+Y_{n_jj}
+ \end{pmatrix} ;
+\mathbf{X}_j=
+\begin{pmatrix}
+X_{1j}W_j\\
+X_{2j}W_j\\
+\cdots\\
+X_{n_jj}W_j
+ \end{pmatrix} ;
+\mathbf{Z}_{j} =
+ \begin{pmatrix}
+X_{j1}   \\
+X_{j2}  \\
+  \cdots  \\
+X_{n_jj}
+ \end{pmatrix};
+\boldsymbol{\varepsilon}_{j} =
+ \begin{pmatrix}
+\varepsilon_{j1}   \\
+\varepsilon_{j2}  \\
+  \cdots  \\
+\varepsilon_{n_jj}
+ \end{pmatrix} 
+\]
+\[
+\mathbf{Y}=\begin{pmatrix}
+Y_{1}\\
+Y_{2}\\
+\cdots\\
+Y_{J}
+ \end{pmatrix} ;
+\mathbf{X}=
+\begin{pmatrix}
+\mathbf{X}_{1}\\
+\mathbf{X}_{2}\\
+\cdots\\
+\mathbf{X}_{J}
+ \end{pmatrix} ;
+\mathbf{Z} =
+ \begin{pmatrix}
+\mathbf{Z}_{1} &0&\cdots&0  \\
+0& \mathbf{Z}_{2}&\cdots&0  \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+0&0&\cdots& \mathbf{Z}_J
+ \end{pmatrix};
+\mathbf{u}=
+ \begin{pmatrix}
+u_{1}   \\
+u_{2}  \\
+  \cdots  \\
+u_{J}
+ \end{pmatrix} 
+\boldsymbol{\varepsilon}=
+ \begin{pmatrix}
+\varepsilon_{1}   \\
+\varepsilon_{2}  \\
+  \cdots  \\
+\varepsilon_J
+ \end{pmatrix} 
+\]
+\large
+\begin{equation}
+\mathbf{Y}=\mathbf{X}\boldsymbol{\gamma}+\mathbf{Z}\mathbf{u}+\boldsymbol{\varepsilon}
+\end{equation}
+\small
+\[E(\mathbf{Y}) = \mathbf{X}\boldsymbol{\gamma}; Var(\mathbf{Y})=\mathbf{V}=\mathbf{Z}T\mathbf{Z}'+\sigma^2\mathbf{I}\]
+\end{frame}
+
+%
+%\begin{frame}
+%\frametitle{Vertinimo procedūra: ML, REML}
+%
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{Problemos}
+\large
+\begin{itemize}
+\item Mokyklų duomenims normalumas dažnai negali būti garantuotas\footnote{Raudenbush, S. W., and Bryk, A. S.  \textit{Hierarchical Linear Models: Applications and
+Data Analysis Methods}, (2nd ed.), 2002};
+\item Dėl TIMSS struktūros reikalingas vertinimas su imties svoriais;
+\item TIMSS pateikia 5 galimas testo atlikimo reikšmes kiekvienam mokiniui.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problemos: Nenormalumas}
+\includegraphics[height=7cm]{teorkv.pdf}
+\end{frame}
+
+\begin{frame}
+\frametitle{MINQUE}
+\begin{itemize}
+\item MINQUE - mažiausios normos kvadratinis nepaslinktas įvertinys (\textit{angl. Minimum Norm Quadratic Unbiased Estimator}), kurį pasiūlė Rao(1970)\footnote{Rao, C. R.  \textit{Estimation of heteroscedastic variances in linear models}, Journal of the American Statistical Association, 65, 161–172 psl., 1970};
+\item Bagakas(1992)\footnote{Bagakas, J. G  \textit{ Two level nested hierarchical linear model with random intercepts
+via the bootstrap}, Unpublished doctoral dissertation, Michigan State University., 1992} pritaikė IMINQUE su saviranka dviejų lygių hierarchiniam modeliui su atsitiktiniu postūmiu;
+\item Delpish(2006)\footnote{Delpish, A. N.  \textit{Comparison of Estimators in Hierarchical Linear Modeling: Restricted Maximum Likelihood Versus Bootstrap via Minimum Norm Quadratic Unbiased Estimators}, Florida State University, 2006} simuliacijų būdu parodė, jog IMINQUE su saviranka duoda mažesnes standartines paklaidas nei REML.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{MINQUE privalumai ir trūkumai}
+Privalumai:
+\begin{itemize}
+\item Nereikalauja duomenų normalumo;
+\item Nereikia žinoti skirstinio;
+\item Nepaslinktumas;
+\item Invariantiškumas.
+\end{itemize}
+Trūkumai:
+\begin{itemize}
+\item Priklauso nuo \textit{a priori} reikšmių;
+\item Negarantuoja teigiamų dispersijos įverčių;
+\item Vertinimas reikalauja daug resursų (didelės matricos).
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{MINQUE procedūra}
+Pasak Rao, jei $Y$ dispersiją galima išreikšti tiesine nežinomų parametrų ir žinomų matricų kombinacija $V= \sum^l_{r=1}\theta_r Q_r$, tai tiesinės kombinacijos $g_1 \theta_1+\dots+g_l \theta_l$ MINQUE yra $Y'AY$, jei matrica $A$ gaunama išsprendus:
+\[tr(AVAV) \to min\]
+su sąlygomis:
+\[AX = 0\]
+\[tr(AQ_r)=g_r\]
+Tada $\hat{\theta} = (\hat{\theta_1},\dots,\hat{\theta_l})'=S^{-1}q$, kur $S=\{s_{ij}\}$, $s_{ij}=tr(CQ_iCQ_j)$, o
+$q=\{q_i\}$, $q_i=Y'CQ_iCY$, $C = \hat{V}^{-1}(I-X(X' \hat{V}^{-1}X)^{-1}X \hat{V}^{-1})$, $\hat{V}=\sum^l_{r=1}\alpha_rQ_r$, $\alpha_r$ - \textit{a priori} reikšmės.
+
+Fiksuotų parametrų įverčiai gaunami pagal GLS:
+\[\hat{\gamma}=(X'\hat{V}^{-1}X)^{-1}X'\hat{V}^{-1}Y\]
+\end{frame}
+
+\begin{frame}
+\frametitle{MINQUE procedūra dviejų lygių HLM}
+%Turėdami HLM išraišką iš anksčiau $Y=X\gamma+Zu+\varepsilon$, galim $Z$ išreikšti kaip $Z=(\tilde{Z_1}\vdots\cdots\vdots\tilde{Z_J})$ ir atitinkamai $u'=(u_1'\cdots u_J')$.
+%Tada $V=\sum^J_{j=1}\tilde{Z_j}T\tilde{Z_j}'+\sigma^2I$.\\
+Turnti $V=ZTZ'+\sigma^2I$ , $T=\{\tau_{ij}\}$ galima išskaidyti  į $\sum^l_{r=1}\theta_rT_r$, kur $\theta = (\tau_{00}, \tau_{01}, \dots, \tau_{0q}, \tau_{11},\dots, \tau_{q-1,q})'$ ir
+\small
+\[
+T_1=
+ \begin{pmatrix}
+1&0&\cdots&0   \\
+0&0&\cdots&0  \\
+\vdots&\vdots&  \cdots &\vdots \\
+0&0&\cdots&0
+ \end{pmatrix};
+T_2=
+ \begin{pmatrix}
+0&1&\cdots&0   \\
+1&0&\cdots&0  \\
+\vdots&\vdots&  \cdots &\vdots \\
+0&0&\cdots&0
+ \end{pmatrix};
+\dots;
+T_l=
+ \begin{pmatrix}
+0&0&\cdots&0   \\
+0&0&\cdots&0  \\
+\vdots&\vdots&  \cdots &\vdots \\
+0&0&\cdots&1
+ \end{pmatrix}
+\]
+Tada $Q_r= ZT_rZ'$.\\
+Tegul $\theta_0 = \sigma^2$ ir $Q_0=I$, tuomet 
+\large
+\[V=\sum^l_{r=0} \theta_rQ_r\]
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Problemos: Svoriai}
+Mokyklų svoriai: 
+\begin{equation*}
+W^{sc}_{hj} = \frac{M_h}{m_{hj}n_h}; M_h=\sum^{N_h}_{j=1} m_{hj}
+\end{equation*}
+Klasių svoriai iš $h$-tojo lizdo $j$-tosios mokyklos: 
+\begin{equation*}
+W^{cl}_{k|hj} = \frac{C_{hj}}{c_{hj}}
+\end{equation*}
+Mokinių svoriai:
+\begin{equation*}
+W^{st}_{i|hjk} = 1
+\end{equation*}
+Bendras $i$-tojo mokinio svoris:
+\begin{equation}
+W^{st}_{ikjh} = W^{sc}_{hj}\times W^{cl}_{k|hj}
+\end{equation}
+\small
+čia $M_h$ - bendras aštuntokų skaičius $h$-tajame lizde, $m_{hj}$ - aštuntokų skaičius $j$-tojoje $h$-tojo lizdo mokykloje, $n_h$ - mokyklų, parinktų iš $h$-tojo lizdo skaičius, $N_h$ - mokyklų skaičius $h$-tajame lizde, $C_{hj}$ - klasių skaičius $j$-tojoje mokykloje,
+$c_{hj}$ - parintų klasių skaičius $j$-tojoje mokykloje.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{PWIGLS}
+\begin{itemize}
+\item PWIGLS - tikimybėmis pasvertas apibendrintas mažiausių kvadratų metodas (\textit{angl. Probability Weighted Generalized Least Squares}), pasiūlytas Pfeffermann ir kitų (1998)\footnote{Pfeffermann, D., Skinner, C. J., Holmes, J., Goldstein, H., Rasbash, J., \textit{Weighting for Unequal Selection Probabilities in Multilevel Models}, Journal of the Royal Statistical Society, 23 - 40 psl.,1998}
+\item Privalumai:
+\begin{itemize}
+\item Atsižvelgiama į imties dizainą;
+\item Geresnės asimptotinės savybės nei IGLS;
+\end{itemize}
+\item Trūkumai:
+\begin{itemize}
+\item Sudarytas tik dviejų lygių modeliui;
+\item Reikalauja normalumo;
+\item Tinka tik tolydiems aiškinantiesiems kintamiesiems.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{IGLS procedūra dviejų lygių HLM}
+Ši procedūra, praktiškai sutampa su IMINQUE. Tik reikia pasdtebėti, jog $V = V_1\oplus V_2\oplus\dots\oplus V_J$, kur $V_j=Z_jTZ_j'+\sigma^2I_{n_j}$. Tuomet $Q_r=Q_{1r}\oplus Q_{2r} \oplus \dots \oplus Q_{Jr}$
+
+Todėl 
+\[\hat{\theta}=S^{-1}q,\] kur
+\[s_{kl}=\sum^J_{j=1}tr\left(\hat{V}^{-1}_j Q_{jk}\hat{V}^{-1}_j Q_{jl}\right),\]
+\[q_k=\sum^J_{j=1}tr\left(\hat{V}^{-1}_j Q_{jk}\hat{V}^{-1}_j E_{jj}(\hat{\gamma})\right),\]
+\[E_{jj}(\hat{\gamma})=(Y_j-X_j\hat{\gamma})(Y_j-X_j\hat{\gamma})',
+\]
+\[\hat{\gamma}=(X'\hat{V}^{-1}X)^{-1}X'\hat{V}^{-1}Y.\]
+\end{frame}
+
+\begin{frame}
+\frametitle{PWIGLS procedūra dviejų lygių HLM}
+Tegul turimi pirmo lygio svoriai $w_{i|j}$, antro lygio svoriai $w_j$ ir $w_{ij}=w_{i|j}\times w_j$.
+Pagal Pfeffermann\footnote{Pfeffermann, D., Skinner, C. J., Holmes, J., Goldstein, H., Rasbash, J., \textit{Weighting for Unequal Selection Probabilities in Multilevel Models}, Journal of the Royal Statistical Society, 23 - 40 psl.,1998}, užtenka kiekvieną $Z_j$ padauginti iš $w^{-\frac{1}{2}}_j$ ir vietoje $I_{n_j}$ matricos nauditi $D_j=diag(w^{-1}_{1j}, w^{-1}_{2j}, \dots , w^{-1}_{n_jj})$. Tada belieka pakeisti 
+
+\[s_{kl}=\sum^J_{j=1}w_j tr\left(\hat{V}^{-1}_j Q_{jk}\hat{V}^{-1}_j Q_{jl}\right).\]
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Pabaiga}
+\huge
+Ačiū už dėmesį
+\end{frame}
+\end{document}
+

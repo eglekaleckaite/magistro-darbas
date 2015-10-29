@@ -1,0 +1,40 @@
+\select@language {lithuanian}
+\contentsline {section}{Turinys}{1}{section*.1}
+\contentsline {section}{\numberline {1}\IeC {\k I}VADAS}{3}{section.1}
+\contentsline {section}{\numberline {2}HIERARCHINIAI TIESINIAI MODELIAI}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Hierarchinio tiesinio modelio apra\IeC {\v s}ymas}{5}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Modelio parinkimas}{7}{subsection.2.2}
+\contentsline {subparagraph}{ICC}{7}{section*.2}
+\contentsline {subparagraph}{Statistika $\mathbf {R^2}$}{7}{section*.3}
+\contentsline {subparagraph}{Informaciniai indeksai.}{8}{section*.4}
+\contentsline {section}{\numberline {3}PARAMETR\IeC {\k U} VERTINIMO METODAI}{9}{section.3}
+\contentsline {subsection}{\numberline {3.1}Efekt\IeC {\k u} vertinimas}{9}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}REML metodas}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}MINQUE metodas}{10}{subsection.3.3}
+\contentsline {subparagraph}{MINQUE pritaikymas HLM modeliams.}{11}{section*.5}
+\contentsline {subparagraph}{I-MINQUE metodas}{12}{section*.6}
+\contentsline {subparagraph}{Pastabos.}{12}{section*.7}
+\contentsline {subsection}{\numberline {3.4}Saviranka}{12}{subsection.3.4}
+\contentsline {subparagraph}{Neparametrin\IeC {\.e} atvej\IeC {\k u} saviranka.}{13}{section*.8}
+\contentsline {subparagraph}{Savirankos metodas.}{13}{section*.9}
+\contentsline {section}{\numberline {4}EMPIRIN\IeC {\.E}S SIMULIACIJOS}{15}{section.4}
+\contentsline {subsection}{\numberline {4.1}Monte Carlo simuliacijos}{15}{subsection.4.1}
+\contentsline {subparagraph}{Santykinis poslinkis}{16}{section*.10}
+\contentsline {subparagraph}{Santykin\IeC {\.e} vidutin\IeC {\.e} kvadratin\IeC {\.e} paklaida}{16}{section*.11}
+\contentsline {subparagraph}{Pasikliautini\IeC {\k u} interval\IeC {\k u} padengiamumas}{16}{section*.12}
+\contentsline {subsection}{\numberline {4.2}Simuliacij\IeC {\k u} rezultatai}{16}{subsection.4.2}
+\contentsline {section}{\numberline {5}HLM MODELIS TIMSS DUOMENIMS}{20}{section.5}
+\contentsline {subsection}{\numberline {5.1}TIMSS tyrimo apra\IeC {\v s}ymas}{20}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}TIMSS tyrim\IeC {\k u} ap\IeC {\v z}valga}{21}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}TIMSS duomenys}{22}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}HLM modelis 2011 met\IeC {\k u} TIMSS duomenims}{24}{subsection.5.4}
+\contentsline {subparagraph}{Nulinis modelis}{26}{section*.13}
+\contentsline {subparagraph}{Galutinis modelis}{26}{section*.14}
+\contentsline {section}{\numberline {6}I\IeC {\v S}VADOS}{27}{section.6}
+\contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{28}{section.6}
+\contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{28}{section*.15}
+\contentsline {section}{Priedas}{31}{section*.16}
+\contentsline {section}{Lenteli\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{37}{section*.16}
+\contentsline {section}{Lenteli\k {u} s\k {a}ra\v {s}as}{37}{section*.17}
+\contentsline {section}{Iliustracij\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{37}{section*.17}
+\contentsline {section}{Iliustracij\k {u} s\k {a}ra\v {s}as}{37}{section*.18}

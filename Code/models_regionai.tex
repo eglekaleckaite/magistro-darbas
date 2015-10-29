@@ -1,0 +1,502 @@
+\documentclass[a4paper]{article}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[T1]{fontenc}
+\usepackage[lithuanian]{babel}
+\title{HLM modeliai TIMSS duomenims\\Modeliai}
+\author{Eglė Kaleckaitė}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage[pdftex,bookmarks=TRUE]{hyperref}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{theorem}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{bm}
+\usepackage{epsfig}
+
+\newcommand{\R}{R}
+
+\usepackage[noae]{Sweave}
+\begin{document}
+\input{models_regionai-concordance}
+
+\maketitle
+Padariau vieną, jau ankščiau darytą modelį, atskirai kiekvienam regionui: Vilnius, Didmiesčiai, Miestai, Miesteliai ir Kaimai.
+\[ \left\{
+  \begin{array}{l l}
+    Y_{ijk} = \pi_{0jk}+\pi_{1jk} \times \text{(mokinio lytis)} + \pi_{2jk} \times \text{(ND)}+\pi_{3jk} \times \text{(susidomejimas)}+\\
++\pi_{4jk} \times \text{(pasitikejimas)}+r_{ijk}; \\
+    \pi_{0jk} = \beta_{00k} + \beta_{01K}\times \text{(k.dydis)}+\beta_{02k}\times \text{(mok.akad.sekme)}+\delta_{0jk};\\
+    \pi_{pjk}= \beta_{p0k}; p = 1 \dots 4\\
+    \beta_{00k} = \gamma_{000} + \gamma_{001} \times \text{(mok.sudetis)}+ u_{0k};\\
+    \beta_{01k}=\gamma_{010};
+  \end{array} \right.\]
+\section{Bendras}
+
+\begin{Schunk}
+\begin{Sinput}
+> models.411 <- with(d2011, summary(lmer(BSMMAT ~ 1+MSUDET+SSEX+STHMWRK+SMENG+
++                                         SMCONF+TAKADSEKM+KDYDIS+
++                                         SHEDRES+(1|IDCLASS)+(1|IDSCHOOL))))
+> (sm411 <- MIsummary(models.411))
+\end{Sinput}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MSUDET + SSEX + STHMWRK + SMENG + SMCONF + TAKADSEKM +      KDYDIS + SHEDRES + (1 | IDCLASS) + (1 | IDSCHOOL) 
+
+REML criterion at convergence: 45263.58 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ IDCLASS  (Intercept)  381.2   19.52   
+ IDSCHOOL (Intercept)  509.6   22.57   
+ Residual             2546.6   50.46   
+Number of obs: 4199, groups: IDCLASS, 236; IDSCHOOL, 129
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 225.8212    21.5071   10.50   <2e-16 ***
+MSUDET       -9.6956     3.4773   -2.79    0.005 ** 
+SSEX        -11.0335     1.7580   -6.28   <2e-16 ***
+STHMWRK       5.6409     1.2855    4.39   <2e-16 ***
+SMENG        -6.5115     0.6199  -10.50   <2e-16 ***
+SMCONF       20.8037     0.5280   39.40   <2e-16 ***
+TAKADSEKM     2.2298     1.4267    1.56    0.118    
+KDYDIS        2.1003     0.4374    4.80   <2e-16 ***
+SHEDRES       8.6602     0.7309   11.85   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+          (Intr) MSUDET SSEX   STHMWR SMENG  SMCONF TAKADS KDYDIS
+MSUDET    -0.548                                                 
+SSEX      -0.180  0.013                                          
+STHMWRK   -0.174  0.022  0.029                                   
+SMENG     -0.165  0.009  0.131  0.254                            
+SMCONF     0.049 -0.008 -0.215 -0.258 -0.486                     
+TAKADSEKM -0.619  0.067  0.051 -0.004 -0.036 -0.045              
+KDYDIS    -0.456  0.274  0.046  0.069  0.113 -0.042 -0.146       
+SHEDRES   -0.248  0.049  0.054 -0.026 -0.196 -0.156  0.045 -0.140
+\end{Soutput}
+\begin{Sinput}
+> #### 1 lvl R^2
+> (R11 <- (sm0$sigma^2 - sm411$sigma^2)/sm0$sigma^2)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.4097717
+\end{Soutput}
+\begin{Sinput}
+> #### 2 lvl R^2
+> (R12 <- ( unlist(sm0$varcor)[1]- sm411$varcor[[1]][1])/unlist(sm0$varcor)[1])
+\end{Sinput}
+\begin{Soutput}
+  IDCLASS 
+0.5054929 
+\end{Soutput}
+\begin{Sinput}
+> #### 3 lvl R^2
+> (R13 <- ( unlist(sm0$varcor)[2]- sm411$varcor[[2]][1])/unlist(sm0$varcor)[2])
+\end{Sinput}
+\begin{Soutput}
+ IDSCHOOL 
+0.4698921 
+\end{Soutput}
+\begin{Sinput}
+> 
+\end{Sinput}
+\end{Schunk}
+\section{Vilnius}
+
+\begin{Schunk}
+\begin{Sinput}
+> dd1 <- subset(data.2011, MNPEOPLE == 1)
+> d2011 <- list(dd1[,c("BSMMAT01", varb)], dd1[,c("BSMMAT02", varb)], 
++               dd1[,c("BSMMAT03", varb)], dd1[,c("BSMMAT04", varb)],
++               dd1[,c("BSMMAT05", varb)])
+> d2011 <- llply(d2011, function(x) {names(x) <- gsub("0[1-5]", "", names(x));return(x)})
+> d2011 <- imputationList(d2011)
+> models.412 <- with(d2011, summary(lmer(BSMMAT ~ 1+MSUDET+SSEX+STHMWRK+SMENG+
++                                          SMCONF+TAKADSEKM+KDYDIS+
++                                          SHEDRES+(1|IDCLASS)+(1|IDSCHOOL))))
+> (sm412 <- MIsummary(models.412))
+\end{Sinput}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MSUDET + SSEX + STHMWRK + SMENG + SMCONF + TAKADSEKM +      KDYDIS + SHEDRES + (1 | IDCLASS) + (1 | IDSCHOOL) 
+
+REML criterion at convergence: 4991.794 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ IDCLASS  (Intercept)  749.1   27.37   
+ IDSCHOOL (Intercept)  363.9   19.07   
+ Residual             2045.9   45.23   
+Number of obs: 478, groups: IDCLASS, 26; IDSCHOOL, 13
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  320.702     71.567   4.481   <2e-16 ***
+MSUDET        -5.412     12.422  -0.436    0.663    
+SSEX         -10.363      5.600  -1.850    0.075 .  
+STHMWRK        6.157      3.720   1.655    0.101    
+SMENG         -4.847      1.845  -2.627    0.013 *  
+SMCONF        20.048      1.568  12.782   <2e-16 ***
+TAKADSEKM     -4.942      5.420  -0.912    0.362    
+KDYDIS         4.195      1.379   3.043    0.003 ** 
+SHEDRES        2.376      1.809   1.313    0.193    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+          (Intr) MSUDET SSEX   STHMWR SMENG  SMCONF TAKADS KDYDIS
+MSUDET    -0.306                                                 
+SSEX      -0.076  0.007                                          
+STHMWRK   -0.094  0.022 -0.129                                   
+SMENG     -0.156  0.032 -0.216  0.309                            
+SMCONF     0.028 -0.033  0.169 -0.478 -0.634                     
+TAKADSEKM -0.762  0.033  0.063 -0.052 -0.077  0.119              
+KDYDIS    -0.452  0.019 -0.066 -0.036  0.060 -0.036 -0.007       
+SHEDRES   -0.197  0.048 -0.129  0.278  0.231 -0.430 -0.078 -0.053
+\end{Soutput}
+\begin{Sinput}
+> #### 1 lvl R^2
+> (R11 <- (sm0$sigma^2 - sm412$sigma^2)/sm0$sigma^2)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.5258165
+\end{Soutput}
+\begin{Sinput}
+> #### 2 lvl R^2
+> (R12 <- ( unlist(sm0$varcor)[1]- sm412$varcor[[1]][1])/unlist(sm0$varcor)[1])
+\end{Sinput}
+\begin{Soutput}
+   IDCLASS 
+0.02821434 
+\end{Soutput}
+\begin{Sinput}
+> #### 3 lvl R^2
+> (R13 <- ( unlist(sm0$varcor)[2]- sm412$varcor[[2]][1])/unlist(sm0$varcor)[2])
+\end{Sinput}
+\begin{Soutput}
+ IDSCHOOL 
+0.6214914 
+\end{Soutput}
+\begin{Sinput}
+> 
+\end{Sinput}
+\end{Schunk}
+\section{Didmiesčiai}
+
+\begin{Schunk}
+\begin{Sinput}
+> dd1 <- subset(data.2011, MNPEOPLE == 2)
+> d2011 <- list(dd1[,c("BSMMAT01", varb)], dd1[,c("BSMMAT02", varb)], 
++               dd1[,c("BSMMAT03", varb)], dd1[,c("BSMMAT04", varb)],
++               dd1[,c("BSMMAT05", varb)])
+> d2011 <- llply(d2011, function(x) {names(x) <- gsub("0[1-5]", "", names(x));return(x)})
+> d2011 <- imputationList(d2011)
+> models.412 <- with(d2011, summary(lmer(BSMMAT ~ 1+MSUDET+SSEX+STHMWRK+SMENG+
++                                          SMCONF+TAKADSEKM+KDYDIS+
++                                          SHEDRES+(1|IDCLASS)+(1|IDSCHOOL))))
+> (sm412 <- MIsummary(models.412))
+\end{Sinput}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MSUDET + SSEX + STHMWRK + SMENG + SMCONF + TAKADSEKM +      KDYDIS + SHEDRES + (1 | IDCLASS) + (1 | IDSCHOOL) 
+
+REML criterion at convergence: 10465.79 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ IDCLASS  (Intercept)  257.1   16.03   
+ IDSCHOOL (Intercept)  939.1   30.64   
+ Residual             2572.4   50.72   
+Number of obs: 975, groups: IDCLASS, 47; IDSCHOOL, 24
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  175.328     52.737   3.325    0.001 ***
+MSUDET        -4.201      8.617  -0.488    0.626    
+SSEX          -9.464      3.367  -2.811    0.005 ** 
+STHMWRK        4.763      2.699   1.765    0.079 .  
+SMENG         -3.642      1.299  -2.804    0.007 ** 
+SMCONF        19.473      1.197  16.271   <2e-16 ***
+TAKADSEKM      2.981      3.003   0.993    0.321    
+KDYDIS         3.205      1.408   2.275    0.024 *  
+SHEDRES        8.426      1.522   5.538   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+          (Intr) MSUDET SSEX   STHMWR SMENG  SMCONF TAKADS KDYDIS
+MSUDET    -0.401                                                 
+SSEX      -0.148  0.004                                          
+STHMWRK   -0.062 -0.018 -0.050                                   
+SMENG     -0.156  0.010  0.085  0.191                            
+SMCONF     0.031  0.018 -0.106 -0.273 -0.576                     
+TAKADSEKM -0.396 -0.147  0.005  0.048 -0.046 -0.028              
+KDYDIS    -0.656  0.243  0.049 -0.126  0.024  0.027 -0.230       
+SHEDRES   -0.322  0.030  0.082  0.116  0.112 -0.296 -0.006  0.033
+\end{Soutput}
+\begin{Sinput}
+> #### 1 lvl R^2
+> (R11 <- (sm0$sigma^2 - sm412$sigma^2)/sm0$sigma^2)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.4037996
+\end{Soutput}
+\begin{Sinput}
+> #### 2 lvl R^2
+> (R12 <- ( unlist(sm0$varcor)[1]- sm412$varcor[[1]][1])/unlist(sm0$varcor)[1])
+\end{Sinput}
+\begin{Soutput}
+  IDCLASS 
+0.6664913 
+\end{Soutput}
+\begin{Sinput}
+> #### 3 lvl R^2
+> (R13 <- ( unlist(sm0$varcor)[2]- sm412$varcor[[2]][1])/unlist(sm0$varcor)[2])
+\end{Sinput}
+\begin{Soutput}
+  IDSCHOOL 
+0.02310834 
+\end{Soutput}
+\end{Schunk}
+\section{Miestai}
+
+\begin{Schunk}
+\begin{Sinput}
+> dd1 <- subset(data.2011, MNPEOPLE == 3)
+> d2011 <- list(dd1[,c("BSMMAT01", varb)], dd1[,c("BSMMAT02", varb)], 
++               dd1[,c("BSMMAT03", varb)], dd1[,c("BSMMAT04", varb)],
++               dd1[,c("BSMMAT05", varb)])
+> d2011 <- llply(d2011, function(x) {names(x) <- gsub("0[1-5]", "", names(x));return(x)})
+> d2011 <- imputationList(d2011)
+> models.412 <- with(d2011, summary(lmer(BSMMAT ~ 1+MSUDET+SSEX+STHMWRK+SMENG+
++                                          SMCONF+TAKADSEKM+KDYDIS+
++                                          SHEDRES+(1|IDCLASS)+(1|IDSCHOOL))))
+> (sm412 <- MIsummary(models.412))
+\end{Sinput}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MSUDET + SSEX + STHMWRK + SMENG + SMCONF + TAKADSEKM +      KDYDIS + SHEDRES + (1 | IDCLASS) + (1 | IDSCHOOL) 
+
+REML criterion at convergence: 2497.59 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ IDCLASS  (Intercept)  235.1   15.33   
+ IDSCHOOL (Intercept)  898.3   29.97   
+ Residual             2416.4   49.16   
+Number of obs: 237, groups: IDCLASS, 14; IDSCHOOL, 7
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  120.970    203.270   0.595    0.552    
+MSUDET        18.504     26.041   0.711    0.478    
+SSEX          -9.594      7.094  -1.352    0.178    
+STHMWRK       10.247      6.307   1.625    0.115    
+SMENG        -10.658      3.060  -3.483    0.001 ***
+SMCONF        21.247      2.099  10.125   <2e-16 ***
+TAKADSEKM      3.129     10.889   0.287    0.774    
+KDYDIS         4.898      2.820   1.737    0.083 .  
+SHEDRES        8.113      2.958   2.743    0.007 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+          (Intr) MSUDET SSEX   STHMWR SMENG  SMCONF TAKADS KDYDIS
+MSUDET    -0.837                                                 
+SSEX      -0.008 -0.050                                          
+STHMWRK   -0.187  0.099  0.079                                   
+SMENG     -0.153  0.021  0.099  0.368                            
+SMCONF    -0.053  0.047 -0.135 -0.023 -0.376                     
+TAKADSEKM -0.866  0.630 -0.120  0.022 -0.037  0.089              
+KDYDIS    -0.794  0.681 -0.009  0.084  0.028  0.001  0.545       
+SHEDRES    0.044 -0.191  0.206  0.008  0.147 -0.292 -0.164 -0.174
+\end{Soutput}
+\begin{Sinput}
+> #### 1 lvl R^2
+> (R11 <- (sm0$sigma^2 - sm412$sigma^2)/sm0$sigma^2)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.4399574
+\end{Soutput}
+\begin{Sinput}
+> #### 2 lvl R^2
+> (R12 <- ( unlist(sm0$varcor)[1]- sm412$varcor[[1]][1])/unlist(sm0$varcor)[1])
+\end{Sinput}
+\begin{Soutput}
+  IDCLASS 
+0.6950271 
+\end{Soutput}
+\begin{Sinput}
+> #### 3 lvl R^2
+> (R13 <- ( unlist(sm0$varcor)[2]- sm412$varcor[[2]][1])/unlist(sm0$varcor)[2])
+\end{Sinput}
+\begin{Soutput}
+  IDSCHOOL 
+0.06552389 
+\end{Soutput}
+\end{Schunk}
+\section{Miesteliai}
+\begin{Schunk}
+\begin{Sinput}
+> dd1 <- subset(data.2011, MNPEOPLE == 4)
+> d2011 <- list(dd1[,c("BSMMAT01", varb)], dd1[,c("BSMMAT02", varb)], 
++               dd1[,c("BSMMAT03", varb)], dd1[,c("BSMMAT04", varb)],
++               dd1[,c("BSMMAT05", varb)])
+> d2011 <- llply(d2011, function(x) {names(x) <- gsub("0[1-5]", "", names(x));return(x)})
+> d2011 <- imputationList(d2011)
+> models.412 <- with(d2011, summary(lmer(BSMMAT ~ 1+MSUDET+SSEX+STHMWRK+SMENG+
++                                          SMCONF+TAKADSEKM+KDYDIS+
++                                          SHEDRES+(1|IDCLASS)+(1|IDSCHOOL))))
+> (sm412 <- MIsummary(models.412))
+\end{Sinput}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MSUDET + SSEX + STHMWRK + SMENG + SMCONF + TAKADSEKM +      KDYDIS + SHEDRES + (1 | IDCLASS) + (1 | IDSCHOOL) 
+
+REML criterion at convergence: 7436.951 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ IDCLASS  (Intercept)  464.3   21.55   
+ IDSCHOOL (Intercept)  171.9   13.11   
+ Residual             2683.3   51.80   
+Number of obs: 693, groups: IDCLASS, 36; IDSCHOOL, 18
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  151.772     56.370   2.692    0.008 ** 
+MSUDET        -6.368      7.760  -0.820    0.412    
+SSEX          -6.088      4.223  -1.442    0.150    
+STHMWRK        5.557      3.377   1.646    0.103    
+SMENG         -5.668      1.448  -3.914   <2e-16 ***
+SMCONF        20.526      1.435  14.306   <2e-16 ***
+TAKADSEKM      2.105      3.094   0.680    0.496    
+KDYDIS         3.785      1.450   2.610    0.009 ** 
+SHEDRES        9.458      1.913   4.945   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+          (Intr) MSUDET SSEX   STHMWR SMENG  SMCONF TAKADS KDYDIS
+MSUDET    -0.452                                                 
+SSEX      -0.145 -0.010                                          
+STHMWRK   -0.198  0.005 -0.047                                   
+SMENG     -0.241  0.070 -0.036  0.089                            
+SMCONF     0.130 -0.017 -0.097 -0.328 -0.465                     
+TAKADSEKM -0.545  0.245  0.025  0.094  0.060 -0.084              
+KDYDIS    -0.526 -0.080  0.009 -0.005  0.074 -0.063 -0.177       
+SHEDRES   -0.365  0.040  0.145  0.222  0.024 -0.347  0.050  0.007
+\end{Soutput}
+\begin{Sinput}
+> #### 1 lvl R^2
+> (R11 <- (sm0$sigma^2 - sm412$sigma^2)/sm0$sigma^2)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.3780974
+\end{Soutput}
+\begin{Sinput}
+> #### 2 lvl R^2
+> (R12 <- ( unlist(sm0$varcor)[1]- sm412$varcor[[1]][1])/unlist(sm0$varcor)[1])
+\end{Sinput}
+\begin{Soutput}
+  IDCLASS 
+0.3976259 
+\end{Soutput}
+\begin{Sinput}
+> #### 3 lvl R^2
+> (R13 <- ( unlist(sm0$varcor)[2]- sm412$varcor[[2]][1])/unlist(sm0$varcor)[2])
+\end{Sinput}
+\begin{Soutput}
+ IDSCHOOL 
+0.8211999 
+\end{Soutput}
+\end{Schunk}
+\section{Kaimai}
+\begin{Schunk}
+\begin{Sinput}
+> dd1 <- subset(data.2011, MNPEOPLE %in% 5:6)
+> d2011 <- list(dd1[,c("BSMMAT01", varb)], dd1[,c("BSMMAT02", varb)], 
++               dd1[,c("BSMMAT03", varb)], dd1[,c("BSMMAT04", varb)],
++               dd1[,c("BSMMAT05", varb)])
+> d2011 <- llply(d2011, function(x) {names(x) <- gsub("0[1-5]", "", names(x));return(x)})
+> d2011 <- imputationList(d2011)
+> models.412 <- with(d2011, summary(lmer(BSMMAT ~ 1+MSUDET+SSEX+STHMWRK+SMENG+
++                                          SMCONF+TAKADSEKM+KDYDIS+
++                                          SHEDRES+(1|IDCLASS)+(1|IDSCHOOL))))
+> (sm412 <- MIsummary(models.412))
+\end{Sinput}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MSUDET + SSEX + STHMWRK + SMENG + SMCONF + TAKADSEKM +      KDYDIS + SHEDRES + (1 | IDCLASS) + (1 | IDSCHOOL) 
+
+REML criterion at convergence: 19315.79 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ IDCLASS  (Intercept)  281.6   16.78   
+ IDSCHOOL (Intercept)  447.3   21.15   
+ Residual             2593.2   50.92   
+Number of obs: 1788, groups: IDCLASS, 111; IDSCHOOL, 66
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 252.7191    31.0668   8.135   <2e-16 ***
+MSUDET      -11.3687     5.6638  -2.007    0.045 *  
+SSEX        -12.9140     2.9690  -4.349   <2e-16 ***
+STHMWRK       5.6970     2.0007   2.848    0.005 ** 
+SMENG        -8.1573     0.9656  -8.448   <2e-16 ***
+SMCONF       21.8812     0.8493  25.764   <2e-16 ***
+TAKADSEKM     1.8332     2.0080   0.913    0.361    
+KDYDIS        0.5999     0.6318   0.950    0.344    
+SHEDRES       9.9332     1.1327   8.770   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+          (Intr) MSUDET SSEX   STHMWR SMENG  SMCONF TAKADS KDYDIS
+MSUDET    -0.623                                                 
+SSEX      -0.044 -0.038                                          
+STHMWRK   -0.131  0.011 -0.162                                   
+SMENG     -0.175  0.064  0.074  0.214                            
+SMCONF    -0.021 -0.030 -0.063 -0.264 -0.476                     
+TAKADSEKM -0.569  0.042 -0.061 -0.033 -0.117  0.024              
+KDYDIS    -0.462  0.384  0.081  0.053  0.204 -0.085 -0.163       
+SHEDRES   -0.218  0.018 -0.138  0.007 -0.243 -0.066  0.083 -0.233
+\end{Soutput}
+\begin{Sinput}
+> #### 1 lvl R^2
+> (R11 <- (sm0$sigma^2 - sm412$sigma^2)/sm0$sigma^2)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.3989816
+\end{Soutput}
+\begin{Sinput}
+> #### 2 lvl R^2
+> (R12 <- ( unlist(sm0$varcor)[1]- sm412$varcor[[1]][1])/unlist(sm0$varcor)[1])
+\end{Sinput}
+\begin{Soutput}
+  IDCLASS 
+0.6346868 
+\end{Soutput}
+\begin{Sinput}
+> #### 3 lvl R^2
+> (R13 <- ( unlist(sm0$varcor)[2]- sm412$varcor[[2]][1])/unlist(sm0$varcor)[2])
+\end{Sinput}
+\begin{Soutput}
+ IDSCHOOL 
+0.5347024 
+\end{Soutput}
+\begin{Sinput}
+> 
+\end{Sinput}
+\end{Schunk}
+\end{document}

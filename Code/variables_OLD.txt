@@ -1,0 +1,95 @@
+﻿"kintamasis"	1995	1999	2003	2007	2011	aprasas	lygis
+EDUCM	BSBGEDUM	BSBGEDMO	BSBGMFED	BS4GMFED	BSBG06A	Mamos aukščiausias išsilavinimo lygis	stud
+EDUCF	BSBGEDUF	BSBGEDFA	BSBGFMED	BS4GFMED	BSBG06B	Tėvo aukščiausias išsilavinimo lygis	stud
+HASM	BSBGADU1	BSBGADU1	BSBGADU1			Turi tėvą	stud
+HASF	BSBGADU2	BSBGADU2	BSBGADU2			Turi mamą	stud
+CALC	BSBGPS01	BSBGPS01	BSBGPS01	BS4GTH01		Turi skaičiuotuvą	stud
+COMP	BSBGPS02	BSBGPS02	BSBGPS02	BS4GTH02	BSBG05A	Turi kompiuterį	stud
+DESK	BSBGPS03	BSBGPS03	BSBGPS03	BS4GTH03	BSBG05B	Turi rašomąjį stalą	stud
+DICTIONARY	BSBGPS04	BSBGPS04	BSBGPS04	BS4GTH04		Turi žodyną	stud
+ENCYCL	BSBGPS05	BSBGPS05	BSBGPS05			Turi enciklopediją	stud
+BOOKS					BSBG05C	Turi namie knygų	stud
+INTERNET				BS4GTH05	BSBG05E	Turi internetą	stud
+ROOM				BS4GTH06	BSBG05D	Turi savo kambarį	stud
+CAR	BSBGPS06			BS4GTH07	BSBG05K	Turi mašiną	stud
+GARAGE	BSBGPS07			BS4GTH08		Turi garažą	stud
+2TV	BSBGPS08	BSBGPS06		BS4GTH09		Turi du televizorius	stud
+VPLAYER	BSBGPS09	BSBGPS07			BSBG05G	Turi video grotuvą	stud
+APLAYER	BSBGPS10	BSBGPS08				Turi audio grotuvą	stud
+PIANO	BSBGPS11	BSBGPS09				Turi pianiną ar kitą muzikinį instrumentą	stud
+REFR	BSBGPS12					Turi šaldytuvą	stud
+PHONE	BSBGPS13				BSBG05F	Turi telefoną	stud
+GARDEN	BSBGPS14					Turi sodą	stud
+HOUSE	BSBGPS15					Turi namą	stud
+PETS	BSBGPS16					Turi gyvūnų	stud
+ENCDICT					BSBG05H	Turi enciklopediją ir žodyną	stud
+NEWMAG			BSBGPS06			Turi laikraščių ir žurnalų	stud
+WMASH					BSBG05I	Turi skalbimo maišną	stud
+DWASH					BSBG05J	Turi indaplovę	stud
+NBOOKS	BSBGBOOK	BSBGBOOK	BSBGBOOK	BS4GBOOK	BSBG04	Knygų kiekis namuose	stud
+NPEOPLE	BSBGHOME	BSBGHOME	BSBGPLHO			"Žmonių, gyvenančių kartu, skaičius"	stud
+JPAID	BSBGPAID	BSBGPAID	BSBGWKPJ	BS4GWKPJ		Dirba apmokamą darbą	stud
+JHOME	BSBGDAY4	BSBGDAY4	BSBGJOHM	BS4GJOHM		Dirba namų ruošos darbus	stud
+MGMATH	BSBMMIP2	BSBMMIP2	BSBMMIP2			"Mama galvoja, kad turi būti geras matematikoje"	stud
+MGLIET	BSBGMIP3	BSBGMIP3	BSBGMIP3			"Mama galvoja, kad turi būti geras lietuvių kalbos pamokose"	stud
+MGCLASS	BSBGMIP6	BSBGMIP6	BSBGMIP6			"Mama galvoja, kad turi būti aukštų pasiekimų klasėje"	stud
+SGMATH	BSBMSIP2	BSBMSIP2	BSBMSIP2			"Mokinys galvoja, kad turi būti geras matematikoje"	stud
+SGLIET	BSBGSIP3	BSBGSIP3	BSBGSIP3			"Mokinys galvoja, kad turi būti geras lietuvių kalbos pamokose"	stud
+SGCLASS	BSBGSIP6	BSBGSIP6	BSBGSIP6			"Mokinys galvoja, kad turi būti aukštų pasiekimų klasėje"	stud
+FGMATH	BSBMFIP2	BSBMFIP2	BSBMFIP2			"Draugai galvoja, kad turi būti geras matematikoje"	stud
+FGLIET	BSBGFIP3	BSBGFIP3	BSBGFIP3			"Draugai galvoja, kad turi būti geras lietuvių kalbos pamokose"	stud
+FGCLASS	BSBGFIP6	BSBGFIP6	BSBGFIP6			"Draugai galvoja, kad turi būti aukštų pasiekimų klasėje"	stud
+MLIKE	BSBMLIKE	BSBMLIKE	BSBMLIKE	BS4MALIK	BSBM16D	Mėgstu matematiką	stud
+MENJOY	BSBMENJY	BSBMENJY	BSBMTENJ	BS4MAENJ		Man patinka mokytis matematikos	stud
+MBOR	BSBMBORE	BSBMBORE	BSBMBORE	BS4MABOR		Matematika man nuobodi	stud
+MEASY	BSBMEASY	BSBMEASY	BSBMTQKY	BS4MAQKY		Matematika man yra lengva	stud
+MWORK	BSBMWORK	BSBMWORK	BSBMAJOB		BSBM16N	Noriu su matematika susijusio darbo	stud
+GJOB	BSBSJOB	BSBSJOB	BSBMAGET	BS4MAGET	BSBM16M	Matematika man padės gauti norimą darbą	stud
+MGSCHL	BSBMSCHL	BSBMSCHL	BSBMAUNI	BS4MAUNI	BSBM16L	Matematika man padės įstoti į norimą universitetą	stud
+MSELF	BSBMSELF	BSBMSELF	BSBMSELF		BSBM16J	Gerai mokausi matematiką dėl savo paties malonumo	stud
+MPRNT	BSBMPRNT	BSBMPRNT	BSBMPRNT			Gerai mokausi matematiką dėl tėvų	stud
+MLIFE	BSBMLIFE	BSBMLIFE	BSBMAHDL	BS4MAHDL		Matematika man padės gyvenime	stud
+CNEGL	BSBMCLS1	BSBMCLS1	BSBMCLS1			Mokiniai apsileidę mokykloje	stud
+CQUIET	BSBMCLS2	BSBMCLS2	BSBMCLS2			Mokiniai tvarkingi ir tylūs	stud
+COBED	BSBMCLS3	BSBMCLS3	BSBMCLS3			Mokiniai elgiasi kaip liepiami	stud
+TLYTIS					BTBG02	Mokytojo lytis	teach
+TAMZIUS					BTBG03	Mokytojo amžius	teach
+TISSIL					BTBG04	Mokytojo oficialus išsilavinimas	teach
+TPATIR					BTBG01	Mokytojo patirtis (kiek laiko moko)	teach
+TGUIDE					BTBM19C	Kaip dažnai mokytojas duoda atlikti užduotis ir jas prižiūri	teach
+TQUIZ					BTBM19K	Kaip dažnai mokytojas atlieka patikrą	teach
+TNOGUIDE					BTBM19E	Kaip dažnai mokleiviai atlieka užduotis savarankikai	teach
+TBOOKS					BTBM20A	Kaip dažnai mokytojas moko iš knygų	teach
+KDYDIS					BTBG12	Klasės dydis	teach
+TPROBL					BTBGTWC	Problemos su mokytojo darbo sąlygomis	teach
+TAKADSEKM					BTBGEAS	Mokyklos skiriamas dėmesys akademinei sėkmei	teach
+TMOKAPL					BTBGSOS	Saugi ir tvarkinga mokykla	teach
+TCONF					BTBMCTM	Mokytojo pasitikėjimas mokyti matematiką	teach
+TSATISF					BTBGTCS	Mokytojas patenkintas savo karjera	teach
+TBENDR					BTBGCIT	Mokytojai bendradarbiauja, kad pagerintų mokymą	teach
+TENGAGE					BTBGIES	Mokytojas skatina mokinius	teach
+TMTEST					BTBM27	Kaip dažnai mokytoja duoda matematikos testus	teach
+TDHMWRK					BTBM25A	Kaip dažnai mokytoja duoda namų darbus	teach
+MDYDIS					BCBG01	Mokyklos mokinių skaičius	school
+MSUDET					BCDG03	Mokyklos mokinių sudėtis	school
+MDISSAFE					BCBGDAS	Mokyklos disciplina ir saugumas	school
+MSUCCESS					BCBGEAS	Mokykla skiria dėmesį akademinei sėkmei	school
+MMATSHORT					BCBGMRS	Mokymą veikia matematikos išteklių trūkumas	school
+MCOMP					BCBG07	Kompiuterių skaičius mokykloje	school
+MAINCOME					BCBG05C	Mokyklos aplinkos visutinis pajamų lygis	school
+MVIETA					BCBG05B	Mokyklos vietovė	school
+MNPEOPLE					BCBG05A	Mokyklos vietovės gyvebtojų skaičius	school
+MKITKALB					BCBG04	Kitakalbių dalis mokykloje	school
+MEDISAD					BCBG03A	Mokinių su ekonominiu nepritekliumi dalis	school
+MEAFFL					BCBG03B	Mokinių su ekonominiu pertekliumi dalis	school
+SSEX					BSBG01	Mokinio lytis	stud
+STHMWRK					BSDMWKHW	Laikas skiriamas namų darbams per savaitę	stud
+STHEDUC					BSDGEDUP	Tėvų aukščiausiais išsilavinimo lygis	stud
+SNSUPP					BSDG05S	Namų mokymosi sąlygų kiekis	stud
+SMENG					BSBGEML	Mokinio susidomėjimas matematika	stud
+SMCONF					BSBGSCM	Mokinio pasitikėjimas savimi matematikoje	stud
+SMVALUE					BSBGSVM	Mokinys vertina matematikos žinias	stud
+SMLIKE					BSBGSLM	Mokinys mėgsta matematiką	stud
+SBULLED					BSBGSBS	Mokinys yra engiamas mokykloje	stud
+SHEDRES					BSBGHER	Namų mokymosi ištekliai	stud
+MINSTRHWR					BCDG06HY	Valandos skirtos instruktažui per metus	school

@@ -1,0 +1,126 @@
+\documentclass[a4paper]{article}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[T1]{fontenc}
+\usepackage[lithuanian]{babel}
+\title{HLM modeliai TIMSS duomenims\\Modeliai}
+\author{Eglė Kaleckaitė}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage[pdftex,bookmarks=TRUE]{hyperref}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{theorem}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{bm}
+\usepackage{epsfig}
+
+\newcommand{\R}{R}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\maketitle
+\section{Besąlyginis (nulinis) modelis}
+<<echo=FALSE, results=hide>>=
+# [noae]
+rm(list = ls())
+library(nlme)
+library(plyr)
+library(gdata)
+library(lme4)
+library(mitools)
+library(lmerTest)
+library(robustlmm)
+library(foreach)
+source("10code.R")
+
+load("data.2011.RData")
+Sys.setlocale("LC_ALL", "Lithuanian")
+
+varb <- c("IDSCHOOL", "IDCLASS", "SSEX", "STHMWRK", "SMENG", "SMCONF", "SMVALUE", 
+          "SMLIKE", "SBULLED", "SHEDRES", "TPROBL", "TAKADSEKM", "TMOKAPL", "TCONF",
+          "TSATISF", "TBENDR", "TENGAGE", "TMTEST", "TDHMWRK", "TLYTIS", "TISSIL",
+          "TPATIR", "TGUIDE", "TQUIZ", "TNOGUIDE", "TBOOKS", "KDYDIS", "MDYDIS",
+          "MSUDET", "MDISSAFE", "MSUCCESS", "MMATSHORT", "MCOMP", "MAINCOME",
+          "MVIETA", "MNPEOPLE", "MKITKALB", "MEDISAD", "MEAFFL")
+d2011 <- list(data.2011[,c("BSMMAT01", varb)], data.2011[,c("BSMMAT02", varb)], 
+              data.2011[,c("BSMMAT03", varb)], data.2011[,c("BSMMAT04", varb)],
+              data.2011[,c("BSMMAT05", varb)])
+d2011 <- llply(d2011, function(x) {names(x) <- gsub("0[1-5]", "", names(x));return(x)})
+d2011 <- imputationList(d2011)
+
+<<>>=
+models.0 <- with(d2011, lmer(BSMMAT ~ 1+(1|IDCLASS)+(1|IDSCHOOL)))
+ 
+(sm0 <- MIsummary(models.0))
+## Total variance
+(tv.0 <- sm0$sigma^2+sum(unlist(sm0$varcor)))
+##### within classroom
+(rho1 <- sm0$sigma^2/tv.0)
+##### between classroom
+(rho2 <- unlist(sm0$varcor)[1]/tv.0)
+##### between school
+(rho3 <- unlist(sm0$varcor)[2]/tv.0)
+@
+\section{Modelis tik su pirmo lygio kintamaisiais}
+@
+<<>>=
+models.12 <- with(d2011, lmer(BSMMAT ~ 1+SSEX+STHMWRK+SMENG+SMCONF+
+                               SHEDRES+(1+SSEX|IDCLASS)+(1|IDSCHOOL)))
+
+(sm12 <- MIsummary(models.12))
+#### 1 lvl R^2
+(R21 <- (sm0$sigma^2 - sm12$sigma^2)/sm0$sigma^2)
+#### 2 lvl R^2
+(R22 <- (unlist(sm0$varcor)[1]- sm12$varcor[[1]][1])/unlist(sm0$varcor)[1])
+#### 3 lvl R^2
+(R23 <- (unlist(sm0$varcor)[2]- sm12$varcor[[2]][1])/unlist(sm0$varcor)[2])
+@
+\section{Modelis tik su klasės lygio kintamaisiais}
+
+<<>>=
+models.21 <- with(d2011, lmer(BSMMAT ~ 1+TAKADSEKM+KDYDIS+
+                             (1|IDCLASS)+(1|IDSCHOOL)))
+
+(sm21 <- MIsummary(models.21))
+#### 1 lvl R^2
+(R11 <- (sm0$sigma^2 - sm21$sigma^2)/sm0$sigma^2)
+#### 2 lvl R^2
+(R12 <- ( unlist(sm0$varcor)[1]- sm21$varcor[[1]][1])/unlist(sm0$varcor)[1])
+#### 3 lvl R^2
+(R13 <- ( unlist(sm0$varcor)[2]- sm21$varcor[[2]][1])/unlist(sm0$varcor)[2])
+@
+\section{Modelis tik su mokyklos lygio kintamaisiais}
+
+<<>>=
+models.31 <- with(d2011, lmer(BSMMAT ~ 1+MSUDET+MNPEOPLE+(1|IDCLASS)+(1|IDSCHOOL)))
+
+(sm31 <- MIsummary(models.31))
+#### 1 lvl R^2
+(R11 <- (sm0$sigma^2 - sm31$sigma^2)/sm0$sigma^2)
+#### 2 lvl R^2
+(R12 <- ( unlist(sm0$varcor)[1]- sm31$varcor[[1]][1])/unlist(sm0$varcor)[1])
+#### 3 lvl R^2
+(R13 <- ( unlist(sm0$varcor)[2]- sm31$varcor[[2]][1])/unlist(sm0$varcor)[2])
+@
+\section{Modelis su visais kintamaisiais}
+
+<<>>=
+models.41 <- with(d2011, lmer(BSMMAT ~ 1+MSUDET+MNPEOPLE+SSEX+STHMWRK+SMENG+
+                                SMCONF+TAKADSEKM+KDYDIS+
+                                SHEDRES+(1|IDCLASS)+(1|IDSCHOOL)))
+
+(sm41 <- MIsummary(models.41))
+#### 1 lvl R^2
+(R11 <- (sm0$sigma^2 - sm41$sigma^2)/sm0$sigma^2)
+#### 2 lvl R^2
+(R12 <- ( unlist(sm0$varcor)[1]- sm41$varcor[[1]][1])/unlist(sm0$varcor)[1])
+#### 3 lvl R^2
+(R13 <- ( unlist(sm0$varcor)[2]- sm41$varcor[[2]][1])/unlist(sm0$varcor)[2])
+@
+\end{document}

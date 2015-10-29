@@ -1,0 +1,879 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[left=3.25cm,right=3.25cm]{geometry}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amssymb,amsmath}
+\usepackage{theorem}
+\usepackage{calc}
+\usepackage{color}
+\usepackage{bm}
+\usepackage{verbatim}
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{makeidx}
+\usepackage{float}
+\usepackage{dsfont}
+\usepackage{bbm}
+\usepackage[toc,page]{appendix}
+\usepackage{longtable}
+\usepackage{lipsum}
+%\usepackage{tocbibind}
+
+\oddsidemargin=0cm
+%\topmargin=1cm
+\headsep=0pt
+\textwidth 6.5in
+\textheight 9.00in
+%\headheight=0pt
+%\textwidth=440pt
+%\textheight=640pt
+%\footskip=40pt
+\makeatletter
+\renewcommand\paragraph{%
+\@startsection{paragraph}{4}{0mm}%
+{-\baselineskip}%
+{.5\baselineskip}%
+{\normalfont\normalsize\bfseries}}
+\makeatother
+
+\newcommand{\R}{{\mathbb R}}
+\begin{document}
+
+\begin{titlepage}
+\vskip 20pt
+\centerline{\bf \large VILNIAUS UNIVERSITETAS}
+\bigskip
+\centerline{\large \textbf{MATEMATIKOS IR INFORMATIKOS FAKULTETAS}}
+
+\vskip 120pt
+\centerline{\bf \Large \textbf{Magistro darbas}}
+\vskip 50pt
+\begin{center}
+{\bf \LARGE HLM modeliai TIMSS duomenims}
+\end{center}
+\bigskip
+\begin{center}
+{\bf \Large HLM models for TIMSS data}
+\end{center}
+\bigskip
+\centerline{\Large Eglė Kaleckaitė }
+\vskip 90pt
+\vskip 120pt
+\centerline{\large \textbf{VILNIUS 2013}}
+\end{titlepage}
+\begin{titlepage}
+\centerline {\bf \large MATEMATIKOS IR INFORMATIKOS FAKULTETAS}
+\centerline {\bf EKONOMETRINĖS ANALIZĖS KATEDRA}
+\centerline {\bf MATEMATINĖS ANALIZĖS KATEDRA}
+
+\vskip 120pt
+\large Darbo vadovas prof. Vydas Čekanavičius
+
+\large Darbo recenzentas \underline{\hskip 265pt}
+\vskip 150pt
+
+{\large Darbas apgintas \underline{\hskip 98pt }}
+
+\large Darbas įvertintas \underline{\hskip 94pt }
+
+\vskip 120pt
+
+{\large Registravimo NR. \underline{\hskip 95pt }
+
+Atidavimo į katedrą data \underline{\hskip 135pt} }
+
+\end{titlepage}
+
+\newpage
+\pagestyle{plain}
+\tableofcontents
+
+\newpage
+
+\begin{center}{\large\textbf{HLM modeliai TIMSS duomenims}}\end{center}
+
+\begin{small}
+\vspace{2\baselineskip}
+\begin{center}\textbf{Santrauka}\end{center}
+
+\indent Šio magistro darbo tikslas sudaryti hierarchinį tiesinį modelį TIMSS tyrimo Lietuvos matematinio raštingumo testo rezultatams bei nustatyti geriausią vertinimo metodologiją šio tipo duomenims.
+\vspace{\baselineskip}
+
+\noindent\textbf{Raktiniai žodžiai:}
+TIMSS, PWIGLS, HLM
+\end{small}
+\vspace{\baselineskip}
+\thispagestyle{empty}
+
+\begin{center}{\large\textbf{HLM model for TIMSS data}}\end{center}
+
+\begin{small}
+\vspace{2\baselineskip}
+\begin{center}\textbf{Abstract}\end{center}
+
+\indent The main objective of this paper is to construct a hierarchical linear model for TIMSS survey Lithuanian mathematical literacy results and to identify the best method for this kind of data estimation.
+
+\vspace{\baselineskip}
+
+\noindent\textbf{Key words:}
+TIMSS, PWIGLS, HLM
+\end{small}
+\vspace{\baselineskip}
+
+\newpage
+\section{Įvadas}
+
+\indent Hierarchiniai tiesiniai modeliai (\textit{angl. Hierarchical Linear Models}) naudojami tirti tokias struktūras, kuomet vieni individai yra suskirstyti į kelias nesikertančias grupes, o šios yra dar didesnių grupių pogrupiai. Tipinis pavyzdys: mokyklų duomenys, kai mokiniai yra klasėse, o klasės mokyklose. Arba organizcijos, kurių darbuotojai dirba skirtinguose padaliniuose. Šie modeliai naudojami ekonomikoje, biologijoje ir dar daug kur.
+
+\indent HLM modeliai yra platesnės mišrių efektų modelių klasės dalis. Dažniausiai sutinkama vertinimo procedūra yra REML - apribotas didžiausio tikėtinumo metodas (\textit{Restricted Maximum Likelihood}), kuris reikalauja paklaidų normalumo prielaidos išpildymo. 1970-1972 metais Rao išleido straipsnių ciklą, kur pristatė naują mišrių efektų modelių vertinimo procedūrą, nereikalaujančią anksčiau minėtos normalumo prielaidos MINQUE - nepaslinktą mažiausios kvadratinės normos įvertinį (\textit{Minimum Norm Quadratic Unbiased Estimator}). Tiesa, prie tam tikrų sąlygų ši procedūra yra identiška REML. 1992 metais Bagakas pritaikė MINQUE dviejų lygių HLM modeliams su atsitiktiniu postūmiu vertinti. Kadangi MINQUE procedūrai nebuvo apibrėžtas standartinių paklaidų skaičiavimas, Bagakas tam panaudojo savirankos metodą (\textit{angl. bootstrap}). 2006 metais Delpish savo daktaro disertacijoje simuliacijų būdu nustatė, jog MINQUE su saviranka duoda tikslesnius rezultatus nei REML. Vienas iš šio magistro baigiamojo darbo tikslų yra Monte Carlo simuliacijų būdu nustatyti, ar TIMSS duomenims MINQUE metodas gali potencialiai duoti geresnius rezultatus.
+
+\indent HLM neretai naudojamas ir TIMSS - tarptautinis matematikos ir gamtos mokslų tyrimas (\textit{Trends in International Mathematics and Science Study}) - duomenims tirti. Šie duomenys ypatingi tuo, jog regresoriai yra indeksai, kategoriniai kintamieji bei sveikieji skaičiai (pvz.: mokinių skaičius mokykloje). Todėl normalumas negali būti garantuotas. Kita problema, jog TIMSS imtys sudaromos informatyviai ir yra pateikiami imties svoriai kiekvienam lygiui. HLM su imties svoriais vertinti naudojamas PWIGLS - iteratyvus tikimybėmis pasvertas apibendrintasis mažiausių kvadratų metodas (\textit{angl. Posibility Weighted Iterative General Least Squares}), kuris kaip ir REML reikalauja paklaidų normalumo. Vertinimui dažniausiai naudojami paketai yra \textit{HLM7} bei \textit{MLwiN}. Tačiau šie paketai vertinimui su svoriais naudoja ne pilną Pfefferman pasiūlytą procedūrą. Taip pat, šie paketai yra mokami ir galima legaliai gauti tik trumpalaikes apribotas versijas. Todėl šiame darbe naudotas $\R$ statistinės analizės paketas.
+
+\indent Lietuva dalyvavo visose TIMSS tyrimo cikluose. Tačiau HLM modeliai nebuvo plačiai analizuoti. Todėl šio darbo tikslas yra sudaryti modelį Lietuvos TIMSS (2011 metų) duomenims ir jį įvertinti REML bei MINQUE metodais.
+
+\newpage
+\section{Literatūros apžvalga}
+Ar reikalinga, ar geriau (kaip dabar) kiekviename skyrelyje išvardinta???
+
+\newpage
+\section{Teorinė dalis}
+Šiame skyriuje glaustai aprašomas TIMSS tyrimas bei duomenys, pateikiama TIMSS tyrimo pasaulyje ir Lietuvoje apžvalga, aprašomas hierarchinis tiesinis modelis bei jo vertinimo metodai ir procedūros. Nusakomos modelio parinkimo statistikos ir kriterijai.
+
+\subsection{TIMSS tyrimo aprašymas}
+
+\indent Tyrimas TIMSS (\textit{angl.Trends in International Mathematics and Science Study}) – tai tarptautinis matematikos ir gamtos mokslų gebėjimų tyrimas. Šį tyrimą inicijuoja IEA (\textit{angl. International Association of the Evaluation of Educational Achievement}) - Tarptautinė švietimo pasiekimų vertinimo asociacija. Tyrime dalyvauja apie 70 pasaulio šalių. IEA vykdo ir kitus švietimo tyrimus: PIRLS, ICCS ir SITES, TEDS-M ir ICILS. TIMSS tyrimas pradėtas 1995 metais ir tęsiamas kas 4 metus. Tiriami ketvirtokų ir aštuntokų matematikos ir gamtos mokslų gebėjimai. Remiamasi tuo, jog tai yra paskutinės pradinės ir pagrindinės mokyklų pakopos. Šiuo metu jau yra įvykdyti 5 tokie tyrimai, paskutinis vyko 2011 metais. Lietuva dalyvavo visuose etapuose. Šiame darbe pasirinkti nagrinėti 2011 metų tyrimo aštuntos klasės Lietuvos duomenys (papildomai ????). \cite{timss2011lt}
+
+\indent TIMSS tyrimas vykdomas šalies matematiniam raštingumui bei jį lemiantiems veiksniams nustatyti. Sudaromi 28 testo užduočių blokai. Vienam mokiniui skiriamas vienas testo sąsiuvinis, kurį sudaro 4 blokai, po du matematikos ir gamtos mokslų. Sąsiuviniai atrinktiems mokiniams paskirstomi pagal iš anksto numatytą tvarką (neatsitiktinai). Mokinys testą turi atlikti per tam tikrą laiką ir gali nespėti atlikti visų užduočių. Norėdama įvertinti bendrą rezultatą, TIMSS komanda sudaro matematinio testo rezultatus pagal moderniąją testų teoriją, apie tai plačiau galima rasti 1995 metų TIMSS vartotojo vadovo\cite{timss1995} 5 skyriuje. Kad rezultatai būtų palyginami, jie yra pernuormuojami taip, kad bendras visų tiriamųjų rezultatų vidurkis būtų 500, o standartinis nuokrypis 100. Kartu yra renkama informacija apie mokinį, jo klasę ir mokyklą. Kiekvienas lygmuo gauna po klausimyną, kurį užpildo.\cite{timss2011lt}
+
+\indent TIMSS tyrimas vykdomas ne visai populiacijai, o atrinktai jos daliai (imčiai). TIMSS imtys yra dviejų pakopų sluoksninės lizdinės imtys, kur pirmos pakopos elementai išrenkami su tikimybėmis proporcingomis dydžiui, o antros pakopos elementai išrenkami su lygiomis tikimybėmis. Pirmoje pakopoje išrenkamos mokyklos pagal aštuntokų (ketvirtokų) skaičių mokykloje. Antroje pakopoje su lygiomis tikimybėmis parenkamos klasės. Išrinktoje klasėje apklausiami visi jos mokiniai. Stengiamasi imtį sudaryti taip, kad ji kuo labiau atspindėtų populiaciją. Daugiau apie tai TIMSS internetinėje nuorodoje \cite{2011Sample}. Dėl nelygių patekimo į imtį tikimybių sudaromi kiekvieno mokinio bei mokyklos svoriai, kurie vėliau naudojami tyrimuose.
+\subparagraph{TIMSS tyrimo svoriai} \hypertarget{svoriai} Kiekviena šalis sudaro imtį pagal savo poreikius ir TIMSS standartus. Lietuvoje mokyklų lizdai sudaromi pagal mokyklos vietovę (t.y. didmiestis, miestelis ar kaimas ir pan.), o paskui skirstoma pagal mokyklos tipą (t.y. pagrindinė, vidurinė ar gimnazija). Tuomet iš kiekvieno lizdo imama negrąžintinė imtis su tikimybėmis proporcingomis aštuntokų skaičiui mokykloje. Tegu turime $H$ lizdų. Tuomet mokyklos svoriai $h$-tajame lizde ($h=1,\dots,H$) gaunami pagal:
+\begin{equation}
+W^{sc}_{hj} = \frac{M_h}{m_{hj}n_h}; M_h=\sum^{N_h}_{j=1} m_{hj},
+\end{equation}
+kur $M_h$ - bendras aštuntokų skaičius $h$-tajame lizde, $m_{hj}$ - aštuntokų skaičius $j$-tojoje $h$-tojo lizdo mokykloje, $n_h$ - mokyklų, parinktų iš $h$-tojo lizdo skaičius ir $N_h$ - mokyklų skaičius $h$-tajame lizde. Iš kiekvienos parinktos mokyklos, atitinkamai pagal jos dydį, parenkamos klasės su lygiomis tikimybėmis. Klasės svoriai gaunami:
+\begin{equation}
+W^{cl}_{k|hj} = \frac{C_{hj}}{c_{hj}},
+\end{equation}
+čia $C_{hj}$ - klasių skaičius $j$-tojoje mokykloje, $c_{hj}$ - parinktų klasių skaičius $j$-tojoje mokykloje. Parinktose klasėse apklausiami visi mokiniai, todėl sąlyginis svoris yra $W^{st}_{i|hjk} = 1$. Galiausiai sudaromas bendras kiekvieno parinkto mokinio svoris:
+\begin{equation}
+W^{st}_{ikjh} = W^{sc}_{hj}\times W^{cl}_{k|hj}\times W^{st}_{i|hjk}.
+\end{equation}
+Čia pateikti svoriai nėra visiškai tikslūs, nes dar taikomi nedalyvavimo korekcijos faktoriai. Tačiau apie tai plačiau galima rasti \cite{2011Sample}.
+
+\subsection{TIMSS tyrimų apžvalga}
+TIMSS duomenys labai plačiai naudojami lyginamajai (bei kitoms) analizei atlikti. Kiekviena TIMSS tyrimo šalis turi instituciją, kuri atsakinga už ataskaitų paruošimą. Lietuvoje tai atlieka \textit{Nacionalinis egzaminų centras} (\textit{NEC}). Taip pat ir IEA organizcija išleidžia keletą leidinių, kuriuose galima rasti pagrindines ir platesnes TIMSS rezultatų statistikas bei išvadas. Visa informacija patalpinta oficialiame TIMSS tinklapyje (\url{http://timss.bc.edu}).
+
+\indent Dažniausiai HLM modeliai TIMSS duomenims sudaromi, nustatyti mokyklos, mokytojo ar klasės bei mokinio aplinkos įtaką mokinio pasiekimas (pvz.: Fullarton \cite{timssSch1}, Chen \cite{timssSchool2} arba Afana ir Lietz \cite{timssCpalyg1}). Taip pat sudaromi modeliai kelioms šalims ar regionams palyginti (pvz.: Gustafsson \cite{timssCpalyg}, Kim ir kitų \cite{timssCpalyg2}, Phan ir kitų \cite{timssCpalyg3} arba Wiberb ir Andersson \cite{timssCpalyg4}). Buvo atlikta analizė net šalių lygio mastu (pvz.: Kyriakides ir Charalambous \cite{countryHLM}). Analizuota šalių politikos įtaka mokinio matematikos pasiekimams (Stidd \cite{timssPol}).
+
+\indent HLM modeliai Lietuvos duomenims nebuvo labai plačiai kurti. Dažniausiai Lietuvos TIMSS duomenys modeliuoti bendrai su kitomis šalimis ar regionais kaip Akyuz ir Berberoglu \cite{2007All}. Autoriai sudarė modelį 1999 metų TIMSS tyrimo duomenims. Jų tikslas buvo palyginti Turkijos ir Europos sąjungos šalių mokytojo ir klasės įtaką mokinio matematinio raštingumo rezultatams. Buvo sudarytas bendras modelis visoms jų nagrinėjamoms šalims su vienu mokinio lygio aiškinančiuoju kintamuoju, tačiau į modelį buvo įtrauktas ir atsitiktinis posvyris. Deja, Lietuvos atveju atsitiktinis posvyris nebuvo įtrauktas. Žemiau pateikta minimo modelio išraiška:
+\[ \left\{
+\begin{array}{l}
+Y_{ij} = \beta_{0j}+\beta_{1j}\ X_{ij}+\varepsilon_{ij}; \\
+\beta_{0j} = \gamma_{00} + \gamma_{01} W_{1j}+\dots+\gamma_{0m} W_{mj}+u_{0j};\\
+\beta_{1j} = \gamma_{10} + u_{1j};
+\end{array} \right.
+\]
+\small
+čia $i$ - žymi $i$-tajį mokinį,\\
+$j$ - $j$-tają mokyklą/klasę/mokytoją,\\
+$Y_{ij}$ - $i$-tojo mokinio iš $j$-tosios mokyklos/klasės/mokytojo matematinio raštingumo rezultatas,\\
+$\beta_{0j}$ - $j$-tosios mokyklos/klasės/mokytojo įnašas,\\
+$\beta_{1j}$ - atsitiktinis posvyris,\\
+$X_{ij}$ - pirmo lygio kintamasis, šiuo atveju, namų edukaciniai ištekliai, \\
+$\varepsilon_{ij}$ - pirmo lygio paklaidos,\\
+$\gamma_{00}$ - vidutinis mokyklų/klasių/ mokytojų įnašas,\\
+$\gamma_{01}$ - vidutinis mokyklų/klasių/ mokytojų nuolydis,\\
+$W_{mj}$ - antro lygio kintamasis, \\
+$u_{0j}$ - atsitiktinis efektas,\\
+$u_{1j}$ - atsitiktinis efektas.\\
+Šis modelis vertintas su \textit{HLM6} programa visoms 5 galimoms matematinio raštingumo reikšmėms ir su imties svoriais.\\
+\indent Kitas pavyzdys, modelis sudarytas Robitaille ir Beaton \cite{timssLiet} 1995 metų TIMSS duomenims. Autoriai sudarė net trijų lygių modelį su atsitiktiniais postūmiais. Kaip antro ir trečio lygio kintamieji buvo naudoti suvidurkinti (atitinkamai pagal klases ir pagal mokyklas) mokinio lygio kintamieji. Čia vietoje anksčiau minėto modelio namų mokymosi išteklių imti atskiri kategoriniai kintamieji - tėvų išsilavinimas, mokinio turimi mokymosi reikmenys ir jo užklasinė veikla. Tačiau atsitiktiniai posvyriai neįtraukti, be to, nagrinėta visa šalių grupė, o ne atskiros šalys. Modeliai vertinti taip pat su \textit{HLM6} programa visoms 5 galimoms matematinio raštingumo reikšmėms ir su imties svoriais.
+
+\indent Lietuvoje Lietuvos TIMSS duomenims sudarytų HLM modelių beveik nerasta. Galbūt dėl to, jog tokie modeliai sudaromi studijų baigiamuosiuose darbuose, kurie nėra labai viešinami. Vienintelis darbas, kuriame sudaromi HLM modeliai Lietuvos TIMSS duomenims, kurį pavyko gauti, tai Dudaitės daktaro laipsnio disertacija \cite{liet2003}. Savo darbe Dudaitė plačiai nagrinėja 1995, 1999 ir 2003 metų TIMSS tyrimo duomenis įvairiais aspektais, tačiau pagrindinis tikslas - nustatyti matematinio raštingumo kaitą, keičiantis Lietuvos mokymo aplinkai. HLM modeliai sudaryti 2003 metų duomenims ir tik su labai mažu kintamųjų kiekiu. Galima sakyti, jog beveik kiekvienam aiškinančiajam kintamajam sudarytas atskiras modelis. Modelio pavyzdys:
+\begin{small}
+\[
+\left\{
+\begin{array}{l l}
+Y_{ij} = \beta_{0j}+\varepsilon_{ij}; \\
+\beta_{0j} = \gamma_{00} + \sum^Q_{q=1}\gamma_{0q}W_{qj}+u_{0j};
+\end{array} \right.
+\text{arba}\
+\left\{
+\begin{array}{l l}
+Y_{ij} = \beta_{0j}+\sum^P_{p=1}\beta_{pj}X_{pij}+\varepsilon_{ij}; \\
+\beta_{0j} = \gamma_{00} + u_{0j};\\
+\beta_{pj} = \gamma_{p0}; \ \forall q=1,\dots,P.
+\end{array} \right.
+\]
+čia $i$ - žymi $i$-tajį mokinį,\\
+$j$ - $j$-tają mokyklą/klasę/mokytoją,\\
+$Y_{ij}$ - $i$-tojo mokinio iš $j$-tosios mokyklos/klasės/mokytojo matematinio raštingumo rezultatas,\\
+$\beta_{0j}$ - $j$-tosios mokyklos/klasės/mokytojo įnašas,\\
+$\varepsilon_{ij}$ - pirmo lygio paklaidos,\\
+$\gamma_{00}$ - vidutinis mokyklų/klasių/ mokytojų įnašas,\\
+$\gamma_{01}$ - vidutinis mokyklų/klasių/ mokytojų posvyris,\\
+$X_{pij}$ - $p$ - tasis $i$ - tojo mokinio aiškinamasis kintamasis,\\
+$W_{qj}$ - antro lygio kintamasis, \\
+$u_{0j}$ - antro lygio paklaidos.
+\end{small}
+
+\indent Pasak autorės, platesnių modelių sudaryti nepavyko. Šio magistro darbo autorė įžvelgia dvi galimas priežastis. Pirmoji - modeliams vertinti buvo naudotasi specialiu HLM modelių vertinimo paketu \textit{HLM6}, ši programa mokama, tačiau akademinei visuomenei suteikiama nemokama versija, kuri vertina tik labai mažos apimties modelius. Antra - TIMSS duomenys (aiškinantieji kintamieji) yra labai koreliuoti, pavyzdžiui mokyklos vietovė ir mokyklos mokinių finansinė padėtis arba mokyklos dydis. Todėl norint pažiūrėti kiekvieno iš tokių kintamųjų įtaką, juos reiktų modeliuoti atskirai.
+
+\subsection{TIMSS duomenys} \label{subsec:duom}
+\indent Šiame skyrelyje pateikti modeliavime naudoti duomenys. Magistro darbe nagrinėjami 2011 metų Lietuvos duomenys, kurie pateikti oficialiame TIMSS tinklapyje (\url{http://timss.bc.edu}). Pavadinimai: BCGLTUM5 - mokyklos failas, BSGLTUM5 - mokinių failas, BSTLTUM5 - mokytojų ir mokinių ryšių failas ir BTMLTUM5 - matematikos mokytojų failas. Nors pateiktos visos 5 galimos mokinio testo atlikimo reikšmės, toliau analizėje bus naudojama tik pirmoji - BSMMAT01. Lentelėje \ref{table:duom} pateiktas originalus kintamojo pavadinamas, jo aprašymas bei pavadinimas naudojamas šiame darbe. Kai kurie kategoriniai kintamieji per ranguoti, o indeksai centruoti mokyklos vidurkiu bei suvidurkinti kiekvienai mokyklai. Simbolis "*" reiškia, jog kintamasis modifikuotas ir nuo originalaus skiriasi. Atliekant vidurkinimą naudoti svoriai. Mokyklos, klasės ir mokiniai identifikuojami pagal IDSCHOOL, IDCLASS ir IDSTUD atitinkamai. Mokyklos, klasės ir mokinio svoriai pateikti kaip WGTFAC3, WGTFAC2 ir WGTFAC1. Taip pat pateikiami ir neatsakymo į klausymus koregavimo faktoriai WGTADJ3, WGTADJ2 ir WGTADJ1. Toliau naudojamų pavadinimų pradžioje pridėta raidė C reiškia, jog kintamasis centruotas pagal mokyklą, o M - mokyklos vidurkis. Centruojant buvo naudoti imties svoriai.
+
+\begin{small}
+\begin{longtable}{| p{2,6cm} | p{5cm} | p{5cm} | p{2,5cm} |}
+\caption{Magistro darbe naudotų TIMSS duomenų aprašymas}
+\label{table:duom}\\
+% \begin{tabular}{| p{2,5cm} | p{5cm} | p{5cm} | p{2,5cm} |}
+\hline
+Trumpinys & Aprašymas & Tipas/Skalė & Originalus pavadinimas \\ \hline
+\multicolumn{4}{|c|}{Mokinio lygio kintamieji} \\
+\hline
+MatRes & Mokinio matematinio raštingumo testo rezultatas & Tolydus kintamasis, originalus & BSMMAT01\\ \hline
+\multirow{2}{*}{SSEX*} & \multirow{2}{*}{Mokinio lytis} & 0 - Mergaitė; & \multirow{2}{*}{BSBG01}\\
+& & 1 - Berniukas. & \\ \hline
+\multirow{2}{*}{STHMWRK*} & Mokinio skiriamas laikas & 0 - 45 min ir mažiau; & \multirow{2}{*}{BSDMWKHW}\\
+& namų darbams & 1 - daugiau nei 45 min. & \\ \hline
+SMENG & Mokinio įsitraukimas į matematikos pamokas & Indeksas. Didesnė reikšmė - stipresnis įsitraukimas. & BSBGEML\\ \hline
+SMCONF & Mokinio pasitikėjimas savimi atliekant matematikos užduotis & Indeksas. Didesnė reikšmė - stipresnis pasitikėjimas. & BSBGSCM\\ \hline
+SMVALUE & Mokinys vertina matematikos žinias (pvz.: jos jam padės gauti trokštamą darbą) & Indeksas. Didesnė reikšmė - stipresnis vertinimas. & BSBGSVM\\ \hline
+SMLIKE & Mokiniui patinka mokytis matematiką & Indeksas. Didesnė reikšmė - mėgsta labiau. &BSBGSLM\\ \hline
+SBULLED & Mokinys yra engiamas mokykloje & Indeksas. Didesnė reikšmė - skriaudžiamas dažniau. &BSBGSBS\\ \hline
+SHEDRES & Mokinio namų mokymosi ištekliai. Anksčiau vadinta namų socioekonominiu statusu. Įeina tėvų išsilavinimas, ar mokinys turi kompiuterį ir atskirą kambarį. & Indeksas. Didesnė reikšmė - daugiau išteklių. &BSBGHER\\ \hline
+\multicolumn{4}{|c|}{Mokyklos lygio kintamieji} \\
+\hline
+MDYDIS & Mokyklos mokinių skaičius & Natūralusis skaičius. & BCBG01\\ \hline
+MSUCCESS & Mokytojų teigimu mokykla skiria dėmesį akademinei sėkmei. & Indeksas. Didesnė reikšmė - labiau tiki. &BCBGEAS\\ \hline
+MSUDET* & Mokyklos mokinių sudėtis & 1 - Daugiau vargšų; & \multirow{3}{*}{BCDG03}\\
+MSUDET.1-3 & pagal finansinę padėtį & 2 - Apylygiai; & \\
+& & 3 - Daugiau turtuolių. & \\ \hline
+MDISSAFE & Saugi ir disciplinuota mokykla. & Indeksas. Didesnė reikšmė - daugiau saugumo ir disciplinos. &BCBGDAS\\ \hline
+MINSTRHWR & Valandos, skiriamos instruktažui mokykloje per metus. & Valandos. &BCDG06HY\\ \hline
+MMATSHORT & Mokytojai skundžiasi mokymo išteklių trūkumu. & Indeksas. Didesnė reikšmė - daugiau skundžiasi. &BCBGMRS\\ \hline
+MAINCOME* & Mokyklos aplinkos pajamų & 1 - Žemas; & \multirow{3}{*}{BCBG05C}\\
+MAINCOME.1& dydis. & 2 - Vidutinis; & \\
+-3& & 3 - Aukštas. & \\ \hline
+MVIETA* & Mokyklos vietovė. & 1 - Atokesnis kaimas; & \multirow{5}{*}{BCBG05B}\\
+MVIETA.1-5& & 2 - Mažas miestelis; & \\
+& & 3 - Vidutinis miestas; & \\
+& & 4 - Didmiestis; & \\
+& & 5 - Vilnius, & \\ \hline
+MKITKALB* & Kitakalbių dalis & 1 - 10\% ir mažiau; & \multirow{3}{*}{BCBG05C}\\
+MKITKALB.1& mokykloje. & 2 - 10\% - 50\%; & \\
+-3& & 3 - daugiau nei 50\%. & \\ \hline
+\end{longtable}
+\end{small}
+
+\subsection{Hierarchinis tiesinis modelis}
+\indent Hierarchinis tiesinis modelis (toliau HLM) - metodas, kuris atsižvelgia į hierarchinę duomenų struktūrą ir galimą paklaidų heteroskedastiškumą. Literatūroje šis modelis dar vadinamas atsitiktinių efektų arba kovariacijų komponenčių modeliu ir yra apibendrintų mišrių tiesinių modelių klasės dalis\cite{hlmmixed}.
+
+\indent HLM modeliai gali būti 2 ir daugiau lygių, tačiau kuo daugiau lygių, tuo vertinimo specifikacija ir vertinimo procedūra sudėtingesnė. Nors TIMSS (plačiau \ref{subsec:TIMSS} skyrelyje) pateikia duomenis šalių, mokyklų, klasių (mokytojų) bei mokinių lygiuose, šiame darbe bus nagrinėjami tik dviejų (mokyklos ir mokinių) lygių HLM modeliai. Plačiau \cite{cek}.
+
+\indent Sakykime, jog turime $J$ mokyklų, kuriose mokosi po $n_j$, $j = 1,\dots,J$ mokinių. Tuomet dviejų lygių modelio pavidalas:
+
+\begin{equation} \label{eq:2lvl}
+\left\{
+\begin{array}{l}
+Y_{ij} = \beta_{0j}+\sum^P_{p = 1} \beta_{pj}\times X_{pij}+\varepsilon_{ij}; \\
+\beta_{pj} = \gamma_{p0} + \sum^{Q_p}_{q=1}\gamma_{pq}\times W_{pqj}+u_{pj};\ \forall p = 0 , \dots, P,
+\end{array} \right.
+\end{equation}
+kur\\
+$j$ - j-otoji mokykla;\\
+$ij$ - i-tasis mokinys j-tojoje mokykloje;\\
+$\beta_{0j}$ - atsitiktinis postūmis;\\
+$\beta_{pj}$ - atsitiktinis posvyris;\\
+$\gamma_{pq}$ - fiksuoti efektai;\\
+$X_{pij}$ - mokinio lygio kintamieji;\\
+$W_{pqj}$ - mokyklos lygio kintamieji;\\
+$Y_{ij}$ - aiškinamasis kintamasis - mokinio matematinio raštingumo rezultatas.\\
+
+\indent Įstačius antrą modelio \ref{eq:2lvl} lygtį į pirmąją, gaunama jungtinė lygtis:
+\begin{equation} \label{eq:2lvljung}
+Y_{ij} =\sum^P_{p = 1} \sum^{Q_p}_{q=1}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 1} X_{pij}\times u_{pj}+\epsilon_{ij}.
+\end{equation}
+
+Tegu turime $N$ mokinių, kurie yra natūraliai suskaidyti į $J$ mokyklų ir $\sum^J_{j=1} n_j = N$. Tuomet (\ref{eq:2lvl}) modelį galime užrašyti
+\begin{equation}
+\mathbf{Y}_j=\mathbf{Z}_j\boldsymbol{\beta}_j+\boldsymbol{\varepsilon}_j;
+\end{equation}
+\begin{equation}
+\boldsymbol{\beta}_{j}=\mathbf{W}_{j}\boldsymbol{\gamma}_{j}+\mathbf{u}_{j},
+\end{equation}
+čia
+\[
+\mathbf{Y}_{j} =
+\begin{pmatrix}
+Y_{1j} \\
+Y_{2j} \\
+\vdots \\
+Y_{n_jj}
+\end{pmatrix};
+\mathbf{Z}_{j} =
+\begin{pmatrix}
+1 & X_{11j} & \cdots & X_{P1j} \\
+1 & X_{12j} & \cdots & X_{P2j} \\
+\vdots & \vdots & \ddots & \vdots \\
+1 & X_{1n_jj} & \cdots & X_{Pn_jj}
+\end{pmatrix};
+\boldsymbol{\beta}_{j} =
+\begin{pmatrix}
+\beta_{0j} \\
+\beta_{1j} \\
+\vdots \\
+\beta_{Pj}
+\end{pmatrix};
+\boldsymbol{\varepsilon}_{j} =
+\begin{pmatrix}
+\varepsilon_{1j} \\
+\varepsilon_{2j} \\
+\vdots \\
+\varepsilon_{n_jj}
+\end{pmatrix};
+\]
+\[
+\mathbf{W}_{j} =
+\begin{pmatrix}
+1& W_{1j} & \cdots & W_{Q_Pj} & 0 & 0 & \cdots & 0 & \cdots & 0\\
+0 &0 & \cdots & 0 &1 & W_{1j} & \cdots & W_{Q_Pj} & \cdots &0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots\\
+0 &0 & \cdots & 0 & 0& 0&\cdots & 0& \cdots & 0
+\end{pmatrix};
+\boldsymbol{\gamma}=
+\begin{pmatrix}
+\gamma_{00} \\
+\vdots\\
+\gamma_{0Q_P} \\
+\gamma_{10}\\
+\vdots\\
+\gamma_{1Q_P} \\
+\vdots \\
+\gamma_{PQ_P}
+\end{pmatrix};
+\mathbf{u}_{j} =
+\begin{pmatrix}
+u_{0j} \\
+u_{1j} \\
+\vdots \\
+u_{Pj}
+\end{pmatrix}.
+\]
+Tegu $X_{ij}=Z_{ij}\mathbf{W}_j$ ir $\mathbf{X}_j = (X'_{1j}, \cdots, X'_{n_jj})'$, tada matricinis bendrojo HLM modelio pavidalas yra
+\begin{equation} \label{eq:bendrasHLM}
+\mathbf{Y}=\mathbf{X}\boldsymbol{\gamma}+\mathbf{Z}\mathbf{u}+\boldsymbol{\varepsilon},
+\end{equation}
+kur
+\[
+\mathbf{Z}=
+\begin{pmatrix}
+\mathbf{Z}_1 & 0 & \cdots & 0 \\
+0 & \mathbf{Z}_2 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots \\
+0&0 & \cdots & \mathbf{Z}_J
+\end{pmatrix}.
+\]
+
+\noindent Modelio prielaidos:
+\begin{itemize}
+\item $\varepsilon_{ij} \sim \mathcal{N}(0, \sigma^2\mathbf{I}_{n_j})$;
+\item $\mathbb{C}ov(X_{ij},\varepsilon_{ij})=0, \forall i$;
+\item $\mathbb{C}ov(\boldsymbol{\varepsilon}_j,\boldsymbol{\varepsilon}_j')=0, \forall j\neq j'$;
+\item $\mathbf{u}_j = (u_{0j}, u_{1j}, \dots, u_{Pj})' \overset{iid}{\sim} \mathcal{N}(0,T)$;
+\item $\mathbb{C}ov(\mathbf{W}_{j}, \mathbf{u}_j)=0$;
+\item $\mathbb{C}ov(\boldsymbol{\varepsilon}_j, \mathbf{u}_j)=0$;
+\item $\mathbb{C}ov(\mathbf{X}_j, \mathbf{u}_j)=0$;
+\item $\mathbb{C}ov(\mathbf{W}_j, \boldsymbol{\varepsilon}_j)=0$.
+\end{itemize}
+Visos modelio paklaidos $u_{ij}$, $\varepsilon_{ij}$ yra nepriklausomos, t.y.
+\[\mathbb{E}\begin{pmatrix}
+\mathbf{u} \\
+\boldsymbol{\varepsilon}
+\end{pmatrix}=
+\begin{pmatrix}
+\mathbf{0} \\
+\mathbf{0}
+\end{pmatrix};
+\mathbb{C}ov\begin{pmatrix}
+\mathbf{u} \\
+\boldsymbol{\varepsilon}
+\end{pmatrix}=
+\begin{pmatrix}
+\mathbf{\Sigma}&\mathbf{0} \\
+\mathbf{0}&\mathbf{R}
+\end{pmatrix},
+\mathbf{\Sigma}=
+\begin{pmatrix}
+\mathbf{T} & 0 & \cdots & 0 \\
+0 & \mathbf{T} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots \\
+0&0 & \cdots & \mathbf{T}
+\end{pmatrix},
+\]
+kur $\mathbf{R}$ vektoriaus $\boldsymbol{\varepsilon}$ kovariacijų matrica, dažniausiai $\mathbf{R}=\sigma^2\mathbf{I}$. Nesunkiai galima parodyti, jog $\mathbb{E}(\mathbf{Y})=\mathbf{X}\boldsymbol{\gamma}$ ir
+\begin{equation} \label{eq:var}
+\mathbb{V}ar(\mathbf{Y})=\mathbf{V}=\mathbf{Z\Sigma Z}'+\mathbf{R}
+\end{equation}
+arba
+\begin{equation} \label{eq:varj}
+\mathbb{V}ar(\mathbf{Y_j})=\mathbf{V_j}=\mathbf{Z_jTZ_j}'+\mathbf{R_j}
+\end{equation}
+
+\subsection{Hierarchinio tiesinio modelio vertinimo procedūros}
+\indent Šiame skyrelyje pateikiami trumpi HLM modelio fiksuotų bei atsitiktinių efektų vertinimo metodų aprašymai. Nusakomas savirankos metodas pritaikytas hierarchinėms struktūroms.
+\subsubsection{Efektų vertinimas}
+\indent Fiksuoti efektai dažniausiai vertinami taikant apibendrintąjį mažiausių kvadratų metodą (GLS):
+\begin{equation}\label{eq:gamma}
+\boldsymbol{\hat{\gamma}}=\mathbf{\left(X'V^{-1}X\right)^{-1}X'V^{-1}Y}.
+\end{equation}
+
+Taip pat ir atsitiktinio poveikio parametrų įverčiai:
+\begin{equation} \label{eq:beta}
+\boldsymbol{\hat{\beta}}_j=\left(\mathbf{Z}_j'\mathbf{R}^{-1}_j\mathbf{Z}_j\right)^{-1}\mathbf{Z}_j'\mathbf{R}^{-1}_j\mathbf{Y}_j;\ \mathbf{R}_j=\sigma^2\mathbf{I}.
+\end{equation}
+
+Atsitiktinės paklaidos $\mathbf{u}_j$ įvertis gaunamas (pagal \cite{EBi}) taip:
+% į $\boldsymbol{\beta}_j=\mathbf{W}_j\boldsymbol{\gamma}+\mathbf{u}_j$ įstačius $\boldsymbol{\gamma}$ ir $\boldsymbol{\beta}_j$ įverčių išraiškas iš (\ref{eq:gamma}) ir (\ref{eq:beta}):
+\begin{equation}
+\mathbf{\hat{u}}_j=\mathbf{TZ}'_j\mathbf{\hat{V}^{-1}}_j\left(\mathbf{Y}_j-\mathbf{X}_j\boldsymbol{\hat{\gamma}}\right).
+\end{equation}
+
+$\boldsymbol{\beta}_j$ įvertinys (\ref{eq:beta}) turės didelę dispersiją, kai j-toji grupė maža, todėl įvertis gali būti visai nepanašus į tikrąją reikšmę. Todėl praktikoje dažnai naudojamas empirinis Bajaso įvertinys (EBS) dar vadinamas sutraukiančiuoju (\textit{angl. shrinkage}) įvertiniu (pagal \cite{shrinkage}):
+\begin{equation}
+\boldsymbol{\hat{\beta}}^*_{j}=\boldsymbol{\Theta}_j\boldsymbol{\hat{\beta}}_j+(\boldsymbol{I} - \boldsymbol{\Theta}_j)\mathbf{W}_j\boldsymbol{\hat{\gamma}},
+\end{equation}
+čia $\mathbf{\Theta}_j=T\left(T+\sigma^2(\mathbf{Z}'_j\mathbf{Z}_j)^{-1}\right)$. Visi aukščiau įvardinti įvertiniai remiasi tuo, jog $T$ ir $\sigma^2$ yra žinomi, tačiau praktikoje juos reikia įsivertinti. Dispersijos komponentėms vertinti yra ne vienas metodas, \hyperlink{reml}{žemiau} išvardinti keli iš jų.
+
+\indent Dar skaičiuojamos ir standartinės paklaidos, kurios gaunamos iš $(\mathbb{C}ov(\boldsymbol{\hat{\gamma}}))^{\frac{1}{2}}$ ir $(\mathbb{C}ov(\mathbf{\hat{u}}_j))^{\frac{1}{2}}$:
+\begin{equation}
+\mathbb{C}ov(\boldsymbol{\hat{\gamma}})=\mathbf{(X'\hat{V}^{-1}X)^{-1}}
+\end{equation}
+arba sumuštinio principo įvertinys (pagal \cite{sandwich}):
+\begin{equation}
+\mathbb{C}ov(\boldsymbol{\hat{\gamma}})=\mathbf{(X'\hat{V}^{-1}X)^{-1}}\frac{N}{N-1}\left(\sum^J_{j=1}\mathbf{X}_j\mathbf{\hat{V}}^{-1}_j\mathbf{\hat{e}}_j\mathbf{\hat{e}}'_j \mathbf{\hat{V}}^{-1}_j\mathbf{X}'_j\right)\mathbf{(X'\hat{V}^{-1}X)^{-1}},
+\end{equation}
+kur $\mathbf{\hat{e}}_j=\mathbf{Y}_j-\mathbf{X}_j\boldsymbol{\hat{\gamma}}$, o $\mathbb{C}ov(\mathbf{\hat{u}}_j)$ gaunama taip:
+\begin{equation}
+\mathbb{C}ov(\mathbf{\hat{u}}_j)=\left(\sum^{n_j}_{i=1}\mathbf{Z}'_j\mathbf{\hat{V}}^{-1}_j\right) \left[\mathbf{V}_j-\mathbf{X}_j\mathbb{C}ov(\boldsymbol{\hat{\gamma}})\mathbf{X}_j\right]^{-1} \left(\sum^{n_j}_{i=1}\mathbf{Z}'_j\mathbf{\hat{V}}^{-1}_j\right)'.
+\end{equation}
+
+\indent Turint aukščiau išvardintus įverčius, galima gauti aiškinamojo kintamojo įvertį $\mathbf{\hat{Y}}=\mathbf{X}\boldsymbol{\hat{\gamma}}+\mathbf{Z\hat{u}}$ bei liekanas $\boldsymbol{\hat{\varepsilon}}=\mathbf{Y}-\mathbf{\hat{Y}}$.
+
+\subsubsection{REML metodas}
+\hypertarget{reml}
+\indent Didžiausio tikėtinumo metodas (ML) (\textit{angl. Maximum Likelihood}) \cite{ml} vienas dažniausiai naudojamų metodų vertinti HLM modelius. Modelio (\ref{eq:bendrasHLM}) j-tosios grupės su dispersijų matrica (\ref{eq:varj}) didžiausio tikėtinumo f-jos logaritmas:
+\begin{equation}
+L_j(\sigma^2, \mathbf{T}, \boldsymbol{\gamma}) = -\frac{n_j}{2}\log(2\pi)-\frac{1}{2}\log|\mathbf{V} _j | -\frac{1}{2}(\mathbf{Y}_j-\mathbf{X}_j\boldsymbol{\gamma})'\mathbf{V}^{ -1}_j(\mathbf{Y}_j-\mathbf{X}_j\boldsymbol{\gamma})
+\end{equation}
+\indent Viso modelio log-tikėtinumas gali būti užrašytas kaip atskirų grupių suma $L(\sigma^2, \mathbf{T}, \boldsymbol{\gamma})=\sum^J_{j=1}L_j(\sigma^2, \mathbf{T}, \boldsymbol{\gamma})$. Taip pat naudojamas ir apribotasis didžiausio tikėtinumo metodas (REML), kuris nuo ML skiriasi tuo, jog atskiria fiksuotų efektų dalį ir optimizuoja tik atsitiktinių efektų dalį:
+\begin{equation}
+L^R_j(\sigma^2, \mathbf{T}, \boldsymbol{\gamma}) = L_j(\sigma^2, \mathbf{T}, \boldsymbol{\gamma}) -\frac{1}{2}\log|\mathbf{X}_j'\mathbf{V}^{-1}_j\mathbf{X}_j|
+\end{equation}
+
+\indent Nors šios procedūros dažnai naudojamos vertinant HLM modelius, jos visgi reikalauja normalumo prielaidos, kuri negali būti garantuota, kai turime daug kategorinių aiškinančiųjų kintamųjų.
+
+%\subsubsection{PWIGLS}
+\subsubsection{MINQUE metodas}
+
+\indent Savo straipsnių serijoje (1970\cite{rao1970}, 1971a\cite{rao1971a} , 1971b\cite{rao1971b} , 1972\cite{rao1972}) Rao pristatė dispersijos - kovariacijos matricų mišriuose tiesiniuose modeliuose vertinimo procedūrą, kurią pavadino mažiausios kvadratinės normos nepaslinktu įvertiniu - MINQUE (\textit{angl. Minimum Norm Quadratic Unbiased Estimator}). Šis įvertinys išskirtinis tuo, jog yra nepaslinktas, invariantiškas ir nereikalauja normalumo prielaidos ar žinių apie paklaidų ar atsitiktinių efektų pasiskirstymą.. Tačiau įvertis priklauso nuo \textit{a priori} reikšmių ir keli žmonės turėdami tuos pačius duomenis, bet skirtingas pradines reikšmes gali gauti visiškai skirtingus parametrų įverčius ir visi jie bus mažiausi kvadratinės normos įvertiniai, tačiau tik prie pasirinktų \textit{a priori} reikšmių. Rao MINQUE procedūra bei jos pritaikymas HLM bus trumpai aprašyta šiame skyrelyje. Daugiau informacijos galima rasti minėtoje straipsnių serijoje (\cite{rao1970}, \cite{rao1971a} , \cite{rao1971b} , \cite{rao1972}).
+
+\indent Rao teorija remiasi Euklidinės normos minimizavimu. Pagal Rao, turime modelį $\mathbf{Y}=\mathbf{X}\boldsymbol{\gamma}+\mathbf{e}$, kur $\mathbf{e}=\mathbf{H\boldsymbol{\xi}}=\mathbf{\boldsymbol{H_1\xi_1+\cdots +H_k \xi_k}}$, $\boldsymbol{\xi_i}$-atsitiktiniai vektoriai, $\mathbf{H_i}$-lydinčiosios matricos. Imama kvadratinė forma $\mathbf{Y'AY}$ ir sakoma, kad ji yra tiesinės f-jos $\sum^l_{r=1} g_r\theta_r$ (čia $\theta_r$ - dispersijos komponentės, o $g_r$ - lydintysis parametras) įvertinys su sąlygomis:
+\begin{enumerate}
+\item $\mathbf{AX=0}$ - invariantiškumas;
+\item $\mathbb{E}\left(\mathbf{Y'AY}\right)=\sum^l_{r=1} g_r\theta_r$ - nepaslinktumas;
+\item $\mathbb{V}ar\left(\mathbf{Y'AY}\right)=min$ pagal $\theta_1, \dots, \theta_l$.
+\end{enumerate}
+
+\indent Jei žinotume visus $\xi_i$, tai natūralus $\sum^l_{r=1} g_r\theta_r$ įvertinys būtų $\boldsymbol{\xi'R\xi}$, kur $\mathbf{R}$ - $k\times k$ matrica. Iš kitos pusės, pagal invariantiškumą, $\mathbf{Y'AY=\boldsymbol{\xi'H'AH'\xi}}$. Skirtumas tarp šių dviejų įvertinių yra $\boldsymbol{\xi'\left(H'AH-R\right)\xi}$. Norima gauti šį skirtumą kuo mažesnį, tam sudaroma Euklidinė norma $\|\boldsymbol{H'AH-R}\|^2$ ir ji yra minimizuojama.
+
+\indent Tuomet tiesinės kombinacijos $g_1 \theta_1+\dots+g_l \theta_l$ MINQUE yra $\mathbf{Y'AY}$, jei matrica $\mathbf{A}$ gaunama išsprendus:
+\[tr(\mathbf{AVAV}) \to min \ s.a. \ \mathbf{AX} = 0;\ tr(\mathbf{AQ}_r)=g_r\]
+\indent Tada $\hat{\theta} = (\hat{\theta_1},\dots,\hat{\theta_l})'=S^{-1}q$, kur $S=\{s_{ij}\}$, $s_{ij}=tr(CQ_iCQ_j)$, o
+$q=\{q_i\}$,
+
+\noindent $q_i=\mathbf{Y'CQ}_i\mathbf{CY}$, $\mathbf{C} = \mathbf{\hat{V}}^{-1}\left(\mathbf{I}-\mathbf{X}\left(\mathbf{X' \hat{V}}^{-1}\mathbf{X}\right)^{-1}\mathbf{X \hat{V}}^{-1}\right)$, $\mathbf{\hat{V}}=\sum^l_{r=1}\alpha_r\mathbf{Q}_r$, $\alpha_r$ - \textit{a priori} reikšmės (gaunamos iš išorės, pvz.: tvirtai žinant apytiksles dispersijos komponenčių proporcijas). Fiksuotų parametrų įverčiai gaunami pagal GLS\cite{rao1972}:
+\[\boldsymbol{\hat{\gamma}}=\mathbf{\left(X'\hat{V}^{-1}X\right)^{-1}}\mathbf{X'\hat{V}^{-1}Y}.\]
+
+???\cite{MLbetterMINQUE} ML geriau nei MINQUE
+
+\subparagraph{MINQUE pritaikymas HLM modeliams.} Literatūros apie MINQUE pritaikymą hierarchiniams tiesiniams modeliams nėra daug arba sunku tokią gauti. Delpish\cite{delpish} 2006 metų savo daktaro disertacijoje remiasi Bagakas\cite{bagaka} darbu, kuriame pristatomas minėtasis MINQUE metodas ir jo pritaikymas dviejų lygių hierarchiniams modeliams su atsitiktiniu postūmiu. Pasak autorių, MINQUE neturi procedūros skaičiuoti standartinėms paklaidoms ir pasikliautinumo intervalams, tad šiam tikslui buvo pasitelktas savirankos metodas. Kita problema, MINQUE labai priklauso nuo \textit{a priori} reikšmių, tad praktikoje dažniau taikomas iteratyvus metodas, kuris aprašytas \hyperlink{iminque}{toliau}. Tačiau Bagakas darbo nepavyko gauti, o Delpish savo darbe tik labai abstrakčiai pristato vertinimo metodą. Be to, pristatomas metodas tik atsitiktinio postūmio atveju, tačiau vertinami modeliai su atsitiktiniu postūmiu ir posvyriu. Dėl šių priežasčių teko MINQUE metodą dviejų lygių HLM modeliams su atsitiktiniu postūmių ir posvyriu išsivesti pačiai.
+
+%Turėdami HLM išraišką iš anksčiau $Y=X\gamma+Zu+\varepsilon$, galim $Z$ išreikšti kaip $Z=(\tilde{Z_1}\vdots\cdots\vdots\tilde{Z_J})$ ir atitinkamai $u'=(u_1'\cdots u_J')$.
+%Tada $V=\sum^J_{j=1}\tilde{Z_j}T\tilde{Z_j}'+\sigma^2I$.\\
+Tegul turime bendrą HLM modelio išraišką pavidalu \ref{eq:bendrasHLM} su $\mathbf{Y}$'ko kovariacijų matricą $\mathbf{V}=\mathbf{ZTZ'}+\sigma^2\mathbf{I}$ . Kadangi $\mathbf{T}=\{\tau_{ij}\}^P_{i,j=0}$ galima išskaidyti į $l=\frac{P(P+1)}{2}$ elementų sumą, t.y.
+$\mathbf{T}=\sum^l_{r=1}\theta_rT_r$, kur $\boldsymbol{\theta} = (\theta_1,\theta_2,\dots,\theta_l)'=(\tau_{00}, \tau_{01}, \dots, \tau_{0q}, \tau_{11},\dots, \tau_{q-1,q})'$ ir atitinkamai
+\small
+\[
+T_1=
+\begin{pmatrix}
+1&0&\cdots&0 \\
+0&0&\cdots&0 \\
+\vdots&\vdots& \cdots &\vdots \\
+0&0&\cdots&0
+\end{pmatrix};
+T_2=
+\begin{pmatrix}
+0&1&\cdots&0 \\
+1&0&\cdots&0 \\
+\vdots&\vdots& \cdots &\vdots \\
+0&0&\cdots&0
+\end{pmatrix};
+\dots;
+T_l=
+\begin{pmatrix}
+0&0&\cdots&0 \\
+0&0&\cdots&0 \\
+\vdots&\vdots& \cdots &\vdots \\
+0&0&\cdots&1
+\end{pmatrix}.
+\]
+
+Pažymėkime $\mathbf{Q}_r:= \mathbf{Z}T_r\mathbf{Z'}$. Tuomet galima užrašyti $\mathbf{V}=\sum^l_{r=1}\theta_r\mathbf{Q}_r+\sigma^2 \mathbf{I}$. Tegul $\theta_0 = \sigma^2$ ir $\mathbf{Q}_0=\mathbf{I}$ ir galiausiai gauname
+
+\begin{equation}
+\mathbf{V}=\sum^l_{r=0} \theta_r\mathbf{Q}_r.
+\end{equation}
+
+Tokiu būdu gavome dispersijos išskaidymą kaip ir Rao MINQUE atveju. Pagrindinį vaidmenį šioje vietoje atlieka \textit{a priori} reikšmių nustatymas, norint gauti $\mathbf{\hat{V}}$. Kai nagrinėjame tik atsitiktinio postūmio atvejį, galime pasitelkti tarpklasinės koreliacijos koeficientą ICC ir imti $\alpha_0=1-\frac{\tau_{00}}{\tau_{00}+\sigma^2}$, o $\alpha_1=\frac{\tau_{00}}{\tau_{00}+\sigma^2}$. Šis būdas veiks gerai, kai turėsime pakankamai tvirtas pradines žinias apie ICC.\cite{delpish}
+
+Tačiau praktikoje dažnai nežinome pradinių ICC reikšmių. Dėl šios priežasties dažnai taikomas iteratyvus MINQUE metodas, kuris aprašytas žemiau.
+
+\subparagraph{I-MINQUE metodas}\hypertarget{iminque}yra iteratyvi MINQUE procedūra, kuri yra nejautri \textit{a priori} reikšmėms. Pavyzdžiui, paimkime $\alpha_0=\dots=\alpha_l=1$. Gauname $\mathbf{\hat{V}}_{(0)}=\sum^l_{r=0}\mathbf{Q}_r$, įsivertiname pagal MINQUE metodą $\boldsymbol{\hat{\theta}}_{(0)}=(\hat{\theta}_0,\hat{\theta}_1,\dots,\hat{\theta}_l)'_{(0)}$. Su naujomis $\theta$ reikšmėmis gaunamas $\mathbf{\hat{V}}_{(1)}$, o su juo įsivertiname $\boldsymbol{\hat{\theta}}_{(1)}=(\hat{\theta}_0,\hat{\theta}_1,\dots,\hat{\theta}_l)'_{(1)}$. Šioje vietoje procedūrą galime nutraukti arba tęsti tol, kol $|\boldsymbol{\hat{\theta}}_{(i)}-\boldsymbol{\hat{\theta}}_{(i+1)}|<\delta$, kur $\delta$ yra pasirinktas konvergavimo tolerancijos parametras.
+
+\indent Delpish\cite{delpish} savo darbe naudoja tik du pirmuosius I-MINQUE žingsnius. Toks metodas bus naudojamas ir šiame darbe.
+
+\subparagraph{Pastabos.} Savo straipsnių serijoje Rao pristatė ir kitokius mažiausios kvadratinės normos įvertinius, pats bendriausias - MINQE, kuris neapriboja invariantiškumu ir nepaslinktumu. Daugiau MINQE(I) - su invariantikumo apribojimu, MINQE(U) - tik su nepaslinktumo reikalavimu, MINQE(U,I) - tapatus nagrinėjamam MINQUE, MINVQUE - sudarytas prie normalumo prielaidos ir minimizuoja dispersiją (MIVQUE prie normalumo = MINQUE). Teorijoje ir praktikoje naudojami įvairūs MINQUE metodai, daugiau apie juos 1979 metų Rao straipsnyje \cite{minquereml3}. Kiekvienas iš šių metodų turi savo pliusų ir savo minusų. Rao, aukščiau minėtame straipsnyje, taip pat tiria ir MINQUE savybes ir parodo, jog REML pirmoji iteracija yra MINQUE, o REML įvertinys yra identiškas I-MINQUE, kai \textit{apriori} (pradinės) reikšmės sutampa. Todėl MINQUE yra dažnai naudojamas gauti pradinėms REML reikšmėms.
+
+\subsubsection{Saviranka}
+
+\indent Savirankos metodas pristatytas 1979 metais Efron \cite{efron} ir yra plačiai paplitęs modeliavime. Šio metodo esmė, perrinkti turimą imtį be galo daug kartų, kad būtų atspindėta populiacija, jos skirstinys. Kitaip: sakome, kad turima imtis yra mini populiacija ir iš jos traukiame be galo daug imčių, taip siekdami gauti stabilesnius įverčius. Tad šis metodas naudojamas poslinkio koregavimui, standartinėms paklaidoms bei pasikliautiniams intervalams gauti. Ir reikalauja iš turimos imties tik tiek, jog ji būtų atsitiktinai parinkta ir kuo geriau atspindėtų populiaciją. Standartiškai, iš turimos imties parenkama tokio paties dydžio imtis su grąžinimu ir skaičiuojami įverčiai ar kitos charakteristikos. Tai kartojama kažkokį didelį B kartų skaičių ir atliekami papildomi skaičiavimai, kaip kad randamos standartinės paklaidos. Tačiau turint kelių lygių arba hierarchinę struktūrą (tuo labiau lizdinę imtį), savirankos metodą reikia pritaikyti turimam atvejui, kadangi matavimai nėra nepriklausomi ir vienodai pasiskirstę.
+
+\indent Hierarchiniams duomenims (kaip ir paprastai) taikomi parametriniai, neparametriniai ir pusiau parametriniai, atvejų ir paklaidų savirankos metodai. Leeden ir kiti \cite{bootML} savo 1997 metų straipsnyje Monte Carlo simuliacijų būdu tyrė tris metodus taikytus dviejų lygių duomenims: atvejų saviranką, paklaidų saviranką ir parametrinę saviranką, kai modeliai vertinami didžiausio tikėtinumo metodu (ML). Jų rezultatai parodė, jog fiksuotų parametrų įverčiai yra nepaslinkti ir saviranka neatneša jokios naudos, tačiau standartinės paklaidos, įvertintos ML metodu yra paslinktos į mažąją pusę ir atvejų saviranka čia duoda geriausius rezultatus. Kiek kitaip yra su atsitiktiniais efektais, čia mažiausią poslinkį turi, autorių vadinama, sutraukianti saviranka. Bet standartinių paklaidų atžvilgiu geriausia atvejų saviranka. Nors atvejų savirankos metodas nebuvo pripažintas geriausiu, autoriai rekomenduoja šį metodą, nes jis reikalauja mažiausiai prielaidų apie modelį ar turimų duomenų struktūrą. Taigi, neparametrinė atvejų saviranka bus naudojama šiame magistro darbe.
+
+\indent Dėl hierarchinės struktūros sudėtingumo, neparametrinės atvejų savirankos imtys gali būti sudaromos įvairiai: perrenkant tik vieną iš lygių, kelis arba visus, perrenkant su grąžinimu ir be jo. Ren ir kiti \cite{bootNest} straipsnyje apie neparametrinę saviranką parodė, jog geriausia perrinkti su grąžinimu aukščiausiame lygyje, o visuose kituose lygiuose perrinkti be grąžinimo. Taip ir bus daroma šiame darbe. Toliau bus pateiktas naudojamas neparametrinės atvejų savirankos metodas.
+
+\subparagraph{Neparametrinė atvejų saviranka.} Sakykime, jog turime $H$ lizdų, kiekviename iš jų turime po $n_h$ mokyklų, o $j$ - tojoje mokykloje iš $h$ - tojo lizdo mokosi $n_{hj}$ mokinių. Tuomet savirnaka atliekama taip:
+\begin{enumerate}
+\item Iš kiekvieno lizdo $h$ ($h=1,\dots,H$) parenkama $n_h-1$ mokyklų su grąžinimu. Kiekvienai parinktai mokyklai $j$ iš $h$ - joto lizdo paimame atitinkamą aiškinančiųjų kintamųjų rinkinį $\mathbf{W}^*_{jh}$.
+\item Tuomet kiekvienoje parinktoje mokykloje $j$ (jei mokykla kartojasi, kiekvieną kart parenkama nepriklausimai) parenkama $n_{hj}-1$ mokinių be grąžinimo. Ir kiekvienam parinktam $i$ - tajam mokiniui iš $j$ - tosios mokyklos iš $h$ - jojo lizdo paimamas kintamųjų rinkinys ($\mathbf{Y}^*_{ijh}, \mathbf{Z}^*_{ijh}$). Kiekvieną pirmo lygio kintamąjį atitinkamai sujungus su antro lygio kintamuoju, gaunama savirankos imtis.
+\item Gautai savirankos imčiai įvertinami norimi modelio parametrai.
+\item Žingsniai 1-3 kartojami be galo daug kartų B.
+\end{enumerate}
+Taip gaunama B savirankos parametrų įverčių, kurie apdorojami toliau aprašytu būdu.
+
+\subparagraph{Savirankos metodas.} Sakykime, kad $\chi = \{X_1,\dots,X_n\}\stackrel{nvp}{\sim}F$, kur $F$ yra nežinoma pasiskirstymo f-ja. Statistikai $\hat{\theta}$ pasirinktai įvertinti pasiskirstymo $F$ parametrą $\theta$ gaunamas savirankos pasiskirstymas, perrenkant su grąžinimu iš $\chi$. Praktikoje pasirenkamas pakankamai didelis skaičius B savirnakos imčių ir gaunama $\hat{\theta}^*_b$ ($b=1,\dots,B$) savirankos įverčių, kurie atspindi $\hat{\theta}$ pasiskirstymą. Tuomet parametro $\theta$ savirankos įvertis gaunamas suvidurkinus visas $\hat{\theta}^*_b$, o standartinės paklaidos (\textit{s.e.}) taip:
+\[
+\hat{\theta}^*_{(.)}=\frac{1}{B}\sum^B_{b=1}\hat{\theta}^*_b; \
+s.e.(\hat{\theta})=\left[\frac{1}{B-1}\sum^B_{b=1}(\hat{\theta}^*_b - \hat{\theta}^*_{(.)})^2\right]^{\frac{1}{2}}.
+\]
+Dar skaičiuojamas įverčio poslinkis $\widehat{bias}(\hat{\theta})=\hat{\theta}^*_{(.)}-\hat{\theta}$ ir gaunama parametro poslinkio korekcija $\hat{\theta}_{boot}=\hat{\theta}-\widehat{bias}(\hat{\theta})=2\hat{\theta}-\hat{\theta}^*_{(.)}$. Skaičiuojami ir savirankos pasikliautiniai intervalai, čia bus aprašytas ir naudojamas tik percentilių metodas, kuris nereikalauja žinių apie $\theta$ pasiskirstymą. Apskaičiuojami $d^*_b=\hat{\theta}^*_b-\hat{\theta}$ ir parenkamas $d_c$ toks, kad $(1-\alpha)100\%$ visų $d^*_b$ reikšmių patektų į intervalą $\pm d_c$. Tuomet $(1-\alpha)100\%$ savirankos pasikliautiniai intervalai gaunami iš $\hat{\theta}\pm d_c$, čia $\alpha$ - pasirinktas reikšmingumo lygmuo.
+
+\subparagraph{Pastaba.} Dabartinėje literatūroje galima rasti ir sudėtingesnes savirankos procedūras (???). Tačiau šiame magistro darbe nagrinėjamų TIMSS duomenų yra ganėtinai daug ir sudėtingesnės procedūros užimtų labai daug laiko ir kompiuterio resursų.
+
+\subsection{Modelio parinkimas} \label{subsec:parink}
+\indent Hierarchinių tiesinių modelių sudarymas yra sudėtinga procedūra ir tai galima padaryti įvairiais būdais bei gauti labai skirtingus rezultatus.
+
+\indent Pradžioje visuomet skaičiuojamas nulinis (besąlyginis) modelis:
+
+\begin{equation}\label{eq:null}
+\left\{
+\begin{array}{l}
+Y_{ij}=\beta_{0j}+\varepsilon_{ij}, \ \varepsilon_{ij}\sim \mathcal{N}(0, \sigma^2);\\
+\beta_{0j}=\gamma_{00}+u_{0j}, \ u_{0j}\sim \mathcal{N}(0, \tau_{00}).
+\end{array} \right.
+\end{equation}
+\indent Gavus (\ref{eq:null}) įverčius $\hat{\gamma}_{00}, \ \hat{\sigma}^2,\ \hat{\tau_{00}}$, nustatoma, ar turima hierarchinė struktūra, ar visgi užtenka paprasto tiesinio modelio. Realiai yra tikrinamos hipotezės, ar gautas įvertis nelygus 0. Tai pat, kiek bendrą skirtumą paaiškina individų, o kiek grupių skirtumai - skaičiuojamas \hyperlink{icc}{ICC} koeficientas. Toliau toks modelis naudojamas sudėtingesnių modelių parinkime kaip atspirties taškas - skaičiuojami \hyperlink{r2}{$R^2$}. \cite{cek}
+
+\subparagraph{ICC} \hypertarget{icc} - tarpklasinės koreliacijos koeficientas (\textit{angl. Intraclass Correlation Coefficient}), kuris parodo grupių rezultatų ir rezultatų grupėse skirtumą \cite{cek}. Dar gali būti interpretuojamas kaip dviejų individų toje pačioje grupėje rezultatų koreliaciją. Šis koeficientas skaičiuojamas taip:
+\begin{equation}
+ICC = \frac{\tau_{00}}{\sigma^2+\tau_{00}}.
+\end{equation}
+Shackman savo 2001 metų darbe\cite{icc} pabrėžė: kuo mažesnis ICC koeficientas, tuo patikimesnį bus modelio įverčiai. Tačiau, pasak jo, ICC nėra toks svarbus daugialygiuose modeliuose kaip DEFF - dizaino efektas (\textit{ang. Design Effect}), kuris parodo kiek efektyvumo prarandama renkant imtis iš lizdų, o ne visiškai atsitiktinai parenkant individus. Šio koeficiento ryšys su ICC:
+\begin{equation}
+DEFF \approx \left[1 + (n - 1) \times ICC\right],
+\end{equation}
+kur $n$ yra vidutinis imties grupės dydis. Simuliacijų būdu, buvo nustatyta, jog kol $DEFF <2$, tol rezultatai nėra !!!!netikri?
+
+\subparagraph{Statistika $\mathbf{R^2}$} \hypertarget{r2} dažnai naudojama ir vieno ir kelių lygių modeliuose. Ji naudojama nustatyti ar įtrauktas kintamasis (įtraukti kintamieji) pagerina modeliuojamo kintamojo įverčio tikslumą. Hierarchiniuose modeliuose skaičiuojami atskiri $R^2$ kiekvienam lygiui. Pavyzdžiui, įtraukus pirmo lygio kintamąjį, imamas santykinis skirtumas $\frac{\hat{\sigma}^2_{(nul)}-\hat{\sigma}^2_1}{\hat{\sigma}^2_{(nul)}}$ ($\hat{\sigma}^2_{(nul)}$ - besąlyginio modelio, $\hat{\sigma}^2_1$ - sąlyginio modelio) ir žiūrima, kiek skirtumo buvo paaiškinta. Įtraukus antro lygio kintamąjį analogiškai skaičiuojama $\frac{\hat{\tau}_{00(nul)}-\hat{\tau}_{00}}{\hat{\tau}_{00(nul)}}$. Šie koeficientai dar vadinami pirmo ir antro lygio $R^2$.
+
+\indent Daugialygiuose modeliuose naudojamos ir kitokios aiškinamojo kintamojo įverčio tikslumo statistikos. Apie jas daugiau galima rasti 2008 metų Orien ir Edwards\cite{fixedTest} straipsnyje. Autoriai simuliacijų būdu nustatė geriausią fiksuotų efektų įtraukimo į modelį (arba atitikimo \textit{angl. goodness-of-fit}) matą, kurį pavadino $R^2_1$. Šią statistiką sukūrė Vonesh ir Chinchilli\cite{Rtest}. Ji atrodo taip:
+\begin{equation} \label{eq:r2}
+R^2_1=1-\dfrac{\sum^J_{j=1}\left(Y_{j}-\hat{Y}_{j}\right)'\left(Y_{j}-\hat{Y}_{j}\right)}{\sum^J_{j=1}\left(Y_{j}-\bar{Y}\times\mathbbm{1}_{n_j}\right)'\left(Y_{j}-\bar{Y}\times\mathbbm{1}_{n_j}\right)},
+\end{equation}
+čia $Y_j$ yra $n_j\times1$ vektorius su j-tosios grupės stebėjimais, $\bar{Y}$ - bendras visų stebėjimų vidurkis, $\hat{Y}_j=X\hat{\beta}+Z\hat{u}_j$, o $\mathbbm{1}_{n_j}$ - vienetukų stulpelis.
+
+\subparagraph{Informaciniai indeksai.} Kaip jau buvo minėta, modelio parinkimas susideda iš dviejų modelių palyginimo (t.y. imamas paprastesnis ir sudėtingesnis modeliai), tam yra sukurti informaciniai indeksai, kurie paremti didžiausio tikėtinumo f-jos logaritmo maksimumu $l$. Daugiau apie juos \cite{cek}. Šiame magistro darbe remiamasi $AIC=-2l+2d$ kriterijumi, kur $d$ - atsitiktinio poveikio parametrų modelyje skaičius.
+
+\section{Empirinė dalis}
+
+Šiame skyriuje Monte Carlo simuliacijų būdu nustatoma, kuris metodas duoda tikslesnius parametrų įverčius. Tuomet sudaromas modelis Lietuvos 2011 metų TIMSS duomenims.
+
+\subsection{Monte Carlo simuliacijos}
+\indent Šiame skyrelyje nusakoma, kaip buvo sudaryta populiacija, imčių ėmimas ir svorių sudarymas. Ir įvairūs atvejai.
+
+\indent Stengtasi, kad sukurta populiacija kuo labiau atspindėtų TIMSS populiaciją bei imtį Lietuvos atveju. Lietuvos mokyklų 2011 metais aštuntokų populiacija siekia ko ne 40 000, o TIMSS imtis apima iki 5000 aštuntokų (Lietuvos statistikos departamento duomenimis). Ji apima vos 12\% visos aštuntokų populiacijos. Tokią procentinę dalį stengtasi atspindėti. Deja, didelė populiacija ir didelės imtys reikalauja ir daug kompiuterio resursų, todėl populiacijos dydis pasirinktas 300 mokyklų, o imamos imtys 35 mokyklos. Mokyklų parinkime lieka šiokia tokia problema dėl lizdų, šiame darbe lizdai nebuvo sudaryti. Taigi, iš pradžių sugeneruojama 300 mokyklų dydžio populiacija pagal paprastą hierarchinį modelį:
+\begin{equation}\label{eq:simul}
+\left\{
+\begin{array}{l}
+Y_{ij}=\beta_{0j}+\beta_{1j}X_{1ij}+\beta_{2j}X_{2ij}+\varepsilon_{ij}, \ \varepsilon_{ij}\sim (0, \sigma^2);\\
+\beta_{0j}=\gamma_{00}+\gamma_{01}W_j+u_{0j}, \ u_{0j}\sim (0, \tau_{00});\\
+\beta_{1j}=\gamma_{10};\\
+\beta_{2j}=\gamma_{20}.
+\end{array} \right.
+\end{equation}
+
+\indent Kiekvienoje iš mokyklų, sugeneruojamas jos dydis, panašiai kaip daryta Vakilian daktaro disertacijoje \cite{mcmc}. $j$ - tosios mokyklos dydis gaunamas $N_j=\left[50\times\exp{(\tilde{u}_{0j})}\right]$, čia laužtiniai skliaustai žymi sveikąją dalį, o $\tilde{u}_{0j}$ sugeneruotas iš $\mathcal{N}(0; 0,2)$ skirstinio apriboto tarp $-1,5\sqrt{0,2}$ ir $1,5\sqrt{0,2}$. Ir kiekvienai mokyklai sugeneruojamas aiškinamasis kintamasis $W_j$, kuris įgyja reikšmę 1 su tikimybe 0,2. Tai galėtų būti fiktyvus kintamasis, kuris parodo, ar tiriama mokykla yra Vilniaus mokykla. Galiausiai antrajame lygyje pridedami atsitiktiniai efektai $u_{0j}$. Čia išskiriami du atvejai, $u_{0j}\sim \mathcal{N}(0; 1300)$ arba $u_{0j}\sim Puasono(0; 1300)$. Čia pasirinkta $\tau_{00}=1300$, $\gamma_{00}=500$, $\gamma_{01}=20$, $\gamma_{10}=50$ ir $\gamma_{20}=-4$. Toliau kuriami mokinio (pirmojo) lygio kintamieji.
+
+\indent TIMSS tyrime parinktoje mokykloje parenkama klasė ir tiriami visi jos mokiniai. Čia turime per mažai mokinių, kad juos skaidyti į klases, todėl tiesiog sugeneruojami tiesiog mokyklos mokiniai (tuo labiau, jog šiame darbe modeliuojamas tik mokyklos lygis). Tuomet $X_{1ij}\sim \mathcal{N}(90, 400)$ ir $X_{2ij}$ parenkamas kaip pseudo kintamasis, kuris įgyja 1 reikšmę su tikimybe 0,5. Jis gali būti interpretuojamas kaip mokinio lyti žymintis kintamasis, kur 1 žymi mergaitę. Ir galiausiai pridedami atsitiktiniai svyravimai. Kaip ir anksčiau, išskiriami du atvejai: $\varepsilon_{ij}\sim \mathcal{N}(0; 2000)$ arba $\varepsilon_{ij}\sim Puasono(0; 2000)$. Vadinasi, iš viso, turimos keturios kombinacijos: abejos paklaidos pasiskirsčiusios pagal normalųjį skirstinį, pirmo lygio paklaidos pagal normalųjį ir antro pagal Puasono, pirmo pagal Puasono ir antro pagal normalųjį ir abejos paklaidos pagal Puasono skirstinį.
+
+\indent Sudarius populiaciją, parenkama imtis. Kaip jau minėta iš 300 mokyklų populiacijos atsitiktinai parenkamos 35 mokyklomis su tikimybėmis atvirkščiai proporcingomis mokyklos mokinių skaičiui. Tuomet nustatomi mokinių imties dydžiai kiekvienoje mokykloje $n_j$. Jei parinktoje mokykloje yra 30 ir mažiau mokinių, imami visi mokiniai. Jei tarp 30 ir 60 mokinių, tuomet parenkama pusę mokinių. O jei mokykla didelė (daugiau nei 60 mokinių), imamas trečdalis. Gautas skaičius suapvalinamas iki sveikosios dalies. Nustačius mokinių imties dydį, tos mokyklos mokiniai skeliami į dvi grupes pagal normaliasias paklaidas, t.y. imamos $\varepsilon_{ij}\sim\mathcal{N}(0,2000)$ sugeneruotos sudarant populiaciją ir žiūrima, ar $\varepsilon_{ij} \le 0$, ar atvirkščiai. Pirmu atveju, mokiniai papuola į pirmą grupę, kitu, į antrą. Iš pirmosios grupės su lygiomis tikimybėmis $\left(\frac{1}{N_{1j}}\right)$ parenkama $n_{1j}=\left[\frac{3}{5}n_j\right]$ ir iš antrosios $n_{2j}=\left[\frac{2}{5}n_j\right]$ taip, kad $n_{1j}+n_{2j}=n_j$. Jei pagal paklaidas sudarytų grupių neužtenka parinkti imtims, parenkama $n_j$ mokinių bendrai iš visos mokyklos. Taip iš dalies imituojama TIMSS klasių struktūra, tikimybės bei svoriai. Mokyklų svoriai $w_j=\frac{\sum^J_{j=1}N_j}{N_j\times m}$, čia $m$ - parinktų mokyklų skaičius (šiuo atveju $m=35$). Mokinio svoriai sudaromi atitinkamai pagal imties sudarymą. Jei mokinys yra parinktoje $j$ - tojoje mokykloje ir papuola pagal paklaidas į pirmą grupę, tai jo svoris $w_{i|j}=\frac{N_{1j}}{n_{1j}}$. panašiai gaunami svoriai ir kitais atvejais.
+
+\indent Šiame darbe atliekama 200 Monte Carlo simuliacijų. Kiekvienos iš jų metu sugeneruojama populiacija aukščiau aprašytu būdu, tuomet traukiama imtis pagal anksčiau aprašytą metodą. Ir vertinamas modelis (\ref{eq:simul}) visais metodais (REML, REML su saviranka, MINQUE su saviranka ir MINQUE su svoriais bei saviranka???). Gauti parametrų įverčiai, jų standartinės paklaidos bei pasikliautiniai intervalai analizuojami toliau pateiktais būdais.
+
+\subparagraph{Santykinis poslinkis} (\textit{angl. Relative Bias}) skaičiuojamas $\frac{\hat{\theta}_r-\theta}{\theta}$, kur $\theta$ - tikroji reikšmė, o $\hat{\theta}_r$ - $r$ - tosios simuliacijos $\theta$ įvertis. Šis indeksas dažnai žymimas \textit{RBIAS}. Jei šis indeksas yra mažesnis nei 5\%, tai sakome, jog poslinkio nėra. Jei tarp 5\% ir 20\%, tai sakome, jog turime vidutinį poslinkį. Ir jei daugiau nei 20\%, tai sakome, jog poslinkis didelis.
+
+\subparagraph{Santykinė vidutinė kvadratinė paklaida} (\textit{angl. Relative Mean Squared Error}) skaičiuojama $RMSE=\frac{1}{R}\left(\sum^R_{r=1}\frac{(\hat{\theta}_r-\theta)^2}{\theta}\right)^\frac{1}{2}$, kur $R$ - Monte Carlo simuliacijų skaičius, $\hat{\theta}_r$ - $r$ - tasis simuliacijos įvertis.
+
+\subparagraph{Pasikliautinių intervalų padengiamumas} (\textit{angl. ???}) skaičiuojamas labai paprastai. Tiesiog imamas procentas, kiek kartų tikroji reikšmė papuolė į simuliacijų metu gautus pasikliautinuosius intervalus.\\
+
+\indent Saviranka reikalauja daug kompiuterio resursų, ypač esant didesniam duomenų skaičiui, todėl buvo pasirinkta $B=500$. Net turint tik 200 Monte Carlo simuliacijų ir 500 savirankos iteracijų, modelių vertinimas kiekvienai iš galimų paklaidų kombinacijų ir kiekvienam metodui užtruko apie tris savaites (naudotas keturių branduolių procesorius \textit{Intel CORE i7}). Gauti rezultatai pateikti kitame skyrelyje.
+
+\subsection{Simuliacijų rezultatai}
+\indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Gauti rezultatai yra visai kitokie nei tikėtasi. Kai abiejų lygių paklaidos nepriklausomai vienodai pasiskirsčiusios pagal normalųjį skirstinį (lentelė \ref{table:y1}), saviranka ar kiti metodai, neduoda jokios naudos, nes REML įverčiai yra praktiškai nepaslinkti. Tiesa, lentelėse pateikti skaičiai yra suapvalinti, o skirtumas tarp metodų yra labai mažas, todėl pateiktos reikšmės atrodo identiškai daugeliu atvejų.
+
+\begin{small}
+\begin{table}[ht]
+\caption{Lentelėje pateiktos santykinio poslinkio statistikos (MBias - santykinio poslinkio vidurkis, SDBias - santykinio poslinkio standartinis nuokrypis, Min ir Max- atitinkamai mažiausia ir didžiausia įgyta santykinio poslinkio reikšmė, RMSE - santykinė vidutinė kvadratinė paklaida) visiems metodams, kai abiejų lygių paklaidos normaliosios.}
+\label{table:y1}
+\centering
+\begin{tabular}{r|rrrrr|rrrrr|}
+\hline
+\multicolumn{11}{c}{Fiksuoti efektai}\\
+\hline
+& \multicolumn{5}{c|}{$\gamma_{00} = 500$}&\multicolumn{5}{c|}{$\gamma_{01} = 20$}\\
+\hline
+Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
+\hline
+REML & -0.01 & 0.02 & -0.07 & 0.03 & 0.02& 0.06 & 0.88 & -1.88 & 2.57 & 0.88 \\
+bREML & -0.01 & 0.02 & -0.07 & 0.03 & 0.02& 0.06 & 0.88 & -1.88 & 2.57 & 0.88 \\
+bMINQUE & -0.01 & 0.02 & -0.06 & 0.10 & 0.03& 0.06 & 0.88 & -1.88 & 2.55 & 0.88\\
+wMINQUE & 0.00 & 0.03 & -0.08 & 0.09 & 0.03& 0.00 & 1.56 & -2.83 & 7.78 & 1.56\\
+\hline
+& \multicolumn{5}{c|}{$\gamma_{10} = 50$}&\multicolumn{5}{c|}{$\gamma_{20} = -4$}\\
+\hline
+Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
+\hline
+REML & 0.00 & 0.00 & 0.00 & 0.00 & 0.00& 0.06 & 0.77 & -2.30 & 2.17 & 0.77\\
+bREML &0.00 & 0.00 & 0.00 & 0.00 & 0.00& 0.06 & 0.77 & -2.30 & 2.17 & 0.77\\
+bMINQUE &0.00 & 0.00 & 0.00 & 0.00 & 0.00& 0.06 & 0.77 & -2.30 & 2.17 & 0.77\\
+wMINQUE &0.00 & 0.00 & 0.00 & 0.00 & 0.00& 0.04 & 1.01 & -2.24 & 2.84 & 1.01\\
+\hline
+\multicolumn{11}{c}{Atsitiktiniai efektai}\\
+\hline
+& \multicolumn{5}{c|}{$\sigma^2=2000$}&\multicolumn{5}{c|}{$\tau_{00}=1300$}\\
+\hline
+Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
+\hline
+REML &0.01 & 0.23 & -0.60 & 0.62 & 0.23& -0.00 & 0.05 & -0.11 & 0.13 & 0.05\\
+bREML & 0.01 & 0.23 & -0.60 & 0.62 & 0.23& -0.00 & 0.05 & -0.11 & 0.13 & 0.05\\
+bMINQUE & 0.01 & 0.23 & -0.60 & 0.62 & 0.23& -0.00 & 0.05 & -0.11 & 0.13 & 0.05\\
+wMINQUE & 0.00 & 0.13 & -0.50 & 0.52 & 0.13& -0.00 & 0.04 & -0.09 & 0.11 & 0.04\\
+\hline
+\end{tabular}
+\end{table}
+\end{small}
+
+\begin{small}
+\begin{table}[H]
+\caption{Lentelėje pateiktos santykinio poslinkio statistikos (MBias - santykinio poslinkio vidurkis, SDBias - santykinio poslinkio standartinis nuokrypis, Min ir Max- atitinkamai mažiausia ir didžiausia įgyta santykinio poslinkio reikšmė, RMSE - santykinė vidutinė kvadratinė paklaida) visiems metodams, kai pirmojo lygio paklaidos pasiskirsčiusios pagal normalųjį skirstinį, o antrojo pagal Puasono skirstinį.}
+\label{table:y2}
+\centering
+\begin{tabular}{r|rrrrr|rrrrr|}
+\hline
+\multicolumn{11}{c}{Fiksuoti efektai}\\
+\hline
+& \multicolumn{5}{c|}{$\gamma_{00} = 500$}&\multicolumn{5}{c|}{$\gamma_{01} = 20$}\\
+\hline
+Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
+\hline
+REML & -0.01 & 0.02 & -0.06 & 0.06 & 0.03 & 0.07 & 0.82 & -1.54 & 2.71 & 0.82 \\
+bREML& -0.01 & 0.02 & -0.06 & 0.06 & 0.03& 0.07 & 0.82 & -1.54 & 2.70 & 0.82 \\
+bMINQUE & -0.01 & 0.02 & -0.06 & 0.07 & 0.03& 0.07 & 0.82 & -1.54 & 2.72 & 0.82\\
+wMINQUE & 0.00 & 0.02 & -0.06 & 0.06 & 0.03& 0.05 & 0.99 & -1.43 & 3.02 & 0.98\\
+\hline
+& \multicolumn{5}{c|}{$\gamma_{10} = 50$}&\multicolumn{5}{c|}{$\gamma_{20} = -4$}\\
+\hline
+Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
+\hline
+REML & 0.00 & 0.00 & 0.00 & 0.01 & 0.00& -0.05 & 0.73 & -1.89 & 2.11 & 0.73\\
+bREML & 0.00 & 0.00 & 0.00 & 0.01 & 0.00& -0.05 & 0.73 & -1.88 & 2.12 & 0.73\\
+bMINQUE & 0.00 & 0.00 & 0.00 & 0.01 & 0.00& -0.05 & 0.73 & -1.89 & 2.11 & 0.73\\
+wMINQUE &0.00 & 0.00 & 0.00 & 0.00 & 0.00& -0.04 & 0.72 & -1.95 & 2.03 & 0.71\\
+\hline
+\multicolumn{11}{c}{Atsitiktiniai efektai}\\
+\hline
+& \multicolumn{5}{c|}{$\tau_{00}=1300$}&\multicolumn{5}{c|}{$\sigma^2=2000$}\\
+\hline
+Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
+\hline
+REML &-0.04 & 0.31 & -0.63 & 0.98 & 0.31& -0.00 & 0.05 & -0.10 & 0.14 & 0.05\\
+bREML & -0.04 & 0.31 & -0.63 & 0.99 & 0.32& -0.00 & 0.05 & -0.10 & 0.14 & 0.05\\
+bMINQUE & -0.04 & 0.31 & -0.63 & 0.98 & 0.31& -0.00 & 0.05 & -0.10 & 0.14 & 0.05\\
+wMINQUE & -0.03 & 0.24 & -0.50 & 0.52 & 0.24& -0.00 & 0.04 & -0.09 & 0.11 & 0.04\\
+\hline
+\end{tabular}
+\end{table}
+\end{small}
+
+\subsection{HLM modelis 2011 metų TIMSS duomenims}
+
+\indent Šiame skyrelyje pateikiama detalesnė turimų ir nagrinėjamų TIMSS duomenų analizė, sudaromas nulinis modelis bei pateikiamas galutinis modelis ir jo statistikos. Nulinio ir galutinio modelio įverčiai pateikiami įvertinti visais nagrinėjamais metodais. Galiausiai aptariami rezultatai ir padaromos išvados.
+
+\indent Pirmiausia, domina aiškinamasis kintamasis - matematinio raštingumo testo rezultatai. Kaip jau buvo minėta, TIMSS pateikia 5 galimas testo atlikimo reikšmes, tačiau šiame darbe naudojama tik viena - pirmoji. Taip daroma, dėl skaičiavimų sudėtingumo (tai nėra implementuota R statistinės analizės pakete) ir dėl to, jog vėliau rezultatus galima pritaikyti ir likusioms galimoms testo atlikimo reikšmėms. Lieka klausimas, ar galime laikyti aiškinamąjį kintamąjį pasiskirsčiusiu pagal normalųjį skirstinį. Paveikslėlyje \ref{fig:y} pateiktas pirmosios galimos matematinio raštingumo testo atlikimo reikšmės teorinių kvantilių grafikas. Jame galime įžvelgti, jog turime sunkias uodegas. Aiškinančiajam kintamajam buvo atliktas Shapiro-Wilk normalumo testas. gauta testo statistika $W = 0.9977$ ir $\text{p-value}<0,01$. Todėl hipotezė apie aiškinamojo kintamojo pasiskirstymą pagal normalųjį skirstinį atmetama.
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=7cm]{teorkv.pdf}
+\caption{Mokinio matematinio raštingumo pirmos galimos testo atlikimo reikšmės teorinių kvantilių grafikas.}
+\label{fig:y}
+\end{figure}
+
+\indent Aiškinantieji kintamieji šiame darbe negali būti laikomi pasiskirstę pagal normalųjį skirstinį, tačiau kategoriniai kintamieji nėra modeliuojami. Dudaitė savo daktaro disertacijoje \cite{liet2003} ne tik sudarinėjo labai menkus modelius, bet ir naudojo kategorinius kintamuosius (kurie įgyja iki 5 reikšmių) kaip regresorius. Šiame darbe kategoriniai kintamieji išskaidyti į fiktyvius kintamuosius. Tokių yra du mokinio lygyje ir keturi mokyklos lygyje. Pačiuose pateiktuose TIMSS duomenyse kategoriniai kintamieji suvesti į indeksus, kurie įgyja daugiau nei 5 reikšmes. Nors jie ir negali būti laikomi pasiskirstę pagal normalųjį dėsnį, modeliuojant nėra stipriai nusižengiama. Šeši indeksai yra imami kaip mokinio lygio aiškinantieji kintamieji ir 3 mokyklos lygio kintamieji. Detalesni kintamųjų aprašymai pateikti \ref{table:duom} lentelėje \ref{subsec:duom} skyrelyje. Modeliuoti ir suvidurkinti mokytojo bei klasės kintamieji, tačiau jie nepasirodė statistiškai reikšmingi, todėl apie šiuos kintamuosius šiame darbe nepasakojama.
+
+\indent HLM modelio sudarymas yra sudėtingas procesas. Kad modeliai būtų palyginami, jie turi būti sudaryti tiems patiems duomenims. Čia susiduriama su problema, jog TIMSS duomenys turi daug neatsakytų reikšmių, t.y. trūkstamų duomenų. Modeliuojant atsižvelgiama ne tik į tai, kiek kintamasis paaiškina dispersijos, bet ir į tai, ar jis neturi daug praleistų reikšmių. Šiame darbe modeliai sudaryti įtraukiant po vieną pirmo po to antro lygio kintamąjį ir lyginant su nuliniu ir prieš tai gautu modeliais, kiekvieną kart perskaičiuojant pašalinus mokinį ar mokyklą su trūkstamais duomenimis. Gavus galutinį modelį, visi modelių įverčiai buvo pervertinti jau galutiniam duomenų kiekiui. Taip išvengiama per didelio duomenų pašalinimo pirmame etape. Modeliai parinkti vadovaujantis logika ir \ref{subsec:parink} skyrelyje pateiktais kriterijais. Toliau bus pateikti tik nulinis ir galutinis modeliai, o tarpiniai modeliai praleisti.
+
+\indent Pagrindines 2011 metų TIMSS tyrimo suvestines galima rasti jau minėtoje Nacionalinio egzaminų cento ataskaitoje \cite{timss2011lt}. Todėl šiame darbe bus pateikti trumpi rezultatai po duomenų pašalinimo. Pašalinus mokyklas ir mokinius su trūkstamais duomenimis iš 141 tyrime dalyvavusios mokyklos liko 128 mokykla, o iš 4747 mokinių liko 4167 mokiniai. Tai optimalus skaičius siekiant paaiškinti kuo daugiau kaitos su kuo mažesniu mokinių praradimu. Pateikti vidurkius???.
+
+\subparagraph{Nulinis modelis} aprašytas \ref{subsec:parink} skyrelyje sudarytas jau mažesnės apimties duomenims. Pakartota (\ref{eq:null}) modelio išraiška:
+\begin{equation}
+\left\{
+\begin{array}{l}
+Y_{ij}=\beta_{0j}+\varepsilon_{ij}, \ \varepsilon_{ij}\sim (0, \sigma^2);\\
+\beta_{0j}=\gamma_{00}+u_{0j}, \ u_{0j}\sim (0, \tau_{00}).
+\end{array} \right.
+\end{equation}
+Tegul $Y_{ij}$ žymi $i$ - tojo mokinio iš $j$ - tosios mokyklos matematinio raštingumo testo rezultato pirmąją galimą reikšmę. Jungtinė modelio lygtis:
+\[
+Y_{ij}=\gamma_{00}+u_{0j}+\varepsilon_{ij}.
+\]
+Šis modelis įvertinamas visais metodais. Rezultatai pateikti lentelėse.
+
+\subparagraph{Galutinis modelis} sudarytas atsižvelgiant į kintamųjų multikoliniarumą, pasitelkiant logiką bei skyrelyje \ref{subsec:parink} pateiktais indeksus ir statistikas. Mokinio lygio kintamieji - indeksai SMCONF, SMLIKE, SMVALUE ir SMENG - sudaryti iš skirtingų mokinio klausimyno klausimų, tačiau tarpusavyje labai susiję. Į modelį įtraukus visus kintamuosius, koeficientų įverčiai prie šių kintamųjų tampa nebe paaiškinami. Atsižvelgiant į tai jog SMCONF paaiškino labai daug (apie 1000) pirmo lygio dispersijos, tik šis kintamasis buvo įtrauktas į galutinį modelį.
+
+\indent Panaši situacija ir su mokyklos lygio fiktyviais kintamaisiais. Tad į galutinį modelį įtraukti tik keli iš jų. Galutinio modelio išraiška pateikta toliau:
+\begin{small}
+\begin{equation}
+\left\{
+\begin{array}{l}
+Y_{ij}=\beta_{0j}+\beta_{1j}\times SSEX_{ij}+\beta_{2j} \times STHMWRK_{ij}+\beta_{3j}\times CSMCONF_{ij}+\\
+\ \ \ \ \ +\beta_{4j}\times CSHEDRES_{ij}+\beta_{5j}\times CSBULLED_{ij}+\varepsilon_{ij};\\
+\beta_{0j}=\gamma_{00}+\gamma_{01}\times MDYDIS_j+\gamma_{02}\times MSUCCESS_j\times MVIETA.4_j+\\
+\ \ \ \ \ +\gamma_{03}\times MSMLIKE_j\times MVIETA.4_j+\gamma_{04}\times MSMLIKE_j\times MVIETA.5_j+\\
+\ \ \ \ \ +\gamma_{05}\times MSHEDRES_j+\gamma_{06}\times MAINCOME.1_j+\gamma_{07}\times MVIETA.4_j+u_{0j};\\
+\beta_{1j} = \gamma_{10};\\
+\beta_{2j}=\gamma_{21}\times MVIETA.5_j;\\
+\beta_{3j}=\gamma_{30}+u_{3j};\\
+\beta_{4j}=\gamma_{40}+\gamma_{41}\times MDYDIS_j+\gamma_{42}\times MVIETA.5_j+u_{4j};\\
+\beta_{5j}=\gamma_{51}\times MVIETA.3_j.
+\end{array} \right.
+\end{equation}
+\end{small}
+
+
+
+\section{Apibendrinimas ir išvados}
+\indent Monte Carlo simuliacijų būdu buvo parodyta, jog Delpish tirtas MINQUE su saviranka metodas TIMSS atveju nėra geresnis nei REML su saviranka. To priežastys gali būti tai, jog Delpish netyrė REML su saviranka arba šiame darbe pristatytas MINQUE metodas nėra tapatus Bagakas ir Delphish metodui.
+
+\indent Sudarytas modelis Lietuvos 2011 metų TIMSS duomenims įvertintas visais metodais. Šis modelis apima net 5 mokinio lygio kintamuosius, mokyklos lygio kintamųjų sąveiką bei nemažai mokyklos lygio kintamųjų. Gautas modelis paaiškina ??? kintamumo palyginti su nuliniu modeliu.
+
+\indent Tolimesnis tyrimas galėtų apimti daugiau metodų fiksuotiems ir atsitiktiniams efektams vertinti (pvz.: Hamilton'o III metodas). Sudėtingesni neparametrinės savirankos metodai taip pat galėtų pagerinti įvertinių tikslumą.
+
+\newpage
+\addcontentsline{toc}{section}{Literatūra}
+\begin{thebibliography}{1}
+\bibitem{timssCpalyg1} Afana, Y., Lietz, P., \textit{The relationship between school resources and mathematics achievement at grade 8: A comparison of Israeli and Palestinian schools in TIMSS 2007}, Journal for Educational Research Online 5.1, 2013, 59-89.
+\bibitem{2007All} Akyuz, G., Berberoglu, G., \textit{Teacher and Classroom Characteristics and Their Relations to Mathematics Achievement of the Students in the TIMSS}, New Horizons in Education, 2010.
+\bibitem{siaip3} Campbell, J., Verna, M., Petruso, S., \textit{Gender Paradigms}, IRC, 2004.
+\bibitem{cek} V. Čekanavičius, G. Murauskas, \textit{Statistika ir jos taikymai}, 3 dalis, TEV, 2009.
+\bibitem{timssSchool2} Chen, Q., \textit{A Multilevel Analysis of Mathematically Low-Achieving Students in Singapore}, IRC, 2013.
+\bibitem{bagaka} Bagakas, J. G., \textit{Two level nested hierarchical linear model with random intercepts via the bootstrap}, Unpublished doctoral dissertation, Michigan State University, 1992.
+\bibitem{MLtests} Berkhof, J., Snijders, T. A., \textit{Variance Component Testing in Multilevel Models}, Journal of Educational and Behavioral Statistics, Summer 2001, Vol. 26, Nr. 2, 133-152.
+\bibitem{siaip1} Birenbaum, M., Tatsuoka, C., Yamada, T., \textit{Diagnostic Assesment in TIMSS-R: Comparison of Eight Graders Mathematics Knowladge States in The United States, Japan, Israel}, IRC, 2004.
+\bibitem{siaip2} Brečuko, B., \textit{How Family Background Influences Student Achievement}, IRC, 2004.
+\bibitem{hlmmixed} Davidian, M., and Giltinan, D., \textit{Nonlinear Models for Repeated Measurement Data}, New York: Chapman \& Hall/CRC, 1995.
+\bibitem{delpish} Delpish, A., \textit{Comparison of Estimators in Hierarchical Linear Modeling: Restricted Maximum Likelihood Versus Bootstrap via Minimum Norm Quadratic Unbiased Estimators}, Electronic Theses, Treatises and Dissertations. Paper 771, 2006.
+\bibitem{liet2003} J. Dudaitė, A. Elijio, Ž. Urbienė, A. Zabulionis, \textit{Tarptautinis matematikos ir gamtos mokslų tyrimas. TIMSS 2003. Ataskaita}, NEC, 2004.
+\bibitem{liet2003At} J. Dudaitė, \textit{Tarptautinis matematikos ir gamtos mokslų tyrimas TIMSS 2003. Rezultatų Analizė, matematika, viii klasė}. Nacionalinis egzaminų centras, 2004.
+\bibitem{liet4} J. Dudaitė, A. Elijio, \textit{Change in Lithuanian Basic School Students’ Mathematics Achievement through 1995-2003}, Tarptautinė matematikos dėstymo konferencija – 2005, 57-62.
+\bibitem{efron} Efron, B., \textit{Bootstrap Methods: Another Look at the Jackknife}, The Annals of Statistics 7 (1): 1–26, 1979.
+\bibitem{liet6} A. Elijio, J Dudaitė, I. Mackevičienė, V. Trublenkovaitė, \textit{Tarptautinis matematikos ir gamtos mokslų tyrimas TIMSS 2007. Ataskaita. Matematika}, NEC, 2008.
+\bibitem{liet2} A. Elijio, J. Dudaitė, \textit{Social, Economical, and Educational Factors in Relation to Mathematics Achievement}, Tarptautinė matematikos dėstymo konferencija – 2005, 62-67.
+\bibitem{timssSch1} Fullarton, S., \textit{Closing the Gaps Between Schools: Accounting for Variation in Mathematics Achievment in Australian Schools Using TIMSS 95 and TIMSS 99}, IRC, 2004.
+\bibitem{timss1995} Gonzalez, E., Smith, T., \textit{User Guide for the TIMSS International Database. Final Year of Secondary School}, IEA, 1998.
+\bibitem{timssCpalyg} Gustafsson, A., M., \textit{School production modelling to strengthen government monitoring programmes in developing countries}, Thesis, University of Stellenbosch, 2006.
+\bibitem{ml} Harley, H. 0., Rao, J., \textit{Maximum-likelihood estimation for the mixed analysis of variance model}, Biometrika, 54, 1967, 93.
+\bibitem{minquereml1} Jarošova, E., \textit{Estimation with the Linear Mixed Effects Model}, Journal of Applied Mathematics, volume3, number 3, 2010.
+\bibitem{siaip4} Kiamanesh, A., \textit{Items Affecting Iranian Students' Achievment in Mathematics}, IRC, 2004.
+\bibitem{countryHLM} Kyriakides, L., Charalambous, C., \textit{ Extending the Scope of Analysing Data of IEA Studies: Applying Multilevel Modeling Techniques to Analyse TIMSS Data}, IRC, 2004.
+\bibitem{timssCpalyg2} Kim, S. J., Park, J. H., Park, S. W., Kim, S. S., \textit{The Effects of School and Students’ Educational Contexts in Korea, Singapore, and Finland using TIMSS 2011}, IRC, 2013.
+\bibitem{siaip5} Kunter, M., Baumert, J., \textit{Constructivist Approches in the Secondary School Mathematics Classroom and Their Effects on Students' Learning, Interest and Sense of Challange: a Re-analysis of the German TIMSS Data}, IRC, 2004.
+\bibitem{bootML} Van der Leeden, R., Busing, F. M. T. A., and Meijer, E., \textit{Bootstrap methods for two-level models}, Technical Report PRM 97-04, Leiden University, Department of Psychology, Leiden, 1997.
+\bibitem{EBi} Leeuw, J., Meijer, E., \textit{Handbook of Multilevel Analysis}, Springer, 2007.
+\bibitem{shrinkage} Leeuw, J., Kreft, I., \textit{Questioning Multilevel Models}, Journal of Educational and Behavioral Statistics, Summer 1995, Vol. 20, No. 2, 171-189.
+\bibitem{sandwich} Maas, C., Hox, J., \textit{The influence of violations of assumptions on multilevel parameter estimates and their standard errors}, Computational Statistics \& Data Analysis 46, 2004, 427 – 440.
+\bibitem{timss2011lt} Nacionalinio egzaminų centro Mokinių pasiekimų tyrimų ir analizės skyrius. \textit{TIMSS 2011 Ataskaita, Matematika, 8 klasė}, 2011
+\bibitem{fixedTest} Orelien, J., Edwards, L., \textit{Fixed-effect variable selection in linear mixed models using R2 statistics}, Computational Statistics \& Data Analysis, 52, 2008, 896 – 1907.
+\bibitem{pfeff} Pfeffermann, Skinner, D., C.J., Holmes, D.J., Goldstein, H., Rasbash, J., \textit{Weighting for unequal selection probabilities in multilevel models}, Journal of Royal Statistical Society, Series B, 1998, 60(l):23-40.
+\bibitem{timssCpalyg3} Phan, H., Sentovich, C., Kromrey, J., Dedrick, R., Ferron, J., \textit{Correlates of Mathematics Achievement in Developed and Developing Countries: An HLM Analysis of TIMSS 2003 Eighth-grade Mathematics Scores}, pristatyma metiniame American Educational Research Association susitikime, Denver, Colorado, 2010.
+\bibitem{rao1970}Rao, C. R., \textit{Estimation of heteroscedastic variances in linear models}, Journal of the American Statistical Association, 65, 1970, 161–172.
+\bibitem{rao1971a} Rao, C. R., \textit{Estimation of variance and covariance components–MINQUE theory}, Journal of Multivariate Analysis, 1, 1971a, 257–275.
+\bibitem{rao1971b} Rao, C. R., \textit{Minimum variance quadratic unbiased estimation of variance components}, Journal of Multivariate Analysis, 1, 1971b, 445–456.
+\bibitem{rao1972} Rao, C. R., \textit{Estimation of variance and covariance components in linear models}, Journal of the American Statistical Association, 67, 1972, 112–115.
+\bibitem{minquereml3} Rao, C.R., \textit{MINQUE theory and its relation to ML and MML estimation of variance components}, Sankhya 41, 1979, 138-153.
+\bibitem{bootNest} Ren, S., Lai, H., Tong,W., Aminzadeh M., \textit{Nonparametric bootstrapping for hierarchical data}, Journal of Applied Statistics, 37:9, 1487-1498, 2010.
+\bibitem{timssLiet} Robitaille, D., Beaton, A., \textit{Secondary Analysis of the TIMSS Data}, Kluwer Academic Publishers, 2002.
+\bibitem{2011Sample} \textit{Sample Design and Implementation}, [žiūrėta 2013-11-23], prieiga per internetą : http://timssandpirls.bc.edu/methods/t-sample-design.html.
+\bibitem{minquereml2} Searle, S. R., Casella, G., McCulloch, Ch.E., \textit{Variance Components}, John Wiley \& Sons, Inc., New York, 1992.
+\bibitem{timssPol} Stidd, M., \textit{A Comparative Analysis of Freedom and Educational Outcomes Using TIMSS and PIRLS}, University of Colorado Colorado Springs, 2012.
+\bibitem{fixed} Snijders, T., Bosker, R., \textit{Multilevel Analysis: An introduction to basic and advanced multilevel modeling}, SAGE Publications, 1999.
+\bibitem{icc} Shackman, G., \textit{Developing Sample Sizes for New Surveys: Estimating the Design Effect Adjustment}, What’s Hot / What’s Next VI. Albany, 2001.
+\bibitem{liet1} Švietimo ir mokslo ministerijos bei Atviros Lietuvos fondo spaudos konferencija, \textit{Tarptautinis matematikos ir gamtos mokslų tyrimas TIMSS – R}, 2000.
+\bibitem{mcmc} Vakilian, S., \textit{Simulation Studies on Estimation of Variance Components for Multilevel Models}, Theses and Dissertations (Comprehensive), paper 922, 2009.
+\bibitem{MLbetterMINQUE} Tong, H., Kumar, K., Huang, Y., \textit{Developing Econometrics}, John Wiley \& Sons, 2011.
+\bibitem{Rtest} Vonesh, E.F., Chinchilli, V.M., \textit{ Linear and Nonlinear Models for the Analysis of Repeated Measurements}, Marcel Dekker, 1997, 419–424.
+\bibitem{timssCpalyg4} Wiberg, M., Andersson, E., \textit{School-Effectiveness in Mathematics in Sweden compared with countries in Europe and Asia-Pacific}, IRC, 2010.
+\bibitem{siaip6} Zuzovsky, R., \textit{Grouping and Its effects on 8th Graders' Science and Mathematics Achievments}, IRC, 2004.
+\end{thebibliography}
+
+\newpage
+\begin{appendix}
+
+\section*{Priedas}
+\addcontentsline{toc}{section}{Priedas}
+
+\end{appendix}
+
+\newpage
+
+%\begin{appendix}
+\addcontentsline{toc}{section}{Lentelių sąrašas}
+\listoftables
+%\end{appendix}
+ %\begin{appendix}
+ \addcontentsline{toc}{section}{Iliustracijų sąrašas}
+ \listoffigures
+ %\end{appendix}
+  
+\end{document}
+
+

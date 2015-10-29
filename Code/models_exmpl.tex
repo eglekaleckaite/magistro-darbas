@@ -1,0 +1,255 @@
+\documentclass[a4paper]{article}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[T1]{fontenc}
+\usepackage[lithuanian]{babel}
+\title{HLM modeliai TIMSS duomenims\\Pavyzdžiai}
+\author{Eglė Kaleckaitė}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage[pdftex,bookmarks=TRUE]{hyperref}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{theorem}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{bm}
+\usepackage{epsfig}
+
+\newcommand{\R}{R}
+
+\usepackage[noae]{Sweave}
+\begin{document}
+\input{models_exmpl-concordance}
+
+\maketitle
+\section{Klausimas}
+Trumpai surašysiu modelių pavyzdžius. Galbūt iš to bus kas aiškaus. Dudaitė nagrinėjo tik labai paprasto tipo modelius:
+\[ \left\{
+  \begin{array}{l l}
+    Y_{ij} = \beta_{0j}+r_{ij}; \\
+    \beta_{0j} = \gamma_{00} + \gamma_{01}\times X_{j}+u_{0j};
+  \end{array} \right.\]
+Aš pabandžiau sudėti visus (Dudaitės naudotus) mokyklos kintamuosius bei įtraukti SES (socioekonominė mokinio situacija) kintamąjį. Tokie kintamieji kaip SES ir socialiai remtinų mokinių dalis mokykloje susiję. Tokio modelio nei R, nei HLM7 negalėjo įvertinti. Tad socialiai remtinų mokinių dalies neįtraukiau. Apačioje pateiktas modelio summary:
+\[ \left\{
+  \begin{array}{l l}
+    (mat.rast)_{ij} = \beta_{0j}+\beta_{1j}\times SES_{ij}+r_{ij}; \\
+    \beta_{0j} = \gamma_{00} + \gamma_{01}\times (mok.dydis)_{j}+ \gamma_{02}\times (mok.vietove)_{j}+ \gamma_{03}\times (mok.tipas)_{j}+u_{0j};\\
+    \beta_{1j} = \gamma_{10}+u_{1j}
+  \end{array} \right.\]
+\begin{Schunk}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MVIETOVE + MDYDIS + MTYPE + SES + (1 + SES | IDSCHOOL) 
+
+REML criterion at convergence: 40987.19 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr
+ IDSCHOOL (Intercept)  646.74  25.431       
+          SES           25.06   5.006   0.01
+ Residual             4673.39  68.362       
+Number of obs: 3619, groups: IDSCHOOL, 125
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 464.0059    10.2229   45.39   <2e-16 ***
+MVIETOVE      3.2809     3.9176    0.84   0.4044    
+MDYDIS        0.0163     0.0085    1.92   0.0571 .  
+MTYPE         9.3456     4.5221    2.07   0.0415 *  
+SES          20.2671     1.4766   13.73   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+         (Intr) MVIETO MDYDIS MTYPE 
+MVIETOVE -0.434                     
+MDYDIS    0.006 -0.585              
+MTYPE    -0.663 -0.022 -0.238       
+SES       0.159 -0.127 -0.028 -0.029
+\end{Soutput}
+\end{Schunk}
+Deja, tokie kintamieji kaip mokyklos vietovė ir dydis pasirodė koreliuoti, todėl pasilikau tik mokyklos dydį. Apačioje pateiktas modelio summary:
+\begin{Schunk}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MDYDIS + MTYPE + SES + (1 + SES | IDSCHOOL) 
+
+REML criterion at convergence: 40992.36 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr 
+ IDSCHOOL (Intercept)  645.26  25.402        
+          SES           26.65   5.162   -0.01
+ Residual             4672.20  68.354        
+Number of obs: 3619, groups: IDSCHOOL, 125
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 467.5762     9.2054   50.79   <2e-16 ***
+MDYDIS        0.0207     0.0069    3.00   0.0034 ** 
+MTYPE         9.4064     4.5177    2.08   0.0400 *  
+SES          20.3748     1.4704   13.86   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+       (Intr) MDYDIS MTYPE 
+MDYDIS -0.339              
+MTYPE  -0.746 -0.309       
+SES     0.116 -0.128 -0.031
+\end{Soutput}
+\end{Schunk}
+Šis modelis atrodo visai neblogai.
+
+Dar turiu paminėti, kad p-values čia yra gautos aproksimuojant laisvės laipsnius. Be to, pati rašiau multiple imputations suvedimą į vieną modelį pagal HLM7 dokumentaciją ir straipsnius. Tai nežinau, kiek šie rezultatai patikimi.
+
+Jei palikti tik SES:
+\begin{Schunk}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + SES + (1 + SES | IDSCHOOL) 
+
+REML criterion at convergence: 48655.79 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr
+ IDSCHOOL (Intercept)  684.51  26.163       
+          SES           14.54   3.813   1.00
+ Residual             4740.03  68.848       
+Number of obs: 4292, groups: IDSCHOOL, 143
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  503.595      2.544  197.96   <2e-16 ***
+SES           21.511      1.273   16.89   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+    (Intr)
+SES 0.047 
+\end{Soutput}
+\end{Schunk}
+Jei tik mokyklos kintamieji:
+\begin{Schunk}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MDYDIS + MTYPE + (1 | IDSCHOOL) 
+
+REML criterion at convergence: 48215.25 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ IDSCHOOL (Intercept)  918.8   30.31   
+ Residual             4794.5   69.24   
+Number of obs: 4245, groups: IDSCHOOL, 125
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 448.8457     9.8150   45.73   <2e-16 ***
+MDYDIS        0.0325     0.0075    4.36   <2e-16 ***
+MTYPE        13.5755     5.0189    2.70   0.0079 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+       (Intr) MDYDIS
+MDYDIS -0.289       
+MTYPE  -0.753 -0.344
+\end{Soutput}
+\end{Schunk}
+Iš tikrųjų nematau daugiau kitų priežasčių dėl negalėjimo sudaryti vieną modelį, kaip tik koreliuoti kintamieji.
+\section{Klausimas}
+Jei modelius sudaryti tik Vilniui:
+\begin{Schunk}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MDYDIS + MTYPE + SES + MSOCR2 + (1 + SES | IDSCHOOL) 
+
+REML criterion at convergence: 3183.392 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr 
+ IDSCHOOL (Intercept)  448.9   21.19         
+          SES          234.5   15.31    -0.45
+ Residual             3877.0   62.27         
+Number of obs: 290, groups: IDSCHOOL, 8
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 470.6883    66.1007   7.121   0.0109 *
+MDYDIS        0.0057     0.0196   0.292   0.7889  
+MTYPE       -36.7502    26.6464  -1.379   0.3290  
+SES          22.7176     7.3792   3.079   0.0260 *
+MSOCR2       36.7521    11.1584   3.294   0.0442 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+       (Intr) MDYDIS MTYPE  SES   
+MDYDIS -0.699                     
+MTYPE  -0.793  0.508              
+SES    -0.096  0.024  0.052       
+MSOCR2 -0.006 -0.267 -0.513 -0.095
+\end{Soutput}
+\end{Schunk}
+Arba:
+\begin{Schunk}
+\begin{Soutput}
+Linear mixed model fit by REML ['merModLmerTest']
+Formula: BSMMAT ~ 1 + MDYDIS + MTYPE + SES + (1 + SES | IDSCHOOL) 
+
+REML criterion at convergence: 3587.478 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr 
+ IDSCHOOL (Intercept)  775.0   27.84         
+          SES          264.3   16.26    -0.04
+ Residual             3880.8   62.30         
+Number of obs: 325, groups: IDSCHOOL, 9
+
+Fixed effects:
+            Estimate Std. Error t value Pr(>|t|)   
+(Intercept) 478.5399    81.0156   5.907   0.0029 **
+MDYDIS        0.0239     0.0287   0.835   0.4441   
+MTYPE         5.6217    26.4251   0.213   0.8409   
+SES          25.5991     7.2555   3.528   0.0118 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+       (Intr) MDYDIS MTYPE 
+MDYDIS -0.730              
+MTYPE  -0.895  0.373       
+SES     0.026 -0.051 -0.053
+\end{Soutput}
+\end{Schunk}
+Jei imamas vien Vilnius, tai rezultatai kažkiek skiriasi. Buvę reikšmingi kintamieji, tampa nebereikšmingi.
+\section{Klausimas}
+Dėl kintamųjų koreliacijos. Panašu, kad mokyklos kintamieji kažkiek koreliuoti. Didžiausia korialiacija tarp mokyklos vietovės ir mokyklos dydžio. Bendrai:
+\begin{Schunk}
+\begin{Soutput}
+          MVIETOVE    MDYDIS     MTYPE       SES    MSOCR2
+MVIETOVE 1.0000000 0.5854595 0.1617192 0.2638656 0.4514337
+MDYDIS   0.5854595 1.0000000 0.1945266 0.1818465 0.4125298
+MTYPE    0.1617192 0.1945266 1.0000000 0.2076584 0.2983819
+SES      0.2638656 0.1818465 0.2076584 1.0000000 0.2479930
+MSOCR2   0.4514337 0.4125298 0.2983819 0.2479930 1.0000000
+\end{Soutput}
+\end{Schunk}
+Vilniuje:
+\begin{Schunk}
+\begin{Soutput}
+            MDYDIS      MTYPE        SES     MSOCR2
+MDYDIS  1.00000000 -0.3828944 0.08104535 -0.0294540
+MTYPE  -0.38289441  1.0000000 0.13455502  0.3490056
+SES     0.08104535  0.1345550 1.00000000  0.1786558
+MSOCR2 -0.02945400  0.3490056 0.17865575  1.0000000
+\end{Soutput}
+\end{Schunk}
+Imant tik Vilnių gaunam netgi priešngus kintąmųjų ryšius.
+\end{document}

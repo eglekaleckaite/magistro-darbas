@@ -1,0 +1,32 @@
+\select@language {lithuanian}
+\contentsline {section}{\numberline {1}\IeC {\k I}vadas}{3}{section.1}
+\contentsline {section}{\numberline {2}Duomenys}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Duomen\IeC {\k u} apra\IeC {\v s}ymas}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Duomen\IeC {\k u} suderinamumo tikrinimas}{5}{subsection.2.2}
+\contentsline {section}{\numberline {3}Prognozavimo proced\IeC {\=u}ra}{8}{section.3}
+\contentsline {section}{\numberline {4}Prognozavimo metodai}{10}{section.4}
+\contentsline {subsection}{\numberline {4.1}ARIMA prognozavimas}{10}{subsection.4.1}
+\contentsline {subparagraph}{Phillips-Perron (PP) testas}{10}{section*.8}
+\contentsline {subparagraph}{Kwiatkowski-Phillips-Schmidt-Shin (KPSS) testas}{10}{section*.9}
+\contentsline {subparagraph}{Canova-Hansen (CH) testas}{11}{section*.10}
+\contentsline {subsubsection}{\numberline {4.1.1}Paprastoji ARIMA}{11}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Patobulintoji ARIMA}{11}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Eksponentinis glodinimas}{13}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Naivusis prognozavimas}{15}{subsection.4.3}
+\contentsline {section}{\numberline {5}Prognozi\IeC {\k u} tikslumo statistikos}{16}{section.5}
+\contentsline {section}{\numberline {6}Geriausio prognozavimo metodo parinkimas}{20}{section.6}
+\contentsline {section}{\numberline {7}Patobulintosios ARIMA modelio parinkimo pavyzdys}{21}{section.7}
+\contentsline {section}{\numberline {8}Rezultatai}{25}{section.8}
+\contentsline {subsection}{\numberline {8.1}Paprastoji ARIMA}{25}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Eksponentinis glodinimas}{25}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Patobulintoji ARIMA}{26}{subsection.8.3}
+\contentsline {subsubsection}{\numberline {8.3.1}Modelio stabilumo tikrinimas}{26}{subsubsection.8.3.1}
+\contentsline {subsubsection}{\numberline {8.3.2}Prognozi\IeC {\k u} patikimumo tikrinimas}{28}{subsubsection.8.3.2}
+\contentsline {subsubsection}{\numberline {8.3.3}Metin\IeC {\.e}s prognoz\IeC {\.e}s bei lyginimas su ekonomikos ekspert\IeC {\k u} nuomone}{28}{subsubsection.8.3.3}
+\contentsline {subsection}{\numberline {8.4}MASE prognozi\IeC {\k u} tikslumo statistikos rezultatai}{28}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.5}Geriausio prognozavimo metodo parinkimas}{31}{subsection.8.5}
+\contentsline {section}{\numberline {9}I\IeC {\v s}vados}{33}{section.9}
+\contentsline {section}{Literat\IeC {\=u}ra}{34}{section.9}
+\contentsline {section}{Priedas}{35}{section*.23}
+\contentsline {section}{Lenteli\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{43}{table.29}
+\contentsline {section}{Iliustracij\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{43}{section*.24}

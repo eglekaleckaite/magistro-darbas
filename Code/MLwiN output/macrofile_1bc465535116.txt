@@ -1,0 +1,134 @@
+ECHO    0
+NOTE    *****************************************************************
+NOTE      MLwiN macro created by rtomlwin command
+NOTE    *****************************************************************
+
+NOTE    Initialise MLwiN storage
+INIT    3 6000 2500 13 20
+MONI    0
+NOTE    Import the R data into MLwiN
+RSTA    'C:/Users/Egle/Desktop/Magistro darbas/Code/MLwiN output/dtafile_1bc45bc93185.dta'
+NOTE   Specify the response variable
+RESP    'BSMMAT01'
+
+NOTE   Specify the level identifier(s)
+IDEN 2    'IDSCHOOL'
+IDEN 1    'IDSTUD'
+
+NOTE   Specify covariate(s) used anywhere in the model
+ADDT    'cons'
+
+
+NOTE   Specify random part covariate(s)
+SETV  2   'cons'
+SETV  1   'cons'
+
+NOTE   Set estimation method
+METH 1
+LINE  0 1
+
+PREF   0
+POST   0
+NOTE   Fit the model
+STAR
+BATC 1
+NEXT
+MONI 1
+ITNU 0 b21
+CONV b22
+
+NOTE    *****************************************************************
+
+NOTE    *****************************************************************
+NOTE       Export the model results to R
+NOTE    *****************************************************************
+NAME   c1300 '_Stats'
+LIKE   b100
+EDIT 3 c1300 b100
+EDIT 7 c1300 b21
+EDIT 8 c1300 b22
+NAME   c1098 '_FP_b'
+NAME   c1099 '_FP_v'
+NAME   c1096 '_RP_b'
+NAME   c1097 '_RP_v'
+NAME   c1094 '_esample'
+SUM '_esample' b1
+EDIT 9 c1300 b1
+PSTA 'C:/Users/Egle/Desktop/Magistro darbas/Code/MLwiN output/IGLSfile_1bc4775b1ae0.dta' '_FP_b' '_FP_v' '_RP_b' '_RP_v' '_Stats'
+NOTE    *****************************************************************
+NOTE Set estimation method to MCMC
+NOTE    *****************************************************************
+EMODe  3
+ORTH 0
+HCEN 0
+SMCM 0
+SMVN 0
+PAEX 2 0
+
+NOTE Set MCMC seed
+MCRS 1
+
+NOTE Set prior distribution parameters
+
+PREF   0
+POST   0
+MISR   0
+NOTE Calculate MCMC starting values for level 2 residuals
+RLEV   2
+RFUN
+RCOV   2
+ROUT    c999 c998
+RESI
+JOIN   c997 c999 c997
+JOIN   c996 c998 c996
+ERAS    c999 c998
+MISR   1
+NOTE   fit the model in MCMC
+MTOT   5000
+LCLO   0
+MCMC   0 500 1 5.8 50 10 c997 c996 1 1 1 1 1 1
+ERAS  c1090 c1091 c997 c996
+
+MCMC 1 5000 1 c1090 c1091 c1003 c1004 1 1
+PUPN c1003 c1004
+AVER c1091 b99 b100
+NOTE    *****************************************************************
+NOTE       Export the model results to R
+NOTE    *****************************************************************
+BDIC b1 b2 b3 b4
+EDIT 3 c1300 b1
+EDIT 4 c1300 b2
+EDIT 5 c1300 b3
+EDIT 6 c1300 b4
+EDIT 7 c1300 b21
+EDIT 8 c1300 b22
+NAME   c1098 '_FP_b'
+NAME   c1099 '_FP_v'
+NAME   c1096 '_RP_b'
+NAME   c1097 '_RP_v'
+NAME   c1094 '_esample'
+SUM '_esample' b1
+EDIT 9 c1300 b1
+PSTA 'C:/Users/Egle/Desktop/Magistro darbas/Code/MLwiN output/MCMCfile_1bc415ce2eb1.dta' '_FP_b' '_FP_v' '_RP_b' '_RP_v' '_Stats'
+ERAS '_Stats'
+
+NOTE export parameter chain
+NAME   c1091 'deviance'
+NAME   c1090 'mcmcchains'
+NAME c1103 'FP_cons'
+DESC c1103 'FP:cons'
+NAME c1104 'RP2_var_cons'
+DESC c1104 'RP2:var(cons)'
+NAME c1105 'RP1_var_cons'
+DESC c1105 'RP1:var(cons)'
+CODE  5000 3 1 c1300
+CALC c1300 = c1300 * 1
+NAME   c1300 'itnum'
+CODE  3 1 5000 c1301
+NAME   c1301 'parnum'
+NAME   c1302 'iteration'
+DESC   c1302 '\Iteration'
+UNVE  3 'parnum' 'itnum' 'mcmcchains' 'iteration'  c1103 c1104 c1105
+PSTA 'C:/Users/Egle/Desktop/Magistro darbas/Code/MLwiN output/chainfile_1bc457bb1ecd.dta' 'iteration' 'deviance' c1103 c1104 c1105
+ERAS 'itnum' 'parnum' 'iteration' c1103 c1104 c1105
+EXIT
