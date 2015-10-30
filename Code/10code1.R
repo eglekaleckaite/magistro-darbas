@@ -37,28 +37,34 @@ mySample <- function(dt, m = 75){
   return(smplDt)
 }
 
-bootSampleREML <- function(dt, idstrata = "IDSTRATE", idschool = "IDSCHOOL",
+bootSampleREML_PV <- function(dt, idstrata = "IDSTRATE", idschool = "IDSCHOOL",
                            idstud = "IDSTUD", wgt = c("STUDWGT", "SCHWGT")) {
-  strata <- unlist(dt[, idstrata, with = F])
+  info <- dt[[1]][[1]][, c(idstrata, idschool, idstud), with = F]
+  info[, (names(info)) := llply(.SD, as.character), .SDcols = names(info)]
+  strata <- unlist(info[, idstrata, with = F])
+  fin <- lapply(1:length(dt[[1]]), function(i) data.table())
   sd <- foreach(ii = unique(strata), .combine = rbind) %do% {
-    sdata <- dt[strata %in% ii, ,drop = F]
+    sdata <- info[strata %in% ii, ,drop = F]
     sch <- unique(unlist(sdata[,idschool, with = F]))
     nh <- length(sch)
     if (nh == 1) nh <- 2
-    smSCH <- as.numeric(sample(as.character(sch), nh-1, replace = T))
+    smSCH <- sample(as.character(sch), nh-1, replace = T)
     #smSCH <- sch
     std <- foreach(jj = smSCH, .combine = rbind) %do% {
       studdt <- sdata[sch %in% jj,,drop = F]
       idst <- unlist(studdt[, idstud, with = F])
       nhc <- length(idst)
       smplStud <- sample(idst, nhc-1, replace = F)
-      studdt1 <- foreach(kk = smplStud, .combine = rbind) %do% studdt[idst %in% kk,,drop = F]
-      studdt1$nhc <- nhc
-      return(studdt1)
+      setkeyv(studdt, idstud)
+      studdt2 <- llply(dt[[1]], function(x) {setkeyv(x, idstud); x <- x[smplStud]; x$nhc <- nhc; return(x)})
+      #studdt1 <- foreach(kk = smplStud, .combine = rbind) %do% studdt[idst %in% kk,,drop = F]
+      fin <- mapply(rbind, fin, studdt2, SIMPLIFY=FALSE)
+      return(NULL)
     }
-    return(std)
+    return(NULL)
   }
-  return(sd)
+  fin <- imputationList(fin)
+  return(fin)
 }
 
 bootSample <- function(dt, idstrata = "IDSTRATE", idschool = "IDSCHOOL",
@@ -103,26 +109,30 @@ bootSample <- function(dt, idstrata = "IDSTRATE", idschool = "IDSCHOOL",
 }
 
 
-bootREML <- function(data = data.2011, R = 5,
+bootREML_PV <- function(data = data.list, R = 5,
                      form = "BSMMAT01 ~ 1+SSEX+(1|IDSCHOOL)",
                      idstrata = "IDSTRATE", idschool = "IDSCHOOL",
                      idstud = "IDSTUD") {
+  require(mitools)
   #print("Iteration:")
-  tt0 <- lmer(form, data = data)
-  t0 <- lme4:::summary.merMod(tt0)
-  t0$beta <- fixef(tt0)
-  t0$sigma2 <- t0$sigma^2
-  t0$TT <- t0$varcor[[1]]
+  pv <- length(data[[1]])
+  tt0 <- with(data, lmer(form))
+  t0 <- list()
+  t0$models <- llply(tt0, lme4:::summary.merMod)
+  t0$beta <- Reduce('+', llply(tt0, fixef))/pv
+  t0$sigma2 <- Reduce('+', llply(t0$models, function(x) x$sigma^2))/pv
+  t0$TT <- Reduce('+', llply(t0$models, function(x) x$varcor[[1]]))/pv
+
   
   bootRes <- foreach(ii = 1:R, .combine = rbind) %do% {
     #print(paste("boot", ii))
-    smpldt <- try(bootSampleREML(data, idstrata, idschool,
+    smpldt <- try(bootSampleREML_PV(data, idstrata, idschool,
                                  idstud, wgt = NULL))
     if(class(smpldt)[1] == "try-error") return(NULL)
-    res <- try(lmer(form, data = smpldt))
+    res <- try(with(smpldt, lmer(form)))
     if(class(res)[1] == "try-error") return(NULL)
-    res1 <- lme4:::summary.merMod(res)
-    cc <- c(fixef(res), res1$sigma^2, unlist(res1$varcor[[1]]))
+    res1 <- llply(res, lme4:::summary.merMod)
+    cc <- c(Reduce('+', llply(res, fixef))/pv, Reduce('+', llply(t0$models, function(x) x$sigma^2))/pv, Reduce('+', llply(t0$models, function(x) x$varcor[[1]]))/pv)
     #names(cc) <- c("beta", "sigma2", "")
     return(cc)
   }

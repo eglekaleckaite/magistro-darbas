@@ -40,26 +40,33 @@ library(Matrix)
 library(data.table)
 library(foreach)
 #library(sample)
-source("10code.R")
+source("10code1.R")
 
 #set.seed(2345)
 
 
 load("data.2011.RData")
-varb <- c("IDSCHOOL", "IDCLASS", "SSEX", "STHMWRK", "SMENG", "SMCONF", "SMVALUE", 
-          "SMLIKE", "SBULLED", "SHEDRES", "IDSTUD", "TOTWGT", "SCHWGT", "STUDWGT", "SCHWGT")
+varb <- c("IDSCHOOL", "IDCLASS", "IDSTRATI", "SSEX", "STHMWRK", "SMENG", "SMCONF", "SMVALUE", 
+          "SMLIKE", "SBULLED", "SHEDRES", "IDSTUD", "TOTWGT", "SCHWGT", "STUDWGT",
+          "SCHWGT")
 #data.2011  <- drop.levels(subset(data.2011, IDSCHOOL %in% unique(data.2011$IDSCHOOL)[1:10]))
 data.2011 <- drop.levels(na.omit(data.2011[,c("BSMMAT01", "BSMMAT02", "BSMMAT03", "BSMMAT04", 
                                               "BSMMAT05", varb), with = F]))
-
+data.2011[, c("IDSCHOOL", "IDCLASS", "IDSTUD") := llply(.SD, as.character), .SDcols = c("IDSCHOOL", "IDCLASS", "IDSTUD")]
 data.list <- foreach(ii = c("BSMMAT01", "BSMMAT02", "BSMMAT03", "BSMMAT04", 
                             "BSMMAT05")) %do% {
                               dd <- drop.levels(na.omit(data.2011[,c(ii, varb), with = F]))
                               setnames(dd, ii, "BSMMAT")
                               return(dd)
                             }
+
 data.list <- imputationList(data.list)
 models<-with(data.list, lmer(BSMMAT ~ 1+SSEX+SMENG+(1|IDSCHOOL)))
 mm <- MIcombine(models)
 
+rb0 <- try(bootREML_PV(data = data.list, R = 10,
+                       form = "BSMMAT ~ 1+SSEX+SMENG+(1|IDSCHOOL)", idstrata = "IDSTRATI"))
+
+ivM4 <- try(bootMINQUE2(fixed = "BSMMAT ~ 1+SSEX+SMENG", random = "~1|IDSCHOOL",
+                        idstrata = "IDSTRATI", R = 10, data = data.list, BFUN = bootSample))
 
