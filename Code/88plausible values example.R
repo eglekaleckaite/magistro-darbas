@@ -22,6 +22,26 @@ vars<-MIextract(models, fun=vcov)
 summary(MIcombine(betas,vars))
 
 
+require(Zelig)
+require(Amelia)
+require(ZeligMultilevel)
+
+data(freetrade)
+length(freetrade$country) #grouping variable
+
+#Imputation of missing data
+
+a.out <- amelia(freetrade, m=5, ts="year", cs="country")
+
+library("ZeligMultilevel")
+ML.model.0 <- zelig(dv~1 + tag(1|group), model="ls.mixed",
+                    data=a.out$imputations)
+summary(ML.model.0)
+
+data(voteincome)
+z.out1 <- zelig(income ~ education + age + female + tag(1 | state), data=voteincome, model="ls.mixed")
+
+
 #########################################################################
 #Mano
 #########################################################################
@@ -39,6 +59,9 @@ library(gdata)
 library(Matrix)
 library(data.table)
 library(foreach)
+require(ZeligMultilevel)
+library(Zelig)
+require(Amelia)
 #library(sample)
 source("10code1.R")
 
@@ -60,13 +83,19 @@ data.list <- foreach(ii = c("BSMMAT01", "BSMMAT02", "BSMMAT03", "BSMMAT04",
                               return(dd)
                             }
 
-data.list <- imputationList(data.list)
-models<-with(data.list, lmer(BSMMAT ~ 1+SSEX+SMENG+(1|IDSCHOOL)))
-mm <- MIcombine(models)
+data.list1 <- imputationList(data.list)
 
-rb0 <- try(bootREML_PV(data = data.list, R = 10,
+rb0 <- try(bootREML_PV(data = data.list1, R = 10,
                        form = "BSMMAT ~ 1+SSEX+SMENG+(1|IDSCHOOL)", idstrata = "IDSTRATI"))
+
+z.out <- zelig(formula= BSMMAT ~ 1+SSEX+SMENG+tag(1|IDSCHOOL),
+               data=data.list, model="ls.mixed")
+summary(z.out)
+
+lme.1 <-lmer(BSMMAT01 ~ 1+SSEX+SMENG+(1|IDSCHOOL), data = data.2011)
+(sm1 <- summary(lme.1))
 
 ivM4 <- try(bootMINQUE2(fixed = "BSMMAT ~ 1+SSEX+SMENG", random = "~1|IDSCHOOL",
                         idstrata = "IDSTRATI", R = 10, data = data.list, BFUN = bootSample))
 
+#################################################

@@ -61,18 +61,17 @@ mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
   
   #save(smpl, file = "Output/smpl1.RData")
   rb0 <- try(bootREML(data = smpl, R = 100,
-                  form = "Y1 ~ 1+W+X1+(1|IDSCHOOL)", idstrata = "IDSTRATI"))
+                  form = "Y4 ~ 1+W+X1+X2+(1|IDSCHOOL)", idstrata = "IDSTRATI"))
   if(class(rb0) == "try-error") return(NULL)
   tt0 <- rb0$tt0
   sm0 <- lme4:::summary.merMod(tt0)
   c0 <- confint(tt0)
   c0[1:2,] <- c0[1:2,]^2
-  ivM4 <- try(bootMINQUE2(fixed = "Y1 ~ 1+W+X1", random = "~1|IDSCHOOL", wgt = c("w1", "w2"),
+  ivM4 <- try(bootMINQUE2(fixed = "Y4 ~ 1+W+X1+X2", random = "~1|IDSCHOOL", wgt = c("w1", "w2"),
                              idstrata = "IDSTRATI", R = 100, data = smpl, BFUN = bootSample))
-  ivM5 <- ivM4
-#     try(bootMINQUE2(fixed = "Y4 ~ 1+W+X1+X2", random = "~1|IDSCHOOL", wgt = NULL,
-#                           idstrata = "IDSTRATI", R = 100, data = smpl, BFUN = bootSampleREML))
-#   
+  ivM5 <- try(bootMINQUE2(fixed = "Y4 ~ 1+W+X1+X2", random = "~1|IDSCHOOL", wgt = NULL,
+                          idstrata = "IDSTRATI", R = 100, data = smpl, BFUN = bootSampleREML))
+  
   if(class(ivM4) == "try-error") return(NULL)
   
   setTxtProgressBar(pb, ii)
@@ -105,7 +104,7 @@ close(pb)
 stopCluster(cl) 
 
 #save(mcmc, file = "Output/mcmcY1_remlvsminque_simple.RData")
-save(mcmc, file = "Output/mcmcY1_remlvsminqueweights_missingvariable.RData")
+save(mcmc, file = "Output/mcmcY4_remlvsminqueweights_2.RData")
 #save(mcmc, file = "Output/mcmcY4wg.RData")
 rbind(mcmcRES(mcmc[,1], 500),
       mcmcRES(mcmc[,19], 500),

@@ -1,4 +1,4 @@
-starting worker for localhost:11585 
+starting worker for localhost:11102 
 Type: EXEC 
 Loading required package: Matrix
 
@@ -58,95 +58,89 @@ The following object is masked from 'package:gdata':
 
 Type: EXEC 
 Computing profile confidence intervals ...
-  |                                                                                     |==                                                                           |   2%Type: EXEC 
+  |                                                                                     |==                                                                           |   3%Type: EXEC 
 Computing profile confidence intervals ...
-  |                                                                                     |====                                                                         |   6%Warning messaComputing profile confidence intervals ...
-  |                                                                                     |======                                                                       |     |                                                                                     |=======                                                                      |   9%Warning messageComputing prComputing profile confidence int  |          |                                                                                     |=========                                                                    |  11%TComputing prComputing profile confidence int  |          |                                                                                     |===========                                                            |                       Computing profile confidence intervals ...
-  |                                                                                     |=============                                                                |  17%Type: EXEC 
+  |                                                                                     |====                                                                         |   6%Type: EXEC 
 Computing profile confidence intervals ...
-  |                                                                                     |===============                                                              |  20%Type: EXEC 
+  |                                                                                     |=======                                                                      |   9%Type: EXEC 
 Computing profile confidence intervals ...
-  |                                                                                     |==================                                                           |  23%Warning message:
-In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
-  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
-Type: EXEC 
+  |                                                                                     |=========                                                                    |  12%Type: EXEC 
 Computing profile confidence intervals ...
-  |                                                                                     |====================                                                         |  26%Warning message:
-In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
-  convergence code 3 from bobyqa: bobyqa -- a trust region step failed t  |                     Computing profile confidence intervals ...
-  |                                                                                     |======================                                                   |                     Computing profile confidence intervals ...
-  |                                                                                     |========================                                                     |  31%Warning messaComputing profile confidence intervals ...
-  |                                                                                     |==========================                                                   |  34%Warning message:
-In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
-  convergence code 3 from bobyqa: bobyqa -- a trust region st  |                                Computing profile confidence intervals ...
-  |                                                                                     |=============================                                 |                                Computing profile confidence intervals ...
-  |                                                                                     |===============================                                              |  41%Warning messages:
-1: In optwrap(optimizer, devfun, getStart(start, rho$lower, rho$pp),  :
-  convergence code 3 from bobyqa: bobyqa -- a trust regio   |                                                                                     |================================                                             |  42%Type: EXEC CoComputing profile confidence intervals ...   |                                                                                     |==================================                                           |  45%Warning mesComputing profile confidence intervals ...
-  |                                                                                     |====================================                                         |  47%Type: EXEC 
+  |                                                                                     |===========                                                                  |  15%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |==============                                                               |  18%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |================                                                             |  21%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |==================                                                           |  24%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |=====================                                                        |  27%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |=======================                                                      |  30%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |=========================                                                    |  33%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |===========================                                                  |  36%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |=============================                                                |  38%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |================================                                             |  42%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |==================================                                           |  45%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |=====================================                                        |  48%Type: EXEC 
 Computing profile confidence intervals ...
   |                                                                                     |=======================================                                      |  51%Type: EXEC 
 Computing profile confidence intervals ...
-  |                                                                                     |=========================================                                    |  53%Warning message:
-In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
-  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
-Type: EXEC 
+  |                                                                                     |=========================================                                    |  54%Type: EXEC 
 Computing profile confidence intervals ...
-  |                                                                                     |============================================                                |                  Computing profile confidence intervals ...
-  |                                                                                     |==============================================                              |                  Computing profile confidence intervals ...
-  |                                                                                     |================================================                            |                                                                                     |================================================                             |  63%Warning message:
-In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
-  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
-Type: EXEC CoComputing profile confidence intervals ...   |                                                                                     |===================================================                          |  66%Warning message:
-In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
-  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
-Type: EXEC CoComputing profile confidence intervals ...   |                                                                                     |=====================================================                        |  69%Type: EXEC CoComputing profile confidence intervals ...   |                                                                                     |=======================================================                      |  72%Warning message:
-In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
-  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
-Type: EXEC CoComputing profile confidence intervals ...   |                                                                                     |==========================================================                   |  75%Warning mesComputing profile confidence intervals ...
-  |                                                                                     |============================================================                 |  77%Ty  |       Computing profile confidence intervals ...
-  |                                                                                     |==============================================================               |  80%Ty  |       Computing profile confidence intervals ...
-  |                                                                                     |================================================================             |  83%Wa  |                                                                                     |=================================================================            |  84%Type: EXEC 
+  |                                                                                     |===========================================                                  |  56%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |=============================================                                |  59%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |================================================                             |  62%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |===================================================                          |  66%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |=====================================================                        |  68%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |=======================================================                      |  72%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |==========================================================                   |  75%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |============================================================                 |  78%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |===============================================================              |  81%Type: EXEC 
+Computing profile confidence intervals ...
+  |                                                                                     |=================================================================            |  84%Type: EXEC 
 Computing profile confidence intervals ...
   |                                                                                     |===================================================================          |  87%Type: EXEC 
 Computing profile confidence intervals ...
-  |                                                                                     |=====================================================================        |  90%Type: EXEC 
+  |                                                                                     |======================================================================       |  90%Type: EXEC 
 Computing profile confidence intervals ...
   |                                                                                     |========================================================================     |  93%Type: EXEC 
 Computing profile confidence intervals ...
-  |                                                                                     |==========================================================================   |  96%Warning messages:
-1: In optwrap(optimizer, devfun, getStart(start, rho$lower, rho$pp),  :
-  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
-2: In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
-  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
-Type: EXEC 
+  |                                                                                     |==========================================================================   |  96%Type: EXEC 
 Computing profile confidence intervals ...
   |                                                                                     |=============================================================================|  99%Type: DONE 
-  |                                                                                     |===========================================================================  |  98%Type: DONE 
-failed to reduce q
-Type: DONE 
-============      |  92%Type: EXEC 
-Computing profile confidence intervals ...
-  |                                                                                     |=========================================================================    |  95%Type: EXEC 
-Computing profile confidence intervals ...
-  |                                                                                     |============================================================================ |  98%Type: DONE 
- convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
+Warning messages:
+1: In optwrap(optimizer, par = thopt, fn = mkdevfun(rho, 0L), lower = fitted@lower) :
+  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
 2: In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
   convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
-Type: EXEC 
-Computing profile confidence intervals ...
-  |                                                                                     |===========================================================================  |  97%Type: EXEC 
-Computing profile confidence intervals ...
-  |                                                                                     |=============================================================================| 100%Type: DONE 
- bobyqa -- a trust region step failed to reduce q
-Type: EXEC 
-Computing profile confidence intervals ...
-  |                                                                                     |==========================================================================   |  96%Warning message:
-In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
+3: In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
   convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
-Type: EXEC 
-Computing profile confidence intervals ...
-  |                                                                                     |============================================================================ |  99%Warning message:
-In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
+4: In optwrap(optimizer, devfun, getStart(start, rho$lower, rho$pp),  :
   convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
-Type: DONE 
+5: In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
+  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
+6: In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
+  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
+7: In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
+  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
+8: In optwrap(optimizer, par = start, fn = function(x) dd(mkpar(npar1,  :
+  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
+9: In optwrap(optimizer, devfun, getStart(start, rho$lower, rho$pp),  :
+  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q
+10: In optwrap(optimizer, devfun, getStart(start, rho$lower, rho$pp),  :
+  convergence code 3 from bobyqa: bobyqa -- a trust region step failed to reduce q

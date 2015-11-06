@@ -38,7 +38,7 @@ mySample <- function(dt, m = 75){
 }
 
 bootSampleREML_PV <- function(dt, idstrata = "IDSTRATE", idschool = "IDSCHOOL",
-                           idstud = "IDSTUD", wgt = c("STUDWGT", "SCHWGT")) {
+                           idstud = "IDSTUD") {
   info <- dt[[1]][[1]][, c(idstrata, idschool, idstud), with = F]
   info[, (names(info)) := llply(.SD, as.character), .SDcols = names(info)]
   strata <- unlist(info[, idstrata, with = F])
@@ -127,7 +127,7 @@ bootREML_PV <- function(data = data.list, R = 5,
   bootRes <- foreach(ii = 1:R, .combine = rbind) %do% {
     #print(paste("boot", ii))
     smpldt <- try(bootSampleREML_PV(data, idstrata, idschool,
-                                 idstud, wgt = NULL))
+                                 idstud))#, wgt = NULL))
     if(class(smpldt)[1] == "try-error") return(NULL)
     res <- try(with(smpldt, lmer(form)))
     if(class(res)[1] == "try-error") return(NULL)
@@ -415,108 +415,92 @@ rwis <- function(n, mean, sigma){
   crossprod(rmvnorm(n , mean = mean, sigma=sigma))
 } 
 
-
-makePOP3 <- function(M = 300){
+makePOP5 <- function(M = 30){
   struct <- 1:M
-  uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
-  Nj <- round(50*exp(uj))
-  #ups(190, M, prob = c(1:95, rep(1,95)), replace = TRUE)+10
+  #uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
+  #Nj <- round(50*exp(uj))
+  Nj <- 30
+  
   struct <- as.data.table(cbind(IDSCHOOL = struct, Nj = Nj))
-  # struct <- ddply(data.2011, ~IDSCHOOL, function(x) length(unique(x$IDSTUD)))
-  # struct$IDSCHOOL <- 1:nrow(struct)
-  # names(struct)[2] <- "Nj"
+  
   struct[, psch := Nj/sum(Nj)]
   
-  struct$W <- rbinom(M, 1, prob = 0.2)
-  #Make u
-  #     S1 <- matrix(c(1300,-180,-180,480),nrow=2,byrow=TRUE)
-  #     mu1 <- c(1,1)
-  #     S2 <- matrix(c(1300,-180,-180,480),nrow=2,byrow=TRUE)
-  #     mu2 <- c(-1,-1)
-  #   
-  #     n <- M
-  #     p1 <- 0.8
-  #     n1 <- rbinom(1,size=n,prob=p1)  ## how many from first distribution?
-  #     n2 <- n-n1
-  #     val1 <- mvrnorm(n1,mu=mu1,Sigma=S1)
-  #     val2 <- mvrnorm(n2,mu=mu2,Sigma=S2)
-  #     allval <- rbind(val1,val2)      ## combine
-  #     allval <- allval[sample(n,n),]
-  #     u0j <- allval[, 1]
-  #     u1j <- allval[, 2]
-  #     uN <- rmvnorm(M, mean = c(0, 0), sigma = S2)
-  #     # Make alpha   
-  #     struct$aN <- 500+uN[,1]
-  #     struct$aX <- 500+u0j
-  #     # Make beta
-  #     struct$bN <- -4+uN[,2]
-  #     struct$bX <- -4+u1j
-  #     S1 <- sqrt(0.5)
-  #     mu1 <- c(-20)
-  #     S2 <- sqrt(0.5)
-  #     mu2 <- c(20)
-  #     
-  #     n <- M
-  #     p1 <- 0.8
-  #     n1 <- rbinom(n,size=1,prob=p1)  ## how many from first distribution?
-  #     n2 <- 1-n1
-  #     val1 <- rnorm(n,mu1,S1)
-  #     val2 <- rnorm(n,mu2,S2)
-  #     allval <- n1*val1+n2*val2      ## combine
-  #     allval <- (allval[sample(n,n)]-(p1*mu1+(1 - p1)*mu2))/sqrt(p1*(mu1-p1*mu1-(1 - p1)*mu2)^2+(1-p1)*(mu2-p1*mu1-(1 - p1)*mu2)^2+S1^2)*sqrt(1300)
-  # allval <- (rpois(M, 1)-1)*sqrt(1300)
-  allval <- (rchisq(M, df = 1)-1)/sqrt(2)*sqrt(1300)
-  # Make alpha   
-  struct[, aN := 500+rnorm(M,0, sqrt(1300))]
-  struct[, aX := 500+allval]
+  struct$W <- rbinom(M, 1, prob = 0.2)#rnorm(M, 0, sqrt(1))
+  
+  # Make alpha  
+  ttN <- matrix(c(0.005, 0.0025, 0.0025, 0.005), nrow = 2)
+  ddN <- mvrnorm(n = M, rep(0, 2), ttN)
+  
+  ttX <- matrix(c(1, sqrt(0.5), sqrt(0.5), 1), nrow = 2)
+  ddX <- mvrnorm(n = M, rep(0, 2), ttX)
+  
+  struct[, d0N := ddN[, 1]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, d0X := ((ddX[, 1]^2 - 1)/sqrt(2))*sqrt(0.005)]
+  
+  struct[, d1N := ddN[, 2]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, d1X := ((ddX[, 2]^2 - 1)/sqrt(2))*sqrt(0.005)]
   
   
-  
-  # Make main error
-  #     S1 <- sqrt(1)
-  #     mu1 <- c(-10)
-  #     S2 <- sqrt(1)
-  #     mu2 <- c(10)
-  #     
-  #     n <- sum(struct$Nj)
-  #     p1 <- 0.8
-  #     n1 <- rbinom(n,1,prob=p1)  ## how many from first distribution?
-  #     n2 <- abs(n1-1)
-  #     val1 <- rnorm(n,mu1,S1)
-  #     val2 <- rnorm(n,mu2,S2)
-  #     allval <- n1*val1+n2*val2      ## combine
-  #     allval <- (allval[sample(n,n)]-(p1*mu1+(1 - p1))*mu2)/sqrt(p1*(mu1-p1*mu1-(1 - p1)*mu2)^2+(1-p1)*(mu2-p1*mu1-(1 - p1)*mu2)^2+S1^2)*sqrt(2000)
-  #allval <- (rpois(sum(struct$Nj), 2)-2)/sqrt(2)*sqrt(2000)
-  allval <- (rchisq(sum(struct$Nj), 2)-2)/sqrt(2*2)*sqrt(2000)
-  eN <- struct[, matrix(rnorm(Nj,0, sqrt(2000)), ncol = 1), by = IDSCHOOL]
+  #(rchisq(sum(struct$Nj), 1)-2)/sqrt(2*2)*sqrt(0.5)
+  eN <- struct[, matrix(rnorm(Nj,0, sqrt(0.5)), ncol = 1), by = IDSCHOOL]
   setnames(eN, "V1", "eN")
-  eN$eN <- rnorm(nrow(eN),0, sqrt(2000))
-  eN$eX <- allval
+  eN$eN <- rnorm(nrow(eN),0, sqrt(0.5))
+  eN$eX <- ((rchisq(sum(struct$Nj), 1) - 1)/sqrt(2))*sqrt(0.5)
   
   
   struct <- merge(struct, eN, by = "IDSCHOOL")
   
   struct[, c("nj", "pstud") := list(round(ifelse(length(W)<30, length(W), ifelse(length(W)>=30&length(W)<60, length(W)/2, length(W)/3))), 1/length(W)), by = IDSCHOOL]
-  struct[, c("ptot", "X1", "X2") := list(psch*pstud, rnorm(nrow(struct), 90, 20), rbinom(nrow(struct), 1, prob=0.5))]
+  struct[, c("ptot", "X1") := list(psch*pstud, rnorm(nrow(struct), 0, 1))]
   
-  #   struct$Y1 <- struct$aN+struct$bN*struct$X+struct$eN
-  #   struct$Y2 <- struct$aX+struct$bX*struct$X+struct$eN
-  #   struct$Y3 <- struct$aN+struct$bN*struct$X+struct$eX
-  #   struct$Y4 <- struct$aX+struct$bX*struct$X+struct$eX
+  struct[, c("Y1", "Y2") := list((1+0.3*W+d0N)+(0.3+0.3*W+d1N)*X1+eN,
+                                 (1+0.3*W+d0X)+(0.3+0.3*W+d1X)*X1+eX)]
   
-  #   struct$Y1 <- struct$aN+20*struct$W+50*struct$X1-4*struct$X2+struct$eN
-  #   struct$Y2 <- struct$aX+20*struct$W+50*struct$X1-4*struct$X2+struct$eN
-  #   struct$Y3 <- struct$aN+20*struct$W+50*struct$X1-4*struct$X2+struct$eX
-  #   struct$Y4 <- struct$aX+20*struct$W+50*struct$X1-4*struct$X2+struct$eX
-  struct[, c("Y1", "Y2", "Y3", "Y4") := list(aN+20*W+50*X1-4*X2+eN,
-                                             aX+20*W+50*X1-4*X2+eN,
-                                             aN+20*W+50*X1-4*X2+eX,
-                                             aX+20*W+50*X1-4*X2+eX)]
+  struct[, IDSTUD := 1:nrow(struct)]
+  return(struct)
+}
+
+
+makePOP4 <- function(M = 30){
+  struct <- 1:M
+  #uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
+  #Nj <- round(50*exp(uj))
+  Nj <- 30
+
+  struct <- as.data.table(cbind(IDSCHOOL = struct, Nj = Nj))
+
+  struct[, psch := Nj/sum(Nj)]
   
-  #   struct[, c("Y1", "Y2", "Y3", "Y4") := list(aN+20*W-4*X2+eN,
-  #                                              aX+20*W-4*X2+eN,
-  #                                              aN+20*W-4*X2+eX,
-  #                                              aX+20*W-4*X2+eX)]
+  struct$W <- rbinom(M, 1, prob = 0.2)#rnorm(M, 0, sqrt(1))
+  
+  # Make alpha  
+  ttN <- matrix(c(0.005, 0.0025, 0.0025, 0.005), nrow = 2)
+  ddN <- mvrnorm(n = M, rep(0, 2), ttN)
+  
+  ttX <- matrix(c(1, sqrt(0.5), sqrt(0.5), 1), nrow = 2)
+  ddX <- mvrnorm(n = M, rep(0, 2), ttX)
+    
+  struct[, d0N := ddN[, 1]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, d0X := ((ddX[, 1]^2 - 1)/sqrt(2))*sqrt(0.005)]
+  
+  struct[, d1N := ddN[, 2]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, d1X := ((ddX[, 2]^2 - 1)/sqrt(2))*sqrt(0.005)]
+  
+  
+  #(rchisq(sum(struct$Nj), 1)-2)/sqrt(2*2)*sqrt(0.5)
+  eN <- struct[, matrix(rnorm(Nj,0, sqrt(0.5)), ncol = 1), by = IDSCHOOL]
+  setnames(eN, "V1", "eN")
+  eN$eN <- rnorm(nrow(eN),0, sqrt(0.5))
+  eN$eX <- ((rchisq(sum(struct$Nj), 1) - 1)/sqrt(2))*sqrt(0.5)
+  
+  
+  struct <- merge(struct, eN, by = "IDSCHOOL")
+  
+  struct[, c("nj", "pstud") := list(round(ifelse(length(W)<30, length(W), ifelse(length(W)>=30&length(W)<60, length(W)/2, length(W)/3))), 1/length(W)), by = IDSCHOOL]
+  struct[, c("ptot", "X1") := list(psch*pstud, rnorm(nrow(struct), 0, 1))]
+  
+  struct[, c("Y1", "Y2") := list((1+0.3*W+d0N)+(0.3+0.3*W+d1N)*X1+eN,
+                                 (1+0.3*W+d0X)+(0.3+0.3*W+d1X)*X1+eX)]
   
   struct[, IDSTUD := 1:nrow(struct)]
   return(struct)
@@ -1739,3 +1723,93 @@ MyCombineREML <- function (results, variances, call = sys.call(), df.complete = 
   class(rval) <- "MIresult"
   rval
 }
+
+# 
+# summary.MI <- function (object, subset = NULL, ...) {
+#   if (length(object) == 0) {
+#     stop('Invalid input for "subset"')
+#   } else {
+#     if (length(object) == 1) {
+#       return(summary(object[[1]]))
+#     }
+#   }
+#   
+#   # Roman: This function isn't fecthing coefficients robustly. Something goes wrong. Contact package author. 
+#   getcoef <- function(obj) {
+#     # S4
+#     if (!isS4(obj)) {
+#       coef(obj)
+#     } else {
+#       if ("coef3" %in% slotNames(obj)) {
+#         obj@coef3
+#       } else {
+#         obj@coef
+#       }
+#     }
+#   }
+#   
+#   #
+#   res <- list()
+#   
+#   # Get indices
+#   subset <- if (is.null(subset)) {
+#     1:length(object)
+#   } else {
+#     c(subset)
+#   }
+#   
+#   # Compute the summary of all objects
+#   for (k in subset) {
+#     res[[k]] <- summary(object[[k]])
+#   }
+#   
+#   
+#   # Answer
+#   ans <- list(
+#     zelig = object[[1]]$name,
+#     call = object[[1]]$result@call,
+#     all = res
+#   )
+#   
+#   #
+#   coef1 <- se1 <- NULL
+#   
+#   #
+#   for (k in subset) {
+#     #       tmp <-  getcoef(res[[k]]) # Roman: I changed this to coef, not 100% sure if the output is the same
+#     tmp <- coef(res[[k]])
+#     coef1 <- cbind(coef1, tmp[, 1])
+#     se1 <- cbind(se1, tmp[, 2])
+#   }
+#   
+#   rows <- nrow(coef1)
+#   Q <- apply(coef1, 1, mean)
+#   U <- apply(se1^2, 1, mean)
+#   B <- apply((coef1-Q)^2, 1, sum)/(length(subset)-1)
+#   var <- U+(1+1/length(subset))*B
+#   nu <- (length(subset)-1)*(1+U/((1+1/length(subset))*B))^2
+#   
+#   coef.table <- matrix(NA, nrow = rows, ncol = 4)
+#   dimnames(coef.table) <- list(rownames(coef1),
+#                                c("Value", "Std. Error", "t-stat", "p-value"))
+#   coef.table[,1] <- Q
+#   coef.table[,2] <- sqrt(var)
+#   coef.table[,3] <- Q/sqrt(var)
+#   coef.table[,4] <- pt(abs(Q/sqrt(var)), df=nu, lower.tail=F)*2
+#   ans$coefficients <- coef.table
+#   ans$cov.scaled <- ans$cov.unscaled <- NULL
+#   
+#   for (i in 1:length(ans)) {
+#     if (is.numeric(ans[[i]]) && !names(ans)[i] %in% c("coefficients")) {
+#       tmp <- NULL
+#       for (j in subset) {
+#         r <- res[[j]]
+#         tmp <- cbind(tmp, r[[pmatch(names(ans)[i], names(res[[j]]))]])
+#       }
+#       ans[[i]] <- apply(tmp, 1, mean)
+#     }
+#   }
+#   
+#   class(ans) <- "summaryMI"
+#   ans
+# }
