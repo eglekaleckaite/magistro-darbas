@@ -416,18 +416,12 @@ rwis <- function(n, mean, sigma){
 } 
 
 makePOP5 <- function(M = 30){
+  require(data.table)
+  require(MASS)
   struct <- 1:M
-  #uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
-  #Nj <- round(50*exp(uj))
-  Nj <- 30
+  struct <- data.table(IDSCHOOL = struct)
   
-  struct <- as.data.table(cbind(IDSCHOOL = struct, Nj = Nj))
-  
-  struct[, psch := Nj/sum(Nj)]
-  
-  struct$W <- rbinom(M, 1, prob = 0.2)#rnorm(M, 0, sqrt(1))
-  
-  # Make alpha  
+   # Make second level errors
   ttN <- matrix(c(0.005, 0.0025, 0.0025, 0.005), nrow = 2)
   ddN <- mvrnorm(n = M, rep(0, 2), ttN)
   
@@ -438,10 +432,16 @@ makePOP5 <- function(M = 30){
   struct[, d0X := ((ddX[, 1]^2 - 1)/sqrt(2))*sqrt(0.005)]
   
   struct[, d1N := ddN[, 2]]#rnorm(M, 0, sqrt(0.005))]
-  struct[, d1X := ((ddX[, 2]^2 - 1)/sqrt(2))*sqrt(0.005)]
+  struct[, d1X := ((ddX[, 2]^2 - 1)/sqrt(2))*sqrt(0.005)] 
   
+  uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
+  Nj <- round(50*exp(uj))
   
-  #(rchisq(sum(struct$Nj), 1)-2)/sqrt(2*2)*sqrt(0.5)
+  struct[, Nj := Nj]
+  
+  struct[, psch := Nj/sum(Nj)]
+  
+  #
   eN <- struct[, matrix(rnorm(Nj,0, sqrt(0.5)), ncol = 1), by = IDSCHOOL]
   setnames(eN, "V1", "eN")
   eN$eN <- rnorm(nrow(eN),0, sqrt(0.5))
@@ -450,11 +450,12 @@ makePOP5 <- function(M = 30){
   
   struct <- merge(struct, eN, by = "IDSCHOOL")
   
-  struct[, c("nj", "pstud") := list(round(ifelse(length(W)<30, length(W), ifelse(length(W)>=30&length(W)<60, length(W)/2, length(W)/3))), 1/length(W)), by = IDSCHOOL]
-  struct[, c("ptot", "X1") := list(psch*pstud, rnorm(nrow(struct), 0, 1))]
+  struct[, c("nj", "pstud") := list(round(ifelse(length(Nj)<30, length(Nj), ifelse(length(Nj)>=30&length(Nj)<60, length(Nj)/2, length(Nj)/3))), 1/length(Nj)), by = IDSCHOOL]
+  struct$ptot <- struct$psch*struct$pstud
+  struct$X1 <- rnorm(nrow(struct), 0, 1)
   
-  struct[, c("Y1", "Y2") := list((1+0.3*W+d0N)+(0.3+0.3*W+d1N)*X1+eN,
-                                 (1+0.3*W+d0X)+(0.3+0.3*W+d1X)*X1+eX)]
+  struct[, c("Y1", "Y2") := list((1+d0N)+(0.3+d1N)*X1+eN,
+                                 (1+d0X)+(0.3+d1X)*X1+eX)]
   
   struct[, IDSTUD := 1:nrow(struct)]
   return(struct)
@@ -463,9 +464,9 @@ makePOP5 <- function(M = 30){
 
 makePOP4 <- function(M = 30){
   struct <- 1:M
-  #uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
-  #Nj <- round(50*exp(uj))
-  Nj <- 30
+  uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
+  Nj <- round(50*exp(uj))
+  #Nj <- 30
 
   struct <- as.data.table(cbind(IDSCHOOL = struct, Nj = Nj))
 
@@ -1723,6 +1724,14 @@ MyCombineREML <- function (results, variances, call = sys.call(), df.complete = 
   class(rval) <- "MIresult"
   rval
 }
+
+# mySumm <- function(.) { s <- sigma(.)
+# c(beta =getME(., "beta"), sigma = s, sig01 = unname(s * getME(., "theta"))) }
+# (t0 <- mySumm(fm01ML)) # just three parameters
+# ## alternatively:
+# mySumm2 <- function(.) {
+#   c(beta=fixef(.),sigma=sigma(.),sig01=unlist(VarCorr(.)))
+# }
 
 # 
 # summary.MI <- function (object, subset = NULL, ...) {

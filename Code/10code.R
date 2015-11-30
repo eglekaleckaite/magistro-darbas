@@ -5,6 +5,21 @@ mcmcRES <- function(x, x0) {
   return(data.frame(Mean = m, RBias = RBias, RMSE = RMSE))
 }
 
+samplePOP <- function(dt, m = 35){
+  info <- unique(dt[,c("IDSCHOOL", "IDCLASS", "psch", "pcl"), with = F], by = c("IDSCHOOL", "IDCLASS", "psch", "pcl"))
+  idsch <- unique(info[, c("IDSCHOOL", "psch"), with = F])
+  sidsch <- sample(idsch$IDSCHOOL, m, prob = idsch$psch)
+  info <- info[IDSCHOOL %in% sidsch,  ]
+  idclass <- info[, list(IDCLASS = sample(IDCLASS, 1, prob = pcl)), by = IDSCHOOL]
+  smplDt <- dt[IDCLASS %in% idclass$IDCLASS, ]
+  smplDt[, wsch := wsch/m]
+  smplDt[, wcl := cj]
+  smplDt[, wstd := 1]
+  smplDt[, wtot := wsch*wcl*wstd]
+  return(smplDt)
+}
+
+
 mySample <- function(dt, m = 75){
   info <- dt[,c("IDSCHOOL", "IDSTUD", "nj", "psch", "pstud", "eN"), with = F]
   idcl <- unique(info[, c("IDSCHOOL", "psch"), with = F])
@@ -406,7 +421,73 @@ rwis <- function(n, mean, sigma){
 } 
 
 
+makePOPW <- function(M = 300, Nclass = 30, sigma2 = 100, tau00 = 1, tau01 = 0.5,
+                     tau11 = 1, g00 = 450, g01 = 10, g10 = 30, g11 = 5){
+  require(msm)
+  require(data.table)
+  struct <- 1:M
+  uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
+  N <- round(50*exp(uj))
+
+  struct <- as.data.table(cbind(IDSCHOOL = struct, Nj = N))
+  struct[, psch := Nj/sum(Nj)]
+  
+  x.grid = seq(1, 8, by = 1/3)
+  struct[, W := sample(x.grid, M, replace = T)]
+#   struct[Nj > 120, did := 1]
+#   struct[Nj <= 120, did := 0]
+#   didel <- sum(struct$did)
+#   x.grid = seq(1, 8, by = 1/3)
+#   struct[Nj > 120, W := sample(x.grid[14:22], didel, replace = T)+50]
+#   struct[Nj <= 120, W := sample(x.grid[1:8], M - didel, replace = T)]
+  
+#    x.grid = seq(1, 8, by = 1/3)
+#    struct[, W := sample(x.grid[1:8], nrow(struct), replace = T)]
+#    struct[IDSCHOOL %in% sample(1:M, M*0.1), W := sample(x.grid[14:22], M*0.1, replace = T)+50]
+#   struct[, W := rnorm(M, 10, 20)]
+#   struct[IDSCHOOL %in% sample(1:M, M*0.05), W := rnorm(M*0.05, 500, 15)]
+  
+  
+  # Make alpha  
+  ttN <- matrix(c(tau00, tau01, tau01, tau11), nrow = 2)
+  ddN <- mvrnorm(n = M, rep(0, 2), ttN)
+  
+  ttX <- matrix(c(1, sqrt(tau01/(sqrt(tau00)*sqrt(tau11))), sqrt(tau01/(sqrt(tau00)*sqrt(tau11))), 1), nrow = 2)
+  ddX <- mvrnorm(n = M, rep(0, 2), ttX)
+  
+  struct[, u0N := ddN[, 1]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, u0X := ((ddX[, 1]^2 - 1)/sqrt(2))*sqrt(tau00)]
+  
+  struct[, u1N := ddN[, 2]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, u1X := ((ddX[, 2]^2 - 1)/sqrt(2))*sqrt(tau11)]
+  
+  class <- struct[, list(Nj, kj = sample(1:round(Nj/Nclass), Nj, replace = T)), by = IDSCHOOL]
+  class[kj == 0, kj := 1]
+  class[, cj := max(kj), by = "IDSCHOOL"]
+  class[, pcl := 1/cj]
+  
+  struct <- merge(struct, class, by = c("IDSCHOOL", "Nj"))
+  
+  allval <- (rchisq(sum(N), 2)-2)/sqrt(2*2)*sqrt(sigma2)
+  struct$eN <- rnorm(sum(N),0, sqrt(sigma2))
+  struct$eX <- allval
+  
+  struct[, c("nj", "pstud", "IDSTUD") := list(length(eN), 1, 1:length(eN)), by = c("IDSCHOOL", "kj")]
+  struct[, ptot := psch*pcl*pstud]
+  struct[, X1 := rbinom(sum(N), 1, 0.2)]
+  struct[, IDCLASS := paste0(IDSCHOOL, kj)]
+  struct[, IDSTUD := paste0(IDSCHOOL, kj, IDSTUD)]
+  
+  struct[, c("wsch", "wcl", "wstd", "wtot") := list(1/psch, 1/pcl, 1/pstud, 1/ptot)]
+  
+  struct[, c("Y1", "Y2") := list(Y1 = g00+g01*W+g10*X1+g11*W*X1+eN+u0N+u1N*X1,
+                                 Y2 = g00+g01*W+g10*X1+g11*W*X1+eX+u0X+u1X*X1)]
+  
+  return(struct)
+}
+
 makePOP3 <- function(M = 300){
+  require(msm)
   struct <- 1:M
   uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
   Nj <- round(50*exp(uj))
@@ -507,6 +588,149 @@ makePOP3 <- function(M = 300){
   #                                              aX+20*W-4*X2+eN,
   #                                              aN+20*W-4*X2+eX,
   #                                              aX+20*W-4*X2+eX)]
+  
+  struct[, IDSTUD := 1:nrow(struct)]
+  return(struct)
+}
+
+
+makePOP4 <- function(M = 30){
+  struct <- 1:M
+  uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
+  Nj <- round(50*exp(uj))
+ # Nj <- 30
+  
+  struct <- as.data.table(cbind(IDSCHOOL = struct, Nj = Nj))
+  
+  struct[, psch := Nj/sum(Nj)]
+  
+  struct$W <- rbinom(M, 1, prob = 0.2)#rnorm(M, 0, sqrt(1))
+  
+  # Make alpha  
+  ttN <- matrix(c(0.005, 0.0025, 0.0025, 0.005), nrow = 2)
+  ddN <- mvrnorm(n = M, rep(0, 2), ttN)
+  
+  ttX <- matrix(c(1, sqrt(0.5), sqrt(0.5), 1), nrow = 2)
+  ddX <- mvrnorm(n = M, rep(0, 2), ttX)
+  
+  struct[, d0N := ddN[, 1]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, d0X := ((ddX[, 1]^2 - 1)/sqrt(2))*sqrt(0.005)]
+  
+  struct[, d1N := ddN[, 2]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, d1X := ((ddX[, 2]^2 - 1)/sqrt(2))*sqrt(0.005)]
+  
+  
+  #(rchisq(sum(struct$Nj), 1)-2)/sqrt(2*2)*sqrt(0.5)
+  eN <- struct[, matrix(rnorm(Nj,0, sqrt(0.5)), ncol = 1), by = IDSCHOOL]
+  setnames(eN, "V1", "eN")
+  eN$eN <- rnorm(nrow(eN),0, sqrt(0.5))
+  eN$eX <- ((rchisq(sum(struct$Nj), 1) - 1)/sqrt(2))*sqrt(0.5)
+  
+  
+  struct <- merge(struct, eN, by = "IDSCHOOL")
+  
+  struct[, c("nj", "pstud") := list(round(ifelse(length(W)<30, length(W), ifelse(length(W)>=30&length(W)<60, length(W)/2, length(W)/3))), 1/length(W)), by = IDSCHOOL]
+  struct[, ptot := psch*pstud]
+  
+  #x.grid = seq(0, 8, by = 8/max(Nj))#rnorm(Nj, 0, 1) sample(x.grid, Nj[1], replace = T)
+  struct[, X1 := rbinom(Nj[1], 1, 0.05), by = "IDSCHOOL"]
+
+  struct[, c("Y1", "Y2") := list((1+0.3*W+d0N)+(0.3+0.3*W+d1N)*X1+eN,
+                                 (1+0.3*W+d0X)+(0.3+0.3*W+d1X)*X1+eX)]
+  
+  struct[, IDSTUD := 1:nrow(struct)]
+  return(struct)
+}
+
+
+makePOP6 <- function(M = 30){
+  require(data.table)
+  require(MASS)
+  struct <- 1:M
+  struct <- data.table(IDSCHOOL = struct)
+  
+  # Make second level errors
+  
+  struct[, d0N := rnorm(n = M, 0, sqrt(10))]
+  struct[, d0P := rpois(n=M, lambda=10)-10]
+  
+  
+  uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
+  Nj <- round(50*exp(uj))
+  
+  struct[, Nj := Nj]
+  
+  struct[, psch := Nj/sum(Nj)]
+  
+  #
+  eN <- struct[, matrix(rnorm(Nj,0, sqrt(20)), ncol = 1), by = IDSCHOOL]
+  setnames(eN, "V1", "eN")
+  eN$eN <- rnorm(nrow(eN),0, sqrt(20))
+  eN$eP <- rpois(n=nrow(eN), lambda=20)-20
+  
+  
+  struct <- merge(struct, eN, by = "IDSCHOOL")
+  
+  struct[, c("nj", "pstud") := list(round(ifelse(length(Nj)<30, length(Nj), ifelse(length(Nj)>=30&length(Nj)<60, length(Nj)/2, length(Nj)/3))), 1/length(Nj)), by = IDSCHOOL]
+  struct$ptot <- struct$psch*struct$pstud
+  struct$X1 <- rnorm(nrow(struct), 0, 1)
+  
+  struct[, c("Y1", "Y2") := list((1+d0N)+(0.3)*X1+eN,
+                                 (1+d0P)+(0.3)*X1+eP)]
+  
+  struct[, IDSTUD := 1:nrow(struct)]
+  return(struct)
+}
+
+
+makePOP7 <- function(M = 50){
+  require(data.table)
+  require(MASS)
+  struct <- 1:M
+  struct <- data.table(IDSCHOOL = struct)
+  
+  # Make second level errors
+  
+  struct[, d0N := rnorm(n = M, 0, sqrt(5))]
+  u1 <- runif(M)
+  u2 <- runif(M)
+  x1 <- -log(u1)
+  x2 <- ifelse(u2<0.5, -1, 1)
+  struct[, d0P := 1/sqrt(2)*x1*x2*sqrt(5)]
+  
+  Nj <- c(rep(20,2), rep(25, 5), rep(30, 10), rep(35, 5), rep(40, 3), rep(20, 3),
+          rep(25, 5), rep(30, 10), rep(35, 5), rep(40, 2))
+#   uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
+#   Nj <- round(50*exp(uj))
+  
+  struct[, Nj := Nj]
+  
+  struct[, psch := Nj/sum(Nj)]
+  
+  #
+  eN <- struct[, matrix(rnorm(Nj,0, sqrt(100)), ncol = 1), by = IDSCHOOL]
+  setnames(eN, "V1", "eN")
+  eN$eN <- rnorm(nrow(eN),0, sqrt(100))
+  eN$eN[1:10] <- rnorm(nrow(eN),0, sqrt(1000))[1:10]
+  N <- nrow(eN)
+  u1 <- runif(N)
+  u2 <- runif(N)
+  x1 <- -log(u1)
+  x2 <- ifelse(u2<0.5, -1, 1)
+  eN$eP <- 1/sqrt(2)*x1*x2*sqrt(100)
+  eN$eP[1:10] <- (1/sqrt(2)*x1*x2*sqrt(1000))[1:10]
+  
+  struct <- merge(struct, eN, by = "IDSCHOOL")
+  
+  struct[, c("nj", "pstud") := list(round(ifelse(length(Nj)<30, length(Nj), ifelse(length(Nj)>=30&length(Nj)<60, length(Nj)/2, length(Nj)/3))), 1/length(Nj)), by = IDSCHOOL]
+  struct$ptot <- struct$psch*struct$pstud
+  struct$X1 <- c(rep(1, 465), rep(0, 480+555))
+  struct$X2 <- c(rep(0, 465), rep(1, 480), rep(0, 555))
+  struct$X3 <- c(rep(0, 465), rep(0, 480), rep(1, 555))
+  struct$X4 <- floor(75*runif(sum(Nj)))+25
+  
+  struct[, c("Y1", "Y2") := list(-5*X1+2*X2+3*X3+X4+d0N+eN,
+                                 -5*X1+2*X2+3*X3+X4+d0P+eP)]
   
   struct[, IDSTUD := 1:nrow(struct)]
   return(struct)
@@ -779,138 +1003,6 @@ bfun <- function(dat, orig, formul) {
   c(coef(mod)[,1, drop = F], mod$sigma^2, unlist(mod$varcor))
 }
 
-myMINQUE <- function(dt, fixed, random1 = NULL, weights = NULL) {
-  N <- nrow(dt)
-  # Form Y and fixed effects data frame
-  ff <- model.frame(fixed, dt)
-  Y <- as(as(ff[,1, drop = F], "matrix"), "Matrix")
-  if (grepl("-1",fixed)) {
-    X <- as(as(ff[,-1, drop = F], "matrix"), "Matrix")
-  } else {
-    X <- as(as(cbind(matrix(1, ncol = 1, nrow = nrow(ff),
-                            dimnames = list(NULL, "(Intercept)")), 
-                     ff[,-1, drop = F]), "matrix"), "Matrix")
-  }
-  
-  #   if(!is.null(weights)){
-  #     wgt1 <- 1/sqrt(dt[,weights[1]])
-  #     wgt2 <- 1/sqrt(dt[,weights[2]])
-  #     wgt1 <- wgt2*wgt1
-  #   } else {
-  #     wgt1 <- rep(1, N)
-  #     wgt2 <- rep(1, N)
-  #   }
-  
-  if (!is.null(random1)) {
-    id1 <- strsplit(random1, "\\|")
-    random1 <- unlist(id1)[1]
-    nmid1 <- unlist(id1)[2]
-    rr1 <- model.frame(random1, dt)
-    id1 <- model.frame(paste("~", nmid1), dt)[,1]
-    
-    if(!is.null(weights)){
-      wg <- dt[,c(nmid1, weights)]
-      wg <- ddply(wg, as.formula(paste("~", nmid1)), function(x) {x[,2] <- x[,2]*nrow(x)/sum(x[,2]);return(x)})
-      wg2 <- ddply(wg, as.formula(paste("~", nmid1)), function(x) unique(x[,3]))
-      wg[,3] <- wg[,3]*nrow(wg2)/sum(wg2[,2])
-      
-      wgt1 <- 1/sqrt(wg[,2])
-      wgt2 <- 1/sqrt(wg[,3])
-      wgt1 <- wgt2*wgt1
-    } else {
-      wgt1 <- rep(1, N)
-      wgt2 <- rep(1, N)
-    }
-    
-    if (grepl("-1",random1)) {
-      Z1 <- as(wgt2*as( rr1, "matrix"), "Matrix")
-    } else {
-      Z1 <- as(wgt2*as(cbind(matrix(1, ncol = 1, nrow = nrow(rr1),
-                                    dimnames = list(NULL, "(Intercept)")), rr1), "matrix"),
-               "Matrix")
-    }
-    q <- ncol(Z1)
-    colnames(Z1) <- paste(nmid1, colnames(Z1), sep = ".")
-    clnms1 <- colnames(Z1)
-    Z1 <- foreach(i = unique(id1)) %do% {Z1[id1 %in% i, ,drop = F]}
-    n1 <- length(unique(id1))
-    l <- q*(q+1)/2
-    TT1 <- formTT(q)
-    QI <- llply(TT1, function(tt) llply(Z1, function(z) z%*%tt%*%t(z)))
-  } else {
-    Z1 <- NULL
-    clnms1 <- NULL
-    n1 <- NULL
-    QI <- NULL
-  }
-  
-  wgt1i <- foreach(i = unique(id1)) %do% {wgt1[id1 %in% i]}
-  wgt2i <- foreach(i = unique(id1)) %do% {wgt2[id1 %in% i]}
-  
-  l <- l+1
-  Qj <- c(list(llply(QI[[1]], function(zj) diag(nrow(zj)))), QI)
-  Qj[[1]] <- foreach(i = 1:length(Qj[[1]])) %do% {wgt1i[[i]]^2*Qj[[1]][[i]]}
-  QI <- llply(Qj, function(qi) bdiag(qi))
-  Xj <- foreach(i = unique(id1)) %do% {X[id1 %in% i,,drop = F]}
-  Yj <- foreach(i = unique(id1)) %do% {Y[id1 %in% i,,drop = F]}
-  Vj <- foreach(i = 1:length(unique(id1))) %do% solve(Reduce("+", llply(Qj, function(qj) qj[[i]])))
-  V <- bdiag(Vj)
-  XVX <- solve(crossprod(X))
-  Cjj <- diag(N)-X%*%tcrossprod(XVX,X)
-  B0 <- tcrossprod(XVX,X)%*%Y
-  EB0 <- tcrossprod(Y-X%*%B0)
-  
-  S <- fillSMINQUE(Cjj, QI, wgt2)
-  #fillS(Cjj, Qj)
-  WI <- laply(QI, function(qj) sum(diag(crossprod(Y,Cjj)%*%qj%*%Cjj%*%Y)))
-  
-  theta0 <- ginv(S)%*%matrix(WI, ncol = 1)
-  Vj0 <- solve(Reduce("+", foreach(k = 1:length(theta0)) %do% {theta0[k]*QI[[k]]}))
-  #theta0 <- c(3000, 1200)
-  iM <- iterMINQUE(Vj0, X, QI, theta0, Y, id1, wgt2, wgt1)
-  
-  gc()
-  doIM <- (round(sum(abs(iM$theta - theta0)), 4) != 0)
-  while(doIM){
-    theta <- iM$theta
-    #print(theta)
-    iM <- iterMINQUE(iM$Vj, X, QI, theta, Y, id1, wgt2, wgt1)
-    doIM <- (round(sum(abs(iM$theta - theta)), 4) != 0)
-  }
-  iM$beta <- tcrossprod(iM$P,X)%*%iM$Vj%*%Y
-  
-  gc()
-  sigma2 <- iM$theta[1]
-  names(sigma2) <- "sigma2"
-  TT <- fillT(iM$theta[-1])
-  dimnames(TT) <- list(clnms1, clnms1)
-  beta <- as.numeric(iM$beta)
-  names(beta) <- colnames(X)
-  
-  V <- iM$Vj
-  Vj <- foreach(i = unique(id1)) %do% {V[id1 %in% i,id1 %in% i,drop = F]}
-  # Variances:
-  ccj <- crossprod(X, V)%*%tcrossprod(Y-X%*%iM$beta)%*%V%*%X
-  Bcov <- (n1/(n1-1))*iM$P%*%ccj%*%iM$P
-  varcov <- mapply(function(z, x, v, wgt) TT - TT%*%crossprod(z*unique(wgt), v)%*%(solve(v)-x%*%tcrossprod(Bcov,x))%*%v%*%(z*unique(wgt))%*%TT, Z1, Xj, Vj, wgt2i)
-  #Tcov <- (n1/(n1-1))*solve(iM$S)
-  ranef <- mapply(function(x, y, v, z, wgt) (TT%*%crossprod(z*unique(wgt), v)%*%(y - x%*%iM$beta)),Xj, Yj, Vj, Z1, wgt2i)
-  
-  fit <- mapply(function(x, z, u, wgt) x%*%iM$beta+(z/unique(wgt))%*%u, Xj, Z1, ranef, wgt2i)
-  fit <- do.call(rBind, fit)
-  ranef <- llply(ranef, t)
-  ranef <- do.call(rBind, ranef)
-  rownames(ranef) <- unique(id1)
-  residuals <- Y-fit
-  gc()
-  vv <- do.call(cbind, llply(varcov, as.matrix))
-  dim(vv) <- c(dim(varcov[[1]]), length(varcov))
-  ranef <- as.data.frame(as.matrix(ranef))
-  attr(ranef, "postVar") <- vv
-  
-  return(list(sigma2 = sigma2, TT = TT, beta = beta, N = N, n1 = n1, ranef = list(ranef), cov = Bcov, fitted = fit, resid = residuals))
-}
-
 iterMINQUE <- function(V, X, QI, theta, Y, id1, wgt2, wgt1){
   #1
   P <- solve(crossprod(X, V)%*%X)
@@ -947,14 +1039,111 @@ fillSMINQUE <- function(Cjj, QI, wgt2) {
   return(x)
 }
 
-
-myMINQUE2 <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL) {
+myMINQUE <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL) {
+  require("matrixcalc")
   #dt <- arrange(dt, IDSCHOOL)
   N <- nrow(dt)
   # Form Y and fixed effects data frame
   ff <- model.matrix(as.formula(fixed), model.frame(fixed, dt))
   Y <- as(as(model.frame(fixed, dt)[,1, drop = F], "matrix"), "Matrix")
-  if (grepl("-1",fixed)) {
+  if (grepl("-1",fixed)&grepl(colnames(ff)[1], "(Intercept)")) {
+    X <- as(as(ff[,-1, drop = F], "matrix"), "Matrix")
+  } else {
+    X <- as(as(ff, "matrix"), "Matrix")
+  }
+  
+  if (!is.null(random1)) {
+    id1 <- strsplit(random1, "\\|")
+    random1 <- unlist(id1)[1]
+    nmid1 <- unlist(id1)[2]
+    rr1 <- model.frame(random1, dt)
+    id1 <- model.frame(paste("~", nmid1), dt)[,1]
+    if(!is.null(weights)){
+      wg <- as.data.frame(dt[,c(nmid1, weights), with = F])
+      wg <- foreach(ii = unique(id1)) %do% {x <- wg[id1 %in% ii, , drop = F];x[,2] <- x[,2]*nrow(x)/sum(x[,2]);return(x)}
+      swg <- Reduce("+", llply(wg, function(x) unique(x[,3])))
+      wg <- llply(wg, function(x) {x[,3] <- x[,3]*length(unique(id1))/swg; x$both <- x[, 2]*x[,3]; return(x)}) 
+      
+      
+      wgt1i <- llply(wg, function(x) x[,2])
+      wgt2i <- llply(wg, function(x) x[,3])
+      wgt12i <- llply(wg, function(x) x[,4])
+      
+    } else {
+      wg <- foreach(ii = unique(id1)) %do% {sum(id1 %in% ii)}
+      wgt1i <- llply(wg, function(x) rep(1, x))
+      wgt2i <- llply(wg, function(x) rep(1, x))
+      wgt12i <- llply(wg, function(x) rep(1, x))
+    }
+    if (grepl("-1",random1)) {
+      Z1 <- as(as( rr1, "matrix"), "Matrix")
+    } else {
+      Z1 <- as(as(cbind(matrix(1, ncol = 1, nrow = nrow(rr1),
+                               dimnames = list(NULL, "(Intercept)")), rr1), "matrix"),
+               "Matrix")
+    }
+    q <- ncol(Z1)
+    colnames(Z1) <- paste(nmid1, colnames(Z1), sep = ".")
+    clnms1 <- colnames(Z1)
+    Z1 <- foreach(i = unique(id1)) %do% {Z1[id1 %in% i, ,drop = F]}
+    Z1 <- mapply(function(z, w) {z*1/sqrt(w)}, Z1, wgt2i)
+    Z <- bdiag(Z1)
+    n1 <- length(unique(id1))
+    l <- q*(q+1)/2
+    TT1 <- formTT(q)
+     QI <- llply(TT1, function(tt) llply(Z1, function(z) z%*%tt%*%t(z)))
+  } else {
+    Z1 <- NULL
+    clnms1 <- NULL
+    n1 <- NULL
+    QI <- NULL
+  }
+  
+  l <- l+1
+  Qj <- c(list(llply(QI[[1]], function(zj) diag(nrow(zj)))), QI)
+  Qj[[1]] <- foreach(i = 1:length(Qj[[1]])) %do% {1/wgt12i[[i]]*Qj[[1]][[i]]}
+  QI <- llply(Qj, function(x) bdiag(x))
+  Xj <- foreach(i = unique(id1)) %do% {X[id1 %in% i, ,drop = F]}
+  X <- as(foreach(ii = 1:length(Xj), .combine = rbind) %do% as.matrix(Xj[[ii]]), "Matrix")
+  Yj <- foreach(i = unique(id1)) %do% {Y[id1 %in% i,,drop = F]}
+  Y <- as(foreach(ii = 1:length(Xj), .combine = rbind) %do% as.matrix(Yj[[ii]]), "Matrix")
+  
+  if (is.null(apriori)) apriori <- rep(1, length(QI))
+  
+  Vj <- foreach(i = 1:length(unique(id1))) %do% solve(Reduce("+", mapply(function(qj, th) th*qj[[i]], Qj, apriori)))
+  V <- bdiag(Vj)
+  
+  iM <- iMINQUE(V, X, Y, QI, wgt2i)
+  ##print(iM$theta)
+  gc()
+  
+#   theta <- iM$theta
+#   #print(theta)
+#   iM <- iMINQUE(iM$V, X, Y, QI, wgt2i)
+  
+  P <- ginv(as.matrix((crossprod(X, iM$V)%*%X)))
+  iM$beta <- tcrossprod(P, X)%*%iM$V%*%Y
+  gc()
+  sigma2 <- iM$theta[1]
+  names(sigma2) <- "sigma2"
+  TT <- fillT(iM$theta[-1])
+  diag(TT)[diag(TT) < 0] <- 0
+  dimnames(TT) <- list(clnms1, clnms1)
+  beta <- as.numeric(iM$beta)
+  names(beta) <- colnames(X)
+  
+  return(list(sigma2 = sigma2, TT = TT, beta = beta, N = N, n1 = n1))
+  
+}
+
+myMINQUE2 <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL,
+                      iterate = FALSE) {
+  #dt <- arrange(dt, IDSCHOOL)
+  N <- nrow(dt)
+  # Form Y and fixed effects data frame
+  ff <- model.matrix(as.formula(fixed), model.frame(fixed, dt))
+  Y <- as(as(model.frame(fixed, dt)[,1, drop = F], "matrix"), "Matrix")
+  if (grepl("-1",fixed)&grepl(colnames(ff)[1], "(Intercept)")) {
     X <- as(as(ff[,-1, drop = F], "matrix"), "Matrix")
   } else {
     X <- as(as(ff, "matrix"), "Matrix")
@@ -1007,9 +1196,6 @@ myMINQUE2 <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL)
     QI <- NULL
   }
   
-  #   wgt1i <- foreach(i = unique(id1)) %do% {wgt1[id1 %in% i]}
-  #   wgt2i <- foreach(i = unique(id1)) %do% {wgt2[id1 %in% i]}
-  #   wgt12i <- foreach(i = unique(id1)) %do% {wgt12[id1 %in% i]}
   l <- l+1
   Qj <- c(list(llply(QI[[1]], function(zj) diag(nrow(zj)))), QI)
   Qj[[1]] <- foreach(i = 1:length(Qj[[1]])) %do% {1/wgt12i[[i]]*Qj[[1]][[i]]}
@@ -1020,48 +1206,26 @@ myMINQUE2 <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL)
   Y <- as(foreach(ii = 1:length(Xj), .combine = rbind) %do% as.matrix(Yj[[ii]]), "Matrix")
   
   if (is.null(apriori)) apriori <- rep(1, length(QI))
-  #   Z2 <- cBind(apriori[1]/sum(apriori)*diag(nrow(Y)), apriori[2]/sum(apriori)*Z)
-  #   V <- Z2%*%t(Z2)
-  
+
   Vj <- foreach(i = 1:length(unique(id1))) %do% solve(Reduce("+", mapply(function(qj, th) th*qj[[i]], Qj, apriori)))
   V <- bdiag(Vj)
-  
-  #   Zj <- list(diag(1/sqrt(wgt12i)), Z1)
-  #   ZI <- list(diag(1/sqrt(wgt12)), Z1)
-  #ZIn <- list(diag(nrow(Z1n)), Z1n)
-  #   
-  #   QI <- llply(ZI, function(x) x%*%t(x))
-  #   Xj <- foreach(i = unique(id1)) %do% {X[id1 %in% i,,drop = F]}
-  #   Yj <- foreach(i = unique(id1)) %do% {Y[id1 %in% i,,drop = F]}
-  #Zj <- foreach(i = unique(id1)) %do% {Z[id1 %in% i,,drop = F]}
-  #   Vj <- foreach(i = 1:length(unique(id1))) %do% solve(Reduce("+", llply(Qj, function(qj) qj[[i]])))
-  #   V <- bdiag(Vj)
   
   iM <- iMINQUE(V, X, Y, QI, wgt2i)
   ##print(iM$theta)
   gc()
-  #   doIM <- T
-  #   while(doIM){
+
   theta <- iM$theta
   #print(theta)
   iM <- iMINQUE(iM$V, X, Y, QI, wgt2i)
-  #     doIM <- (round(sum(abs(iM$theta - theta))) != 0)
-  #   }
-  #   s2 <- iM$theta[1]
-  #   tau <- iM$theta[2]
-  #   ywj <- mapply(function(y, w){sum(w*y)/sum(w)}, Yj, wgt1i)
-  #   xwj <- mapply(function(x, w){as.matrix(apply(w*x, 2, sum))/sum(w)}, Xj, wgt1i, SIMPLIFY = F)  
-  #   gj <- llply(wgt1i, function(w) tau/(s2/sum(w)+tau))
-  #   if(dim(xwj[[1]])[1]==1) dij <- mapply(function(x, g, xw, w) {w*(x-as.numeric(g*xw))}, Xj, gj, xwj, wgt12i)
-  #   else dij <- mapply(function(x, g, xw, w) {w*t(t(x)-g*xw)}, Xj, gj, xwj, wgt12i)
-  #   P <- ginv(as.matrix(Reduce("+", mapply(function(x, d){t(t(x)%*%d)}, Xj, dij))))
-  #   Q <- Reduce("+", mapply(function(y, d){t(t(y)%*%d)}, Yj, dij))
-  #   beta <- as.matrix(P%*%Q)
-  #   rownames(beta) <- colnames(X)
-  #   ranef <- mapply(function(g, y, x){y-t(x)%*%beta}, gj, ywj, xwj)
-  #   fit <- mapply(function(x, z, u) x%*%iM$beta+z%*%u, Xj, Zj, ranef)
-  #   fit <- do.call(rBind, fit)
-  #   residuals <- Y-fit
+  
+  if(iterate) {
+    while(iterate){
+      theta <- iM$theta
+      iM <- iMINQUE(iM$V, X, Y, QI, wgt2i)
+      if (all((theta - iM$theta)/theta < 0.00001)) iterate <- F
+    }
+  }
+
   P <- ginv(as.matrix((crossprod(X, iM$V)%*%X)))
   iM$beta <- tcrossprod(P, X)%*%iM$V%*%Y
   gc()
@@ -1072,34 +1236,6 @@ myMINQUE2 <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL)
   beta <- as.numeric(iM$beta)
   names(beta) <- colnames(X)
   
-  #     # Variances:
-  #     #   ccj <- mapply(function(x,y, v) t(x)%*%v%*%(y-x%*%iM$beta)%*%t(y-x%*%iM$beta)%*%v%*%x, Xj, Yj, iM$Vj)
-  #     #   Bcov <- (n1/(n1-1))*iM$P%*%Reduce("+", ccj)%*%iM$P
-  #     Vst <- mapply(function(z, w) {sigma2*diag(nrow(z))+(1*unique(w)*z)%*%TT%*%t(z)}, Z1, wgt2i)
-  #     Vj <- llply(Z1, function(z) ginv(as.matrix(z%*%TT%*%t(z)+sigma2)))
-  #     Bcov <- iM$P%*%(Reduce("+", mapply(function(x, v, vst){t(x)%*%v%*%vst%*%v%*%x}, Xj, Vj, Vst)))%*%iM$P
-  #     Cj <- mapply(function(vst, x, v) {vst-x%*%Bcov%*%t(x)-2*vst%*%v%*%x%*%iM$P%*%t(x)}, Vst, Xj, Vj)
-  #     PP <- mapply(function(w, z, v) {(1/sqrt(unique(w))*TT%*%t(z))%*%v}, wgt2i, Z1, Vj)
-  #     varcov <- mapply(function(pp, cj) {pp%*%cj%*%t(pp)}, PP, Cj)
-  #     #varcov <- mapply(function(z, x, v, wgt) TT - TT%*%(t(z)*unique(wgt))%*%v%*%(solve(v)-x%*%Bcov%*%t(x))%*%v%*%(z*unique(wgt))%*%TT, Z1, Xj, iM$Vj, wgt2i)
-  #     #varcov <- mapply(function(z, x, v) TT - TT%*%t(z)%*%v%*%z%*%TT, Z1, Xj, iM$Vj)
-  #     
-  #     #Tcov <- (n1/(n1-1))*solve(iM$S)
-  #     ranef <- mapply(function(x, y, v, z, wgt) (TT%*%(t(z)*1/sqrt(unique(wgt)))%*%v%*%(y - x%*%iM$beta)),Xj, Yj, Vj, Z1, wgt2i)
-  #     
-  #     fit <- mapply(function(x, z, u, wgt) x%*%iM$beta+(z*sqrt(unique(wgt)))%*%u, Xj, Z1, ranef, wgt2i)
-  #     fit <- do.call(rBind, fit)
-  #     ranef <- llply(ranef, t)
-  #     ranef <- do.call(rBind, ranef)
-  #     rownames(ranef) <- unique(id1)
-  #     residuals <- Y-fit
-  #     gc()
-  #     vv <- do.call(cbind, llply(varcov, as.matrix))
-  #     dim(vv) <- c(dim(varcov[[1]]), length(varcov))
-  #     ranef <- as.data.frame(as.matrix(ranef))
-  #     attr(ranef, "postVar") <- vv
-  
-  #   return(list(sigma2 = sigma2, TT = TT, beta = beta, N = N, n1 = n1, ranef = list(ranef), cov = Bcov, fitted = fit, resid = residuals))
   return(list(sigma2 = sigma2, TT = TT, beta = beta, N = N, n1 = n1))
   
 }
@@ -1728,4 +1864,236 @@ MyCombineREML <- function (results, variances, call = sys.call(), df.complete = 
                missinfo = (r + 2/(df + 3))/(r + 1))
   class(rval) <- "MIresult"
   rval
+}
+
+# improved list of objects
+.ls.objects <- function (pos = 1, pattern, order.by,
+                         decreasing=FALSE, head=FALSE, n=5) {
+  napply <- function(names, fn) sapply(names, function(x)
+    fn(get(x, pos = pos)))
+  names <- ls(pos = pos, pattern = pattern)
+  obj.class <- napply(names, function(x) as.character(class(x))[1])
+  obj.mode <- napply(names, mode)
+  obj.type <- ifelse(is.na(obj.class), obj.mode, obj.class)
+  obj.size <- napply(names, object.size)
+  obj.dim <- t(napply(names, function(x)
+    as.numeric(dim(x))[1:2]))
+  vec <- is.na(obj.dim)[, 1] & (obj.type != "function")
+  obj.dim[vec, 1] <- napply(names, length)[vec]
+  out <- data.frame(obj.type, obj.size, obj.dim)
+  names(out) <- c("Type", "Size", "Rows", "Columns")
+  if (!missing(order.by))
+    out <- out[order(out[[order.by]], decreasing=decreasing), ]
+  if (head)
+    out <- head(out, n)
+  out
+}
+# shorthand
+lsos <- function(..., n=10) {
+  .ls.objects(..., order.by="Size", decreasing=TRUE, head=TRUE, n=n)
+}
+
+
+
+simPop <- function(M = 100, formul="Y2 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
+                   popF = makePOP4){
+  pop1 <- popF(M = M)
+  
+  mm <- lmer(as.formula(formul), data = pop1)
+  if(length(mm@optinfo$conv$lme4) != 0){
+    return(simPop(M, formul, popF))
+  } else {
+    sm <- summary(mm)
+    
+    f.f <- strsplit(formul, "\\+\\(")
+    r.f <- paste("~", gsub("\\)", "", f.f[[1]][2]))
+    f.f <- f.f[[1]][1]
+    min1 <- myMINQUE2(dt = pop1,
+                      fixed = f.f,
+                      random1 = r.f,
+                      weights = NULL)
+    gc()
+  }
+  return(c(fixef(mm), sm$sigma^2, unlist(sm$varcor[[1]]), min1$beta,
+           min1$sigma2, unlist(min1$TT)))
+  
+}
+
+simPopD <- function(M = 30, formul="Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
+                   popF = makePOP4){
+  pop1 <- popF(M = M)
+  
+  mm <- lmer(as.formula(formul), data = pop1)
+  if(length(mm@optinfo$conv$lme4) != 0){
+    return(simPop(M, formul, popF))
+  } else {
+    sm <- summary(mm)
+    
+    f.f <- strsplit(formul, "\\+\\(")
+    r.f <- paste("~", gsub("\\)", "", f.f[[1]][2]))
+    f.f <- f.f[[1]][1]
+    min1 <- myMINQUE(dt = pop1,
+                      fixed = f.f,
+                      random1 = r.f,
+                      weights = NULL,
+                      apriori = c(1, 0, 0, 0))
+    min2 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = NULL,
+                     apriori = c(1, 1, 1, 1))
+    iv <- summary(lm(f.f, pop1))
+    min3 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = NULL,
+                     apriori = c(iv$sigma, 0, 0, 0))
+    gc()
+  }
+  return(c(fixef(mm), min1$beta, min2$beta, min3$beta, 
+           sm$sigma^2, min1$sigma2, min2$sigma2, min3$sigma2,
+           unlist(sm$varcor[[1]]),  unlist(min1$TT),  unlist(min2$TT),  unlist(min3$TT)))
+  
+}
+
+simPopB <- function(M = 100, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)", 
+                    popF = makePOP7){
+  pop1 <- popF(M = M)
+  
+  mm <- lmer(as.formula(formul), data = pop1)
+  if(length(mm@optinfo$conv$lme4) != 0){
+    return(simPop(M, formul, popF))
+  } else {
+    sm <- summary(mm)
+    
+    f.f <- strsplit(formul, "\\+\\(")
+    r.f <- paste("~", gsub("\\)", "", f.f[[1]][2]))
+    f.f <- f.f[[1]][1]
+    min1 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = NULL,
+                     apriori = c(1, 0))
+    min2 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = NULL,
+                     apriori = c(1, 1))
+    iv <- summary(lm(f.f, pop1))
+    min3 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = NULL,
+                     apriori = c(iv$sigma, 0))
+    gc()
+  }
+  return(c(fixef(mm), min1$beta, min2$beta, min3$beta, 
+           sm$sigma^2, min1$sigma2, min2$sigma2, min3$sigma2,
+           unlist(sm$varcor[[1]]),  unlist(min1$TT),  unlist(min2$TT),  unlist(min3$TT)))
+  
+}
+
+simPopMy <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)", 
+                    popF = makePOPW, sigma2 = 2000, tau00 = 100, tau01 = 50,
+                    tau11 = 100){
+  pop1 <- popF(M = M, ...)
+  smpl <- samplePOP(pop1, m)
+  smpl$w1 <- smpl$wstd*smpl$wcl
+  smpl$w2 <- smpl$wsch
+  
+  mm <- lmer(as.formula(formul), data = pop1)
+  if(length(mm@optinfo$conv$lme4) != 0){
+    return(simPop(M, formul, popF))
+  } else {
+    sm <- summary(mm)
+    
+    f.f <- strsplit(formul, "\\+\\(")
+    r.f <- paste("~", gsub("\\)", "", f.f[[1]][2]))
+    f.f <- f.f[[1]][1]
+    min1 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = NULL,
+                     apriori = c(1, 0, 0, 0))
+    min2 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = c("w1", "w2"),
+                     apriori = c(1, 0, 0, 0))
+    min3 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = NULL,
+                     apriori = c(1, 1, 1, 1))
+    min4 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = c("w1", "w2"),
+                     apriori = c(1, 1, 1, 1))
+    iv <- summary(lm(f.f, pop1))$sigma^2
+    min5 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = NULL,
+                     apriori = c(iv, 1, 1, 1))
+    min6 <- myMINQUE(dt = pop1,
+                     fixed = f.f,
+                     random1 = r.f,
+                     weights = c("w1", "w2"),
+                     apriori = c(iv, 1, 1, 1))
+    gc()
+  }
+  return(c(fixef(mm), min1$beta, min2$beta, min3$beta, min4$beta,
+           min5$beta, min6$beta,
+           sm$sigma^2, min1$sigma2, min2$sigma2, min3$sigma2,
+           min4$sigma2, min5$sigma2, min6$sigma2,
+           unlist(sm$varcor[[1]]),  unlist(min1$TT),  unlist(min2$TT),
+           unlist(min3$TT), unlist(min4$TT), unlist(min5$TT), unlist(min6$TT)))
+  
+}
+
+makePOP5 <- function(M = 30){
+  require(data.table)
+  require(MASS)
+  struct <- 1:M
+  struct <- data.table(IDSCHOOL = struct)
+  
+  # Make second level errors
+  ttN <- matrix(c(0.005, 0.0025, 0.0025, 0.005), nrow = 2)
+  ddN <- mvrnorm(n = M, rep(0, 2), ttN)
+  
+  ttX <- matrix(c(1, sqrt(0.5), sqrt(0.5), 1), nrow = 2)
+  ddX <- mvrnorm(n = M, rep(0, 2), ttX)
+  
+  struct[, d0N := ddN[, 1]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, d0X := ((ddX[, 1]^2 - 1)/sqrt(2))*sqrt(0.005)]
+  
+  struct[, d1N := ddN[, 2]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, d1X := ((ddX[, 2]^2 - 1)/sqrt(2))*sqrt(0.005)] 
+  
+  uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
+  Nj <- round(50*exp(uj))
+  
+  struct[, Nj := Nj]
+  
+  struct[, psch := Nj/sum(Nj)]
+  
+  #
+  eN <- struct[, matrix(rnorm(Nj,0, sqrt(0.5)), ncol = 1), by = IDSCHOOL]
+  setnames(eN, "V1", "eN")
+  eN$eN <- rnorm(nrow(eN),0, sqrt(0.5))
+  eN$eX <- ((rchisq(sum(struct$Nj), 1) - 1)/sqrt(2))*sqrt(0.5)
+  
+  
+  struct <- merge(struct, eN, by = "IDSCHOOL")
+  
+  struct[, c("nj", "pstud") := list(round(ifelse(length(Nj)<30, length(Nj), ifelse(length(Nj)>=30&length(Nj)<60, length(Nj)/2, length(Nj)/3))), 1/length(Nj)), by = IDSCHOOL]
+  struct$ptot <- struct$psch*struct$pstud
+  struct$X1 <- rnorm(nrow(struct), 0, 1)
+  
+  struct[, c("Y1", "Y2") := list((1+d0N)+(0.3+d1N)*X1+eN,
+                                 (1+d0X)+(0.3+d1X)*X1+eX)]
+  
+  struct[, IDSTUD := 1:nrow(struct)]
+  return(struct)
 }

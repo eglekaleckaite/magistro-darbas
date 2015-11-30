@@ -1,0 +1,81 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[left=3.25cm,right=3.25cm]{geometry}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amssymb,amsmath}
+\usepackage{theorem}
+\usepackage{calc}
+\usepackage{color}
+\usepackage{bm}
+\usepackage{verbatim}
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{makeidx}
+\usepackage{float}
+\usepackage{dsfont}
+\usepackage{bbm}
+\usepackage[toc,page]{appendix}
+\usepackage{longtable}
+\usepackage{lipsum}
+\usepackage{tocbibind}
+\usepackage{listings}
+\usepackage{rotating}
+
+\begin{document}
+
+Paprasta duomenų simuliacija
+
+\begin{equation*}
+\left\{
+\begin{array}{l}
+Y_{ij} = \beta_{0j}+\beta_{1j}\times X_{ij}+\varepsilon_{ij}; \\
+\beta_{0j} = \gamma_{00} +u_{0j}; \\
+\beta_{1j} = \gamma_{10} +u_{1j}; \\
+\end{array} \right.
+\end{equation*}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{cccccc}
+\hline
+&& \multicolumn{4}{c}{Normaliosios}  \\
+\hline
+&& \multicolumn{2}{c}{REML} & \multicolumn{2}{c}{MINQUE}  \\
+  \hline
+Parametras& Reikšmė  & Įvertis & Skirtumas & Įvertis & Skirtumas  \\ 
+  \hline
+$\gamma_{00}$&1 & 0.999479 & -0.000521 & 0.999489 & -0.000511  \\ 
+$\gamma_{10}$&0.3& 0.300811 & 0.000811 & 0.300947 & 0.000947  \\ 
+ $\sigma^2$&0.5 & 0.498191 & -0.001809 & 0.498376 & -0.001624  \\ 
+$\tau_{00}$&0.005 & 0.006018 & 0.001018 & 0.005933 & 0.000933  \\ 
+ $\tau_{01}$&0.0025 & 0.002699 & 0.000199 & 0.003023 & 0.000523  \\ 
+$ \tau_{11}$& 0.005 & 0.005142 & 0.000142 & 0.005116 & 0.000116  \\ 
+   \hline
+\end{tabular}
+\begin{tabular}{cccccc}
+\hline
+&& \multicolumn{4}{c}{$\chi^2$} \\
+\hline
+&& \multicolumn{2}{c}{REML} & \multicolumn{2}{c}{MINQUE}  \\
+  \hline
+Parametras& Reikšmė  & Įvertis & Skirtumas & Įvertis & Skirtumas  \\ 
+  \hline
+$\gamma_{00}$&1  & 1.001126 & 0.001126 & 1.001557 & 0.001557 \\ 
+$\gamma_{10}$&0.3 & 0.300695 & 0.000695 & 0.300097 & 0.000097 \\ 
+ $\sigma^2$&0.5 & 0.498948 & -0.001052 & 0.494877 & -0.005123 \\ 
+$\tau_{00}$&0.005  & 0.005942 & 0.000942 & 0.008646 & 0.003646 \\ 
+ $\tau_{01}$&0.0025  & 0.002915 & 0.000415 & 0.001709 & -0.000791 \\ 
+$ \tau_{11}$& 0.005  & 0.005509 & 0.000509 & 0.006263 & 0.001263 \\ 
+   \hline
+\end{tabular}
+\end{table}
+\end{document}

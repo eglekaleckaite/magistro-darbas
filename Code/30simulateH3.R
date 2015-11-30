@@ -69,7 +69,7 @@ mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
   sm0 <- lme4:::summary.merMod(tt0)
   c0 <- confint(tt0)
   c0[1:2,] <- c0[1:2,]^2
-  ivM4 <- try(bootMINQUE2(fixed = "Y1 ~ 1+W+X1", random = "~1|IDSCHOOL", wgt = c("w1", "w2"),
+  ivM4 <- try(bootMINQUE2(fixed = "Y1 ~ 1+W+X1+W*X1", random = "~1+X1|IDSCHOOL", wgt = c("w1", "w2"),
                              idstrata = "IDSTRATI", R = 100, data = smpl, BFUN = bootSample))
   ivM5 <- ivM4
 #     try(bootMINQUE2(fixed = "Y4 ~ 1+W+X1+X2", random = "~1|IDSCHOOL", wgt = NULL,
