@@ -1996,47 +1996,49 @@ simPopB <- function(M = 100, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)",
 simPopMy <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)", 
                     popF = makePOPW, sigma2 = 2000, tau00 = 100, tau01 = 50,
                     tau11 = 100){
-  pop1 <- popF(M = M, ...)
+  pop1 <- popF(M = M, sigma2 = sigma2, tau00 = tau00, 
+               tau01 = tau01, tau11 = tau11)
   smpl <- samplePOP(pop1, m)
   smpl$w1 <- smpl$wstd*smpl$wcl
   smpl$w2 <- smpl$wsch
   
-  mm <- lmer(as.formula(formul), data = pop1)
+  mm <- lmer(as.formula(formul), data = smpl)
   if(length(mm@optinfo$conv$lme4) != 0){
-    return(simPop(M, formul, popF))
+    return(simPopMy(M, formul, popF, sigma2 = sigma2, tau00 = tau00, 
+                  tau01 = tau01, tau11 = tau11, m = m))
   } else {
     sm <- summary(mm)
     
     f.f <- strsplit(formul, "\\+\\(")
     r.f <- paste("~", gsub("\\)", "", f.f[[1]][2]))
     f.f <- f.f[[1]][1]
-    min1 <- myMINQUE(dt = pop1,
+    min1 <- myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = NULL,
                      apriori = c(1, 0, 0, 0))
-    min2 <- myMINQUE(dt = pop1,
+    min2 <- myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = c("w1", "w2"),
                      apriori = c(1, 0, 0, 0))
-    min3 <- myMINQUE(dt = pop1,
+    min3 <- myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = NULL,
                      apriori = c(1, 1, 1, 1))
-    min4 <- myMINQUE(dt = pop1,
+    min4 <- myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = c("w1", "w2"),
                      apriori = c(1, 1, 1, 1))
-    iv <- summary(lm(f.f, pop1))$sigma^2
-    min5 <- myMINQUE(dt = pop1,
+    iv <- summary(lm(f.f, smpl))$sigma^2
+    min5 <- myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = NULL,
                      apriori = c(iv, 1, 1, 1))
-    min6 <- myMINQUE(dt = pop1,
+    min6 <- myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = c("w1", "w2"),

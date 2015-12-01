@@ -1,4 +1,4 @@
-starting worker for localhost:11197 
+starting worker for localhost:11400 
 Type: EXEC 
 Loading required package: Matrix
 
@@ -41,273 +41,4 @@ The following objects are masked from 'package:snow':
     stopCluster
 
 Type: EXEC 
-  |                                                                                     |                                                                             |   0%Type: EXEC 
-  |                                                                                     |=                                                                            |   1%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=                                                                            |   2%  |           |                                                                                     |==                                                                           |   3%  |           |           |                                                                                     |===                                                                          |   4%  |         Type: EXEC 
-  |                                                                                     |====                                                                         |   5%Type: EXEC 
-  |                                                                                     |====                                                                         |   6%  |           |                                                                                     |=====                                                                        |   6%  |           |                                                                                     |=====                                                                        |   7%Type: EXEC 
-  |                                                                                     |======                                                                       |   8%Type: EXEC 
-  |                                                                                     |=======                                                                      |   9%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |========                                                                     |  10%Type: EXEC 
-  |                                                                                     |========                                                                     |  11%Type: EXEC 
-  |                                                                                     |=========                                                                    |  11%Type: EXEC 
-  |                                                                                     |=========                                                                    |  12%Type: EXEC 
-  |                      Type: EXEC 
-  |                                                                                     |==========                                                 |                                   Type: EXEC 
-  |                                                                                     |===========                                                                  |  14%Type: EXEC 
-  |                                                                                     |===========                                                                  |  15%Type: EXEC 
-  |                                                                                     |============                                                                 |  15%Type: EXEC 
-  |                                                                                     |============                                                                 |  16%Type: EXEC 
-  |                                                                                     |=============                                                           |                      Type: EXEC 
-  |                                                                                     |==============                                                               |  18%Type: EXEC 
-  |                                                                                     |==============                                                               |  19%Type: EXEC 
-  |                                                                                     |===============                                                              |  19%Type: EXEC 
-  |                                                                                     |===============                                                              |  20%Type: EXEC 
-  |                                                                                     |================                                                             |  20%Type: EXEC 
-  |                                                                                     |================                                                             |  21%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=================                                                            |  22%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |==================                                                           |  23%Type: EXEC 
-  |                                                                                     |==================                                                           |  24%Type: EXEC 
-  |                                                                                     |===================                                                          |  24%Type: EXEC 
-  |                                                                                     |===================                                                          |  25%Type: EXEC 
-  |                                                                                     |====================                                                         |  26%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=====================                                                        |  27%Type: EXEC 
-  |                                                                                     |=====================                                                        |  28%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-  |                                                                                     |======================                                                       |  28%Type: EXEC 
-  |                                                                                     |======================                                                       |  29%Type: EXEC 
-  |                                                                                     |=======================                                                      |  29%Type: EXEC 
-  |                                                                                     |=======================                                                      |  30%Type: EXEC 
-  |                                                                                     |========================                                                     |  31%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=========================                                                    |  32%Type: EXEC 
-  |                                                                                     |=========================                                                    |  33%Type: EXEC 
-  |                                                                                     |==========================                                                   |  33%Type: EXEC 
-  |                                                                                     |==========================                                                   |  34%Type: EXEC 
-  |                                                                                     |===========================                                                  |  35%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |===========================                                                  |  36%Type: EXEC 
-  |                                                                                     |============================                                                 |  36%Type: EXEC 
-  |                                                                                     |============================                                                 |  37%Type: EXEC 
-  |                                                                                     |=============================                                                |  38%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |==============================                                               |  39%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |===============================                                              |  40%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |================================                                             |  41%Type: EXEC 
-  |                                                                                     |================================                                             |  42%Type: EXEC 
-  |                                                                                     |=================================                                            |  43%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |==================================                                           |  44%Type: EXEC 
-  |                                                                                     |==================================                                           |  45%Type: EXEC 
-  |                                                                                     |===================================                                          |  45%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-  |                                                                                     |===================================                                          |  46%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |====================================                                         |  47%Type: EXEC 
-  |                                                                                     |=====================================                                        |  47%Type: EXEC 
-  |                                                                                     |=====================================                                        |  48%Type: EXEC 
-  |                                                                                     |======================================                                       |  49%Type: EXEC 
-  |                                                                                     |======================================                                       |  50%Type: EXEC 
-  |                                                                                     |=======================================                                      |  50%Type: EXEC 
-  |                                                                                     |=======================================                                      |  51%Type: EXEC 
-  |                                                                                     |========================================                                     |  52%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=========================================                                    |  53%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-Type: EXEC 
-  |                                                                                     |=========================================                                    |  54%Type: EXEC 
-  |                                                                                     |==========================================                                   |  54%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-  |                                                                                     |==========================================                                   |  55%Type: EXEC 
-  |                                                                                     |===========================================                                  |  55%Type: EXEC 
-  |                                                                                     |===========================================                                  |  56%Type: EXEC 
-  |                                                                                     |============================================                                 |  57%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=============================================                                |  58%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-  |                                                                                     |=============================================                                |  59%Type: EXEC 
-  |                                                                                     |==============================================                               |  59%Type: EXEC 
-  |                                                                                     |==============================================                               |  60%Type: EXEC 
-  |                                                                                     |===============================================                              |  61%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |================================================                             |  62%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=================================================                            |  63%Type: EXEC 
-  |                                                                                     |=================================================                            |  64%Type: EXEC 
-  |                                                                                     |==================================================                           |  64%Type: EXEC 
-  |                                                                                     |==================================================                           |  65%Type: EXEC 
-  |                                                                                     |===================================================                          |  66%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |===================================================                          |  67%Type: EXEC 
-  |                                                                                     |====================================================                         |  67%Type: EXEC 
-  |                                                                                     |====================================================                         |  68%Type: EXEC 
-  |                                                                                     |=====================================================                        |  69%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-  |                                                                                     |======================================================                       |  70%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |======================================================                       |  71%Type: EXEC 
-  |                                                                                     |=======================================================                      |  71%Type: EXEC 
-  |                                                                                     |=======================================================                      |  72%Type: EXEC 
-  |                                                                                     |========================================================                     |  73%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=========================================================                    |  74%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |==========================================================                   |  75%Type: EXEC 
-  |                                                                                     |==========================================================                   |  76%Type: EXEC 
-  |                                                                                     |===========================================================                  |  76%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-  |                                                                                     |===========================================================                  |  77%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |============================================================                 |  78%Type: EXEC 
-  |                                                                                     |=============================================================                |  79%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |==============================================================               |  80%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |===============================================================              |  81%Type: EXEC 
-  |                                                                                     |===============================================================              |  82%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-Type: EXEC 
-  |                                                                                     |================================================================             |  83%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=================================================================            |  84%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-  |                                                                                     |=================================================================            |  85%Type: EXEC 
-  |                                                                                     |==================================================================           |  85%Type: EXEC 
-  |                                                                                     |==================================================================           |  86%Type: EXEC 
-  |                                                                                     |===================================================================          |  87%Type: EXEC 
-  |                                                                                     |====================================================================         |  88%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |====================================================================         |  89%Type: EXEC 
-  |                                                                                     |=====================================================================        |  90%Type: EXEC 
-  |                                                                                     |======================================================================       |  90%Type: EXEC 
-  |                                                                                     |======================================================================       |  91%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-  |                                                                                     |=======================================================================      |  92%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=======================================================================      |  93%Type: EXEC 
-  |                                                                                     |========================================================================     |  93%Type: EXEC 
-  |                                                                                     |========================================================================     |  94%Type: EXEC 
-  |                                                                                     |=========================================================================    |  94%Type: EXEC 
-  |                                                                                     |=========================================================================    |  95%Type: EXEC 
-  |                                                                                     |==========================================================================   |  95%Type: EXEC 
-  |                                                                                     |==========================================================================   |  96%Type: EXEC 
-  |                                                                                     |==========================================================================   |  97%Type: EXEC 
-  |                                                                                     |===========================================================================  |  97%Type: EXEC 
-  |                                                                                     |===========================================================================  |  98%Type: EXEC 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-  |                                                                                     |============================================================================ |  98%Type: EXEC 
-  |                                                                                     |============================================================================ |  99%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |=============================================================================| 100%Type: DONE 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-                                 |=========================================================================    |  95%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |==========================================================================   |  96%Type: EXEC 
-  |                                                                                     |===========================================================================  |  97%Type: EXEC 
-Type: EXEC 
-  |                                                                                     |============================================================================ |  98%Type: EXEC 
-  |                                                                                     |============================================================================ |  99%Type: EXEC 
-  |                                                                                     |=============================================================================|  99%Type: DONE 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-          |===========================================================================  |  98%Type: EXEC 
-  |                                                                                     |============================================================================ |  98%Type: EXEC 
-  |                                                                                     |============================================================================ |  99%Type: EXEC 
-  |                                                                                     |=============================================================================| 100%Type: DONE 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
- = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-  |                                                                                     |=============================================================================|  99%Type: EXEC 
-  |                                                                                     |=============================================================================| 100%Type: DONE 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-v(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-Type: EXEC 
-  |                                                                                     |=============================================================================| 100%Type: DONE 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
-Type: EXEC 
-  |                                                                                     |============================================================================ |  98%Type: EXEC 
-  |                                                                                     |============================================================================ |  99%Type: EXEC 
-  |                                                                                     |=============================================================================| 100%Type: DONE 
-Warning messages:
-1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  unable to evaluate scaled gradient
-2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
-  Model failed to converge: degenerate  Hessian with 1 negative eigenvalues
+Loading required package: matrixcalc
