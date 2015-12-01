@@ -8,37 +8,3 @@ The following object is masked from 'package:Matrix':
 
     expm
 
-gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.
-
-gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.
-
-Attaching package: 'gdata'
-
-The following object is masked from 'package:stats':
-
-    nobs
-
-The following object is masked from 'package:utils':
-
-    object.size
-
-
-Attaching package: 'data.table'
-
-The following object is masked from 'package:gdata':
-
-    last
-
-Loading required package: parallel
-
-Attaching package: 'parallel'
-
-The following objects are masked from 'package:snow':
-
-    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
-    clusterExport, clusterMap, clusterSplit, makeCluster, parApply,
-    parCapply, parLapply, parRapply, parSapply, splitIndices,
-    stopCluster
-
-Type: EXEC 
-Loading required package: matrixcalc
