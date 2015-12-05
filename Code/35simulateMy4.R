@@ -38,8 +38,8 @@ pb <- txtProgressBar(min = 1, max = N, style = 3)
 mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
   
   res <- simPopMy(M = 300, formul ="Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
-                  popF = makePOPW, sigma2 = 2000, tau00 = 2000, 
-                  tau01 = 1000, tau11 = 2000, m = 20)
+                  popF = makePOPW, sigma2 = 2000, tau00 = 800, 
+                  tau01 = 400, tau11 = 800, m = 35)
   if(class(res) == "try-error") return(NULL)
   
   setTxtProgressBar(pb, ii)
@@ -50,7 +50,7 @@ mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
 close(pb)
 stopCluster(cl) 
 
-save(mcmc, file = "Output/mcmcY1_simulMy_2000_2000_1000_2000_20.RData")
+save(mcmc, file = "Output/mcmcY1_simulMy_2000_800_400_800_35.RData")
 
 
 g00 <- rbind(mcmcRES(mcmc[,1], 450),
@@ -93,32 +93,32 @@ sigma2 <- rbind(mcmcRES(mcmc[,29], 2000),
                 mcmcRES(mcmc[,34], 2000),
                 mcmcRES(mcmc[,35], 2000))
 
-tau00 <- rbind(mcmcRES(mcmc[,36], 2000),
-               mcmcRES(mcmc[,40], 2000),
-               mcmcRES(mcmc[,44], 2000),
-               mcmcRES(mcmc[,48], 2000),
-               mcmcRES(mcmc[,52], 2000),
-               mcmcRES(mcmc[,56], 2000),
-               mcmcRES(mcmc[,60], 2000))
+tau00 <- rbind(mcmcRES(mcmc[,36], 800),
+               mcmcRES(mcmc[,40], 800),
+               mcmcRES(mcmc[,44], 800),
+               mcmcRES(mcmc[,48], 800),
+               mcmcRES(mcmc[,52], 800),
+               mcmcRES(mcmc[,56], 800),
+               mcmcRES(mcmc[,60], 800))
 
-tau01 <- rbind(mcmcRES(mcmc[,37], 1000),
-               mcmcRES(mcmc[,41], 1000),
-               mcmcRES(mcmc[,45], 1000),
-               mcmcRES(mcmc[,49], 1000),
-               mcmcRES(mcmc[,53], 1000),
-               mcmcRES(mcmc[,57], 1000),
-               mcmcRES(mcmc[,61], 1000))
+tau01 <- rbind(mcmcRES(mcmc[,37], 400),
+               mcmcRES(mcmc[,41], 400),
+               mcmcRES(mcmc[,45], 400),
+               mcmcRES(mcmc[,49], 400),
+               mcmcRES(mcmc[,53], 400),
+               mcmcRES(mcmc[,57], 400),
+               mcmcRES(mcmc[,61], 400))
 
-tau11 <- rbind(mcmcRES(mcmc[,39], 2000),
-               mcmcRES(mcmc[,43], 2000),
-               mcmcRES(mcmc[,47], 2000),
-               mcmcRES(mcmc[,51], 2000),
-               mcmcRES(mcmc[,55], 2000),
-               mcmcRES(mcmc[,59], 2000),
-               mcmcRES(mcmc[,63], 2000))
+tau11 <- rbind(mcmcRES(mcmc[,39], 800),
+               mcmcRES(mcmc[,43], 800),
+               mcmcRES(mcmc[,47], 800),
+               mcmcRES(mcmc[,51], 800),
+               mcmcRES(mcmc[,55], 800),
+               mcmcRES(mcmc[,59], 800),
+               mcmcRES(mcmc[,63], 800))
 
 
-sink("output_mcmcY1_simulMy_2000_2000_1000_2000_20.txt")
+sink("output_mcmcY1_simulMy_2000_800_400_800_35.txt")
 cat("g00\n")
 print(g00)
 cat("g01\n")
@@ -190,6 +190,3 @@ sink()
 #                   weights = c("w1", "w2"),
 #                   apriori= c(sg, 1, 1, 1)))
 
-qsigma2 <- quantile(mcmc[,29]/2000, probs = c(0.01, 0.05, 0.1, 0.2,
-                                              0.3, 0.4, 0.5, 0.6, 0.7,
-                                              0.8, 0.9, 0.95, 0.99))

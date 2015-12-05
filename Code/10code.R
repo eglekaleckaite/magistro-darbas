@@ -2012,37 +2012,43 @@ simPopMy <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)",
     f.f <- strsplit(formul, "\\+\\(")
     r.f <- paste("~", gsub("\\)", "", f.f[[1]][2]))
     f.f <- f.f[[1]][1]
-    min1 <- myMINQUE(dt = smpl,
+    min1 <- try(myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = NULL,
-                     apriori = c(1, 0, 0, 0))
-    min2 <- myMINQUE(dt = smpl,
+                     apriori = c(1, 0, 0, 0)))
+    if(class(min1)[1] == "try-error") min1 <- NULL
+    min2 <- try(myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = c("w1", "w2"),
-                     apriori = c(1, 0, 0, 0))
-    min3 <- myMINQUE(dt = smpl,
+                     apriori = c(1, 0, 0, 0)))
+    if(class(min2)[1] == "try-error") min2 <- NULL
+    min3 <- try(myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = NULL,
-                     apriori = c(1, 1, 1, 1))
-    min4 <- myMINQUE(dt = smpl,
+                     apriori = c(1, 1, 1, 1)))
+    if(class(min3)[1] == "try-error") min3 <- NULL
+    min4 <- try(myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = c("w1", "w2"),
-                     apriori = c(1, 1, 1, 1))
+                     apriori = c(1, 1, 1, 1)))
+    if(class(min4)[1] == "try-error") min4 <- NULL
     iv <- summary(lm(f.f, smpl))$sigma^2
-    min5 <- myMINQUE(dt = smpl,
+    min5 <- try(myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = NULL,
-                     apriori = c(iv, 1, 1, 1))
-    min6 <- myMINQUE(dt = smpl,
+                     apriori = c(iv, 1, 1, 1)))
+    if(class(min5)[1] == "try-error") min5 <- NULL
+    min6 <- try(myMINQUE(dt = smpl,
                      fixed = f.f,
                      random1 = r.f,
                      weights = c("w1", "w2"),
-                     apriori = c(iv, 1, 1, 1))
+                     apriori = c(iv, 1, 1, 1)))
+    if(class(min6)[1] == "try-error") min6 <- NULL
     gc()
   }
   return(c(fixef(mm), min1$beta, min2$beta, min3$beta, min4$beta,

@@ -39,7 +39,7 @@ mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
   
   res <- simPopMy(M = 300, formul ="Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
                   popF = makePOPW, sigma2 = 2000, tau00 = 2000, 
-                  tau01 = 1000, tau11 = 2000, m = 20)
+                  tau01 = 1000, tau11 = 2000, m = 35)
   if(class(res) == "try-error") return(NULL)
   
   setTxtProgressBar(pb, ii)
@@ -50,7 +50,7 @@ mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
 close(pb)
 stopCluster(cl) 
 
-save(mcmc, file = "Output/mcmcY1_simulMy_2000_2000_1000_2000_20.RData")
+save(mcmc, file = "Output/mcmcY1_simulMy_2000_2000_1000_2000_35.RData")
 
 
 g00 <- rbind(mcmcRES(mcmc[,1], 450),
@@ -118,7 +118,7 @@ tau11 <- rbind(mcmcRES(mcmc[,39], 2000),
                mcmcRES(mcmc[,63], 2000))
 
 
-sink("output_mcmcY1_simulMy_2000_2000_1000_2000_20.txt")
+sink("output_mcmcY1_simulMy_2000_2000_1000_2000_35.txt")
 cat("g00\n")
 print(g00)
 cat("g01\n")
@@ -190,6 +190,3 @@ sink()
 #                   weights = c("w1", "w2"),
 #                   apriori= c(sg, 1, 1, 1)))
 
-qsigma2 <- quantile(mcmc[,29]/2000, probs = c(0.01, 0.05, 0.1, 0.2,
-                                              0.3, 0.4, 0.5, 0.6, 0.7,
-                                              0.8, 0.9, 0.95, 0.99))
