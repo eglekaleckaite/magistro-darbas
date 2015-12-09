@@ -39,3 +39,7 @@
 \contentsline {section}{Iliustracij\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{38}{section*.17}
 \contentsline {section}{Iliustracij\k {u} s\k {a}ra\v {s}as}{38}{section*.18}
 \contentsline {section}{\numberline {A}MINQUE}{39}{appendix.A}
+\contentsline {section}{\numberline {B}Bagaka's MINQUE}{39}{appendix.B}
+\contentsline {subparagraph}{Dvigubas eksponentinis skirstinys}{40}{section*.19}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{40}{section*.20}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{40}{section*.21}

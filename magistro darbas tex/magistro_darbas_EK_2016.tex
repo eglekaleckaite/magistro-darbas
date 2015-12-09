@@ -136,7 +136,7 @@ TIMSS, PWIGLS, HLM
 
 \indent HLM modeliai yra platesnės mišrių efektų modelių klasės dalis. Dažniausiai sutinkama vertinimo procedūra yra REML - apribotas didžiausio tikėtinumo metodas (\textit{Restricted Maximum Likelihood}), kuris reikalauja paklaidų normalumo prielaidos išpildymo. 1970-1972 metais Rao išleido straipsnių ciklą, kur pristatė naują mišrių efektų modelių vertinimo procedūrą, nereikalaujančią anksčiau minėtos normalumo prielaidos MINQUE - nepaslinktą mažiausios kvadratinės normos įvertinį (\textit{Minimum Norm Quadratic Unbiased Estimator}). 
 %Tiesa, prie tam tikrų sąlygų ši procedūra yra identiška REML. 
-1992 metais Bagakas pritaikė MINQUE dviejų lygių HLM modeliams su atsitiktiniu postūmiu vertinti. Kadangi MINQUE procedūrai nebuvo apibrėžtas standartinių paklaidų skaičiavimas, Bagakas tam panaudojo savirankos metodą (\textit{angl. bootstrap}). 2006 metais Delpish savo daktaro disertacijoje simuliacijų būdu nustatė, jog MINQUE su saviranka duoda tikslesnius rezultatus nei REML. Vienas iš šio magistro darbo tikslų yra Monte Carlo simuliacijų būdu nustatyti, ar TIMSS duomenims MINQUE metodas gali potencialiai duoti geresnius rezultatus.
+1992 metais Bagaka's pritaikė MINQUE dviejų lygių HLM modeliams su atsitiktiniu postūmiu vertinti. Kadangi MINQUE procedūrai nebuvo apibrėžtas standartinių paklaidų skaičiavimas, Bagaka's tam panaudojo savirankos metodą (\textit{angl. bootstrap}). 2006 metais Delpish savo daktaro disertacijoje simuliacijų būdu nustatė, jog MINQUE su saviranka duoda tikslesnius rezultatus nei REML. Vienas iš šio magistro darbo tikslų yra Monte Carlo simuliacijų būdu nustatyti, ar TIMSS duomenims MINQUE metodas gali potencialiai duoti geresnius rezultatus.
 
 \indent HLM neretai naudojamas ir TIMSS - tarptautinis matematikos ir gamtos mokslų tyrimas (\textit{Trends in International Mathematics and Science Study}) - duomenims tirti. Šie duomenys ypatingi tuo, jog regresoriai yra indeksai, kategoriniai kintamieji bei sveikieji skaičiai (pvz.: mokinių skaičius mokykloje). Todėl normalumas negali būti garantuotas. Kita problema, jog TIMSS imtys sudaromos informatyviai ir yra pateikiami imties svoriai kiekvienam lygiui. HLM su imties svoriais vertinti naudojamas PWIGLS - iteratyvus tikimybėmis pasvertas apibendrintasis mažiausių kvadratų metodas (\textit{angl. Posibility Weighted Iterative General Least Squares}), kuris kaip ir REML reikalauja paklaidų normalumo. Vertinimui dažniausiai naudojami paketai yra \textit{HLM7} bei \textit{MLwiN}. Tačiau šie paketai yra mokami ir galima legaliai gauti tik trumpalaikes apribotas versijas. Mokslinėje visuomenėje yra paplitęs nemokamas ir laisvai prieinamas statistinės analizės paketas $\R$. Nors hierarchinių modelių vertinimo su svoriais metodas nėra realizuotas, šiame darbe naudotas $\R$ statistinės analizės paketas.
 
@@ -181,7 +181,7 @@ $Y_{ij}$ - aiškinamasis kintamasis - mokinio matematinio raštingumo rezultatas
 
 \indent Įstačius antrą modelio (\ref{eq:2lvl}) lygtį į pirmąją, gaunama jungtinė lygtis:
 \begin{equation} \label{eq:2lvljung}
-Y_{ij} =\sum^P_{p = 1} \sum^{Q_p}_{q=1}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 1} X_{pij}\times u_{pj}+\epsilon_{ij}.
+Y_{ij} =\sum^P_{p = 0} \sum^{Q_p}_{q=0}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 0} X_{pij}\times u_{pj}+\epsilon_{ij}.
 \end{equation}
 
 Tegu turime $N$ mokinių, kurie yra natūraliai suskaidyti į $J$ mokyklų ir $\sum^J_{j=1} n_j = N$. Tuomet (\ref{eq:2lvl}) modelį galime užrašyti
@@ -234,10 +234,10 @@ Y_{n_jj}
 \begin{pmatrix}
 \gamma_{00} \\
 \vdots\\
-\gamma_{0Q_P} \\
+\gamma_{0Q_0} \\
 \gamma_{10}\\
 \vdots\\
-\gamma_{1Q_P} \\
+\gamma_{1Q_1} \\
 \vdots \\
 \gamma_{PQ_P}
 \end{pmatrix};
@@ -325,7 +325,7 @@ Y_{ij}=\beta_{0j}+\varepsilon_{ij}, \ \varepsilon_{ij}\sim \mathcal{N}(0, \sigma
 \indent Gavus (\ref{eq:null}) įverčius $\hat{\gamma}_{00}, \ \hat{\sigma}^2,\ \hat{\tau_{00}}$, nustatoma, ar turima hierarchinė struktūra, ar visgi užtenka paprasto tiesinio modelio. Realiai yra tikrinamos hipotezės, ar gautas įvertis nelygus 0. Tai pat, kiek bendrą skirtumą paaiškina individų, o kiek grupių skirtumai - skaičiuojamas \hyperlink{icc}{ICC} koeficientas. Toliau toks modelis naudojamas sudėtingesnių modelių parinkime kaip atspirties taškas - skaičiuojami \hyperlink{r2}{$R^2$}. (Remiamasi \cite{cek})
 
 \subparagraph{ICC} \hypertarget{icc} - tarpklasinės koreliacijos koeficientas (\textit{angl. Intraclass Correlation Coefficient}), kuris parodo grupių rezultatų ir rezultatų grupėse skirtumą \cite{cek}. Dar gali būti interpretuojamas kaip dviejų individų toje pačioje grupėje rezultatų koreliaciją. Šis koeficientas skaičiuojamas taip:
-\begin{equation}
+\begin{equation}\label{eq:icc}
 ICC = \frac{\tau_{00}}{\sigma^2+\tau_{00}}.
 \end{equation}
 Shackman savo 2001 metų darbe\cite{icc} pabrėžė: kuo mažesnis ICC koeficientas, tuo patikimesni bus modelio įverčiai. Tačiau, pasak jo, ICC nėra toks svarbus daugialygiuose modeliuose kaip DEFF - dizaino efektas (\textit{ang. Design Effect}), kuris parodo kiek efektyvumo prarandama renkant imtis iš lizdų, o ne visiškai atsitiktinai parenkant individus. Šio koeficiento ryšys su ICC:
@@ -421,7 +421,7 @@ $q=\{q_i\}$,
 \noindent $q_i=\mathbf{Y'CQ}_i\mathbf{CY}$, $\mathbf{C} = \mathbf{\hat{V}}^{-1}\left(\mathbf{I}-\mathbf{X}\left(\mathbf{X' \hat{V}}^{-1}\mathbf{X}\right)^{-1}\mathbf{X \hat{V}}^{-1}\right)$, $\mathbf{\hat{V}}=\sum^l_{r=1}\alpha_r\mathbf{Q}_r$, $\alpha_r$ - \textit{a priori} reikšmės (gaunamos iš išorės, pvz.: tvirtai žinant apytiksles dispersijos komponenčių proporcijas). Fiksuotų parametrų įverčiai gaunami pagal GLS\cite{rao1972}:
 \[\boldsymbol{\hat{\gamma}}=\mathbf{\left(X'\hat{V}^{-1}X\right)^{-1}}\mathbf{X'\hat{V}^{-1}Y}.\]
 
-\subparagraph{MINQUE pritaikymas HLM modeliams.} Literatūros apie MINQUE pritaikymą hierarchiniams tiesiniams modeliams nėra daug arba sunku tokią gauti. Delpish\cite{delpish} 2006 metų savo daktaro disertacijoje remiasi Bagakas\cite{bagaka} darbu, kuriame pristatomas minėtasis MINQUE metodas ir jo pritaikymas dviejų lygių hierarchiniams modeliams su atsitiktiniu postūmiu. Pasak autorių, MINQUE neturi procedūros skaičiuoti standartinėms paklaidoms ir pasikliautinumo intervalams, tad šiam tikslui buvo pasitelktas savirankos metodas. Kita problema, MINQUE labai priklauso nuo \textit{a priori} reikšmių, tad praktikoje dažniau taikomas iteratyvus metodas, kuris aprašytas \hyperlink{iminque}{toliau}. Tačiau Bagakas darbo nepavyko gauti, o Delpish savo darbe tik labai abstrakčiai pristato vertinimo metodą. Be to, pristatomas metodas tik atsitiktinio postūmio atveju, tačiau vertinami modeliai su atsitiktiniu postūmiu ir posvyriu. Delpish modelius vertina su SAS programos PROC MOXED paketu, apie šį paketą plačios informacijos taip pat nepavyko gauti. Dėl šių priežasčių teko MINQUE metodą dviejų lygių HLM modeliams su atsitiktiniu postūmiu ir posvyriu išsivesti pačiai.
+\subparagraph{MINQUE pritaikymas HLM modeliams.} Literatūros apie MINQUE pritaikymą hierarchiniams tiesiniams modeliams nėra daug arba sunku tokią gauti. Delpish\cite{delpish} 2006 metų savo daktaro disertacijoje remiasi Bagaka's\cite{bagaka} darbu, kuriame pristatomas minėtasis MINQUE metodas ir jo pritaikymas dviejų lygių hierarchiniams modeliams su atsitiktiniu postūmiu. Pasak autorių, MINQUE neturi procedūros skaičiuoti standartinėms paklaidoms ir pasikliautinumo intervalams, tad šiam tikslui buvo pasitelktas savirankos metodas. Kita problema, MINQUE labai priklauso nuo \textit{a priori} reikšmių, tad praktikoje dažniau taikomas iteratyvus metodas, kuris aprašytas \hyperlink{iminque}{toliau}. Tačiau Bagaka's darbo nepavyko gauti, o Delpish savo darbe tik labai abstrakčiai pristato vertinimo metodą. Be to, pristatomas metodas tik atsitiktinio postūmio atveju, tačiau vertinami modeliai su atsitiktiniu postūmiu ir posvyriu. Delpish modelius vertina su SAS programos PROC MOXED paketu, apie šį paketą plačios informacijos taip pat nepavyko gauti. Dėl šių priežasčių teko MINQUE metodą dviejų lygių HLM modeliams su atsitiktiniu postūmiu ir posvyriu išsivesti pačiai.
 
 %Turėdami HLM išraišką iš anksčiau $Y=X\gamma+Zu+\varepsilon$, galim $Z$ išreikšti kaip $Z=(\tilde{Z_1}\vdots\cdots\vdots\tilde{Z_J})$ ir atitinkamai $u'=(u_1'\cdots u_J')$.
 %Tada $V=\sum^J_{j=1}\tilde{Z_j}T\tilde{Z_j}'+\sigma^2I$.\\
@@ -543,7 +543,7 @@ Y_{ij}=\beta_{0j}+\beta_{1j}X_{1ij}+\beta_{2j}X_{2ij}+\varepsilon_{ij}, \ \varep
 \indent Įverčiai, kuomet turime skirtingai pasiskirsčiusias paklaidas per lygius, nėra pateikiami. Jų rezultatai nesiskiria nuo gautųjų su abiem $\chi^2$ skirstinio paklaidomis. Rezultatai pateikti \ref{table:y2} ir \ref{table:ci2} lentelėse. REML vertinimo metodas yra pakankamai atsparus netenkinamai normalumo prielaidai. Tačiau dispersijos komponenčių standartinės paklaidos ir, tuo pačiu, pasikliautiniai intervalai yra paslinkti. Palyginus MINQUE su saviranka ir REML su saviranka, didelio skirtumo nematyti, tad negalime teigti, jog MINQUE su saviranka yra geresnis metodas nei REML. Tai prieštarauja Delphish gautiems rezultatams. To priežastys gali būti:
 \begin{itemize}
 \item Delpish neatsižvelgė į tai, jog I-MINQUE ir REML metodai sutampa, kuomet sutampa \textit{a priori} reikšmės. Šios autorės daktaro disertacijoje netiriamas REML metodas su saviranka.
-\item Šiame magistro darbe pateikiamas išvestas MINQUE metodas HLM modeliams, kuris nebūtinai sutampa su Delpish ar Bagakas nagrinėtu vertinimo metodu.
+\item Šiame magistro darbe pateikiamas išvestas MINQUE metodas HLM modeliams, kuris nebūtinai sutampa su Delpish ar Bagaka's nagrinėtu vertinimo metodu.
 \item Pasirinktas savirankos metodas nėra tinkamas nagrinėjamai simuliacijai. Viena iš priežasčių gali būti - per mažas iteracijų skaičius.
 \end{itemize}
 
@@ -926,7 +926,7 @@ $\tau_{22}$&&&&&\\
 \indent Pagrindiniai šio magistro darbo rezultatai:
 \begin{itemize}
 \item Parašytos $\R$ funkcijos MINQUE su saviranka metodui, kuris skirtas HLM modelių parametrų bei jų pasikliautinių intervalų vertinimui.
-\item Atliktos empirinės simuliacijos, kurios parodė, jog Delphish tirtas MINQUE metodas su saviranka nėra geresnis nei REML metodas su saviranka. Tikslesni pasikliautiniai intervalai savirankos būdu gaunami ir turint duomenis pasiskirsčiusius pagal normalųjį skirstinį, ir pagal Puasono (ar bet kokį kitą ???) skirstinį. To priežastys gali būti tai, jog Delpish netyrė REML su saviranka arba šiame darbe pristatytas MINQUE metodas nėra tapatus Bagakas ir Delphish metodui.
+\item Atliktos empirinės simuliacijos, kurios parodė, jog Delphish tirtas MINQUE metodas su saviranka nėra geresnis nei REML metodas su saviranka. Tikslesni pasikliautiniai intervalai savirankos būdu gaunami ir turint duomenis pasiskirsčiusius pagal normalųjį skirstinį, ir pagal Puasono (ar bet kokį kitą ???) skirstinį. To priežastys gali būti tai, jog Delpish netyrė REML su saviranka arba šiame darbe pristatytas MINQUE metodas nėra tapatus Bagaka's ir Delphish metodui.
 
 \item Sudarytas sudėtingesnis hierarchinis tiesinis modelis (nei anksčiau buvę) Lietuvos matematinio raštingumo testo rezultatams.
 \end{itemize}
@@ -941,13 +941,13 @@ $\tau_{22}$&&&&&\\
 \begin{thebibliography}{1}
 \bibitem{timssCpalyg1} Afana, Y., Lietz, P., \textit{The relationship between school resources and mathematics achievement at grade 8: A comparison of Israeli and Palestinian schools in TIMSS 2007}, Journal for Educational Research Online 5.1, 2013, 59-89.
 \bibitem{2007All} Akyuz, G., Berberoglu, G., \textit{Teacher and Classroom Characteristics and Their Relations to Mathematics Achievement of the Students in the TIMSS}, New Horizons in Education, 2010.
-\bibitem{siaip3} Campbell, J., Verna, M., Petruso, S., \textit{Gender Paradigms}, IRC, 2004.
-\bibitem{cek} V. Čekanavičius, G. Murauskas, \textit{Statistika ir jos taikymai}, 3 dalis, TEV, 2009.
-\bibitem{timssSchool2} Chen, Q., \textit{A Multilevel Analysis of Mathematically Low-Achieving Students in Singapore}, IRC, 2013.
-\bibitem{bagaka} Bagakas, J. G., \textit{Two level nested hierarchical linear model with random intercepts via the bootstrap}, Unpublished doctoral dissertation, Michigan State University, 1992.
+\bibitem{bagaka} Bagaka's, J. G., \textit{Two level nested hierarchical linear model with random intercepts via the bootstrap}, Unpublished doctoral dissertation, Michigan State University, 1992.
 \bibitem{MLtests} Berkhof, J., Snijders, T. A., \textit{Variance Component Testing in Multilevel Models}, Journal of Educational and Behavioral Statistics, Summer 2001, Vol. 26, Nr. 2, 133-152.
 \bibitem{siaip1} Birenbaum, M., Tatsuoka, C., Yamada, T., \textit{Diagnostic Assesment in TIMSS-R: Comparison of Eight Graders Mathematics Knowladge States in The United States, Japan, Israel}, IRC, 2004.
 \bibitem{siaip2} Brečuko, B., \textit{How Family Background Influences Student Achievement}, IRC, 2004.
+\bibitem{siaip3} Campbell, J., Verna, M., Petruso, S., \textit{Gender Paradigms}, IRC, 2004.
+\bibitem{cek} V. Čekanavičius, G. Murauskas, \textit{Statistika ir jos taikymai}, 3 dalis, TEV, 2009.
+\bibitem{timssSchool2} Chen, Q., \textit{A Multilevel Analysis of Mathematically Low-Achieving Students in Singapore}, IRC, 2013.
 \bibitem{hlmmixed} Davidian, M., and Giltinan, D., \textit{Nonlinear Models for Repeated Measurement Data}, New York: Chapman \& Hall/CRC, 1995.
 \bibitem{delpish} Delpish, A., \textit{Comparison of Estimators in Hierarchical Linear Modeling: Restricted Maximum Likelihood Versus Bootstrap via Minimum Norm Quadratic Unbiased Estimators}, Electronic Theses, Treatises and Dissertations. Paper 771, 2006.
 \bibitem{mixedR} Demidenko, E., \textit{Mixed Models– Theory and Applications with R}, 2nd Edition, Wiley Series in Probability and Statistics, John Wiley \& Sons, 2004.
@@ -1329,10 +1329,86 @@ bb$sigma
 
 \indent Leithy ir k.t. straipsnyje \textit{On non-negative estimation of variance components in mixed linear models} \cite{MMINQUE} aptaria  modifikuotus MINQUE, IAUE ir REML metodus (MMINQUE, MIAUE ir MREML). Dispersijos komponenčių įverčiai apskaičiuoti straipsnyje aprašytu EM (\textit{didžiausio tikėtinumo}) algoritmu vadinamas MREML. Subramani \cite{MMIVQUE} pasiūlė vertinti dispersijos komponentes ne iš tiesinės kombinacijos, o naudoti lygčių sistemą (plačiau \cite{MMINQUE}). Kadangi sprendinys nėra vienintelis, Subramani pasiūlė du metodus - MMINQUE1 ir MMINQUE2. Leithy ir k.t. pasinaudodami Subramani idėja išvedė MIAUE. Autoriai naudodami simuliacijas parodė, jog MINQUE, MMINQUE1 ir MMINQUE2 nesiskiria esant subalansuotam imties dizainui. REML yra geriausias mažiausio poslinkio prasme, o MREML vidutinės kvadratinės paklaidos (MSE) prasme. MINQUE, MMINQUE1 ir MMINQUE2 yra geresni mažesnio paslinktumo prasme nei IAUE, MIAUE1 ir MIAUE2 nesvarbu imties dydis ir nebalansuotumo laispsnis. Ir atvirkščiai, IAUE, MIAUE1 ir MIAUE2 geresn mažesniųi MSE prasme. IAUE visais atvejais labiau paslinktas nei MIAUE1 ar MIAUE2, bet turi mažesnes MSE nei MINQUE, MMINQUE1 ar MMINQUE. MMINQUE2 įverčiai dažniausiai buvo neigiami, kai REML neigiamų įverčių buvo mažiausiai. Svarbu, jog imties dydis turėjo stiprią įtaką mažinant gaunamus neigiamus įverčius. Grafiniu būdu buvo parodyta, jog MREML yra geriausias metodas iš visų. MMINQUE1 ir MINQUE įverčiai skiriasi labai nedaug, todėl naudosiu MINQUE. (Deja per vėlai pastebėjau šitą straipsnį ir sudėtinga realizuoti )
 
+\indent MINQUE procedūra neužtikrina neneigiamų kovariacijos komponenčių įverčių. Vienas būdas - visiems neigiamiems įverčiams priskirti reikšmę 0. Kitas būdas, naudoti saviranką ir tikėtis, kad tai padės. Pagal Bagaka's.
+
+\section{Bagaka's MINQUE}
+1992 metais savo nepublikuotoje disertacijoje \textit{Two-level nested hierarchical linear model with random intercepts via the bootstrap}\cite{bagaka} Bagaka's išvedė MINQUE procedūrą dviejų lygių tiesiniams hierarchiniams modeliams. Jo tikslas buvo Monte Carlo simuliacijų būdu palyginti MINQUE ir MINQUE su saviranka metodų gerumą ventinant dviejų lygių tiesinį hierarchinį modelį su atsitiktiniu poslinkiu kai normalumo sąlyga negali būti užtikrinta bei pažiūrėti ar MINQUE su saviranka išsprendžia neigiamų variacijos komponenčių įverčių problemą. Savo disertacijoje Bagaka's suveda modelio su atsitiktiniu poslinkiu MINQUE vertinimo procedūrą į mažiau reikalaujančia didelių matricų operacijų, taip pat parodo, jog \textit{a priori} reikšmės šiuo atveju yra susisę su tarpklasinės koreliacijos koeficientu \ref{eq:icc}. Dispersijoms komponentėms $\sigma^2$ ir $\tau_{00}^2$ atitinkamai $w_0=1-ICC$ ir $w_1=ICC$.
+\indent Šiems svoriams gauti Bagaka's pasiūlė naudoti ANOVA paremtas \textit{a priori} reikšmes. $\hat{\sigma}^2_{e}$ gaunamas paprastu mažiausių kvadratų metodu (\textit{angl. OLS - ordinary least squares}) vertinant modelį \ref{eq:bendrasHLM} be atsitiktinių efektų. Tuomet atsitiktinių efektų dispersijos komponentės įvertis gaunamas iš
+\[
+\hat{\tau_{00}}^2=\frac{w^*-(N-P)\hat{\sigma}_e^2}{N-T^*},
+\]
+čia $w^*$ - paklaidų kvadratų suma (SSR), $N$ - imties dydis, $P$ - fiksuotų parametrų skaičius, $T^*=\sum_{j=1}^J tr\{S_j(X'_jX_j)^{-1}S_j\}$, $S_j$ yra $X_j$ stulpelių suma. Taip gaunamas $\widehat{ICC} = \frac{\hat{\tau}_{00}}{\hat{\sigma}^2+\hat{\tau}_{00}}$ ir kaip \textit{a priori} reikšmės naudojamas $\hat{w}_0=1-\widehat{ICC}$ ir $\hat{w}_1=\widehat{ICC}$.
+\indent Bagaka's MC būdu tiria tokį dviejų lygių atsitiktinio postūmio modelį:
+\begin{equation}\label{eq:beq}
+y_{ij}=\mu+\alpha_k+\beta x_ij+u_j+\varepsilon_{ij}, 
+\end{equation}
+čia $u_j$ atsitiktinis efektas su vidurkiu 0 ir dispersija $\tau_00$ ir $\varepsilon_{ij}$ atsitiktinis efektas su vidurkiu 0 ir dispersija $\sigma^2$ pasiskirstę pagal normalųjį arba dvigubą eksponentinį dėsnį (\textit{angl. double exponential distribution}). $\alpha_k$ - $k$-tojo lygio efektas.
+\subparagraph{Dvigubas eksponentinis skirstinys} \hypertarget{dexp} Pats paprasčiausias būdas sugeneruoti duomenis pasiskirsčiusius pagal dvigubą exsponentinį skirtinį yra sugeneruoti du tolygiuosius (\textit{angl. uniformly distributed}) kintamuosius $U_1$ ir $U_2$ iš intervalo $\left[0,1\right]$. Tuomet tegul $X_1=-ln\left(U_1\right)$ ir $X_2=-1$, kai $U_2< 0,5$ arba $X_2=1$, kai $U_2 \geq 0,5$. Tuomet $Y=\frac{1}{\sqrt{2}}X_1X_2$ bus pasiskirstęs pagal dvigubą eksponentinį skirstinį.
+\subparagraph{Simuliacijų dizainas} \hypertarget{Bsimdiz} Nagrinėjamas atsitiktinis kintamasis $Y$ pasiskirstęs per $J=50$ lygių (pvz.: mokyklų). Fiksuoti faktoriai $\mu$ , $\alpha_k$ ir $\beta$ priskirti atitinkamai $-5,\ 2,\ 3,\ 1$. Kai $ICC$ mažas, dispersijos komponenčių įverčiai gali įgauti neigiamas reikšmes, tyriami trys $ICC$ variantai. Modelio \ref{eq:beq} $\sigma^2=100$ ir $\tau_{00}=\{1;5,26;25\}$, taip gaunama $ICC=\{0,01;0,05;0,2\}$. Aiškinantysis kintamasis $x_ij$ gaunamas $\left(75\times U\left[0,1\right]\right)+25$, kur $U$ žymi tolygųjį skirstinį. Vienetų priklausančių $j$-tajai grupei skaičius yra nevienodas ir kinta tarp $\{20,25,30,35, 40\}$, tačiau visais atvejais yra fiksuotas, tad čia nebus surašytas. Viso pirmo lygio vienetų yra $1500$. Kiekvienam iš šešių atvejų - trys $ICC$ reikšmės ir 2 galimi paklaidų pasiskirstymai - atliekama $400$ MC simuliacijų.Kiekvienai sukurtai populiacijai įvertinamas modelis \ref{eq:beq} MINQUE ir MINQUE su saviranka metodais. Bagaka's naudoja neparametrinį savirankos metodą, kur pirmu žingsniu parenkama $J$ antro lygio vienetų su lygiomis tikimybėmis ir grąžinimu iš $J$ pradinių vienetų. Iš kiekvieno parinkto antrojo lygio vienetų parenkama $n_j$ pirmojo lygio individų su grąžinimu. Taip gavus savirankos imtį vertinama MINQUE. Kiekvienai MC simuliacijai popoliacija perrenkama $B=200$ kartų.
+
+\subparagraph{Simuliacijų rezultatai} \hypertarget{Brez} Parametrų įverčių gerumas vertintas poslinkiu nuo tikrosios reikmės bei vidutine kvadratine paklaida nuo tikrosios reikšmės (\textit{angl. mean squared error - MSE}). Taip pat skaičiuotas poslinkis atimant MINQUE įverčio reikšmę iš MINQUE su saviranka virečio reikšmės bei šių įverčių santykiai. \\
+\indent Kuomet $ICC=0,01$, $\hat{\tau}_{00_{boot}}$ ir $\hat{\tau}_{00_{MINQUE}}$ įverčiai yra labai netoli tikrosios reikšmės abiems nagrinėtiems pasiskirstymams (normaliajam ir dvigubam eksponentiniui), tačiau $\hat{\tau}_{00_{boot}}$ yra efektyvesni ir stabilesni, o $\hat{\tau}_{00_{MINQUE}}$ turi mažesnį poslinkį. $\hat{\sigma}^2_{boot}$ ir poslinkis, ir variacija nežymiai didesni nei  $\hat{\sigma}^2_{MINQUE}$ prie abiejų pasiskirstymų.\\
+\indent Kai $ICC=0,05$, $\hat{\tau}_{00_{boot}}$ ir $\hat{\tau}_{00_{MINQUE}}$ esant normaliajam atsitinktinių efektų pasiskirstymui labai tikslūs ir šiek tiek labiau paslinkti prie dvigubo eksponentinio pasiskirstymo, bet skirtumas tarp pačių įverčių nėra didelis.  $\hat{\sigma}^2_{boot}$ ir  $\hat{\sigma}^2_{MINQUE}$ vėl labai panašūs.\\
+\indent Tiksliausi $\tau$ įverčia gauti, kai $ICC=0,2$, $\hat{\tau}_{00_{boot}}$ neženkliai tikslesnis.  $\hat{\sigma}^2_{boot}$ poslinkis mažesnis prie normaliųjų atsitiktinių efektų ir didesnis prie dvigubo eksponentinio pasiskirstymo.\\
+\indent $ICC$ įvertis gautas visiems šešiems MC simuliacijų atvejams gauti labai tikslūs ir effektyvūs, tam įtakos galėjo turėti pradinės reikšmės.\\
+\indent Visų fiksuotų parametrų gauti įverčiai labai arti tikrųjų reikšmių su beveik nuliniu MSE. \\
+\indent Bagaka's taip pat nagrinėjo ir parametrų įverčių pasikliautinuosius intervalus. Kai $ICC$ yra mažas, gaunami labai tikslūspasikliautiniai intervalai. Kuo didesnis tarpklasinės koreliacijos koeficientas, tuo įverčių tikslumas mažesnis, tačiau visvien labai tikslus.
+\indent \textbf{Išvados}:
+\begin{enumerate}
+\item MINQUE su saviranka kai kur duoda tikslesnius parametrų įverčius todėl gali būti naudojamas ir taškiniams ir intervalų įverčiams gauti.
+\item Abu metodai buvo mažiau efektyvūs, kai atsitiktiniai efektai pasiskirstę pagal dvigubą eksponentinį skirstinį, ko ir buvo tikėtasi. Taip pat abu metodai tiksliau įvertinmo fiksuotus modelio parametrus nei atsitiktinių efektų parametrus.
+\item Savirankos būdu gauti pasikliautiniai intervalai buvo sėkmingi, kai tarpklasinės koreliacijos koeficientas $ICC=0,01$, prie $ICC=0,2$ intervalų patengamumo tikimybės gautos gana mažos, tačiau prie $ICC=0,05$ patenkinamos.
+\item MINQUE su saviranka parametrų įverčiai gauti gana tikslūs, taip pat ir pasikliautinųjų intervalų padengiamumas.
+\end{enumerate}
 
 
 
 
+%\indent Sakykime mišrių efektų modelis turi tokią išraišką bendrąją išraišką
+%\begin{equation} \label{eq:bendrasHLM1}
+%\mathbf{Y}=\mathbf{X}\boldsymbol{\gamma}+\mathbf{Z}\mathbf{u}+\boldsymbol{\varepsilon},
+%\end{equation}
+%kur \\
+%$\mathbf{Y}$ - $\left(N \times 1\right)$ stebėjimų vektorius;\\
+%$\mathbf{X}$ - $\left(N \times P\right)$ žinoma matrica, $rank\left(X\right)\leq N$;\\
+%$\boldsymbol{\gamma}$ - $\left(P \times 1\right)$ fiksuotų efektų vektorius;\\
+%$\mathbf{Z}$ - $\left(N\times G\right)$ žinoma matrica;\\
+%$\mathbf{u}$ - $\left(G \times 1\right)$ arsitiktinių efektų vektorius;\\
+%$\boldsymbol{\varepsilon}$ - $\left(N \times 1\right)$ atsitiktinių paklaidų vektorius.\\
+%\indent Kad galėtume identifikuoti atsitiktinius efektus, suskaidome $\mathbf{u}'=\left( \mathbf{u}'_1,\mathbf{u}'_2,\dots, \mathbf{u}'_K\right)$, kur $\forall u_k, k= 1,\dots,K$ yra sudarytas iš $j_k$ $k$ - tojo faktoriaus efektų ir atitinkmai $\mathbf{Z}=\left(\mathbf{Z}_1,\mathbf{Z}_2,\dots, \mathbf{Z}_K\right)$. Iš čia gauname $\mathbf{Y}=\mathbf{X}\boldsymbol{\gamma}+\sum_{k = 1}^K Z_k u_k+\boldsymbol{\varepsilon}$. Tegul $\mathbf{u}_0=\boldsymbol{\varepsilon}$ ir $\mathbf{Z}_0 = \mathbf{I}_0$, tuomet
+%\begin{equation} \label{eq:bendrasHLM2}
+%\mathbf{Y}=\mathbf{X}\boldsymbol{\gamma}+\sum_{k = 0}^K \mathbf{Z}_k \mathbf{u}_k,
+%\end{equation}
+%su prielaidomis $\mathbb{E}(\mathbf{u}_k)=0,\ \mathbb{V}ar(\mathbf{u}_k)=\sigma^2_k I_{j_k},\  \mathbb{C}ov(\mathbf{u}_k,\mathbf{u}_{k'})=0,\ \forall k,k'=0,1,\dots,K$. Atsitiktinių efektų dispersijos matrica yra $\mathbb{V}ar(\mathbf{u})=\mathbf{D}=diag\{\sigma_k^2 I_{j_k}\}_{k=0}^K$.\\
+%\indent Kai $K=1$, \ref{eq:bendrasHLM2} išraiška sutampa su atsitiktinio postūmio modelio išraiška:
+%\begin{equation} \label{eq:postumioHLM}
+%\mathbf{Y}=\mathbf{X}\boldsymbol{\gamma}+\mathbf{Z}_0\mathbf{u}_0+\mathbf{Z}_1\mathbf{u}_1,
+%\end{equation}
+%kur
+%$\mathbf{Y}$ - $\left(N \times 1\right)$ stebėjimų vektorius;\\
+%$\mathbf{X}$ - $\left(N \times P\right)$ žinoma matrica, $rank\left(X\right)\leq N$;\\
+%$\boldsymbol{\gamma}$ - $\left(P \times 1\right)$ fiksuotų efektų vektorius;\\
+%$\mathbf{Z}_0=\mathbf{I}_N$;\\
+%$\mathbf{u}_0=\boldsymbol{\varepsilon}$ - modelio paklaidos;\\
+%$\mathbf{Z}_1$ - $(N\times J)$ žinoma matrica;\\
+%$\mathbf{u}_1$ - $\left(J \times 1\right)$ arsitiktinių efektų vektorius,\\
+%su prielaidomis  $\mathbb{E}(\mathbf{u}_0)=0,\mathbb{E}(\mathbf{u}_1)=0,\ \mathbb{C}ov(\mathbf{u}_0,\mathbf{u}_1)=0, \mathbb{V}ar(\mathbf{u}_0)=\sigma^2_e I_N, \mathbb{V}ar(\mathbf{u}_1)=\tau^2I_N\}$, čia $\sigma^2_e$ - paklaidų dispersijos komponentė, o $\tau^2$ - atsitiktinių efektų dispersijos komponentė.
+%\indent Bagaka's suvedė gana kompiuteriniams skaičiavimams sudėtingą MINQUE sprendinį į paprastesnį:
+%\begin{equation} \label{eq:sprendinys}
+%\sigma_e^2=(f_{11}b_0-f_{01}b1)/D^* \text{ ir }
+%\tau^2=(f_{00}b_1-f_{10}b0)/D^*,
+%\end{equation}
+%kur
+%\[
+%f_{00}=tr\left(V_w^{-2}\right)-tr\left(V_w^{-1}A_w\right), f_{01}=f_{10}=tr\left(V_w^{-2}Z_1Z'_1\right)-tr\left(V_w^{-1}A_wZ_1Z'_1\right), 
+%\]
+%\[
+%f_{11}=tr\left(V_w^{-2}Z_1Z'_1Z_1Z'_1\right)-tr\left(V_w^{-1}A_wZ_1Z'_1Z_1Z'_1\right), A_w=V_w^{-1}X(X'V_w^{-1}X)^{-}X'V_w^{-1}
+%\]
+%\[
+%V_w=ZD_Z', D_w=diag\{w_0I_N,w_1I_J\}, w_0=1-\rho, w_1=\rho, \rho=ICC.
+%\]
+%???ar verta išrašinėti
 
 
 
