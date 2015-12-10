@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  10 DEC 2015 01:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  11 DEC 2015 01:23
 entering extended mode
 **D:/minque/Magistro*darbas/magistro*darbas*tex/magistro_darbas_EK_2016.tex
 ("D:/minque/Magistro darbas/magistro darbas tex/magistro_darbas_EK_2016.tex"
@@ -1133,7 +1133,7 @@ Overfull \hbox (9.88174pt too wide) in alignment at lines 786--802
  [] [] [] [] 
  []
 
-[23] <teorkv.pdf, id=436, 722.7pt x 505.89pt>
+[23] <teorkv.pdf, id=441, 722.7pt x 505.89pt>
 File: teorkv.pdf Graphic file (type pdf)
  <use teorkv.pdf>
 Package pdftex.def Info: teorkv.pdf used on input line 814.
@@ -1181,25 +1181,25 @@ Underfull \hbox (badness 5607) in paragraph at lines 988--989
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.lof")
 \tf@lof=\write6
 
-[38] [39] [40]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1415.
- [41]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1415.
+[38] [39] [40] [41]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1461.
+ [42]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1461.
 
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1415.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1415.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1461.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1461.
 
 Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 .
-(rerunfilecheck)             Checksum: B618BCD4D38FEA8A604D45907EE5D61F;1763.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1415.
+(rerunfilecheck)             Checksum: 41FCC87336DA3460ED33B25C19F4242E;1815.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1461.
  ) 
 Here is how much of TeX's memory you used:
- 10167 strings out of 493921
- 142748 string characters out of 3144879
- 352269 words of memory out of 3000000
- 13036 multiletter control sequences out of 15000+200000
+ 10185 strings out of 493921
+ 142917 string characters out of 3144879
+ 352399 words of memory out of 3000000
+ 13040 multiletter control sequences out of 15000+200000
  83761 words of font info for 93 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,10n,32p,1727b,550s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1227,9 +1227,9 @@ iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb>
-Output written on magistro_darbas_EK_2016.pdf (43 pages, 610252 bytes).
+Output written on magistro_darbas_EK_2016.pdf (44 pages, 619148 bytes).
 PDF statistics:
- 721 PDF objects out of 1000 (max. 8388607)
- 196 named destinations out of 1000 (max. 500000)
- 230 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 748 PDF objects out of 1000 (max. 8388607)
+ 210 named destinations out of 1000 (max. 500000)
+ 238 words of extra memory for PDF output out of 10000 (max. 10000000)
 

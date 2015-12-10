@@ -43,3 +43,7 @@
 \contentsline {subparagraph}{Dvigubas eksponentinis skirstinys}{40}{section*.19}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{40}{section*.20}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{40}{section*.21}
+\contentsline {section}{\numberline {C}Delpish MINQUE}{41}{appendix.C}
+\contentsline {subparagraph}{Dvimatis $\chi ^2$ skirstinys}{42}{section*.22}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{42}{section*.23}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{42}{section*.24}
