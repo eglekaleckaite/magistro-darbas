@@ -451,6 +451,60 @@ rwis <- function(n, mean, sigma){
 } 
 
 
+makePOPFixed <- function(M = 100, Nclass = 30, sigma2 = 100, tau00 = 1, tau01 = 0.5,
+                     tau11 = 1, g00 = 450, g01 = 10, g10 = 30, g11 = 5){
+  require(msm)
+  require(data.table)
+  struct <- 1:M
+  N <- Nclass
+#   uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
+#   N <- round(50*exp(uj))
+
+  struct <- as.data.table(cbind(IDSCHOOL = struct, Nj = N))
+  struct[, psch := Nj/sum(Nj)]
+  
+  x.grid = seq(1, 8, by = 1/3)
+  struct[, W := sample(x.grid, M, replace = T)]
+  
+  # Make alpha  
+  ttN <- matrix(c(tau00, tau01, tau01, tau11), nrow = 2)
+  ddN <- mvrnorm(n = M, rep(0, 2), ttN)
+  
+  ttX <- matrix(c(1, sqrt(tau01/(sqrt(tau00)*sqrt(tau11))), sqrt(tau01/(sqrt(tau00)*sqrt(tau11))), 1), nrow = 2)
+  ddX <- mvrnorm(n = M, rep(0, 2), ttX)
+  
+  struct[, u0N := ddN[, 1]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, u0X := ((ddX[, 1]^2 - 1)/sqrt(2))*sqrt(tau00)]
+  
+  struct[, u1N := ddN[, 2]]#rnorm(M, 0, sqrt(0.005))]
+  struct[, u1X := ((ddX[, 2]^2 - 1)/sqrt(2))*sqrt(tau11)]
+  
+  struct[, kj := 1]
+  struct[, cj := Nclass]
+  struct[, pcl := 1/cj]
+  
+  allval <- (rchisq(sum(N), 2)-2)/sqrt(2*2)*sqrt(sigma2)
+  eN <- struct[, rnorm(Nj, 0, sqrt(sigma2)), by = "IDSCHOOL"]
+  eN$eN <- rnorm(sum(N), 0, sqrt(sigma2))
+  eN$eX <- allval
+  eN[, V1:=NULL]
+  
+  struct <- merge(struct, eN, by = "IDSCHOOL")
+  
+  struct[, c("nj", "pstud", "IDSTUD") := list(length(eN), 1, 1:length(eN)), by = c("IDSCHOOL", "kj")]
+  struct[, ptot := psch*pcl*pstud]
+  struct[, X1 := rbinom(sum(N), 1, 0.2)]
+  struct[, IDSTUD := paste0(IDSCHOOL, kj, IDSTUD)]
+  
+  struct[, c("wsch", "wcl", "wstd", "wtot") := list(1/psch, 1/pcl, 1/pstud, 1/ptot)]
+  
+  struct[, c("Y1", "Y2") := list(Y1 = g00+g01*W+g10*X1+g11*W*X1+eN+u0N+u1N*X1,
+                                 Y2 = g00+g01*W+g10*X1+g11*W*X1+eX+u0X+u1X*X1)]
+  
+  return(struct)
+}
+
+
 makePOPW <- function(M = 300, Nclass = 30, sigma2 = 100, tau00 = 1, tau01 = 0.5,
                      tau11 = 1, g00 = 450, g01 = 10, g10 = 30, g11 = 5){
   require(msm)
@@ -458,24 +512,24 @@ makePOPW <- function(M = 300, Nclass = 30, sigma2 = 100, tau00 = 1, tau01 = 0.5,
   struct <- 1:M
   uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
   N <- round(50*exp(uj))
-
+  
   struct <- as.data.table(cbind(IDSCHOOL = struct, Nj = N))
   struct[, psch := Nj/sum(Nj)]
   
   x.grid = seq(1, 8, by = 1/3)
   struct[, W := sample(x.grid, M, replace = T)]
-#   struct[Nj > 120, did := 1]
-#   struct[Nj <= 120, did := 0]
-#   didel <- sum(struct$did)
-#   x.grid = seq(1, 8, by = 1/3)
-#   struct[Nj > 120, W := sample(x.grid[14:22], didel, replace = T)+50]
-#   struct[Nj <= 120, W := sample(x.grid[1:8], M - didel, replace = T)]
+  #   struct[Nj > 120, did := 1]
+  #   struct[Nj <= 120, did := 0]
+  #   didel <- sum(struct$did)
+  #   x.grid = seq(1, 8, by = 1/3)
+  #   struct[Nj > 120, W := sample(x.grid[14:22], didel, replace = T)+50]
+  #   struct[Nj <= 120, W := sample(x.grid[1:8], M - didel, replace = T)]
   
-#    x.grid = seq(1, 8, by = 1/3)
-#    struct[, W := sample(x.grid[1:8], nrow(struct), replace = T)]
-#    struct[IDSCHOOL %in% sample(1:M, M*0.1), W := sample(x.grid[14:22], M*0.1, replace = T)+50]
-#   struct[, W := rnorm(M, 10, 20)]
-#   struct[IDSCHOOL %in% sample(1:M, M*0.05), W := rnorm(M*0.05, 500, 15)]
+  #    x.grid = seq(1, 8, by = 1/3)
+  #    struct[, W := sample(x.grid[1:8], nrow(struct), replace = T)]
+  #    struct[IDSCHOOL %in% sample(1:M, M*0.1), W := sample(x.grid[14:22], M*0.1, replace = T)+50]
+  #   struct[, W := rnorm(M, 10, 20)]
+  #   struct[IDSCHOOL %in% sample(1:M, M*0.05), W := rnorm(M*0.05, 500, 15)]
   
   
   # Make alpha  
@@ -515,7 +569,6 @@ makePOPW <- function(M = 300, Nclass = 30, sigma2 = 100, tau00 = 1, tau01 = 0.5,
   
   return(struct)
 }
-
 
 makePOPW2 <- function(M = 300, Nclass = 30, sigma2 = 100, tau00 = 1, tau01 = 0.5,
                      tau11 = 1, g00 = 450, g01 = 10, g10 = 30, g11 = 5){
@@ -1264,7 +1317,7 @@ myMINQUE <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL) 
   sigma2 <- iM$theta[1]
   names(sigma2) <- "sigma2"
   TT <- fillT(iM$theta[-1])
-  diag(TT)[diag(TT) < 0] <- 0
+  #diag(TT)[diag(TT) < 0] <- 0
   dimnames(TT) <- list(clnms1, clnms1)
   beta <- as.numeric(iM$beta)
   names(beta) <- colnames(X)
@@ -2322,6 +2375,66 @@ simPopMy <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)",
            unlist(sm$varcor[[1]]),  unlist(min1$TT),  unlist(min2$TT),
            unlist(min3$TT), unlist(min4$TT), unlist(min5$TT), unlist(min6$TT)))
   
+}
+
+simPopMyFixed <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)", 
+                     popF = makePOPFixed, sigma2 = 2000, tau00 = 100, tau01 = 50,
+                     tau11 = 100){
+  smpl <- popF(M = M, sigma2 = sigma2, tau00 = tau00, 
+               tau01 = tau01, tau11 = tau11)
+  smpl$w1 <- smpl$wstd*smpl$wcl
+  smpl$w2 <- smpl$wsch
+  
+  mm <- lmer(as.formula(formul), data = smpl)
+  if(length(mm@optinfo$conv$lme4) != 0){
+    return(simPopMyFixed(M, formul, popF, sigma2 = sigma2, tau00 = tau00, 
+                    tau01 = tau01, tau11 = tau11, m = m))
+  } else {
+    sm <- summary(mm)
+    
+    f.f <- strsplit(formul, "\\+\\(")
+    r.f <- paste("~", gsub("\\)", "", f.f[[1]][2]))
+    f.f <- f.f[[1]][1]
+    min1 <- try(myMINQUE(dt = smpl,
+                         fixed = f.f,
+                         random1 = r.f,
+                         weights = NULL,
+                         apriori = c(1, 0, 0, 0)))
+    if(class(min1)[1] == "try-error") min1 <- NULL
+    min2 <- try(myMINQUE(dt = smpl,
+                         fixed = f.f,
+                         random1 = r.f,
+                         weights = NULL,
+                         apriori = c(1, 1, 1, 1)))
+    if(class(min2)[1] == "try-error") min2 <- NULL
+    iv <- summary(lm(f.f, smpl))
+    iva <- smpl[, as.list(c(coef(lm(Y1~1+X1)), w=unique(W))), by = "IDSCHOOL"]
+    setnames(iva, c("IDSCHOOL", "b0", "b1", "W"))
+    tau00 <- gls(b0~1+W, data = iva)
+    res0 <- tau00$residuals
+    tau11 <- gls(b1~1+W, data = iva)
+    res1 <- tau11$residuals
+    
+    min3 <- try(myMINQUE(dt = smpl,
+                         fixed = f.f,
+                         random1 = r.f,
+                         weights = NULL,
+                         apriori = c(iv$sigma^2, tau00$sigma^2, 
+                                     cov(res0, res1), tau11$sigma^2)))
+    if(class(min3)[1] == "try-error") min3 <- NULL
+  }
+  return(c(fixef(mm), min1$beta, min2$beta, min3$beta,
+           sm$sigma^2, min1$sigma2, min2$sigma2, min3$sigma2,
+           unlist(sm$varcor[[1]]),  unlist(min1$TT),  unlist(min2$TT),
+           unlist(min3$TT)))
+  
+}
+
+Tfunc <- function(dt){
+  dt <- as.matrix(dt)
+  xx <- crossprod(dt)
+  sj <- matrix(colSums(dt))
+  t <- sum(diag(t(sj)%*%solve(xx)%*%sj))
 }
 
 simPopMyW1 <- function(M = 300, m = 35, nj = 20, formul = "Y1 ~ 1+W+X1+(1+X1|IDSCHOOL)", 
