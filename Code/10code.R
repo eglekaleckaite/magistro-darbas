@@ -2420,13 +2420,13 @@ simPopMyFixed <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)"
     tau1 <- try(gls(b1~1+W, data = iva, na.action = na.omit))
     if (class(tau1) == "try-error") browser()
     iva$res1 <- tau1$residuals
-    icc <- tau0$sigma^2/(tau0$sigma^2+iv$sigma^2)
+    apriori <- c(iv$sigma^2, tau0$sigma^2, 
+                 cov(iva$res0, iva$res1), tau1$sigma^2)/iv$sigma^2
     min3 <- try(myMINQUE(dt = smpl,
                          fixed = f.f,
                          random1 = r.f,
                          weights = NULL,
-                         apriori = c(iv$sigma^2, tau0$sigma^2, 
-                                     cov(iva$res0, iva$res1), tau1$sigma^2)))
+                         apriori = apriori))
     if(class(min3)[1] == "try-error") min3 <- NULL
   # }
   return(c(fixef(mm), min1$beta, min2$beta, min3$beta,
@@ -2477,13 +2477,13 @@ simPopMyFixed2 <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)
   tau1 <- try(gls(b1~1+W, data = iva, na.action = na.omit))
   if (class(tau1) == "try-error") browser()
   iva$res1 <- tau1$residuals
-  icc <- tau0$sigma^2/(tau0$sigma^2+iv$sigma^2)
+  apriori <- c(iv$sigma^2, tau0$sigma^2, 
+               cov(iva$res0, iva$res1), tau1$sigma^2)/iv$sigma^2
   min3 <- try(myMINQUE(dt = smpl,
                        fixed = f.f,
                        random1 = r.f,
                        weights = NULL,
-                       apriori = c(iv$sigma^2, tau0$sigma^2, 
-                                   cov(iva$res0, iva$res1), tau1$sigma^2)))
+                       apriori = apriori))
   if(class(min3)[1] == "try-error") min3 <- NULL
   # }
   return(c(fixef(mm), min1$beta, min2$beta, min3$beta,
