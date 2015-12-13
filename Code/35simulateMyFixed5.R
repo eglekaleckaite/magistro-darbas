@@ -26,7 +26,7 @@ source("10code.R")
 
 pcg <- c("plyr", "mvtnorm", "expm", "foreach", "msm", "gtools", 
          "MASS", "lme4", "gdata", "Matrix", "data.table", "utils", "iterators",
-         "doParallel", "doSNOW")
+         "doParallel", "doSNOW", "nlme")
 
 N <- 500
 
