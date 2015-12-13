@@ -40,6 +40,14 @@ The following objects are masked from 'package:snow':
     parCapply, parLapply, parRapply, parSapply, splitIndices,
     stopCluster
 
-Type: DONE 
+
+Attaching package: 'nlme'
+
+The following object is masked from 'package:lme4':
+
+    lmList
+
+Type: EXEC 
 Loading required package: matrixcalc
-Type: DONE 
+  |                                                                                     |=================                                                            |  22%Type: DONE 
+  |                                                                                     |=============================================================================| 100%Type: DONE 

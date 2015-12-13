@@ -939,6 +939,7 @@ $\tau_{22}$&&&&&\\
  \renewcommand\refname{LITERATŪRA IR ŠALTINIAI}
 \addcontentsline{toc}{section}{LITERATŪRA IR ŠALTINIAI}
 \begin{thebibliography}{1}
+\bibitem{achen} Achen, C., H., \textit{Two-Step Hierarchical Estimation: Beyond Regression Analysis},  Political Analysis (Autumn 2005) 13 (4): 447-456.
 \bibitem{timssCpalyg1} Afana, Y., Lietz, P., \textit{The relationship between school resources and mathematics achievement at grade 8: A comparison of Israeli and Palestinian schools in TIMSS 2007}, Journal for Educational Research Online 5.1, 2013, 59-89.
 \bibitem{2007All} Akyuz, G., Berberoglu, G., \textit{Teacher and Classroom Characteristics and Their Relations to Mathematics Achievement of the Students in the TIMSS}, New Horizons in Education, 2010.
 \bibitem{bagaka} Bagaka's, J. G., \textit{Two level nested hierarchical linear model with random intercepts via the bootstrap}, Unpublished doctoral dissertation, Michigan State University, 1992.
@@ -962,7 +963,9 @@ $\tau_{22}$&&&&&\\
 \bibitem{timssCpalyg} Gustafsson, A., M., \textit{School production modelling to strengthen government monitoring programmes in developing countries}, Thesis, University of Stellenbosch, 2006.
 \bibitem{ml} Harley, H. 0., Rao, J., \textit{Maximum-likelihood estimation for the mixed analysis of variance model}, Biometrika, 54, 1967, 93.
 \bibitem{AUE} Horn, S. D., R. A. Horn, and D. B. Duncan, \textit{Estimating hetero-scedastic variances in linear models}, Journal of the American Statistical Association, 70, 380 - 385, 1975.
+\bibitem{hanushek} Hanushek, E., A., \textit{Efficient Estimators for Regressing Regression Coefficients}, The American Statistician, leidimas 28, Nr. 2 (gegužė, 1974), 66-67 psl.
 \bibitem{minquereml1} Jarošova, E., \textit{Estimation with the Linear Mixed Effects Model}, Journal of Applied Mathematics, volume3, number 3, 2010.
+\bibitem{jusko} Jusko, K., L., Shively, W., P., \textit{Applying a Two-Step Strategy to the Analysis of Cross-National Public Opinion Data}, Political Analysis (Ruduo 2005) 13 (4): 327-344. 
 \bibitem{siaip4} Kiamanesh, A., \textit{Items Affecting Iranian Students' Achievment in Mathematics}, IRC, 2004.
 \bibitem{countryHLM} Kyriakides, L., Charalambous, C., \textit{ Extending the Scope of Analysing Data of IEA Studies: Applying Multilevel Modeling Techniques to Analyse TIMSS Data}, IRC, 2004.
 \bibitem{timssCpalyg2} Kim, S. J., Park, J. H., Park, S. W., Kim, S. S., \textit{The Effects of School and Students’ Educational Contexts in Korea, Singapore, and Finland using TIMSS 2011}, IRC, 2013.
@@ -986,6 +989,8 @@ variance components in mixed linear models}, Journal of Advanced Research, 2015 
 \bibitem{bootNest} Ren, S., Lai, H., Tong,W., Aminzadeh M., \textit{Nonparametric bootstrapping for hierarchical data}, Journal of Applied Statistics, 37:9, 1487-1498, 2010.
 \bibitem{timssLiet} Robitaille, D., Beaton, A., \textit{Secondary Analysis of the TIMSS Data}, Kluwer Academic Publishers, 2002.
 \bibitem{2011Sample} \textit{Sample Design and Implementation}, [žiūrėta 2013-11-23], prieiga per internetą : http://timssandpirls.bc.edu/methods/t-sample-design.html.
+\bibitem{saxonhouse} Saxonhouse, G., R., \textit{Estimated Parameters as Dependent Variables}, The American Economic Review,
+leidimas 66, Nr. 1 (balandis, 1976), psl. 178-183.
 \bibitem{minquereml2} Searle, S. R., Casella, G., McCulloch, Ch.E., \textit{Variance Components}, John Wiley \& Sons, Inc., New York, 1992.
 \bibitem{icc} Shackman, G., \textit{Developing Sample Sizes for New Surveys: Estimating the Design Effect Adjustment}, What’s Hot / What’s Next VI. Albany, 2001.
 \bibitem{fixed} Snijders, T., Bosker, R., \textit{Multilevel Analysis: An introduction to basic and advanced multilevel modeling}, SAGE Publications, 1999.
@@ -1408,6 +1413,20 @@ Y_{ij} = \gamma_{00} +\gamma_{01}\times W_{j}+ \gamma_{10}\times X_{ij}+\gamma_{
 
 \subparagraph{Simuliacijų rezultatai} \hypertarget{Drez}Atlikus simuliacijas gauti rezultatai buvo lyginami santikiniu poslinkiu (\textit{angl. relative bias}). Esant tiek normaliosioms, tiek $\chi^2$  paklaidoms fiksuotų ir atsitiktinių parametrų įverčių santykinis poslinkis mažesnis nei 0,05 ($<5\%$) visiems tirtiems atvejams. REML metodu gauti įverčiai turi didesnį santykinį poslinkį nei MINQUE su saviranka, bet visvien santykinis poslinkis mažesnis už $5\%$.\\
 \indent Toliau tirtas CI padengiamumas. Esant normaliosioms paklaidoms ir mažam grupių skaičiui sukonstruoti REML antrojo lygmens atsitiktinių parametrų pasiklaiutinumo intervalai buvo persiauri, o tai reikškia, jog standartinės paklaidos nuvertintos. Grupių skaičius kitais atvejais įtakos neturėjo. $ICC$ dydis neturėjo jokios įtakos pasikliautinių intervalų tikslumui. Prie $\chi^2_1$ skirstinio fiksuotų parametrų CI buvo pakankamai tikslūs. Atsitiktinių efektų parametrų įverčių CI REML metodui stipriai nuvertinami ir standartinės paklais paslinktos. $ICC$ dydis neturėjo reikšmės REML intervalų padengiamumui, tačiau darė įtaką MINQUE su saviranka metodui.Tačiau bendu atveju MINQUE su saviranka davė geresnius pasikliautinių intervalų įverčius.
+
+\section{A priori}
+Kaip \textit{a priori} reikšmes galime naudoti dviejų žingsnių vertinimo metodu gautus dispersijos komponenčių įverčius. Dviejų žingsnių metodas (\textit{angl. two-stage method}) yra labiau skirtas HLM modelių fiksuotiems koeficientams $\gamma_{ij}$ gauti ir susideda iš dviejų žingsnių:
+\begin{enumerate}
+\item Tarkime turime modelį (\ref{eq:2lvl}). Paprastu OLS metodu gauname įverčius $\hat{\beta}_{pj}$ atskirai kiekvienai grupei $j,\ j=1,\dots,J$ vertindami pirmąją modelio lygtį $Y_{ij} = \beta_{0j}+\sum^P_{p = 1} \beta_{pj}\times X_{pij}+\varepsilon_{ij}$.
+\item Gauti $\hat{\beta}_{pj}$ naudojami kaip aiškianamasis kintamasis toliau vertinant antrąją modelio (\ref{eq:2lvl}) lygtį $\hat{\beta}_{pj} = \gamma_{p0} + \sum^{Q_p}_{q=1}\gamma_{pq}\times W_{pqj}+u_{pj}$ GLS metodu. Taip gaunami $\hat{\gamma}_{pq}, \ p=1,\dots,P,\  q=1,\dots,Q_P$. O kartu ir $\hat{\tau}_{pp}$ bei $\hat{u}_{pj}, \forall p,\ p=1,\dots,P$.
+\end{enumerate}
+\cite{hanushek} Hanushek 1974, \cite{saxonhouse} Saxonhouse 1976, \cite{jusko} Jusko ir Shively, \cite{achen}
+
+
+\ref{eq:2lvljung}
+\begin{equation} 
+Y_{ij} =\sum^P_{p = 0} \sum^{Q_p}_{q=0}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 0} X_{pij}\times u_{pj}+\epsilon_{ij}.
+\end{equation}
 
 
 %\indent Sakykime mišrių efektų modelis turi tokią išraišką bendrąją išraišką

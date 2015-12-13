@@ -456,7 +456,8 @@ makePOPFixed <- function(M = 100, Nclass = 30, sigma2 = 100, tau00 = 1, tau01 = 
   require(msm)
   require(data.table)
   struct <- 1:M
-  N <- Nclass
+  N <- rep(Nclass, M)
+  #N[M] <- 35
 #   uj <- rtnorm(M, 0, sqrt(0.2), -1.5/sqrt(0.2), 1.5/sqrt(0.2))
 #   N <- round(50*exp(uj))
 
@@ -483,9 +484,10 @@ makePOPFixed <- function(M = 100, Nclass = 30, sigma2 = 100, tau00 = 1, tau01 = 
   struct[, cj := Nclass]
   struct[, pcl := 1/cj]
   
-  allval <- (rchisq(sum(N), 2)-2)/sqrt(2*2)*sqrt(sigma2)
+  
   eN <- struct[, rnorm(Nj, 0, sqrt(sigma2)), by = "IDSCHOOL"]
-  eN$eN <- rnorm(sum(N), 0, sqrt(sigma2))
+  allval <- (rchisq(nrow(eN), 2)-2)/sqrt(2*2)*sqrt(sigma2)
+  eN$eN <- rnorm(nrow(eN), 0, sqrt(sigma2))
   eN$eX <- allval
   eN[, V1:=NULL]
   
@@ -2386,10 +2388,10 @@ simPopMyFixed <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)"
   smpl$w2 <- smpl$wsch
   
   mm <- lmer(as.formula(formul), data = smpl)
-  if(length(mm@optinfo$conv$lme4) != 0){
-    return(simPopMyFixed(M, formul, popF, sigma2 = sigma2, tau00 = tau00, 
-                    tau01 = tau01, tau11 = tau11, m = m))
-  } else {
+#   if(length(mm@optinfo$conv$lme4) != 0){
+#     return(simPopMyFixed(M, formul, popF, sigma2 = sigma2, tau00 = tau00, 
+#                     tau01 = tau01, tau11 = tau11, m = m))
+#   } else {
     sm <- summary(mm)
     
     f.f <- strsplit(formul, "\\+\\(")
@@ -2410,19 +2412,19 @@ simPopMyFixed <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)"
     iv <- summary(lm(f.f, smpl))
     iva <- smpl[, as.list(c(coef(lm(Y1~1+X1)), w=unique(W))), by = "IDSCHOOL"]
     setnames(iva, c("IDSCHOOL", "b0", "b1", "W"))
-    tau00 <- gls(b0~1+W, data = iva)
-    res0 <- tau00$residuals
-    tau11 <- gls(b1~1+W, data = iva)
-    res1 <- tau11$residuals
-    
+    tau0 <- gls(b0~1+W, data = iva)
+    res0 <- tau0$residuals
+    tau1 <- gls(b1~1+W, data = iva)
+    res1 <- tau1$residuals
+    icc <- tau0$sigma^2/(tau0$sigma^2+iv$sigma^2)
     min3 <- try(myMINQUE(dt = smpl,
                          fixed = f.f,
                          random1 = r.f,
                          weights = NULL,
-                         apriori = c(iv$sigma^2, tau00$sigma^2, 
-                                     cov(res0, res1), tau11$sigma^2)))
+                         apriori = c(iv$sigma^2, tau0$sigma^2, 
+                                     cov(res0, res1), tau1$sigma^2)))
     if(class(min3)[1] == "try-error") min3 <- NULL
-  }
+  # }
   return(c(fixef(mm), min1$beta, min2$beta, min3$beta,
            sm$sigma^2, min1$sigma2, min2$sigma2, min3$sigma2,
            unlist(sm$varcor[[1]]),  unlist(min1$TT),  unlist(min2$TT),

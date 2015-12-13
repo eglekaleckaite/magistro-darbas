@@ -20,15 +20,16 @@ library(doParallel)
 library(doSNOW)
 library(mitools)
 library(matrixcalc)
+library(nlme)
 
 #library(sample)
 source("10code.R")
 
 pcg <- c("plyr", "mvtnorm", "expm", "foreach", "msm", "gtools", 
          "MASS", "lme4", "gdata", "Matrix", "data.table", "utils", "iterators",
-         "doParallel", "doSNOW")
+         "doParallel", "doSNOW", "nlme")
 
-N <- 2
+N <- 500
 
 cl <- makeCluster(6, outfile="simulPOPbagakas.txt") # number of cores. Notice 'outfile'
 registerDoSNOW(cl)
