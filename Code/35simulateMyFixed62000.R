@@ -37,9 +37,9 @@ pb <- txtProgressBar(min = 1, max = N, style = 3)
 
 mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
   
-  res <- simPopMyFixed(M = 35, formul ="Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
-                  popF = makePOPFixed, sigma2 = 2000, tau00 = 100, 
-                  tau01 = 50, tau11 = 100, m = 35)
+  res <- simPopMyFixed2(M = 80, formul ="Y2 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
+                  popF = makePOPFixed, sigma2 = 2000, tau00 = 2000, 
+                  tau01 = 1000, tau11 = 2000, m = 80)
   if(class(res) == "try-error") return(NULL)
   
   setTxtProgressBar(pb, ii)
@@ -50,16 +50,16 @@ mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
 close(pb)
 stopCluster(cl) 
 
-save(mcmc, file = "Output/mcmcY1_simulMy_2000_100_50_100_35_fixed.RData")
+save(mcmc, file = "Output/mcmcY2_simulMy_2000_2000_1000_2000_80_fixed.RData")
 
 
-# g00 <- rbind(mcmcRES(mcmc[,1], 450),
-#              mcmcRES(mcmc[,5], 450),
-#              mcmcRES(mcmc[,9], 450),
-#              mcmcRES(mcmc[,13], 450),
-#              mcmcRES(mcmc[,17], 450),
-#              mcmcRES(mcmc[,21], 450),
-#              mcmcRES(mcmc[,25], 450))
+# g00 <- rbind(mcmcRES(mcmc[,1], 41000),
+#              mcmcRES(mcmc[,5], 41000),
+#              mcmcRES(mcmc[,9], 41000),
+#              mcmcRES(mcmc[,13], 41000),
+#              mcmcRES(mcmc[,17], 41000),
+#              mcmcRES(mcmc[,21], 41000),
+#              mcmcRES(mcmc[,25], 41000))
 # 
 # g01 <- rbind(mcmcRES(mcmc[,2], 10),
 #              mcmcRES(mcmc[,6], 10),
@@ -91,23 +91,23 @@ save(mcmc, file = "Output/mcmcY1_simulMy_2000_100_50_100_35_fixed.RData")
 #                 mcmcRES(mcmc[,32], 2000),
 #                 mcmcRES(mcmc[,33], 2000),
 #                 mcmcRES(mcmc[,34], 2000),
-#                 mcmcRES(mcmc[,35], 2000))
+#                 mcmcRES(mcmc[,80], 2000))
 # 
-# tau00 <- rbind(mcmcRES(mcmc[,36], 100),
-#                mcmcRES(mcmc[,40], 100),
-#                mcmcRES(mcmc[,44], 100),
-#                mcmcRES(mcmc[,48], 100),
-#                mcmcRES(mcmc[,52], 100),
-#                mcmcRES(mcmc[,56], 100),
-#                mcmcRES(mcmc[,60], 100))
+# tau00 <- rbind(mcmcRES(mcmc[,36], 2000),
+#                mcmcRES(mcmc[,40], 2000),
+#                mcmcRES(mcmc[,44], 2000),
+#                mcmcRES(mcmc[,48], 2000),
+#                mcmcRES(mcmc[,52], 2000),
+#                mcmcRES(mcmc[,56], 2000),
+#                mcmcRES(mcmc[,60], 2000))
 # 
-# tau01 <- rbind(mcmcRES(mcmc[,37], 1000),
-#                mcmcRES(mcmc[,41], 1000),
-#                mcmcRES(mcmc[,45], 1000),
-#                mcmcRES(mcmc[,49], 1000),
-#                mcmcRES(mcmc[,53], 1000),
-#                mcmcRES(mcmc[,57], 1000),
-#                mcmcRES(mcmc[,61], 1000))
+# tau01 <- rbind(mcmcRES(mcmc[,37], 20000),
+#                mcmcRES(mcmc[,41], 20000),
+#                mcmcRES(mcmc[,45], 20000),
+#                mcmcRES(mcmc[,49], 20000),
+#                mcmcRES(mcmc[,53], 20000),
+#                mcmcRES(mcmc[,57], 20000),
+#                mcmcRES(mcmc[,61], 20000))
 # 
 # tau11 <- rbind(mcmcRES(mcmc[,39], 2000),
 #                mcmcRES(mcmc[,43], 2000),
@@ -118,7 +118,7 @@ save(mcmc, file = "Output/mcmcY1_simulMy_2000_100_50_100_35_fixed.RData")
 #                mcmcRES(mcmc[,63], 2000))
 # 
 # 
-# sink("output_mcmcY1_simulMy_2000_2000_1000_2000_20.txt")
+# sink("output_mcmcY2_simulMy_2000_2000_20000_2000_20.txt")
 # cat("g00\n")
 # print(g00)
 # cat("g01\n")
@@ -142,50 +142,50 @@ save(mcmc, file = "Output/mcmcY1_simulMy_2000_100_50_100_35_fixed.RData")
 
 
 
-# pop <- makePOPW(100, sigma2 = 2000, tau00 = 100, tau01 = 50, tau11 = 100)
-# smpl <- samplePOP(pop, 35)
+# pop <- makePOPW(2000, sigma2 = 2000, tau00 = 2000, tau01 = 1000, tau11 = 2000)
+# smpl <- samplePOP(pop, 80)
 # smpl$w1 <- smpl$wstd*smpl$wcl
 # smpl$w2 <- smpl$wsch
 # 
 # 
-# mm <- lmer(Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL), data = smpl)
+# mm <- lmer(Y2 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL), data = smpl)
 # (sm <- summary(mm))
 # 
 # (min1 <- myMINQUE(dt = smpl,
-#                  fixed = "Y1 ~ 1+W+X1+X1*W",
+#                  fixed = "Y2 ~ 1+W+X1+X1*W",
 #                  random1 = "~1+X1|IDSCHOOL",
 #                  weights = NULL,
 #                  apriori= c(1, 0, 0, 0)))
 # 
 # (min2 <- myMINQUE(dt = smpl,
-#                   fixed = "Y1 ~ 1+W+X1+X1*W",
+#                   fixed = "Y2 ~ 1+W+X1+X1*W",
 #                   random1 = "~1+X1|IDSCHOOL",
 #                   weights = c("w1", "w2"),
 #                   apriori= c(1, 0, 0, 0)))
 # 
 # 
 # (min3 <- myMINQUE(dt = smpl,
-#                   fixed = "Y1 ~ 1+W+X1+X1*W",
+#                   fixed = "Y2 ~ 1+W+X1+X1*W",
 #                   random1 = "~1+X1|IDSCHOOL",
 #                   weights = NULL,
 #                   apriori= c(1, 1, 1, 1)))
 # 
 # (min4 <- myMINQUE(dt = smpl,
-#                   fixed = "Y1 ~ 1+W+X1+X1*W",
+#                   fixed = "Y2 ~ 1+W+X1+X1*W",
 #                   random1 = "~1+X1|IDSCHOOL",
 #                   weights = c("w1", "w2"),
 #                   apriori= c(1, 1, 1, 1)))
 # 
-# lm1 <- lm("Y1 ~ 1+W+X1+X1*W", data = smpl)
+# lm1 <- lm("Y2 ~ 1+W+X1+X1*W", data = smpl)
 # sg <- summary(lm1)$sigma^2
 # (min5 <- myMINQUE(dt = smpl,
-#                   fixed = "Y1 ~ 1+W+X1+X1*W",
+#                   fixed = "Y2 ~ 1+W+X1+X1*W",
 #                   random1 = "~1+X1|IDSCHOOL",
 #                   weights = NULL,
 #                   apriori= c(sg, 1, 1, 1)))
 # 
 # (min6 <- myMINQUE(dt = smpl,
-#                   fixed = "Y1 ~ 1+W+X1+X1*W",
+#                   fixed = "Y2 ~ 1+W+X1+X1*W",
 #                   random1 = "~1+X1|IDSCHOOL",
 #                   weights = c("w1", "w2"),
 #                   apriori= c(sg, 1, 1, 1)))

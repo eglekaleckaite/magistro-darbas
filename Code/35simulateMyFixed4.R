@@ -26,7 +26,7 @@ source("10code.R")
 
 pcg <- c("plyr", "mvtnorm", "expm", "foreach", "msm", "gtools", 
          "MASS", "lme4", "gdata", "Matrix", "data.table", "utils", "iterators",
-         "doParallel", "doSNOW")
+         "doParallel", "doSNOW", "nlme")
 
 N <- 500
 
@@ -37,7 +37,7 @@ pb <- txtProgressBar(min = 1, max = N, style = 3)
 
 mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
   
-  res <- simPopMyFixed(M = 35, formul ="Y2 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
+  res <- simPopMyFixed2(M = 35, formul ="Y2 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
                   popF = makePOPFixed, sigma2 = 2000, tau00 = 100, 
                   tau01 = 50, tau11 = 100, m = 35)
   if(class(res) == "try-error") return(NULL)

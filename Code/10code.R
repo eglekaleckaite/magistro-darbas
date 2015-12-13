@@ -2410,19 +2410,23 @@ simPopMyFixed <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)"
                          apriori = c(1, 1, 1, 1)))
     if(class(min2)[1] == "try-error") min2 <- NULL
     iv <- summary(lm(f.f, smpl))
-    iva <- smpl[, as.list(c(coef(lm(Y1~1+X1)), w=unique(W))), by = "IDSCHOOL"]
+    iva <- smpl[, as.list(c(coef(lm(Y1~1+X1)), 
+                            w=unique(W))), by = "IDSCHOOL"]
     setnames(iva, c("IDSCHOOL", "b0", "b1", "W"))
-    tau0 <- gls(b0~1+W, data = iva)
-    res0 <- tau0$residuals
-    tau1 <- gls(b1~1+W, data = iva)
-    res1 <- tau1$residuals
-    icc <- tau0$sigma^2/(tau0$sigma^2+iv$sigma^2)
+    tau0 <- try(gls(b0~1+W, data = iva))
+    if (class(tau0) == "try-error") browser()
+    iva$res0 <- tau0$residuals
+    iva <- na.omit(iva)
+    tau1 <- try(gls(b1~1+W, data = iva, na.action = na.omit))
+    if (class(tau1) == "try-error") browser()
+    iva$res1 <- tau1$residuals
+    apriori <- c(iv$sigma^2, tau0$sigma^2, 
+                 cov(iva$res0, iva$res1), tau1$sigma^2)/iv$sigma^2
     min3 <- try(myMINQUE(dt = smpl,
                          fixed = f.f,
                          random1 = r.f,
                          weights = NULL,
-                         apriori = c(iv$sigma^2, tau0$sigma^2, 
-                                     cov(res0, res1), tau1$sigma^2)))
+                         apriori = apriori))
     if(class(min3)[1] == "try-error") min3 <- NULL
   # }
   return(c(fixef(mm), min1$beta, min2$beta, min3$beta,
@@ -2431,6 +2435,64 @@ simPopMyFixed <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)"
            unlist(min3$TT)))
   
 }
+
+simPopMyFixed2 <- function(M = 100, m = 35, formul="Y1 ~ 1+X1+X3+X4+(1|IDSCHOOL)", 
+                          popF = makePOPFixed, sigma2 = 2000, tau00 = 100, tau01 = 50,
+                          tau11 = 100){
+  smpl <- popF(M = M, sigma2 = sigma2, tau00 = tau00, 
+               tau01 = tau01, tau11 = tau11)
+  smpl$w1 <- smpl$wstd*smpl$wcl
+  smpl$w2 <- smpl$wsch
+  
+  mm <- lmer(as.formula(formul), data = smpl)
+  #   if(length(mm@optinfo$conv$lme4) != 0){
+  #     return(simPopMyFixed(M, formul, popF, sigma2 = sigma2, tau00 = tau00, 
+  #                     tau01 = tau01, tau11 = tau11, m = m))
+  #   } else {
+  sm <- summary(mm)
+  
+  f.f <- strsplit(formul, "\\+\\(")
+  r.f <- paste("~", gsub("\\)", "", f.f[[1]][2]))
+  f.f <- f.f[[1]][1]
+  min1 <- try(myMINQUE(dt = smpl,
+                       fixed = f.f,
+                       random1 = r.f,
+                       weights = NULL,
+                       apriori = c(1, 0, 0, 0)))
+  if(class(min1)[1] == "try-error") min1 <- NULL
+  min2 <- try(myMINQUE(dt = smpl,
+                       fixed = f.f,
+                       random1 = r.f,
+                       weights = NULL,
+                       apriori = c(1, 1, 1, 1)))
+  if(class(min2)[1] == "try-error") min2 <- NULL
+  iv <- summary(lm(f.f, smpl))
+  iva <- smpl[, as.list(c(coef(lm(Y2~1+X1)), 
+                          w=unique(W))), by = "IDSCHOOL"]
+  setnames(iva, c("IDSCHOOL", "b0", "b1", "W"))
+  tau0 <- try(gls(b0~1+W, data = iva))
+  if (class(tau0) == "try-error") browser()
+  iva$res0 <- tau0$residuals
+  iva <- na.omit(iva)
+  tau1 <- try(gls(b1~1+W, data = iva, na.action = na.omit))
+  if (class(tau1) == "try-error") browser()
+  iva$res1 <- tau1$residuals
+  apriori <- c(iv$sigma^2, tau0$sigma^2, 
+               cov(iva$res0, iva$res1), tau1$sigma^2)/iv$sigma^2
+  min3 <- try(myMINQUE(dt = smpl,
+                       fixed = f.f,
+                       random1 = r.f,
+                       weights = NULL,
+                       apriori = apriori))
+  if(class(min3)[1] == "try-error") min3 <- NULL
+  # }
+  return(c(fixef(mm), min1$beta, min2$beta, min3$beta,
+           sm$sigma^2, min1$sigma2, min2$sigma2, min3$sigma2,
+           unlist(sm$varcor[[1]]),  unlist(min1$TT),  unlist(min2$TT),
+           unlist(min3$TT)))
+  
+}
+
 
 Tfunc <- function(dt){
   dt <- as.matrix(dt)
