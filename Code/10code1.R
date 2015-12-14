@@ -5,6 +5,7 @@ mcmcRES <- function(x, x0) {
   return(data.frame(Mean = m, RBias = RBias, RMSE = RMSE))
 }
 
+
 mySample <- function(dt, m = 75){
   info <- dt[,c("IDSCHOOL", "IDSTUD", "nj", "psch", "pstud", "eN"), with = F]
   idcl <- unique(info[, c("IDSCHOOL", "psch"), with = F])
