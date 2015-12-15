@@ -1231,7 +1231,8 @@ fillSMINQUE <- function(Cjj, QI, wgt2) {
   return(x)
 }
 
-myMINQUE <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL) {
+myMINQUE <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL,
+                     iterate = FALSE) {
   require("matrixcalc")
   #dt <- arrange(dt, IDSCHOOL)
   N <- nrow(dt)
@@ -1309,9 +1310,13 @@ myMINQUE <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL) 
   ##print(iM$theta)
   gc()
   
-#   theta <- iM$theta
-#   #print(theta)
-#   iM <- iMINQUE(iM$V, X, Y, QI, wgt2i)
+  if(iterate) {
+    while(iterate){
+      theta <- iM$theta
+      iM <- iMINQUE(iM$V, X, Y, QI, wgt2i)
+      if (all((theta - iM$theta)/theta < 0.00001)) iterate <- F
+    }
+  }
   
   P <- ginv(as.matrix((crossprod(X, iM$V)%*%X)))
   iM$beta <- tcrossprod(P, X)%*%iM$V%*%Y
@@ -1578,7 +1583,7 @@ iMINQUE <- function(V, X, Y, QI, wgt2i) {
   CQ <- llply(QI, function(qi) Cjj%*%qi)
   
   S <- fillSMINQUE2(CQ, wgt2i)
-  WI <- laply(CQ, function(cq) sum(diag(crossprod(Y, cq)%*%Cjj%*%Y)))
+  WI <- laply(CQ, function(cq) sum(diag(cq%*%Cjj%*%tcrossprod(Y))))
   theta0 <- ginv(S)%*%matrix(WI, ncol = 1)
   
   V <- ginv(as.matrix(Reduce("+", mapply(function(qi, th){qi*th}, QI, theta0))))
