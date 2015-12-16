@@ -26,7 +26,7 @@ source("10code.R")
 
 pcg <- c("plyr", "mvtnorm", "expm", "foreach", "msm", "gtools", 
          "MASS", "lme4", "gdata", "Matrix", "data.table", "utils", "iterators",
-         "doParallel", "doSNOW")
+         "doParallel", "doSNOW", "nlme")
 
 N <- 500
 
@@ -38,8 +38,7 @@ pb <- txtProgressBar(min = 1, max = N, style = 3)
 mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
   
   res <- simPopMyW1(M = 300, formul ="Y1 ~ 1+W+X1+(1+X1|IDSCHOOL)", 
-                  popF = makePOPW3, sigma2 = 2000, tau00 = 2000, 
-                  tau01 = 1000, tau11 = 2000, m = 20)
+                  popF = makePOPW3)
   if(class(res) == "try-error") return(NULL)
   
   setTxtProgressBar(pb, ii)
@@ -50,93 +49,93 @@ mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
 close(pb)
 stopCluster(cl) 
 
-save(mcmc, file = "Output/mcmcY1_simulMy_2000_2000_1000_2000_20_weighted.RData")
+save(mcmc, file = "Output/mcmcY1_simulMy_2000_100_50_100_20_w.RData")
 
-
-g00 <- rbind(mcmcRES(mcmc[,1], 450),
-             mcmcRES(mcmc[,5], 450),
-             mcmcRES(mcmc[,9], 450),
-             mcmcRES(mcmc[,13], 450),
-             mcmcRES(mcmc[,17], 450),
-             mcmcRES(mcmc[,21], 450),
-             mcmcRES(mcmc[,25], 450))
-
-g01 <- rbind(mcmcRES(mcmc[,2], 10),
-             mcmcRES(mcmc[,6], 10),
-             mcmcRES(mcmc[,10], 10),
-             mcmcRES(mcmc[,14], 10),
-             mcmcRES(mcmc[,18], 10),
-             mcmcRES(mcmc[,22], 10),
-             mcmcRES(mcmc[,26], 10))
-
-g10 <- rbind(mcmcRES(mcmc[,3], 30),
-             mcmcRES(mcmc[,7], 30),
-             mcmcRES(mcmc[,11], 30),
-             mcmcRES(mcmc[,15], 30),
-             mcmcRES(mcmc[,19], 30),
-             mcmcRES(mcmc[,23], 30),
-             mcmcRES(mcmc[,27], 30))
-
-g11 <- rbind(mcmcRES(mcmc[,4], 5),
-             mcmcRES(mcmc[,8], 5),
-             mcmcRES(mcmc[,12], 5),
-             mcmcRES(mcmc[,16], 5),
-             mcmcRES(mcmc[,20], 5),
-             mcmcRES(mcmc[,24], 5),
-             mcmcRES(mcmc[,28], 5))
-
-sigma2 <- rbind(mcmcRES(mcmc[,29], 2000),
-                mcmcRES(mcmc[,30], 2000),
-                mcmcRES(mcmc[,31], 2000),
-                mcmcRES(mcmc[,32], 2000),
-                mcmcRES(mcmc[,33], 2000),
-                mcmcRES(mcmc[,34], 2000),
-                mcmcRES(mcmc[,35], 2000))
-
-tau00 <- rbind(mcmcRES(mcmc[,36], 2000),
-               mcmcRES(mcmc[,40], 2000),
-               mcmcRES(mcmc[,44], 2000),
-               mcmcRES(mcmc[,48], 2000),
-               mcmcRES(mcmc[,52], 2000),
-               mcmcRES(mcmc[,56], 2000),
-               mcmcRES(mcmc[,60], 2000))
-
-tau01 <- rbind(mcmcRES(mcmc[,37], 1000),
-               mcmcRES(mcmc[,41], 1000),
-               mcmcRES(mcmc[,45], 1000),
-               mcmcRES(mcmc[,49], 1000),
-               mcmcRES(mcmc[,53], 1000),
-               mcmcRES(mcmc[,57], 1000),
-               mcmcRES(mcmc[,61], 1000))
-
-tau11 <- rbind(mcmcRES(mcmc[,39], 2000),
-               mcmcRES(mcmc[,43], 2000),
-               mcmcRES(mcmc[,47], 2000),
-               mcmcRES(mcmc[,51], 2000),
-               mcmcRES(mcmc[,55], 2000),
-               mcmcRES(mcmc[,59], 2000),
-               mcmcRES(mcmc[,63], 2000))
-
-
-sink("output_mcmcY1_simulMy_2000_2000_1000_2000_80.txt")
-cat("g00\n")
-print(g00)
-cat("g01\n")
-print(g01)
-cat("g10\n")
-print(g10)
-cat("g11\n")
-print(g11)
-cat("sigma2\n")
-print(sigma2)
-cat("tau00\n")
-print(tau00)
-cat("tau01\n")
-print(tau01)
-cat("tau11\n")
-print(tau11)
-sink()
-
+# 
+# g00 <- rbind(mcmcRES(mcmc[,1], 450),
+#              mcmcRES(mcmc[,5], 450),
+#              mcmcRES(mcmc[,9], 450),
+#              mcmcRES(mcmc[,13], 450),
+#              mcmcRES(mcmc[,17], 450),
+#              mcmcRES(mcmc[,21], 450),
+#              mcmcRES(mcmc[,25], 450))
+# 
+# g01 <- rbind(mcmcRES(mcmc[,2], 10),
+#              mcmcRES(mcmc[,6], 10),
+#              mcmcRES(mcmc[,10], 10),
+#              mcmcRES(mcmc[,14], 10),
+#              mcmcRES(mcmc[,18], 10),
+#              mcmcRES(mcmc[,22], 10),
+#              mcmcRES(mcmc[,26], 10))
+# 
+# g10 <- rbind(mcmcRES(mcmc[,3], 30),
+#              mcmcRES(mcmc[,7], 30),
+#              mcmcRES(mcmc[,11], 30),
+#              mcmcRES(mcmc[,15], 30),
+#              mcmcRES(mcmc[,19], 30),
+#              mcmcRES(mcmc[,23], 30),
+#              mcmcRES(mcmc[,27], 30))
+# 
+# g11 <- rbind(mcmcRES(mcmc[,4], 5),
+#              mcmcRES(mcmc[,8], 5),
+#              mcmcRES(mcmc[,12], 5),
+#              mcmcRES(mcmc[,16], 5),
+#              mcmcRES(mcmc[,20], 5),
+#              mcmcRES(mcmc[,24], 5),
+#              mcmcRES(mcmc[,28], 5))
+# 
+# sigma2 <- rbind(mcmcRES(mcmc[,29], 2000),
+#                 mcmcRES(mcmc[,30], 2000),
+#                 mcmcRES(mcmc[,31], 2000),
+#                 mcmcRES(mcmc[,32], 2000),
+#                 mcmcRES(mcmc[,33], 2000),
+#                 mcmcRES(mcmc[,34], 2000),
+#                 mcmcRES(mcmc[,35], 2000))
+# 
+# tau00 <- rbind(mcmcRES(mcmc[,36], 2000),
+#                mcmcRES(mcmc[,40], 2000),
+#                mcmcRES(mcmc[,44], 2000),
+#                mcmcRES(mcmc[,48], 2000),
+#                mcmcRES(mcmc[,52], 2000),
+#                mcmcRES(mcmc[,56], 2000),
+#                mcmcRES(mcmc[,60], 2000))
+# 
+# tau01 <- rbind(mcmcRES(mcmc[,37], 1000),
+#                mcmcRES(mcmc[,41], 1000),
+#                mcmcRES(mcmc[,45], 1000),
+#                mcmcRES(mcmc[,49], 1000),
+#                mcmcRES(mcmc[,53], 1000),
+#                mcmcRES(mcmc[,57], 1000),
+#                mcmcRES(mcmc[,61], 1000))
+# 
+# tau11 <- rbind(mcmcRES(mcmc[,39], 2000),
+#                mcmcRES(mcmc[,43], 2000),
+#                mcmcRES(mcmc[,47], 2000),
+#                mcmcRES(mcmc[,51], 2000),
+#                mcmcRES(mcmc[,55], 2000),
+#                mcmcRES(mcmc[,59], 2000),
+#                mcmcRES(mcmc[,63], 2000))
+# 
+# 
+# sink("output_mcmcY1_simulMy_2000_2000_1000_2000_80.txt")
+# cat("g00\n")
+# print(g00)
+# cat("g01\n")
+# print(g01)
+# cat("g10\n")
+# print(g10)
+# cat("g11\n")
+# print(g11)
+# cat("sigma2\n")
+# print(sigma2)
+# cat("tau00\n")
+# print(tau00)
+# cat("tau01\n")
+# print(tau01)
+# cat("tau11\n")
+# print(tau11)
+# sink()
+# 
 
 
 
