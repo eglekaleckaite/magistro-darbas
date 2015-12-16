@@ -975,6 +975,7 @@ $\tau_{22}$&&&&&\\
 \bibitem{shrinkage} Leeuw, J., Kreft, I., \textit{Questioning Multilevel Models}, Journal of Educational and Behavioral Statistics, Summer 1995, Vol. 20, No. 2, 171-189.
 \bibitem{MMINQUE} El  Leithy,  H.A.,  Abdel  Wahed,  Z.A.,  Abdallah,  M.S.,  \textit{On  non-negative  estimation  of
 variance components in mixed linear models}, Journal of Advanced Research, 2015 vasaris.
+\bibitem{liu} Liu, Z., \textit{Next Generation Sequencing and Whole Genome Selection in Aquaculture}, John Wiley and Sons, 2010.
 \bibitem{IAUE}Lucas, James R., \textit{A variance component estimation method for sparse matrix applications}, NOAA Technical Report NOS 111 NGS 33 , 1985.
 \bibitem{sandwich} Maas, C., Hox, J., \textit{The influence of violations of assumptions on multilevel parameter estimates and their standard errors}, Computational Statistics \& Data Analysis 46, 2004, 427 – 440.
 \bibitem{timss2011lt} Nacionalinio egzaminų centro Mokinių pasiekimų tyrimų ir analizės skyrius. \textit{TIMSS 2011 Ataskaita, Matematika, 8 klasė}, 2011
@@ -1001,6 +1002,9 @@ leidimas 66, Nr. 1 (balandis, 1976), psl. 178-183.
 \bibitem{MLbetterMINQUE} Tong, H., Kumar, K., Huang, Y., \textit{Developing Econometrics}, John Wiley \& Sons, 2011.
 \bibitem{Rtest} Vonesh, E.F., Chinchilli, V.M., \textit{ Linear and Nonlinear Models for the Analysis of Repeated Measurements}, Marcel Dekker, 1997, 419–424.
 \bibitem{timssCpalyg4} Wiberg, M., Andersson, E., \textit{School-Effectiveness in Mathematics in Sweden compared with countries in Europe and Asia-Pacific}, IRC, 2010.
+\bibitem{zhu} Zhu, J,. \textit{Estimation of Genetic Variance Components in the General Mixed Model},  Ph.D.
+Dissertation, NC State University, Raleigh, U.S.A, 1989.   
+\bibitem{zhu2} Zhu, J.,  \textit{Mixed model approaches for estimating genetic variances and covariances}, Journal of Biomathe inatics 7( I ): 1 - 1 I, 1992.
 \bibitem{siaip6} Zuzovsky, R., \textit{Grouping and Its effects on 8th Graders' Science and Mathematics Achievments}, IRC, 2004.
 \end{thebibliography}
 
@@ -1333,6 +1337,9 @@ bb$sigma
 \indent Jei naudosime I-MINQUE dažniausiai prarasime nepaslinktumo savybę. Lucas straipsyje \cite{IAUE} pristato IAUE - iteratyvų AUE. Konvergavimo greitis priklauso nuo pradinių reikšmių, tačiau užtenka kelių iteracijų geriems rezultatams pasiekti. Šis metodas duos neneigiamus įverčius ir yra lengvai naudojamas su diagonalinėmis matricomis.
 
 \indent Leithy ir k.t. straipsnyje \textit{On non-negative estimation of variance components in mixed linear models} \cite{MMINQUE} aptaria  modifikuotus MINQUE, IAUE ir REML metodus (MMINQUE, MIAUE ir MREML). Dispersijos komponenčių įverčiai apskaičiuoti straipsnyje aprašytu EM (\textit{didžiausio tikėtinumo}) algoritmu vadinamas MREML. Subramani \cite{MMIVQUE} pasiūlė vertinti dispersijos komponentes ne iš tiesinės kombinacijos, o naudoti lygčių sistemą (plačiau \cite{MMINQUE}). Kadangi sprendinys nėra vienintelis, Subramani pasiūlė du metodus - MMINQUE1 ir MMINQUE2. Leithy ir k.t. pasinaudodami Subramani idėja išvedė MIAUE. Autoriai naudodami simuliacijas parodė, jog MINQUE, MMINQUE1 ir MMINQUE2 nesiskiria esant subalansuotam imties dizainui. REML yra geriausias mažiausio poslinkio prasme, o MREML vidutinės kvadratinės paklaidos (MSE) prasme. MINQUE, MMINQUE1 ir MMINQUE2 yra geresni mažesnio paslinktumo prasme nei IAUE, MIAUE1 ir MIAUE2 nesvarbu imties dydis ir nebalansuotumo laispsnis. Ir atvirkščiai, IAUE, MIAUE1 ir MIAUE2 geresn mažesniųi MSE prasme. IAUE visais atvejais labiau paslinktas nei MIAUE1 ar MIAUE2, bet turi mažesnes MSE nei MINQUE, MMINQUE1 ar MMINQUE. MMINQUE2 įverčiai dažniausiai buvo neigiami, kai REML neigiamų įverčių buvo mažiausiai. Svarbu, jog imties dydis turėjo stiprią įtaką mažinant gaunamus neigiamus įverčius. Grafiniu būdu buvo parodyta, jog MREML yra geriausias metodas iš visų. MMINQUE1 ir MINQUE įverčiai skiriasi labai nedaug, todėl naudosiu MINQUE. (Deja per vėlai pastebėjau šitą straipsnį ir sudėtinga realizuoti )
+
+Savo diseraticoje \textit{Estimation of Genetic Variance Components in the General Mixed Model}\cite{zhu} Zhu Monte Carlo simuliacijų būdu palygino HEND3 (\textit{Henderono trečiasis metodas}), ML, REML, MINQUE(1) ir MINQUE($\theta$) metodų galią genetinėms dispersijos komponentėms vertinti. Kuomet duomenų dizainas subalansuotas, HEND3 metodo galia sutapo su likusiais metodais. Nesubalansuoto dizaino atveju REML, MINQUE(1) ir MINQUE($\theta$) galia skyrėsi. Kuomet dispersijos komponentės nenulinės visi trys metodai gali duoti nepalinktus įverčius su panašia galia. Kai yra nulinių komponenčių, MINQUE(1) ir MINQUE($\theta$) gali duoti įverčius panašius į tikrąją reikšmę, tačiau REML visuomet pervertina. Tad autorius siūlo MINQUE(1) ir MINQUE($\theta$) kaip tinkamus dispersijos - kovariacijos komponenčių vertinumui.
+
 
 \indent MINQUE procedūra neužtikrina neneigiamų kovariacijos komponenčių įverčių. Vienas būdas - visiems neigiamiems įverčiams priskirti reikšmę 0. Kitas būdas, naudoti saviranką ir tikėtis, kad tai padės. Pagal Bagaka's.
 

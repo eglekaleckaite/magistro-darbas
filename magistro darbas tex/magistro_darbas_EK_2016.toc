@@ -42,9 +42,9 @@
 \contentsline {section}{\numberline {B}Bagaka's MINQUE}{40}{appendix.B}
 \contentsline {subparagraph}{Dvigubas eksponentinis skirstinys}{41}{section*.19}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{41}{section*.20}
-\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{41}{section*.21}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{42}{section*.21}
 \contentsline {section}{\numberline {C}Delpish MINQUE}{42}{appendix.C}
 \contentsline {subparagraph}{Dvimatis $\chi ^2$ skirstinys}{43}{section*.22}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{43}{section*.23}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{43}{section*.24}
-\contentsline {section}{\numberline {D}A priori}{43}{appendix.D}
+\contentsline {section}{\numberline {D}A priori}{44}{appendix.D}

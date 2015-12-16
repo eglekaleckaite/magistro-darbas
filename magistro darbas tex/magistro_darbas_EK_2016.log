@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  13 DEC 2015 02:07
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  16 DEC 2015 00:44
 entering extended mode
 **D:/minque/Magistro*darbas/magistro*darbas*tex/magistro_darbas_EK_2016.tex
 ("D:/minque/Magistro darbas/magistro darbas tex/magistro_darbas_EK_2016.tex"
@@ -1169,7 +1169,7 @@ Package hyperref Warning: Composite letter `\textasciimacron+U'
 (hyperref)                removing `\textasciimacron' on input line 941.
 
 [29] [30]
-Underfull \hbox (badness 5607) in paragraph at lines 991--992
+Underfull \hbox (badness 5607) in paragraph at lines 992--993
 []\L7x/lmr/m/it/10.95 Sample De-sign and Imp-le-men-ta-tion\L7x/lmr/m/n/10.95 ,
  [þiû-rë-ta 2013-11-23], pri-ei-ga per in-ter-ne-tà :
  []
@@ -1182,24 +1182,24 @@ Underfull \hbox (badness 5607) in paragraph at lines 991--992
 \tf@lof=\write6
 
 [39] [40] [41] [42] [43]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1480.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1487.
  [44]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1480.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1487.
 
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1480.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1480.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1487.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1487.
 
 Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 .
 (rerunfilecheck)             Checksum: 371E3429BE060946EAB68A2DD2F34CF3;1861.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1480.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1487.
  ) 
 Here is how much of TeX's memory you used:
- 10200 strings out of 493921
- 143064 string characters out of 3144879
- 352522 words of memory out of 3000000
- 13045 multiletter control sequences out of 15000+200000
+ 10206 strings out of 493921
+ 143105 string characters out of 3144879
+ 352601 words of memory out of 3000000
+ 13048 multiletter control sequences out of 15000+200000
  83761 words of font info for 93 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,10n,32p,1727b,550s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1227,9 +1227,9 @@ iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb>
-Output written on magistro_darbas_EK_2016.pdf (46 pages, 626203 bytes).
+Output written on magistro_darbas_EK_2016.pdf (46 pages, 627550 bytes).
 PDF statistics:
- 780 PDF objects out of 1000 (max. 8388607)
- 220 named destinations out of 1000 (max. 500000)
+ 785 PDF objects out of 1000 (max. 8388607)
+ 223 named destinations out of 1000 (max. 500000)
  246 words of extra memory for PDF output out of 10000 (max. 10000000)
 
