@@ -343,7 +343,7 @@ gls1 <- myIGLS(dt = data.2011,
 cbind(gls1$beta, sqrt(diag(gls1$cov)))
 
 ############# MINQUE #############################
-min1 <- myMINQUE2(dt = data.2011,
+min1 <- myMINQUE(dt = data.2011,
                   fixed = "BSMMAT01 ~ 1",
                   random1 = "~1|IDSCHOOL",
                   weights = c("STUDWGT", "SCHWGT"))

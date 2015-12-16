@@ -30,7 +30,11 @@ pcg <- c("plyr", "mvtnorm", "expm", "foreach", "msm", "gtools",
 
 N <- 500
 
+<<<<<<< HEAD
 cl <- makeCluster(4, outfile="simulPOPbagakas.txt") # number of cores. Notice 'outfile'
+=======
+cl <- makeCluster(6, outfile="simulPOPbagakas.txt") # number of cores. Notice 'outfile'
+>>>>>>> f5b3105a68487b8c096bb2e11aca1c8a6ea0f43f
 registerDoSNOW(cl)
 
 pb <- txtProgressBar(min = 1, max = N, style = 3)
