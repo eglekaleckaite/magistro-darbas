@@ -38,8 +38,8 @@ pb <- txtProgressBar(min = 1, max = N, style = 3)
 mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
   
   res <- simPopMy2(M = 300, formul ="Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
-                  popF = makePOPW, sigma2 = 2000, tau00 = 2000, 
-                  tau01 = 1000, tau11 = 2000, m = 20)
+                  popF = makePOPW, sigma2 = 2000, tau00 = 100, 
+                  tau01 = 50, tau11 = 100, m = 20)
   if(class(res) == "try-error") return(NULL)
   
   setTxtProgressBar(pb, ii)

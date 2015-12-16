@@ -30,19 +30,15 @@ pcg <- c("plyr", "mvtnorm", "expm", "foreach", "msm", "gtools",
 
 N <- 500
 
-<<<<<<< HEAD
-cl <- makeCluster(4, outfile="simulPOPbagakas.txt") # number of cores. Notice 'outfile'
-=======
 cl <- makeCluster(6, outfile="simulPOPbagakas.txt") # number of cores. Notice 'outfile'
->>>>>>> f5b3105a68487b8c096bb2e11aca1c8a6ea0f43f
 registerDoSNOW(cl)
 
 pb <- txtProgressBar(min = 1, max = N, style = 3)
 
 mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
   
-  res <- simPopMyFixed(M = 80, formul ="Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
-                  popF = makePOPFixed, sigma2 = 2000, tau00 = 800, 
+  res <- simPopMy2(M = 80, formul ="Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
+                  popF = makePOPW, sigma2 = 2000, tau00 = 800, 
                   tau01 = 400, tau11 = 800, m = 80)
   if(class(res) == "try-error") return(NULL)
   
@@ -54,7 +50,7 @@ mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
 close(pb)
 stopCluster(cl) 
 
-save(mcmc, file = "Output/mcmcY1_simulMy_2000_800_400_800_80_fixed.RData")
+save(mcmc, file = "Output/mcmcY1_simulMy_2000_800_400_800_80_add.RData")
 
 
 # g00 <- rbind(mcmcRES(mcmc[,1], 4400),

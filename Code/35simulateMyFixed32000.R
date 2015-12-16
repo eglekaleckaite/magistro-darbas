@@ -37,8 +37,8 @@ pb <- txtProgressBar(min = 1, max = N, style = 3)
 
 mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
   
-  res <- simPopMyFixed(M = 35, formul ="Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
-                  popF = makePOPFixed, sigma2 = 2000, tau00 = 2000, 
+  res <- simPopMy2(M = 35, formul ="Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL)", 
+                  popF = makePOPW, sigma2 = 2000, tau00 = 2000, 
                   tau01 = 1000, tau11 = 2000, m = 35)
   if(class(res) == "try-error") return(NULL)
   
@@ -50,7 +50,7 @@ mcmc <- foreach(ii = 1:N, .combine = rbind, .packages = pcg) %dopar% {
 close(pb)
 stopCluster(cl) 
 
-save(mcmc, file = "Output/mcmcY1_simulMy_2000_2000_1000_2000_35_fixed.RData")
+save(mcmc, file = "Output/mcmcY1_simulMy_2000_2000_1000_2000_35_add.RData")
 
 
 # g00 <- rbind(mcmcRES(mcmc[,1], 41000),
