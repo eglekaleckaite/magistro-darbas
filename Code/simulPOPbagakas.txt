@@ -1,39 +1,53 @@
-starting worker for localhost:11971 
+starting worker for localhost:11155 
 Type: EXEC 
-Loading required package: Matrix
+Загрузка требуемого пакета: Matrix
 
-Attaching package: 'expm'
+Присоединяю пакет: 'expm'
 
-The following object is masked from 'package:Matrix':
+Следующий объект скрыт от 'package:Matrix':
 
     expm
 
-gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.
+gdata: Unable to locate valid perl interpreter
+gdata: 
+gdata: read.xls() will be unable to read Excel XLS and XLSX files
+gdata: unless the 'perl=' argument is used to specify the location of a
+gdata: valid perl intrpreter.
+gdata: 
+gdata: (To avoid display of this message in the future, please ensure
+gdata: perl is installed and available on the executable search path.)
+gdata: Unable to load perl libaries needed by read.xls()
+gdata: to support 'XLX' (Excel 97-2004) files.
 
-gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.
+gdata: Unable to load perl libaries needed by read.xls()
+gdata: to support 'XLSX' (Excel 2007+) files.
 
-Attaching package: 'gdata'
+gdata: Run the function 'installXLSXsupport()'
+gdata: to automatically download and install the perl
+gdata: libaries needed to support Excel XLS and XLSX formats.
 
-The following object is masked from 'package:stats':
+Присоединяю пакет: 'gdata'
+
+Следующий объект скрыт от 'package:stats':
 
     nobs
 
-The following object is masked from 'package:utils':
+Следующий объект скрыт от 'package:utils':
 
     object.size
 
 
-Attaching package: 'data.table'
+Присоединяю пакет: 'data.table'
 
-The following object is masked from 'package:gdata':
+Следующий объект скрыт от 'package:gdata':
 
     last
 
-Loading required package: parallel
+Загрузка требуемого пакета: parallel
 
-Attaching package: 'parallel'
+Присоединяю пакет: 'parallel'
 
-The following objects are masked from 'package:snow':
+Следующие объекты скрыты от 'package:snow':
 
     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
     clusterExport, clusterMap, clusterSplit, makeCluster, parApply,
@@ -41,95 +55,20 @@ The following objects are masked from 'package:snow':
     stopCluster
 
 
-Attaching package: 'nlme'
+Присоединяю пакет: 'nlme'
 
-The following object is masked from 'package:lme4':
+Следующий объект скрыт от 'package:lme4':
 
     lmList
 
 Type: EXEC 
-Loading required package: matrixcalc
-  |                                                                                     |                                                                             |   0%Type: EXEC 
-  |                                                                                     |==                                                                           |   2%Type: EXEC 
-  |                                                                                     |===                                                                          |   3%Type: EXEC 
-  |                                                                                     |====                                                                         |   5%Type: EXEC 
-  |                                                                                     |====                                                                         |   6%Type: EXEC 
-  |                                                                                     |=====                                                                        |   7%Type: EXEC 
-  |                                                                                     |======                                                                       |   8%Type: EXEC 
-  |                                                                                     |=======                                                                      |   9%Type: EXEC 
-  |                                                                                     |========                                                                     |  11%Type: EXEC 
-  |                                                                                     |=========                                                                    |  12%Type: EXEC 
-  |                                                                                     |==========                                                                   |  13%Type: EXEC 
-  |                                                                                     |===========                                                                  |  14%Type: EXEC 
-  |                                                                                     |============                                                                 |  16%Type: EXEC 
-  |                                                                                     |=============                                                                |  17%Type: EXEC 
-  |                                                                                     |==============                                                               |  18%Type: EXEC 
-  |                                                                                     |===============                                                              |  19%Type: EXEC 
-  |                                                                                     |================                                                             |  20%Type: EXEC 
-  |                                                                                     |=================                                                            |  22%Type: EXEC 
-  |                                                                                     |==================                                                           |  23%Type: EXEC 
-  |                                                                                     |===================                                                          |  24%Type: EXEC 
-  |                                                                                     |====================                                                         |  25%Type: EXEC 
-  |                                                                                     |=====================                                                        |  27%Type: EXEC 
-  |                                                                                     |=====================                                                        |  28%Type: EXEC 
-  |                                                                                     |======================                                                       |  29%Type: EXEC 
-  |                                                                                     |=======================                                                      |  30%Type: EXEC 
-  |                                                                                     |=========================                                                    |  32%Type: EXEC 
-  |                                                                                     |==========================                                                   |  33%Type: EXEC 
-  |                                                                                     |===========================                                                  |  35%Type: EXEC 
-  |                                                                                     |============================                                                 |  36%Type: EXEC 
-  |                                                                                     |=============================                                                |  37%Type: EXEC 
-  |                                                                                     |==============================                                               |  38%Type: EXEC 
-  |                                                                                     |===============================                                              |  40%Type: EXEC 
-  |                                                                                     |===============================                                              |  41%Type: EXEC 
-  |                                                                                     |================================                                             |  42%Type: EXEC 
-  |                                                                                     |=================================                                            |  43%Type: EXEC 
-  |                                                                                     |===================================                                          |  45%Type: EXEC 
-  |                                                                                     |===================================                                          |  46%Type: EXEC 
-  |                                                                                     |====================================                                         |  47%Type: EXEC 
-  |                                                                                     |=====================================                                        |  49%Type: EXEC 
-  |                                                                                     |======================================                                       |  50%Type: EXEC 
-  |                                                                                     |=======================================                                      |  51%Type: EXEC 
-  |                                                                                     |========================================                                     |  52%Type: EXEC 
-  |                                                                                     |=========================================                                    |  54%Type: EXEC 
-  |                                                                                     |==========================================                                   |  55%Type: EXEC 
-  |                                                                                     |===========================================                                  |  56%Type: EXEC 
-  |                                                                                     |============================================                                 |  57%Type: EXEC 
-  |                                                                                     |=============================================                                |  59%Type: EXEC 
-  |                                                                                     |==============================================                               |  60%Type: EXEC 
-  |                                                                                     |===============================================                              |  61%Type: EXEC 
-  |                                                                                     |================================================                             |  62%Type: EXEC 
-  |                                                                                     |=================================================                            |  64%Type: EXEC 
-  |                                                                                     |==================================================                           |  65%Type: EXEC 
-  |                                                                                     |===================================================                          |  66%Type: EXEC 
-  |                                                                                     |====================================================                         |  67%Type: EXEC 
-  |                                                                                     |=====================================================                        |  69%Type: EXEC 
-  |                                                                                     |======================================================                       |  70%Type: EXEC 
-  |                                                                                     |=======================================================                      |  71%Type: EXEC 
-  |                                                                                     |========================================================                     |  73%Type: EXEC 
-  |                                                                                     |=========================================================                    |  74%Type: EXEC 
-  |                                                                                     |==========================================================                   |  75%Type: EXEC 
-  |                                                                                     |===========================================================                  |  76%Type: EXEC 
-  |                                                                                     |============================================================                 |  78%Type: EXEC 
-  |                                                                                     |=============================================================                |  79%Type: EXEC 
-  |                                                                                     |==============================================================               |  80%Type: EXEC 
-  |                                                                                     |==============================================================               |  81%Type: EXEC 
-  |                                                                                     |===============================================================              |  82%Type: EXEC 
-  |                                                                                     |================================================================             |  84%Type: EXEC 
-  |                                                                                     |=================================================================            |  85%Type: EXEC 
-  |                                                                                     |==================================================================           |  86%Type: EXEC 
-  |                                                                                     |===================================================================          |  87%Type: EXEC 
-  |                                                                                     |====================================================================         |  88%Type: EXEC 
-  |                                                                                     |=====================================================================        |  90%Type: EXEC 
-  |                                                                                     |======================================================================       |  91%Type: EXEC 
-  |                                                                                     |=======================================================================      |  92%Type: EXEC 
-  |                                                                                     |========================================================================     |  93%Type: EXEC 
-  |                                                                                     |=========================================================================    |  94%Type: EXEC 
-  |                                                                                     |==========================================================================   |  96%Type: EXEC 
-  |                                                                                     |===========================================================================  |  97%Type: EXEC 
-  |                                                                                     |===========================================================================  |  98%Type: EXEC 
-  |                                                                                     |============================================================================ |  99%Type: DONE 
-  |           |                                                                                     |===========================================================================  |  98%  |           |                                                                                     |============================================================================ |  99%Type: DONE 
-                                                                            |============================================================================ |  99%Type: EXEC 
-  |                                                                                     |=============================================================================| 100%Type: DONE 
-Type: DONE 
+Загрузка требуемого пакета: matrixcalc
+  |                                                             |                                                     |   0%Type: EXEC 
+  |           |                                                             |=                                                    |   2%  |         Type: EXEC 
+  |                                                             |==                                                   |   3%Type: EXEC 
+  |                                                             |==                                                   |   4%Type: EXEC 
+  |                                                             |===                                                  |   5%  |           |                                                             |===                                                  |   6%  |         Type: EXEC 
+  |                                                             |====                                                 |   7%Type: EXEC 
+  |                                                             |====                                                 |   8%Type: EXEC 
+  |                                                             |=====                                                |   9%  |           |                                                             |=====                                                |  10%  |           |                                                             |======                                               |  10%  |                                                             |======                                               |  11%Type: EXEC 
+                                                    |======                                               |  11%Type: EXEC 
