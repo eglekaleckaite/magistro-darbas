@@ -64,39 +64,19 @@ gdata: libaries needed to support Excel XLS and XLSX formats.
 Type: EXEC 
 Загрузка требуемого пакета: matrixcalc
   |                                                             |                                                     |   0%Type: EXEC 
-  |                                                             |=                                                    |   1%Type: EXEC 
   |                                                             |=                                                    |   2%Type: EXEC 
-Type: EXEC 
-  |                                                             |=                                                    |   3%Type: EXEC 
   |                                                             |==                                                   |   3%Type: EXEC 
-  |                                                             |==                                                   |   4%Type: EXEC 
-  |           |                                                             |===                                                  |   5%  |         Type: EXEC 
+  |                                                             |==                                                   |   5%Type: EXEC 
   |                                                             |===                                                  |   6%Type: EXEC 
-  |                                                             |====                                                 |   7%  |         Type: EXEC 
-  |                                                             |====                                                 |   8%  |         Type: EXEC 
-  |                                                             |=====                                                |   9%Type: EXEC 
-  |                                                             |=====                                                |  10%  |         Type: EXEC 
+  |                                                             |====                                                 |   7%Type: EXEC 
+  |                                                             |====                                                 |   8%Type: EXEC 
+  |                                                             |=====                                                |  10%Type: EXEC 
   |                                                             |======                                               |  11%Type: EXEC 
-Type: EXEC 
-  |                                                             |======                                          |                        |                                                             |=======                                         |                        |                                                             |=======                                       Type: EXEC 
+  |                                                             |=======                                              |  12%Type: EXEC 
   |                                                             |=======                                              |  14%Type: EXEC 
-  |                                                             |========                                             |  14%Type: EXEC 
   |                                                             |========                                             |  15%Type: EXEC 
-  |           |           |                                                             |========                                        |           |           |                                                             |=========                                       |           |         Type: EXEC 
-  |                                                             |=========                                       |                        |                                                             |==========                                      |                        |                                                             |==========                                    Type: EXEC 
-  |                                                             |===========                                          |  20%Type: EXEC 
-Type: EXEC 
-  |                                                             |===========                                          |  21%Type: EXEC 
-  |                                                             |===========                                          |  22%Type: EXEC 
-  |                                                             |============                                         |  22%Type: EXEC 
-  |                                                             |============                                         |  23%Type: EXEC 
-  |                        |                                                             |=============                                        |  24%  |           |           |                                                             |=============                                 Type: EXEC 
-  |           |                                                             |==============                                       |  26%Type: EXEC 
-  |                                                             |==============                                       |  27%Type: EXEC 
-  |                                                             |===============                                      |  28%Type: EXEC 
-Type: EXEC 
-  |                                                             |===============                                      |  29%Type: EXEC 
-  |                                                             |================                                     |  30%Type: EXEC 
-Type: EXEC 
-  |                                                             |================                                     |  30%Type: EXEC 
-                                                    |================                                     |  30%Type: EXEC 
+  |                                                             |========                                             |  16%Type: EXEC 
+  |                                                             |=========                                            |  17%Type: DONE 
+  |                                                             |=========                                            |  17%Ошибка в unserialize(node$con) :ошибка чтения из соединения
+Вызовы: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Выполнение остановлено
