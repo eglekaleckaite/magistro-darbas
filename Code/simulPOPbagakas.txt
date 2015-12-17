@@ -1,39 +1,53 @@
-starting worker for localhost:11839 
+starting worker for localhost:11540 
 Type: EXEC 
-Loading required package: Matrix
+Загрузка требуемого пакета: Matrix
 
-Attaching package: 'expm'
+Присоединяю пакет: 'expm'
 
-The following object is masked from 'package:Matrix':
+Следующий объект скрыт от 'package:Matrix':
 
     expm
 
-gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.
+gdata: Unable to locate valid perl interpreter
+gdata: 
+gdata: read.xls() will be unable to read Excel XLS and XLSX files
+gdata: unless the 'perl=' argument is used to specify the location of a
+gdata: valid perl intrpreter.
+gdata: 
+gdata: (To avoid display of this message in the future, please ensure
+gdata: perl is installed and available on the executable search path.)
+gdata: Unable to load perl libaries needed by read.xls()
+gdata: to support 'XLX' (Excel 97-2004) files.
 
-gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.
+gdata: Unable to load perl libaries needed by read.xls()
+gdata: to support 'XLSX' (Excel 2007+) files.
 
-Attaching package: 'gdata'
+gdata: Run the function 'installXLSXsupport()'
+gdata: to automatically download and install the perl
+gdata: libaries needed to support Excel XLS and XLSX formats.
 
-The following object is masked from 'package:stats':
+Присоединяю пакет: 'gdata'
+
+Следующий объект скрыт от 'package:stats':
 
     nobs
 
-The following object is masked from 'package:utils':
+Следующий объект скрыт от 'package:utils':
 
     object.size
 
 
-Attaching package: 'data.table'
+Присоединяю пакет: 'data.table'
 
-The following object is masked from 'package:gdata':
+Следующий объект скрыт от 'package:gdata':
 
     last
 
-Loading required package: parallel
+Загрузка требуемого пакета: parallel
 
-Attaching package: 'parallel'
+Присоединяю пакет: 'parallel'
 
-The following objects are masked from 'package:snow':
+Следующие объекты скрыты от 'package:snow':
 
     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
     clusterExport, clusterMap, clusterSplit, makeCluster, parApply,
@@ -41,13 +55,14 @@ The following objects are masked from 'package:snow':
     stopCluster
 
 
-Attaching package: 'nlme'
+Присоединяю пакет: 'nlme'
 
-The following object is masked from 'package:lme4':
+Следующий объект скрыт от 'package:lme4':
 
     lmList
 
 Type: EXEC 
+<<<<<<< HEAD
 Loading required package: matrixcalc
   |                                                                                     |=                                                                            |   1%Type: EXEC 
   |                                                                                     |==                                                                           |   2%Type: EXEC 
@@ -134,3 +149,23 @@ Type: EXEC
 Type: DONE 
                                                                             |===========================================================================  |  97%  |           |                                                                                     |============================================================================ |  99%  |           |                                                                                     |======================================================================Type: DONE 
 Type: DONE 
+=======
+Загрузка требуемого пакета: matrixcalc
+  |                                                             |                                                     |   0%Type: EXEC 
+  |                                                             |=                                                    |   2%Type: EXEC 
+  |                                                             |==                                                   |   3%Type: EXEC 
+  |                                                             |==                                                   |   5%Type: EXEC 
+  |                                                             |===                                                  |   6%Type: EXEC 
+  |                                                             |====                                                 |   7%Type: EXEC 
+  |                                                             |====                                                 |   8%Type: EXEC 
+  |                                                             |=====                                                |  10%Type: EXEC 
+  |                                                             |======                                               |  11%Type: EXEC 
+  |                                                             |=======                                              |  12%Type: EXEC 
+  |                                                             |=======                                              |  14%Type: EXEC 
+  |                                                             |========                                             |  15%Type: EXEC 
+  |                                                             |========                                             |  16%Type: EXEC 
+  |                                                             |=========                                            |  17%Type: DONE 
+  |                                                             |=========                                            |  17%Ошибка в unserialize(node$con) :ошибка чтения из соединения
+Вызовы: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Выполнение остановлено
+>>>>>>> 7c6c38a9a8c8237f00db9d2ad0fcab8178fbaacf
