@@ -48,4 +48,4 @@
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{43}{section*.23}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{43}{section*.24}
 \contentsline {section}{\numberline {D}A priori}{44}{appendix.D}
-\contentsline {section}{\numberline {E}Simuliacij\IeC {\k u} rezultatai}{44}{appendix.E}
+\contentsline {section}{\numberline {E}Simuliacij\IeC {\k u} rezultatai}{45}{appendix.E}

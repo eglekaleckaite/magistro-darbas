@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  18 DEC 2015 22:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  19 DEC 2015 01:24
 entering extended mode
 **D:/minque/Magistro*darbas/magistro*darbas*tex/magistro_darbas_EK_2016.tex
 ("D:/minque/Magistro darbas/magistro darbas tex/magistro_darbas_EK_2016.tex"
@@ -899,7 +899,14 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 \rot@float@box=\box62
 \rot@mess@toks=\toks39
 )
-("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux")
+("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux"
+
+LaTeX Warning: Label `eq:2lvldelpish' multiply defined.
+
+
+LaTeX Warning: Label `eq:deq' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
 LaTeX Font Info:    ... okay on input line 50.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
@@ -1041,7 +1048,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.51 ...cij\IeC {\k u} rezultatai}{44}{appendix.E}
+l.51 ...cij\IeC {\k u} rezultatai}{45}{appendix.E}
                                                    [1])
 \tf@toc=\write4
  [2] [3] [4] [5]
@@ -1193,61 +1200,72 @@ Underfull \hbox (badness 5607) in paragraph at lines 993--994
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.lof")
 \tf@lof=\write6
 
-[39] [40] [41] [42] [43]
-Underfull \hbox (badness 10000) in paragraph at lines 1484--1484
+[39] [40] [41] [42] [43] [44] [45pdfTeX warning (ext4): destination with the sa
+me identifier (name{table.8}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1517 \newpage
+               pdfTeX warning (ext4): destination with the same identifier (nam
+e{table.9}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1517 \newpage
+               ]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 1542.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1689--1689
 []|\L7x/lmr/m/n/12 Tikroji
  []
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 1505.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1690.
-[44pdfTeX warning (ext4): destination with the same identifier (name{table.8}) 
-has been already used, duplicate ignored
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1753.
+[46pdfTeX warning (ext4): destination with the same identifier (name{table.10})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1690 \end{document}
-                     pdfTeX warning (ext4): destination with the same identifie
-r (name{table.9}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1690 \end{document}
-                     ] [45pdfTeX warning (ext4): destination with the same iden
-tifier (name{table.10}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1690 \end{document}
-                     ] [46pdfTeX warning (ext4): destination with the same iden
+l.1753 \end{document}
+                     ] [47pdfTeX warning (ext4): destination with the same iden
 tifier (name{table.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1690 \end{document}
-                     ] [47pdfTeX warning (ext4): destination with the same iden
+l.1753 \end{document}
+                     ] [48pdfTeX warning (ext4): destination with the same iden
 tifier (name{table.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1690 \end{document}
+l.1753 \end{document}
+                     ] [49pdfTeX warning (ext4): destination with the same iden
+tifier (name{table.13}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1753 \end{document}
                      ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1690.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1753.
 
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1690.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1690.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1753.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1753.
 
 Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 .
 (rerunfilecheck)             Checksum: 623947053D4D41763049D7DBB2E52AE4;1921.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1690.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1753.
  ) 
 Here is how much of TeX's memory you used:
- 10352 strings out of 493921
- 144900 string characters out of 3144879
- 378636 words of memory out of 3000000
- 13168 multiletter control sequences out of 15000+200000
+ 10358 strings out of 493921
+ 144961 string characters out of 3144879
+ 376742 words of memory out of 3000000
+ 13169 multiletter control sequences out of 15000+200000
  91741 words of font info for 104 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,13n,32p,1727b,550s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1275,9 +1293,9 @@ iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb>
-Output written on magistro_darbas_EK_2016.pdf (49 pages, 640191 bytes).
+Output written on magistro_darbas_EK_2016.pdf (51 pages, 646927 bytes).
 PDF statistics:
- 816 PDF objects out of 1000 (max. 8388607)
- 232 named destinations out of 1000 (max. 500000)
+ 831 PDF objects out of 1000 (max. 8388607)
+ 237 named destinations out of 1000 (max. 500000)
  254 words of extra memory for PDF output out of 10000 (max. 10000000)
 

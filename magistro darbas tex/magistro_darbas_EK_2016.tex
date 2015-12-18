@@ -1436,8 +1436,49 @@ Kaip \textit{a priori} reikšmes galime naudoti dviejų žingsnių vertinimo met
 Y_{ij} =\sum^P_{p = 0} \sum^{Q_p}_{q=0}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 0} X_{pij}\times u_{pj}+\epsilon_{ij}.
 \end{equation}
 
-
+\newpage
 \section{Simuliacijų rezultatai}
+
+Modelis,
+\begin{equation} \label{eq:2lvldelpish}
+\left\{
+\begin{array}{l}
+Y_{ij} = \beta_{0j}+ \beta_{1j}\times X_{ij}+\varepsilon_{ij}; \\
+\beta_{0j} = \gamma_{00} +\gamma_{01}\times W_{j}+u_{0j};\\
+\beta_{1j} = \gamma_{10} +\gamma_{11}\times W_{j}+u_{1j};\\
+\end{array} \right.
+\end{equation}
+čia $\varepsilon_{ij}$ -modelio paklaidos su vidurkiu $0$ ir dispersija $\sigma^2$; $\left(u_{0j}, u_{1j}\right)$ - atsitiktiniai efektai su nuliniais vidurkias ir kovariacijos matrica $\mathbf{T}=\begin{pmatrix}
+\tau_{00} & \tau_{01} \\
+\tau_{10} & \tau_{11} \\
+\end{pmatrix}$; $\gamma_{pq},\ p,g = \{0,1\}$ - fiksuoti modelio efektai. $W_j$ - antrojo lygio aiškinantysis kintamasis, o $X_{ij}$ - pirmojo lygio aiškinantysis kintamasis. Šį pavidalą galima suvesti į:
+\begin{equation} \label{eq:deq}
+Y_{ij} = \gamma_{00} +\gamma_{01}\times W_{j}+ \gamma_{10}\times X_{ij}+\gamma_{11}\times W_{j}\times X_{ij}+u_{0j}+u_{1j}\times X_{ij}+\varepsilon_{ij};
+\end{equation}
+
+$\theta$ čia žymi parametrą (fiksuotą arba atsitiktinį), M -metodas, V - pagal lentelę apačioj atsitiktinių efektų kombinacija, P - duomenų struktųros tipas pagal lentelę apačioj, S - simuliacijų skaičius, $n_{\theta}$ - parametrų skaičius.
+
+Atlikta simuliacijų po 500, kiekvienam atvejui. Atvejų yra 36, jie pateikti žemiau lentelėse. 
+
+\begin{table}[ht]
+\label{table:fixed}
+\centering
+\begin{tabular}{|c|r|}
+\hline
+Pavadinimas & Reikšmė\\
+\hline
+$\gamma_{00}$& 450  \\
+$\gamma_{01}$& 10  \\
+$\gamma_{10}$& 30 \\
+$\gamma_{11}$& 5  \\
+$\sigma^2$& 2000  \\
+$X_{ij}$ &  $B\left(1; 0,2\right)$ \\
+$W_{j}$ &  Indeksas \\
+\hline
+\end{tabular}
+\caption{Lentelėje pateiktos fiksuotos modelio parametrų ir kintamųjų reikšmės.}
+\end{table}
+
 
 \begin{table}[ht]
 \label{table:struct1}
@@ -1473,29 +1514,25 @@ V3&2000&2000&1000&2000\\
 \caption{Lentelėje pateikti pažymėjimai simuliacijose naudojamoms dispersijos komponenčių kombinacijoms.}
 \end{table}
 
-\begin{sidewaystable}
-\label{table:wminquerez}
-\renewcommand{\arraystretch}{1.5}% Wider
-% latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Thu Dec 17 19:55:10 2015
-\centering
-\begin{tabular}{|l|c|ccc|ccc|ccc|}
-\hline
-& \multicolumn{1}{m{2cm}|}{Tikroji reikšmė}& \multicolumn{3}{c|}{REML}&\multicolumn{3}{c|}{MINQUE($\theta$)}&\multicolumn{3}{c|}{WMINQUE($\theta$)}\\
-  \hline
-Efektas & & $\hat{\theta}$ & RBIAS & RMSE & $\hat{\theta}$ & RBIAS & RMSE& $\hat{\theta}$ & RBIAS & RMSE  \\ 
-  \hline
-$\gamma_{00}$ & 1 & 0.781 & -0.219 & 0.252 & 0.781 & -0.219 & 0.252 & 1.166 & 0.166 & 0.219 \\ 
- $\gamma_{01}$ & 1 & 1.001 & 0.001 & 0.171 & 1.001 & 0.001 & 0.171 & 0.998 & -0.002 & 0.187 \\ 
- $\gamma_{10}$ & 1 & 1.002 & 0.002 & 0.133 & 1.002 & 0.002 & 0.133 & 1.002 & 0.002 & 0.181 \\ 
- $\sigma^2$ & 1 & 0.949 & -0.051 & 0.076 & 0.948 & -0.052 & 0.076 & 0.944 & -0.056 & 0.082 \\ 
-$ \tau_{00}$ & $\frac{1}{4}$ & 0.221 & -0.115 & 0.293 & 0.221 & -0.115 & 0.293 & 0.261 & 0.044 & 0.384 \\ 
-$ \tau_{01} =  \tau_{10}$ &$ \frac{\sqrt{3}}{8}$ & 0.159 & -0.265 & 0.451 & 0.159 & -0.266 & 0.451 & 0.217 & 0.003 & 0.571 \\ 
-  $ \tau_{11}$ & $\frac{3}{4}$ & 0.583 & -0.223 & 0.316 & 0.584 & -0.222 & 0.316 & 0.762 & 0.017 & 0.34 \\ 
-   \hline
-\end{tabular}
-\caption{Lentelėje pateiktos informatyvaus ėmimo modelio įverčių simuliacijų statistikos.}
-\end{sidewaystable}
+\newpage
+
+Statistikos
+\[
+MRBIAS_{\theta MVP}=\frac{1}{S}\sum_1^S\frac{\hat{\theta}_{MVP}-\theta}{\theta}
+\]
+
+\[
+MRMSE_{\theta MVP}=\frac{1}{S}\sum_1^S\left(\frac{\hat{\theta}_{MVP}-\theta}{\theta}\right)^2
+\]
+
+\[
+CAMRBIAS_{MVP}=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}|MRBIAS_{\theta MVP}|
+\]
+
+\[
+CMRMSE_{MVP}=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}MRMSE_{\theta MVP}
+\]
+
 
 \begin{sidewaystable}[ht]
 \begin{footnotesize}
@@ -1569,7 +1606,7 @@ $ \tau_{01} =  \tau_{10}$ &$ \frac{\sqrt{3}}{8}$ & 0.159 & -0.265 & 0.451 & 0.15
    \hline
 
 \end{tabular}
-\caption{Lentelėje pateiktos ref modelio fiksuotų efektų jungtinės statistikos.}
+\caption{Lentelėje pateiktos ref modelio fiksuotų efektų jungtinės statistikos. Pirmoje eilutėje paklaidos normaliosios, antroje - $chi^2$.}
 
 \end{footnotesize}
 \end{sidewaystable}
@@ -1634,9 +1671,35 @@ $ \tau_{01} =  \tau_{10}$ &$ \frac{\sqrt{3}}{8}$ & 0.159 & -0.265 & 0.451 & 0.15
  && 0.013 & 0.161 & 0.017 & 0.270 & 0.014 & 0.161 & 0.013 & 0.161 \\ 
    \hline
 \end{tabular}
-\caption{Lentelėje pateiktos ref modelio atsitiktinių efektų jungtinės statistikos.}
+\caption{Lentelėje pateiktos ref modelio atsitiktinių efektų jungtinės statistikos. Pirmoje eilutėje paklaidos normaliosios, antroje - $chi^2$.}
 
 \end{footnotesize}
+\end{sidewaystable}
+
+
+
+\begin{sidewaystable}
+\label{table:wminquerez}
+\renewcommand{\arraystretch}{1.5}% Wider
+% latex table generated in R 3.2.2 by xtable 1.7-4 package
+% Thu Dec 17 19:55:10 2015
+\centering
+\begin{tabular}{|l|c|ccc|ccc|ccc|}
+\hline
+& \multicolumn{1}{m{2cm}|}{Tikroji reikšmė}& \multicolumn{3}{c|}{REML}&\multicolumn{3}{c|}{MINQUE($\theta$)}&\multicolumn{3}{c|}{WMINQUE($\theta$)}\\
+  \hline
+Efektas & & $\hat{\theta}$ & RBIAS & RMSE & $\hat{\theta}$ & RBIAS & RMSE& $\hat{\theta}$ & RBIAS & RMSE  \\ 
+  \hline
+$\gamma_{00}$ & 1 & 0.781 & -0.219 & 0.252 & 0.781 & -0.219 & 0.252 & 1.166 & 0.166 & 0.219 \\ 
+ $\gamma_{01}$ & 1 & 1.001 & 0.001 & 0.171 & 1.001 & 0.001 & 0.171 & 0.998 & -0.002 & 0.187 \\ 
+ $\gamma_{10}$ & 1 & 1.002 & 0.002 & 0.133 & 1.002 & 0.002 & 0.133 & 1.002 & 0.002 & 0.181 \\ 
+ $\sigma^2$ & 1 & 0.949 & -0.051 & 0.076 & 0.948 & -0.052 & 0.076 & 0.944 & -0.056 & 0.082 \\ 
+$ \tau_{00}$ & $\frac{1}{4}$ & 0.221 & -0.115 & 0.293 & 0.221 & -0.115 & 0.293 & 0.261 & 0.044 & 0.384 \\ 
+$ \tau_{01} =  \tau_{10}$ &$ \frac{\sqrt{3}}{8}$ & 0.159 & -0.265 & 0.451 & 0.159 & -0.266 & 0.451 & 0.217 & 0.003 & 0.571 \\ 
+  $ \tau_{11}$ & $\frac{3}{4}$ & 0.583 & -0.223 & 0.316 & 0.584 & -0.222 & 0.316 & 0.762 & 0.017 & 0.34 \\ 
+   \hline
+\end{tabular}
+\caption{Lentelėje pateiktos informatyvaus ėmimo modelio įverčių simuliacijų statistikos.}
 \end{sidewaystable}
 
 %\indent Sakykime mišrių efektų modelis turi tokią išraišką bendrąją išraišką
