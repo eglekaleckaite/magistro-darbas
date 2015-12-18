@@ -4,24 +4,78 @@ library(data.table)
 library(plyr)
 
 
-load("Output/mcmcY2_simulMy.RData")
+load("Output/mcmcY1_simulMy.RData")
 load("Output/mcmcY2_simulMy.RData")
 ############################################################################
 ############################################################################
-## g00 = 450
+## Results statistics
 ############################################################################
 ############################################################################
 # unscale
-# llply(rresY2[["g00"]],
-#       function(x) llply(x, function(y) ldply(y, function(z) ldply(z, function(w){
-#   w[w<0] <- 0
-#   dd <- data.table(th = mean(w), MRBIAS = mean(w/450-1), RMSE = mean((w/45-1)^2))
-#   return(dd)
-# }, .id = "V"), .id = "P")))
+trth <- data.table(Parametras = c("g00", "g01", "g10", "g11", "sigma2"),
+                   Tikroji = c(450, 10, 30, 5, 2000))
+
+rres <- foreach(cc = c("g00", "g01", "g10", "g11", "sigma2"), .combine = rbind) %do% {
+  data.table(Parametras = cc, Paklaidos = "N", 
+             ldply(rresY1[[cc]],
+                   function(x) ldply(x, function(y) ldply(y, function(z) ldply(z, function(w){
+                     w[w<0] <- 0
+                     dd <- data.table(th = mean(w), MRBIAS = mean(w/trth[Parametras == cc, Tikroji]-1), MRMSE = mean((w/trth[Parametras == cc, Tikroji]-1)^2))
+                     return(dd)
+                   }, .id = "V"), .id = "P"), .id = "Balansas"), .id = "Metodas"))
+}
+
+
+rres2 <- foreach(cc = c("g00", "g01", "g10", "g11", "sigma2"), .combine = rbind) %do% {
+  data.table(Parametras = cc, Paklaidos = "X", 
+             ldply(rresY2[[cc]],
+                   function(x) ldply(x, function(y) ldply(y, function(z) ldply(z, function(w){
+                     w[w<0] <- 0
+                     dd <- data.table(th = mean(w), MRBIAS = mean(w/trth[Parametras == cc, Tikroji]-1), MRMSE = mean((w/trth[Parametras == cc, Tikroji]-1)^2))
+                     return(dd)
+                   }, .id = "V"), .id = "P"), .id = "Balansas"), .id = "Metodas"))
+}
+
+ttau <- data.table(V = c("100_50_100", "800_400_800", "2000_1000_2000"), 
+                   tau00 = c(100, 800, 2000),tau01 = c(50, 400, 1000),
+                   tau11 = c(100, 800, 2000))
+
+rres3 <- foreach(cc = c("tau00", "tau01", "tau11"), .combine = rbind) %do% {
+  data.table(Parametras = cc, Paklaidos = "X", 
+             ldply(rresY2[[cc]],
+                   function(x) ldply(x, function(y) ldply(y, function(z) {
+                     foreach(bb = names(z), .combine = rbind) %do% {
+                       w <- z[[bb]]
+                       w[w<0] <- 0
+                       dd <- data.table(V = bb, th = mean(w), MRBIAS = mean(w/unlist(ttau[V == bb, cc, with = F])-1), MRMSE = mean((w/unlist(ttau[V == bb, cc, with = F])-1)^2))
+                       return(dd)
+                     }}, .id = "P"), .id = "Balansas"), .id = "Metodas"))
+}
+
+rres4 <- foreach(cc = c("tau00", "tau01", "tau11"), .combine = rbind) %do% {
+  data.table(Parametras = cc, Paklaidos = "N", 
+             ldply(rresY1[[cc]],
+                   function(x) ldply(x, function(y) ldply(y, function(z) {
+                     foreach(bb = names(z), .combine = rbind) %do% {
+                       w <- z[[bb]]
+                       w[w<0] <- 0
+                       dd <- data.table(V = bb, th = mean(w), MRBIAS = mean(w/unlist(ttau[V == bb, cc, with = F])-1), MRMSE = mean((w/unlist(ttau[V == bb, cc, with = F])-1)^2))
+                       return(dd)
+                     }}, .id = "P"), .id = "Balansas"), .id = "Metodas"))
+}
+
+
+rres <- rbind(rres, rres2, rres3, rres4)
+
+save(rres, file = "Output/mcmc_stats_all.RData")
 
 
 
-
+############################################################################
+############################################################################
+## combine output files
+############################################################################
+############################################################################
 
 # rresY2 <- list()
 # 
