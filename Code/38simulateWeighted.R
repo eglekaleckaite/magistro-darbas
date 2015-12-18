@@ -20,6 +20,7 @@ library(doParallel)
 library(doSNOW)
 library(mitools)
 library(matrixcalc)
+library(xtable)
 
 #library(sample)
 source("10code.R")
@@ -102,55 +103,11 @@ save(mcmc, file = "Output/mcmcY1_simulMy_Wf1.RData")
 # sink()
 # 
 
+## form table
+tbb <- rbind(as.vector(t(g00)), as.vector(t(g01)), as.vector(t(g10)), 
+             as.vector(t(sigma2)), as.vector(t(tau00)), as.vector(t(tau01)),
+             as.vector(t(tau11)))
+tbb <- round(tbb, 3)
+tbb <- cbind(c("1","1","1","1","1/4","sqrt(3)/8", "3/4"), tbb)
 
-
-
-
-# pop <- makePOPW(100, sigma2 = 2000, tau00 = 100, tau01 = 50, tau11 = 100)
-# smpl <- samplePOP(pop, 35)
-# smpl$w1 <- smpl$wstd*smpl$wcl
-# smpl$w2 <- smpl$wsch
-# 
-# 
-# mm <- lmer(Y1 ~ 1+W+X1+X1*W+(1+X1|IDSCHOOL), data = smpl)
-# (sm <- summary(mm))
-# 
-# (min1 <- myMINQUE(dt = smpl,
-#                  fixed = "Y1 ~ 1+W+X1+X1*W",
-#                  random1 = "~1+X1|IDSCHOOL",
-#                  weights = NULL,
-#                  apriori= c(1, 0, 0, 0)))
-# 
-# (min2 <- myMINQUE(dt = smpl,
-#                   fixed = "Y1 ~ 1+W+X1+X1*W",
-#                   random1 = "~1+X1|IDSCHOOL",
-#                   weights = c("w1", "w2"),
-#                   apriori= c(1, 0, 0, 0)))
-# 
-# 
-# (min3 <- myMINQUE(dt = smpl,
-#                   fixed = "Y1 ~ 1+W+X1+X1*W",
-#                   random1 = "~1+X1|IDSCHOOL",
-#                   weights = NULL,
-#                   apriori= c(1, 1, 1, 1)))
-# 
-# (min4 <- myMINQUE(dt = smpl,
-#                   fixed = "Y1 ~ 1+W+X1+X1*W",
-#                   random1 = "~1+X1|IDSCHOOL",
-#                   weights = c("w1", "w2"),
-#                   apriori= c(1, 1, 1, 1)))
-# 
-# lm1 <- lm("Y1 ~ 1+W+X1+X1*W", data = smpl)
-# sg <- summary(lm1)$sigma^2
-# (min5 <- myMINQUE(dt = smpl,
-#                   fixed = "Y1 ~ 1+W+X1+X1*W",
-#                   random1 = "~1+X1|IDSCHOOL",
-#                   weights = NULL,
-#                   apriori= c(sg, 1, 1, 1)))
-# 
-# (min6 <- myMINQUE(dt = smpl,
-#                   fixed = "Y1 ~ 1+W+X1+X1*W",
-#                   random1 = "~1+X1|IDSCHOOL",
-#                   weights = c("w1", "w2"),
-#                   apriori= c(sg, 1, 1, 1)))
-
+xtable(tbb)

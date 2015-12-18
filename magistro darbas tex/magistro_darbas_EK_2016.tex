@@ -28,6 +28,7 @@
 \usepackage{lipsum}
 \usepackage{tocbibind}
 \usepackage{listings}
+\usepackage{rotating}
 \oddsidemargin=0cm
 %\topmargin=1cm
 \headsep=0pt
@@ -1434,6 +1435,67 @@ Kaip \textit{a priori} reikšmes galime naudoti dviejų žingsnių vertinimo met
 \begin{equation} 
 Y_{ij} =\sum^P_{p = 0} \sum^{Q_p}_{q=0}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 0} X_{pij}\times u_{pj}+\epsilon_{ij}.
 \end{equation}
+
+
+\section{Simuliacijų rezultatai}
+
+\begin{table}[ht]
+\label{table:struct1}
+\centering
+\begin{tabular}{|c|cc|}
+\hline
+ & \multicolumn{2}{c|}{$n_j$}\\
+\hline
+$m$& Nesubalansuotas & \ \ \ \ \ \ \ \ \ \ 30\ \ \ \ \ \ \ \ \ \ \\
+\hline
+20& P1&P2\\
+35&P3&P4\\
+80& P5&P6\\
+\hline
+\end{tabular}
+\caption{Lentelėje pateikti simuliacijų struktūrų pažymėjimai. Čia $m$ žymi antrojo lygio individų skaičių, $n_j$ žymi pirmojo lygio individų skaičių.}
+\end{table}
+
+\begin{table}[ht]
+\label{table:struct2}
+\centering
+\begin{tabular}{|c|cccc|}
+\hline
+ Pažymėjimas & $\sigma^2$&$\tau_{00}$&$\tau_{01}=\tau_{10}$&$\tau_{11}$\\
+\hline
+V1&2000&100&50&100\\
+V2&2000&800&400&800\\
+V3&2000&2000&1000&2000\\
+\hline
+
+\hline
+\end{tabular}
+\caption{Lentelėje pateikti pažymėjimai simuliacijose naudojamoms dispersijos komponenčių kombinacijoms.}
+\end{table}
+
+\begin{sidewaystable}
+\label{table:wminquerez}
+\renewcommand{\arraystretch}{1.5}% Wider
+% latex table generated in R 3.2.2 by xtable 1.7-4 package
+% Thu Dec 17 19:55:10 2015
+\centering
+\begin{tabular}{|l|c|ccc|ccc|ccc|}
+\hline
+& \multicolumn{1}{m{2cm}|}{Tikroji reikšmė}& \multicolumn{3}{c|}{REML}&\multicolumn{3}{c|}{MINQUE($\theta$)}&\multicolumn{3}{c|}{WMINQUE($\theta$)}\\
+  \hline
+Efektas & & $\hat{\theta}$ & RBIAS & RMSE & $\hat{\theta}$ & RBIAS & RMSE& $\hat{\theta}$ & RBIAS & RMSE  \\ 
+  \hline
+$\gamma_{00}$ & 1 & 0.781 & -0.219 & 0.252 & 0.781 & -0.219 & 0.252 & 1.166 & 0.166 & 0.219 \\ 
+ $\gamma_{01}$ & 1 & 1.001 & 0.001 & 0.171 & 1.001 & 0.001 & 0.171 & 0.998 & -0.002 & 0.187 \\ 
+ $\gamma_{10}$ & 1 & 1.002 & 0.002 & 0.133 & 1.002 & 0.002 & 0.133 & 1.002 & 0.002 & 0.181 \\ 
+ $\sigma^2$ & 1 & 0.949 & -0.051 & 0.076 & 0.948 & -0.052 & 0.076 & 0.944 & -0.056 & 0.082 \\ 
+$ \tau_{00}$ & $\frac{1}{4}$ & 0.221 & -0.115 & 0.293 & 0.221 & -0.115 & 0.293 & 0.261 & 0.044 & 0.384 \\ 
+$ \tau_{01} =  \tau_{10}$ &$ \frac{\sqrt{3}}{8}$ & 0.159 & -0.265 & 0.451 & 0.159 & -0.266 & 0.451 & 0.217 & 0.003 & 0.571 \\ 
+  $ \tau_{11}$ & $\frac{3}{4}$ & 0.583 & -0.223 & 0.316 & 0.584 & -0.222 & 0.316 & 0.762 & 0.017 & 0.34 \\ 
+   \hline
+\end{tabular}
+\caption{Lentelėje pateiktos informatyvaus ėmimo modelio įverčių simuliacijų statistikos.}
+\end{sidewaystable}
 
 
 %\indent Sakykime mišrių efektų modelis turi tokią išraišką bendrąją išraišką

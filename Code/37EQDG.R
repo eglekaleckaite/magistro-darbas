@@ -1,3 +1,5 @@
+library(ggplot2)
+
 rm(list = ls())
 
 lmc <- list()
@@ -37,6 +39,11 @@ EQMs2MINQUE <- apply(sigma2MINQUE, 1, max)
 plot(probs, EQMs2REML, type = "l")
 lines(probs, EQMs2MINQUE, type = "b")
 
+dt <- rbind(data.frame(Percentiliai = probs, Metodas = "REML", EQM = EQMs2REML),
+            data.frame(Percentiliai = probs, Metodas = "MINQUE(0)", EQM = EQMs2MINQUE))
+
+a <- ggplot(data = dt, aes(x = Percentiliai, y = EQM, linetype = Metodas))
+a <- a + geom_line()+ggtitle(expression(sigma^2))
 
 #############################################################################
 #############################################################################
