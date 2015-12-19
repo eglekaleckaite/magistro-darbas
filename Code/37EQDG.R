@@ -1,10 +1,10 @@
 rm(list = ls())
 library(ggplot2)
-rm(list = ls())
 library(foreach)
 library(data.table)
 library(plyr)
 library(reshape2)
+library(Rmisc)
 
 probs = c(0.01, 0.05, 0.1, 0.2,
           0.3, 0.4, 0.5, 0.6, 0.7,
@@ -28,22 +28,92 @@ mqres <- qres[, lapply(.SD, max), .SDcols = as.character(probs),
 
 mmqres <- melt(mqres, id = c("Parametras", "Metodas", "Paklaidos"),
                variable.name = "Percentiliai", value.name = "EQM")
-mmqres[, Percentiliai := as.numeric(Percentiliai)]
+mmqres[, Percentiliai := as.double(as.character(Percentiliai))]
 
 
-a <- ggplot(data = mmqres[Paklaidos == "N"& Parametras %in% c("sigma2", "tau00", "tau01", "tau11")], 
-            aes(x = Percentiliai, y = EQM, linetype = Metodas))
-a <- a + geom_line()+ggtitle(expression(sigma^2))+ facet_grid(. ~ Parametras)
+gr <- data.table(gr = c("gr1", "gr1", "gr2", "gr2", "gr3", "gr3"), 
+                 Metodas = c("REML", "MINQUE(1)", "MINQUE(0)", "MINQUE(1)",
+                             "MINQUE(th)", "MINQUE(1)"))
+
+mmqres <- merge(mmqres, gr, by = "Metodas", allow.cartesian = T)
+
+mmqres[, Parametras := gsub("g00", "gamma[0][0]", Parametras)]
+mmqres[, Parametras := gsub("g10", "gamma[1][0]", Parametras)]
+mmqres[, Parametras := gsub("g01", "gamma[0][1]", Parametras)]
+mmqres[, Parametras := gsub("g11", "gamma[1][1]", Parametras)]
+mmqres[, Parametras := gsub("tau00", "tau[0][0]", Parametras)]
+mmqres[, Parametras := gsub("tau01", "tau[0][1]", Parametras)]
+mmqres[, Parametras := gsub("tau11", "tau[1][1]", Parametras)]
+mmqres[, Parametras := gsub("sigma2", "sigma^2", Parametras)]
 
 
-a <- ggplot(data = mmqres[Paklaidos == "N"& Parametras %in% c("g00", "g01", "g10", "g11")], 
-            aes(x = Percentiliai, y = EQM, linetype = Metodas))
-a <- a + geom_line()+ggtitle(expression(sigma^2))+ facet_grid(. ~ Parametras)
+pl <- foreach(pr = c("gamma[0][0]", "gamma[0][1]", "gamma[1][0]", "gamma[1][1]"), .combine = c) %do% {
+  foreach(gg = c("gr1", "gr2", "gr3")) %do% {
+    dt <- mmqres[Paklaidos == "N"& Parametras == pr & gr == gg,]
+    a <- ggplot(data = dt, 
+                aes(x = Percentiliai, y = EQM, linetype = Metodas)) +
+      geom_line()+ggtitle(parse(text=pr))
+    if(any(dt$Metodas == "MINQUE(th)")) 
+      a <- a+scale_linetype_manual(values = c("solid", "dashed"),
+                                   labels = c("MINQUE(1)",expression(paste("MINQUE(",theta,")"))))
+    return(a)
+  }
+}
+
+multiplot(plotlist=pl, cols = 4)
+
+pl <- foreach(pr = c("sigma^2", "tau[0][0]", "tau[0][1]", "tau[1][1]"), .combine = c) %do% {
+  foreach(gg = c("gr1", "gr2", "gr3")) %do% {
+    dt <- mmqres[Paklaidos == "N"& Parametras == pr & gr == gg,]
+    a <- ggplot(data = dt, 
+                aes(x = Percentiliai, y = EQM, linetype = Metodas)) +
+      geom_line()+ggtitle(parse(text=pr))
+    if(any(dt$Metodas == "MINQUE(th)")) 
+      a <- a+scale_linetype_manual(values = c("solid", "dashed"),
+                                   labels = c("MINQUE(1)",expression(paste("MINQUE(",theta,")"))))
+    return(a)
+  }
+}
+
+multiplot(plotlist=pl, cols = 4)
 
 
-a <- ggplot(data = mmqres[Paklaidos == "N"& Parametras %in% c("tau11")], 
-            aes(x = Percentiliai, y = EQM, linetype = Metodas))
-a <- a + geom_line()+ggtitle(expression(sigma^2))
+pl <- foreach(pr = c("gamma[0][0]", "gamma[0][1]", "gamma[1][0]", "gamma[1][1]"), .combine = c) %do% {
+  foreach(gg = c("gr1", "gr2", "gr3")) %do% {
+    dt <- mmqres[Paklaidos == "X"& Parametras == pr & gr == gg,]
+    a <- ggplot(data = dt, 
+                aes(x = Percentiliai, y = EQM, linetype = Metodas)) +
+      geom_line()+ggtitle(parse(text=pr))
+    if(any(dt$Metodas == "MINQUE(th)")) 
+      a <- a+scale_linetype_manual(values = c("solid", "dashed"),
+                                   labels = c("MINQUE(1)",expression(paste("MINQUE(",theta,")"))))
+    return(a)
+  }
+}
+
+multiplot(plotlist=pl, cols = 4)
+
+pl <- foreach(pr = c("sigma^2", "tau[0][0]", "tau[0][1]", "tau[1][1]"), .combine = c) %do% {
+  foreach(gg = c("gr1", "gr2", "gr3")) %do% {
+    dt <- mmqres[Paklaidos == "X"& Parametras == pr & gr == gg,]
+    a <- ggplot(data = dt, 
+                aes(x = Percentiliai, y = EQM, linetype = Metodas)) +
+      geom_line()+ggtitle(parse(text=pr))
+    if(any(dt$Metodas == "MINQUE(th)")) 
+      a <- a+scale_linetype_manual(values = c("solid", "dashed"),
+                                   labels = c("MINQUE(1)",expression(paste("MINQUE(",theta,")"))))
+    return(a)
+  }
+}
+
+multiplot(plotlist=pl, cols = 4)
+# a <- ggplot(data = mmqres[Paklaidos == "N"& Parametras %in% c("tau11")], 
+#             aes(x = Percentiliai, y = EQM, linetype = Metodas))
+# a <- a + geom_line()+ggtitle(expression(sigma^2))
+# a <- ggplot(data = mmqres[Paklaidos == "N"& Parametras %in% c("sigma2", "tau00", "tau01", "tau11")], 
+#             aes(x = Percentiliai, y = EQM, linetype = Metodas))
+# a <- a + geom_line()+ggtitle(expression(sigma^2))+ facet_grid(.gr ~ Parametras)
+# 
 
 
 ############################################################################
