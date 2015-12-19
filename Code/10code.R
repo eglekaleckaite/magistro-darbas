@@ -2865,3 +2865,14 @@ multiplot <- function(..., plotlist=NULL, cols) {
   }
   
 }
+boldmin <- function(x){
+  x <- round(x, 3)
+  wm <- which.min(abs(x))
+  x[wm] <- paste0("\\textbf{", x[wm], "}")
+  wm <- which(x=="0")
+  x[wm] <- "0.000"
+  wm <- which(x=="\\textbf{0}")
+  x[wm] <- "\\textbf{0.000}"
+  
+  return(x)
+}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  19 DEC 2015 01:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  20 DEC 2015 00:16
 entering extended mode
 **D:/minque/Magistro*darbas/magistro*darbas*tex/magistro_darbas_EK_2016.tex
 ("D:/minque/Magistro darbas/magistro darbas tex/magistro_darbas_EK_2016.tex"
@@ -1220,37 +1220,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 1689--1689
 []|\L7x/lmr/m/n/12 Tikroji
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1753.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1905.
 [46pdfTeX warning (ext4): destination with the same identifier (name{table.10})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1753 \end{document}
+l.1905 \end{document}
                      ] [47pdfTeX warning (ext4): destination with the same iden
 tifier (name{table.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1753 \end{document}
+l.1905 \end{document}
                      ] [48pdfTeX warning (ext4): destination with the same iden
 tifier (name{table.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1753 \end{document}
+l.1905 \end{document}
                      ] [49pdfTeX warning (ext4): destination with the same iden
 tifier (name{table.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1753 \end{document}
-                     ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1753.
+l.1905 \end{document}
+                     ] [50] [51] [52]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1905.
 
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1753.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1753.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1905.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1905.
 
 Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 .
@@ -1259,18 +1259,18 @@ Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1753.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1905.
  ) 
 Here is how much of TeX's memory you used:
- 10358 strings out of 493921
- 144961 string characters out of 3144879
- 376742 words of memory out of 3000000
- 13169 multiletter control sequences out of 15000+200000
- 91741 words of font info for 104 fonts, out of 3000000 for 9000
+ 10365 strings out of 493921
+ 145012 string characters out of 3144879
+ 448754 words of memory out of 3000000
+ 13173 multiletter control sequences out of 15000+200000
+ 93427 words of font info for 105 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,13n,32p,1727b,550s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-l7x.enc}{C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiK
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-l7x.enc}{C:/Program Files (x86)/MiK
 TeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 2.9/fon
 ts/enc/dvips/lm/lm-mathsy.enc} <C:\Users\Egle\AppData\Local\MiKTeX\2.9\fonts\pk
 \ljfour\public\bbm\dpi600\bbm12.pk>{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc
@@ -1287,15 +1287,16 @@ ram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2
 .9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/lm/lmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
-lmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
-public/amsfonts/symbols/msbm10.pfb>
-Output written on magistro_darbas_EK_2016.pdf (51 pages, 646927 bytes).
+lmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/symbols/msbm10.pfb>
+Output written on magistro_darbas_EK_2016.pdf (54 pages, 679101 bytes).
 PDF statistics:
- 831 PDF objects out of 1000 (max. 8388607)
- 237 named destinations out of 1000 (max. 500000)
+ 847 PDF objects out of 1000 (max. 8388607)
+ 240 named destinations out of 1000 (max. 500000)
  254 words of extra memory for PDF output out of 10000 (max. 10000000)
 
