@@ -56,58 +56,91 @@ addtorow$pos <- list(-1, 6, 12, 18, 24, 30)
 addtorow$command <- c(" & & \\multicolumn{3}{c|}{REML}&\\multicolumn{3}{c|}{MINQUE(0)}&\\multicolumn{3}{c|}{MINQUE(1)}&\\multicolumn{3}{c|}{MINQUE($\\theta$)}\\\\",
                       "\\hline \\hline", "\\hline \\hline", "\\hline \\hline", "\\hline \\hline", "\\hline \\hline")
 
-print( xtable(pres[["g11"]], digits=3, 
+print( xtable(pres[["tau11"]], digits=3, 
               align = c("c","c","c|","c","c","c|","c","c","c|","c","c","c|","c","c","c|")),
               include.rownames = FALSE, 
        add.to.row = addtorow, sanitize.colnames.function = identity, 
        sanitize.text.function = identity, size = "footnotesize",
        floating.environment = "sidewaystable")
 
-
-
 # ############################################################################
 # ############################################################################
 # ## Compound statistics
 # ############################################################################
 # ############################################################################
-# load("Output/mcmc_stats_all.RData")
-# rres[Balansas == "UB" & P == "20", P := "P1"]
-# rres[Balansas == "B" & P == "20", P := "P2"]
-# rres[Balansas == "UB" & P == "35", P := "P3"]
-# rres[Balansas == "B" & P == "35", P := "P4"]
-# rres[Balansas == "UB" & P == "80", P := "P5"]
-# rres[Balansas == "B" & P == "80", P := "P6"]
-# rres[, Balansas := NULL]
-# 
-# rres[V == "100_50_100", V := "V1"]
-# rres[V == "800_400_800", V := "V2"]
-# rres[V == "2000_1000_2000", V := "V3"]
-# 
-# fres <- rres[Parametras %in% c("g00", "g01", "g10", "g11"), ]
-# rrres <- rres[Parametras %in% c("sigma2", "tau00", "tau01", "tau11"), ]
-# 
-# fcres <- fres[, list(CAMRBIAS = mean(abs(MRBIAS)), CRMSE = mean(MRMSE)),
-#               by = c("Paklaidos", "Metodas", "P", "V")]
-# rcres <- rrres[, list(CAMRBIAS = mean(abs(MRBIAS)), CRMSE = mean(MRMSE)),
-#                by = c("Paklaidos", "Metodas", "P", "V")]
-# 
-# 
-# fcres <- arrange(fcres, P, V, Paklaidos, Metodas)
-# 
-# rcres <- arrange(rcres, P, V, Paklaidos, Metodas)
-# 
-# ffcres <- cbind(fcres[Metodas == "REML", ], fcres[Metodas == "MINQUE(0)", ],
-#                 fcres[Metodas == "MINQUE(1)", ], fcres[Metodas == "MINQUE(th)", ])
-# 
-# ffcres[, c(1, 2, 7:10, 13:16, 19:22) := NULL]
-# 
-# rrcres <- cbind(rcres[Metodas == "REML", ], rcres[Metodas == "MINQUE(0)", ],
-#                 rcres[Metodas == "MINQUE(1)", ], rcres[Metodas == "MINQUE(th)", ])
-# 
-# rrcres[, c(1, 2, 7:10, 13:16, 19:22) := NULL]
-# 
-# print( xtable(ffcres, digits=3), include.rownames=FALSE )
-# print( xtable(rrcres, digits=3), include.rownames=FALSE )
+load("Output/mcmc_stats_all.RData")
+rres[Balansas == "UB" & P == "20", P := "P1"]
+rres[Balansas == "B" & P == "20", P := "P2"]
+rres[Balansas == "UB" & P == "35", P := "P3"]
+rres[Balansas == "B" & P == "35", P := "P4"]
+rres[Balansas == "UB" & P == "80", P := "P5"]
+rres[Balansas == "B" & P == "80", P := "P6"]
+rres[, Balansas := NULL]
+
+rres[V == "100_50_100", V := "V1"]
+rres[V == "800_400_800", V := "V2"]
+rres[V == "2000_1000_2000", V := "V3"]
+
+fres <- rres[Parametras %in% c("g00", "g01", "g10", "g11"), ]
+rrres <- rres[Parametras %in% c("sigma2", "tau00", "tau01", "tau11"), ]
+
+fcres <- fres[, list(CAMRBIAS = mean(abs(MRBIAS)), CRMSE = mean(MRMSE)),
+              by = c("Paklaidos", "Metodas", "P", "V")]
+rcres <- rrres[, list(CAMRBIAS = mean(abs(MRBIAS)), CRMSE = mean(MRMSE)),
+               by = c("Paklaidos", "Metodas", "P", "V")]
+
+fcres <- fcres[, list(Metodas = Metodas, CAMRBIAS = boldmin(CAMRBIAS),
+                      CRMSE = boldmin(CRMSE)), by = c("P", "V", "Paklaidos")]
+rcres <- rcres[, list(Metodas = Metodas, CAMRBIAS = boldmin(CAMRBIAS),
+                      CRMSE = boldmin(CRMSE)), by = c("P", "V", "Paklaidos")]
+
+fcres <- arrange(fcres, P, V, Paklaidos, Metodas)
+rcres <- arrange(rcres, P, V, Paklaidos, Metodas)
+
+ffcres <- cbind(fcres[Metodas == "REML", ], fcres[Metodas == "MINQUE(0)", ],
+                fcres[Metodas == "MINQUE(1)", ], fcres[Metodas == "MINQUE(th)", ])
+
+ffcres[, c(3, 4, 7:10, 13:16, 19:22) := NULL]
+
+rrcres <- cbind(rcres[Metodas == "REML", ], rcres[Metodas == "MINQUE(0)", ],
+                rcres[Metodas == "MINQUE(1)", ], rcres[Metodas == "MINQUE(th)", ])
+
+rrcres[, c(3, 4, 7:10, 13:16, 19:22) := NULL]
+
+ffcres[, P := c("\\multirow{6}{*}{P1}", rep("", 5), 
+                "\\multirow{6}{*}{P2}", rep("", 5),
+                "\\multirow{6}{*}{P3}", rep("", 5),
+                "\\multirow{6}{*}{P4}", rep("", 5),
+                "\\multirow{6}{*}{P5}", rep("", 5),
+                "\\multirow{6}{*}{P6}", rep("", 5))]
+rrcres[, P := c("\\multirow{6}{*}{P1}", rep("", 5), 
+               "\\multirow{6}{*}{P2}", rep("", 5),
+               "\\multirow{6}{*}{P3}", rep("", 5),
+               "\\multirow{6}{*}{P4}", rep("", 5),
+               "\\multirow{6}{*}{P5}", rep("", 5),
+               "\\multirow{6}{*}{P6}", rep("", 5))]
+
+ffcres[, V := rep(c("\\multirow{2}{*}{V1}", "", "\\multirow{2}{*}{V2}", "", "\\multirow{2}{*}{V3}", ""), 6)]
+rrcres[, V := rep(c("\\multirow{2}{*}{V1}", "", "\\multirow{2}{*}{V2}", "", "\\multirow{2}{*}{V3}", ""), 6)]
+
+addtorow <- list()
+addtorow$pos <- list(-1, 6, 12, 18, 24, 30)
+addtorow$command <- c(" & & \\multicolumn{2}{c|}{REML}&\\multicolumn{2}{c|}{MINQUE(0)}&\\multicolumn{2}{c|}{MINQUE(1)}&\\multicolumn{2}{c|}{MINQUE($\\theta$)}\\\\",
+                      "\\hline \\hline", "\\hline \\hline", "\\hline \\hline", "\\hline \\hline", "\\hline \\hline")
+
+
+print( xtable(ffcres, digits=3, 
+              align = c("c","c","c|","c","c|","c","c|","c","c|","c","c|")),
+       include.rownames = FALSE, 
+       add.to.row = addtorow, sanitize.colnames.function = identity, 
+       sanitize.text.function = identity, size = "footnotesize",
+       floating.environment = "sidewaystable")
+print( xtable(rrcres, digits=3, 
+              align = c("c","c","c|","c","c|","c","c|","c","c|","c","c|")),
+       include.rownames = FALSE, 
+       add.to.row = addtorow, sanitize.colnames.function = identity, 
+       sanitize.text.function = identity, size = "footnotesize",
+       floating.environment = "sidewaystable")
 
 ############################################################################
 ############################################################################
@@ -173,8 +206,8 @@ print( xtable(pres[["g11"]], digits=3,
 # rres <- rbind(rres, rres2, rres3, rres4)
 # 
 # save(rres, file = "Output/mcmc_stats_all.RData")
-
-
+# 
+# 
 
 ############################################################################
 ############################################################################

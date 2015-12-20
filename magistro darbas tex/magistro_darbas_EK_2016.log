@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  20 DEC 2015 00:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  20 DEC 2015 00:48
 entering extended mode
 **D:/minque/Magistro*darbas/magistro*darbas*tex/magistro_darbas_EK_2016.tex
 ("D:/minque/Magistro darbas/magistro darbas tex/magistro_darbas_EK_2016.tex"
@@ -1216,41 +1216,62 @@ l.1517 \newpage
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 1542.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1689--1689
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1858--1901
+ [][] 
+ []
+
+
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1909--1952
+ [][] 
+ []
+
+
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1960--2003
+ [][] 
+ []
+
+
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 2011--2054
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2064--2064
 []|\L7x/lmr/m/n/12 Tikroji
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1905.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2128.
 [46pdfTeX warning (ext4): destination with the same identifier (name{table.10})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1905 \end{document}
+l.2128 \end{document}
                      ] [47pdfTeX warning (ext4): destination with the same iden
 tifier (name{table.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1905 \end{document}
+l.2128 \end{document}
                      ] [48pdfTeX warning (ext4): destination with the same iden
 tifier (name{table.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1905 \end{document}
-                     ] [49pdfTeX warning (ext4): destination with the same iden
-tifier (name{table.13}) has been already used, duplicate ignored
+l.2128 \end{document}
+                     ] [49] [50] [51] [52] [53] [54] [55] [56] [57pdfTeX warnin
+g (ext4): destination with the same identifier (name{table.13}) has been alread
+y used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1905 \end{document}
-                     ] [50] [51] [52]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1905.
+l.2128 \end{document}
+                     ]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2128.
 
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1905.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1905.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2128.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2128.
 
 Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 .
@@ -1259,13 +1280,13 @@ Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1905.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2128.
  ) 
 Here is how much of TeX's memory you used:
- 10365 strings out of 493921
- 145012 string characters out of 3144879
- 448754 words of memory out of 3000000
- 13173 multiletter control sequences out of 15000+200000
+ 10375 strings out of 493921
+ 145074 string characters out of 3144879
+ 581598 words of memory out of 3000000
+ 13178 multiletter control sequences out of 15000+200000
  93427 words of font info for 105 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,13n,32p,1727b,550s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1294,9 +1315,9 @@ KTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
 blic/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/symbols/msbm10.pfb>
-Output written on magistro_darbas_EK_2016.pdf (54 pages, 679101 bytes).
+Output written on magistro_darbas_EK_2016.pdf (59 pages, 700987 bytes).
 PDF statistics:
- 847 PDF objects out of 1000 (max. 8388607)
- 240 named destinations out of 1000 (max. 500000)
+ 869 PDF objects out of 1000 (max. 8388607)
+ 245 named destinations out of 1000 (max. 500000)
  254 words of extra memory for PDF output out of 10000 (max. 10000000)
 
