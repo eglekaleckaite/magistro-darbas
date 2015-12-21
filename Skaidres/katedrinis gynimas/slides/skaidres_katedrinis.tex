@@ -1,0 +1,318 @@
+\documentclass[utf8,hyperref={unicode,pdftex}]{beamer}
+%\documentclass[utf8]{beamer}
+
+\mode<presentation>
+{
+\usetheme{Warsaw}
+}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage[utf8]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subcaption}
+
+
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+
+\title[\hspace{130pt} p. \insertpagenumber\enspace iš \insertdocumentendpage\enspace ]{Dviejų lygių HLM modelių vertinimo metodų palyginimas MC simuliacijų būdu: REML vs MINQUE}
+\author[ E. Kaleckaitė]{Eglė Kaleckaitė\\
+Vadovas: Vydas Čekanavičius}
+\institute{Vilniaus Universitetas, Matematikos ir Informatikos Fakultetas}
+\date{2015 gruodžio 22d.}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Turinys???}
+\Large
+\begin{enumerate}
+\item 
+\end{enumerate}
+\end{frame}
+%\section{Įvadas}
+\begin{frame}
+\frametitle{Įvadas}
+\begin{itemize}
+\item HLM modeliams vertinti dažniausiai naudojamas REML metodas, tačiau jis remiasi normalumo prielaida, kuri tiriant mokyklų duomenis dažniausiai negali būti užtikrinta.
+\item Taip pat yra parodyta (nuoroda), jog hierarchinėms struktūroms REML įverčiai yra paslinkti žemyn.
+\item Tiriamas alternatyvus metodas MINQUE, kuris nereikalauja jokių žinių apie skirstinį.
+\item Tikimasi, jog MINQUE įverčiai bus mažiau paslinkti.
+\item Kita problema, mokyklų duomenys dažniausiai turi svorius. R'e nepavyko rasti metodo. Bandyta sukurti ir patikrinta simuliacijomis.
+\item Orientacija į TIMSS ir į R.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{HLM}
+\begin{itemize}
+\item HLM - hierarchinis tiesinis modelis (\textit{angl. Hierarchical Linear Model});
+\item Dviejų lygių modelio pavidalas: 
+\[ \left\{
+  \begin{array}{l}
+    Y_{ij} = \beta_{0j}+\sum^P_{p = 1} \beta_{pj}\times X_{pij}+\varepsilon_{ij}; \\
+    \beta_{pj} = \gamma_{p0} + \sum^{Q_p}_{q=1}\gamma_{pq}\times W_{pqj}+u_{pj};\ \forall p = 0 , \dots, P,
+  \end{array} \right.\]
+kur\\
+\begin{small}
+$j$ - j-otoji grupė;\\
+$i$ - i-tasis individas j-tojoje grupėje;\\
+$\beta_{0j}$ - atsitiktinis postūmis;\\
+$\beta_{pj}$ - atsitiktinis posvyris;\\
+$\gamma_{pq}$ - fiksuoti efektai;\\
+$X_{pij}$ - pirmo lygio kintamieji;\\
+$W_{pqj}$ - antro lygio kintamieji;\\
+$Y_{ij}$ - aiškinamasis kintamasis.
+\end{small}
+\small
+\item Bendras modelio pavidalas (jungtinė lygtis):
+\[ 
+    Y_{ij} =\sum^P_{p = 1} \sum^{Q_p}_{q=1}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 1} X_{pij}\times u_{pj}+\epsilon_{ij}; 
+ \]
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{MINQUE}
+\begin{small}
+\indent MINQUE - mažiausios normos kvadratinis nepaslinktas įvertinys (\textit{angl. Minimum Norm Quadratic Unbiased Estimator}), kurį pasiūlė Rao(1970)\footnote{Rao, C. R.  \textit{Estimation of heteroscedastic variances in linear models}, Journal of the American Statistical Association, 65, 161–172 psl., 1970}.\\
+ 
+
+\indent Pasak Rao, jei $Y$ dispersiją galima išreikšti tiesine nežinomų parametrų ir žinomų matricų kombinacija $V= \sum^l_{r=1}\theta_r Q_r$, tai tiesinės kombinacijos $g_1 \theta_1+\dots+g_l \theta_l$ MINQUE yra $Y'AY$, jei matrica $A$ gaunama išsprendus:
+\[tr(AVAV) \to min\]
+su sąlygomis:
+\[AX = 0\]
+\[tr(AQ_r)=g_r\]
+Tada $\hat{\theta} = (\hat{\theta_1},\dots,\hat{\theta_l})'=S^{-1}q$, kur $S=\{s_{ij}\}$, $s_{ij}=tr(CQ_iCQ_j)$, o
+$q=\{q_i\}$, $q_i=Y'CQ_iCY$, $C = \hat{V}^{-1}(I-X(X' \hat{V}^{-1}X)^{-1}X \hat{V}^{-1})$, $\hat{V}=\sum^l_{r=1}\alpha_rQ_r$, $\alpha_r$ - \textit{a priori} reikšmės.
+
+Fiksuotų parametrų įverčiai gaunami:
+\[\hat{\gamma}=(X'\hat{V}^{-1}X)^{-1}X'\hat{V}^{-1}Y\]
+\end{small}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{MINQUE privalumai ir trūkumai. Žodžiu?????}
+Privalumai:
+\begin{itemize}
+\item Nereikalauja duomenų normalumo;
+\item Nereikia žinoti skirstinio;
+\item Nepaslinktumas;
+\item Invariantiškumas.
+\end{itemize}
+Trūkumai:
+\begin{itemize}
+\item Priklauso nuo \textit{a priori} reikšmių;
+\item Negarantuoja teigiamų dispersijos įverčių;
+\item Vertinimas reikalauja daug resursų (didelės matricos).
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{REML}
+Nespėjau surašyti
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{REML privalumai ir trūkumai: Žodžiu????}
+Privalumai:
+\begin{itemize}
+\item
+\end{itemize}
+Trūkumai:
+\begin{itemize}
+\item Reikalauja normalumo prielaidos;
+\item Dispersijos komponenčių įverčiai paslinkti žemyn.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Kas padaryta}
+\begin{itemize}
+\item Bagakas(1992)\footnote{Bagakas, J. G  \textit{ Two level nested hierarchical linear model with random intercepts
+via the bootstrap}, Unpublished doctoral dissertation, Michigan State University., 1992} pritaikė MINQUE($\theta$) su saviranka dviejų lygių hierarchiniam modeliui su atsitiktiniu postūmiu;
+\item Delpish(2006)\footnote{Delpish, A. N.  \textit{Comparison of Estimators in Hierarchical Linear Modeling: Restricted Maximum Likelihood Versus Bootstrap via Minimum Norm Quadratic Unbiased Estimators}, Florida State University, 2006} simuliacijų būdu parodė, jog MINQUE($\theta$) su saviranka duoda mažesnes standartines paklaidas nei REML.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Nuveikta}
+\begin{itemize}
+\item Suvestas matricinis dviejų lygių HLM pavidalas tinkamas MINQUE procedūrai(???);
+\item Parašytos $R$ funkcijos dviejų lygių HLM modeliams vertinti MINQUE metodu;
+\item Sukurtas alternatyvus metodas (WMINQUE) vertinti su svoriais;
+\item Simuliacijų būdu palyginti REML ir MINQUE(0), MINQUE(1) bei MINQUE($\theta$) per RBIAS ir RMSE;
+\item Simuliacijų būdu parodyta, jog WMINQUE tikslesnis vertinant modelius su svoriais.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Simuliacijų struktūra(1)}
+Modelis su atsitiktiniu posvyriu ir postūmiu
+\begin{equation*} \label{eq:2lvldelpish}
+\left\{
+\begin{array}{l}
+Y_{ij} = \beta_{0j}+ \beta_{1j}\times X_{ij}+\varepsilon_{ij}; \\
+\beta_{0j} = \gamma_{00} +\gamma_{01}\times W_{j}+u_{0j};\\
+\beta_{1j} = \gamma_{10} +\gamma_{11}\times W_{j}+u_{1j};\\
+\end{array} \right.
+\end{equation*}
+čia 
+$\varepsilon_{ij}\sim \left(0;\sigma^2\right)$;\\
+$\begin{pmatrix}
+u_{0j} \\
+u_{1j} \\
+\end{pmatrix}\sim \left(0_2, T\right), \mathbf{T}=\begin{pmatrix}
+\tau_{00} & \tau_{01} \\
+\tau_{10} & \tau_{11} \\
+\end{pmatrix}$; \\
+$\gamma_{pq} - fiksuoti modelio efektai,\ p,g = \{0,1\}$;\\
+$W_j$ - antrojo lygio aiškinantysis kintamasis;\\
+$X_{ij}$ - pirmojo lygio aiškinantysis kintamasis.\\ 
+\ \\
+500 simuliacijų kievienam atvejui. Naudojami $N$ ir $\chi^2$ paklaidų pasiskirstymai. Viso 36 atvejai.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Simuliacijų struktūra(2)}
+
+\begin{table}[!htb]
+\begin{small}
+
+
+\begin{subtable}{.5\linewidth}
+\begin{tabular}{|c|r|}
+\hline
+Pavadinimas & Reikšmė\\
+\hline
+$\gamma_{00}$& 450  \\
+$\gamma_{01}$& 10  \\
+$\gamma_{10}$& 30 \\
+$\gamma_{11}$& 5  \\
+$\sigma^2$& 2000  \\
+$X_{ij}$ &  $B\left(1; 0,2\right)$ \\
+$W_{j}$ &  Indeksas \\
+\hline
+\end{tabular}
+\end{subtable}
+
+
+
+\begin{subtable}{.5\linewidth}
+\begin{tabular}{|c|cc|}
+\hline
+ & \multicolumn{2}{c|}{$n_j$}\\
+\hline
+$m$& Nesubalansuotas & \ \ \ \ \ \ \ \ \ \ 30\ \ \ \ \ \ \ \ \ \ \\
+\hline
+20& P1&P2\\
+35&P3&P4\\
+80& P5&P6\\
+\hline
+\end{tabular}
+
+\begin{tabular}{|c|cccc|}
+\hline
+ Pažymėjimas & $\sigma^2$&$\tau_{00}$&$\tau_{01}=\tau_{10}$&$\tau_{11}$\\
+\hline
+V1&2000&100&50&100\\
+V2&2000&800&400&800\\
+V3&2000&2000&1000&2000\\
+\hline
+
+\hline
+\end{tabular}
+\end{subtable}
+\end{small}
+\end{table}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Simuliacijų rezultatai}
+\begin{itemize}
+\item Visų fiksuotų parametrų ir $\sigma^2$ įverčių poslinkis mažesnis nei 5\%;
+\item Didžiausias santykinis poslinkis atsitiktiniams efektams gautas kuomet $\tau_{00}$ nesvarbu koks paklaidų pasisskirstymas ar antro lygio populiacijos dydis;
+\item MINQUE($\theta$) anksčiau minėtu atveju poslinkis mažesnis, tačiau REML tikslesnis;
+\item Poslinkis didesnis bei mažesnis tikslumas, kai turimos $\chi^2$ paklaidos visiems metodams;
+\item Visais atvejais MINQUE($\theta$) įverčių poslinkis mažesnis, tačiau subalansuotam dizainui įverčių kintamumas mažesnis REML metodui;
+\item Kuo didesnis antro lygio objektų skaičius tuo mažesnis skirtumas tarp REML ir MINQUE($\theta$).
+\item Esant mažam (< 35) antro lygio objektų skaičiui ir $\chi^2$ paklaidų pasiskirstymui MINQUE($\theta$) įverčių paslinktumas ir kintamumas mažesnis nei REML.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Jungtinės rezultatų lentelės fragmentas}
+\begin{table}
+\centering
+{\footnotesize
+\begin{tabular}{cc|cc|cc|}
+   & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
+ &  & CAMRBIAS & CRMSE & CAMRBIAS & CRMSE \\ 
+  \hline
+\multirow{6}{*}{P1} & \multirow{2}{*}{V1} & 0.206 & \textbf{1.155} &  \textcolor{red}{0.104} & 1.283 \\ 
+   &  & 0.254 & 1.968 & \textcolor{red}{0.115} & \textbf{1.861} \\ 
+   & \multirow{2}{*}{V2} & 0.015 & 0.23 & \textcolor{red}{0.008} & \textbf{0.212} \\ 
+   &  & 0.028 & 0.767  & \textcolor{red}{0.008} & \textbf{0.71} \\ 
+   & \multirow{2}{*}{V3} & \textcolor{red}{0.005} & 0.16  & \textcolor{red}{0.005} & \textbf{0.151} \\ 
+   &  & 0.023 & 0.625 & \textcolor{red}{0.007} & \textbf{0.588} \\ 
+   \hline \hline
+\multirow{6}{*}{P2} & \multirow{2}{*}{V1} & 0.246 & \textbf{1.116}  & \textcolor{red}{0.13} & 1.188 \\ 
+   &  & 0.249 & \textbf{2.265} & \textcolor{red}{0.155} & 2.37 \\ 
+   & \multirow{2}{*}{V2} & 0.01 & \textbf{0.212} & \textcolor{red}{0.009} & 0.214 \\ 
+   &  & \textcolor{red}{0.014} & \textbf{0.8} & 0.018 & 0.811 \\ 
+   & \multirow{2}{*}{V3} & \textcolor{red}{0.018} & \textbf{0.171} & 0.019 & 0.171 \\ 
+   &  & 0.029 & 0.778 & \textcolor{red}{0.021} & \textbf{0.708} \\ 
+\hline
+\end{tabular}
+}
+\caption{ \textcolor{red}{Raudonai} pažymėti mažesni CAMRBIAS, o \textbf{patamsinti} mažesni CRMSE. $MRBIAS_{\theta MVP}=\frac{1}{S}\sum_1^S\frac{\hat{\theta}_{MVP}-\theta}{\theta}$; $MRMSE_{\theta MVP}=\frac{1}{S}\sum_1^S\left(\frac{\hat{\theta}_{MVP}-\theta}{\theta}\right)^2$; $CAMRBIAS_{MVP}=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}|MRBIAS_{\theta MVP}|$;$CMRMSE_{MVP}=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}MRMSE_{\theta MVP}$}
+\end{table}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Apibendrinimas}
+\begin{itemize}
+\item Sukurtas lankstus R funkcijų rinkinys dviejų lygių HLM vertinimui MINQUE metodu;
+\item Pritaikytas PWIGLS svėrimo metodas MINQUE metodui;
+\item Simuliacijų būdu patikrinta, jog REML metodo įverčiai dviejų lygių HLM nėra labiau paslinkti nei MINQUE kuomet turimas pakankamai didelis (>=35) antrojo lygio objektų skaičius ir $\frac{\tau_{00}}{\sigma^2}>=0.4$;
+\item Beveik visais atvejais REML metodu gauti įverčiai stabilesni, kai turimas subalansuotas dizainas.
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Pabaiga}
+\huge
+Ačiū už dėmesį
+\end{frame}
+\end{document}
+
