@@ -44,9 +44,9 @@ Vadovas: Vydas Čekanavičius}
 \frametitle{Įvadas}
 \begin{itemize}
 \item HLM modeliams vertinti dažniausiai naudojamas REML metodas, tačiau jis remiasi normalumo prielaida, kuri tiriant mokyklų duomenis dažniausiai negali būti užtikrinta.
-\item Taip pat yra parodyta (nuoroda), jog hierarchinėms struktūroms REML įverčiai yra paslinkti žemyn.
+\item Hierarchinėms struktūroms REML įverčiai yra paslinkti, mažesni nei iš tikrųjų (Timm\footnote{Timm, N.H., \textit{Applied Multivariate Analysis}, Springer Texts in Statistics, 2002}).
 \item Tiriamas alternatyvus metodas MINQUE, kuris nereikalauja jokių žinių apie skirstinį.
-\item Tikimasi, jog MINQUE įverčiai bus mažiau paslinkti.
+\item Tikimasi, jog MINQUE įverčiai turės mažesnį poslinkį.
 \item Kita problema, mokyklų duomenys dažniausiai turi svorius. R'e nepavyko rasti metodo. Bandyta sukurti ir patikrinta simuliacijomis.
 \item Orientacija į TIMSS ir į R.
 \end{itemize}
@@ -64,7 +64,7 @@ Vadovas: Vydas Čekanavičius}
     \beta_{pj} = \gamma_{p0} + \sum^{Q_p}_{q=1}\gamma_{pq}\times W_{pqj}+u_{pj};\ \forall p = 0 , \dots, P,
   \end{array} \right.\]
 kur\\
-\begin{small}
+\begin{scriptsize}
 $j$ - j-otoji grupė;\\
 $i$ - i-tasis individas j-tojoje grupėje;\\
 $\beta_{0j}$ - atsitiktinis postūmis;\\
@@ -73,12 +73,12 @@ $\gamma_{pq}$ - fiksuoti efektai;\\
 $X_{pij}$ - pirmo lygio kintamieji;\\
 $W_{pqj}$ - antro lygio kintamieji;\\
 $Y_{ij}$ - aiškinamasis kintamasis.
-\end{small}
+\end{scriptsize}
 \small
-\item Bendras modelio pavidalas (jungtinė lygtis):
-\[ 
-    Y_{ij} =\sum^P_{p = 1} \sum^{Q_p}_{q=1}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 1} X_{pij}\times u_{pj}+\epsilon_{ij}; 
- \]
+\item Bendras modelio pavidalas (jungtinė lygtis): $ Y_{ij} =\sum^P_{p = 1} \sum^{Q_p}_{q=1}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 1} X_{pij}\times u_{pj}+\epsilon_{ij}$ arba
+\begin{equation}
+\mathbf{Y}=\mathbf{X}\boldsymbol{\gamma}+\mathbf{Z}\mathbf{u}+\boldsymbol{\varepsilon}
+\end{equation}
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,7 +123,17 @@ Trūkumai:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{REML}
-Nespėjau surašyti
+REML - apribotasis didžiausio tikėtinumo metodas (\textit{angl. Restricted Maximum Likelihood}), kurį pasiūlė Harley ir Rao\footnote{Harley, H. 0., Rao, J., \textit{Maximum-likelihood estimation for the mixed analysis of variance model}, Biometrika, 54, 1967, 93}\\
+Jei turimas modelis $\mathbf{Y}_j=\mathbf{X}_j\boldsymbol{\gamma}+\mathbf{Z}_j\mathbf{u}_j+\boldsymbol{\varepsilon}_j$, $\mathbf{u}_j\sim \mathcal{N}(\mathbf{0}, \mathbf{T})$, $\boldsymbol{\varepsilon}_j\sim \mathcal{N}(\mathbf{0}, \sigma^2 \mathbf{I}_{n_j})$, o $Var(\mathbf{Y}_j)=\mathbf{V}_j=\sigma^2 \mathbf{I}_{n_j} + \mathbf{Z}_j\mathbf{T}\mathbf{Z}'_j$, tai REML įverčiai gaunami maksimizuojant \textit{log}-tikėtinumo funkciją, t.y.
+\[
+L(\sigma^2, \mathbf{T})=\sum_j L_j(\sigma^2, \mathbf{T}) \to max,
+\]
+kur
+\[
+L_j(\sigma^2, \mathbf{T})=-\frac{1}{2}\left( log|\mathbf{V}_j|+(\mathbf{Y}_j-\mathbf{X}_j\gamma)'\mathbf{V}_j^{-1}(\mathbf{Y}_j-\mathbf{X}_j\gamma)+log|\mathbf{X}'_j\mathbf{V}_j^{-1}\mathbf{X}_j|\right)
+\]
+Fiksuotų parametrų įverčiai gaunami:
+\[\hat{\gamma}=(X'\hat{V}^{-1}X)^{-1}X'\hat{V}^{-1}Y\]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,7 +142,7 @@ Nespėjau surašyti
 \frametitle{REML privalumai ir trūkumai: Žodžiu????}
 Privalumai:
 \begin{itemize}
-\item
+\item Mažesnis poslinkis nei ML
 \end{itemize}
 Trūkumai:
 \begin{itemize}
@@ -143,23 +153,23 @@ Trūkumai:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Kas padaryta}
+\frametitle{Buvę tyrimai}
 \begin{itemize}
 \item Bagakas(1992)\footnote{Bagakas, J. G  \textit{ Two level nested hierarchical linear model with random intercepts
 via the bootstrap}, Unpublished doctoral dissertation, Michigan State University., 1992} pritaikė MINQUE($\theta$) su saviranka dviejų lygių hierarchiniam modeliui su atsitiktiniu postūmiu;
-\item Delpish(2006)\footnote{Delpish, A. N.  \textit{Comparison of Estimators in Hierarchical Linear Modeling: Restricted Maximum Likelihood Versus Bootstrap via Minimum Norm Quadratic Unbiased Estimators}, Florida State University, 2006} simuliacijų būdu parodė, jog MINQUE($\theta$) su saviranka duoda mažesnes standartines paklaidas nei REML.
+\item Delpish(2006)\footnote{Delpish, A. N.  \textit{Comparison of Estimators in Hierarchical Linear Modeling: Restricted Maximum Likelihood Versus Bootstrap via Minimum Norm Quadratic Unbiased Estimators}, Florida State University, 2006} simuliacijų būdu parodė, jog MINQUE($\theta$) su saviranka duoda mažesnes standartines paklaidas nei REML modeliui su atsitiktiniu postūmiu ir posvyriu.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Nuveikta}
+\frametitle{Atlikta šiame darbe}
 \begin{itemize}
-\item Suvestas matricinis dviejų lygių HLM pavidalas tinkamas MINQUE procedūrai(???);
+\item Suvestas matricinis dviejų lygių HLM pavidalas tinkamas MINQUE procedūrai;
 \item Parašytos $R$ funkcijos dviejų lygių HLM modeliams vertinti MINQUE metodu;
-\item Sukurtas alternatyvus metodas (WMINQUE) vertinti su svoriais;
 \item Simuliacijų būdu palyginti REML ir MINQUE(0), MINQUE(1) bei MINQUE($\theta$) per RBIAS ir RMSE;
+\item Sukurtas alternatyvus metodas (WMINQUE) vertinti su svoriais;
 \item Simuliacijų būdu parodyta, jog WMINQUE tikslesnis vertinant modelius su svoriais.
 \end{itemize}
 \end{frame}
@@ -254,7 +264,7 @@ V3&2000&2000&1000&2000\\
 \frametitle{Simuliacijų rezultatai}
 \begin{itemize}
 \item Visų fiksuotų parametrų ir $\sigma^2$ įverčių poslinkis mažesnis nei 5\%;
-\item Didžiausias santykinis poslinkis atsitiktiniams efektams gautas kuomet $\tau_{00}$ nesvarbu koks paklaidų pasisskirstymas ar antro lygio populiacijos dydis;
+\item Didžiausias santykinis poslinkis atsitiktiniams efektams gautas kuomet $\frac{\tau_{00}}{\sigma^2}<0,4$, nesvarbu koks paklaidų pasisskirstymas ar antro lygio populiacijos dydis;
 \item MINQUE($\theta$) anksčiau minėtu atveju poslinkis mažesnis, tačiau REML tikslesnis;
 \item Poslinkis didesnis bei mažesnis tikslumas, kai turimos $\chi^2$ paklaidos visiems metodams;
 \item Visais atvejais MINQUE($\theta$) įverčių poslinkis mažesnis, tačiau subalansuotam dizainui įverčių kintamumas mažesnis REML metodui;
@@ -266,9 +276,10 @@ V3&2000&2000&1000&2000\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Jungtinės rezultatų lentelės fragmentas}
+
 \begin{table}
 \centering
-{\footnotesize
+{\scriptsize 
 \begin{tabular}{cc|cc|cc|}
    & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
  &  & CAMRBIAS & CRMSE & CAMRBIAS & CRMSE \\ 
@@ -289,8 +300,17 @@ V3&2000&2000&1000&2000\\
 \hline
 \end{tabular}
 }
-\caption{ \textcolor{red}{Raudonai} pažymėti mažesni CAMRBIAS, o \textbf{patamsinti} mažesni CRMSE. $MRBIAS_{\theta MVP}=\frac{1}{S}\sum_1^S\frac{\hat{\theta}_{MVP}-\theta}{\theta}$; $MRMSE_{\theta MVP}=\frac{1}{S}\sum_1^S\left(\frac{\hat{\theta}_{MVP}-\theta}{\theta}\right)^2$; $CAMRBIAS_{MVP}=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}|MRBIAS_{\theta MVP}|$;$CMRMSE_{MVP}=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}MRMSE_{\theta MVP}$}
+\caption{ \textcolor{red}{Raudonai} pažymėti mažesni CAMRBIAS, o \textbf{patamsinti} mažesni CRMSE. }
 \end{table}
+
+\centering
+{
+$MRBIAS=\frac{1}{S}\sum_{i=1}^S\frac{\hat{\theta}_i-\theta}{\theta}$;
+$MRMSE=\frac{1}{S}\sum_{i=1}^S\left(\frac{\hat{\theta}_{i}-\theta}{\theta}\right)^2$;\\
+$CAMRBIAS=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}|MRBIAS_{\theta}|;CMRMSE=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}MRMSE_{\theta }$
+
+}
+
 
 
 \end{frame}
@@ -316,3 +336,31 @@ Ačiū už dėmesį
 \end{frame}
 \end{document}
 
+%\begin{table}
+%\centering
+%{\footnotesize
+%\begin{tabular}{cc|cc|cc|}
+%   & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
+% &  & CAMRBIAS & CRMSE & CAMRBIAS & CRMSE \\ 
+%  \hline
+%\multirow{6}{*}{P1} & \multirow{2}{*}{V1} & 0.206 & \textbf{1.155} &  \textcolor{red}{0.104} & 1.283 \\ 
+%   &  & 0.254 & 1.968 & \textcolor{red}{0.115} & \textbf{1.861} \\ 
+%   & \multirow{2}{*}{V2} & 0.015 & 0.23 & \textcolor{red}{0.008} & \textbf{0.212} \\ 
+%   &  & 0.028 & 0.767  & \textcolor{red}{0.008} & \textbf{0.71} \\ 
+%   & \multirow{2}{*}{V3} & \textcolor{red}{0.005} & 0.16  & \textcolor{red}{0.005} & \textbf{0.151} \\ 
+%   &  & 0.023 & 0.625 & \textcolor{red}{0.007} & \textbf{0.588} \\ 
+%   \hline \hline
+%\multirow{6}{*}{P2} & \multirow{2}{*}{V1} & 0.246 & \textbf{1.116}  & \textcolor{red}{0.13} & 1.188 \\ 
+%   &  & 0.249 & \textbf{2.265} & \textcolor{red}{0.155} & 2.37 \\ 
+%   & \multirow{2}{*}{V2} & 0.01 & \textbf{0.212} & \textcolor{red}{0.009} & 0.214 \\ 
+%   &  & \textcolor{red}{0.014} & \textbf{0.8} & 0.018 & 0.811 \\ 
+%   & \multirow{2}{*}{V3} & \textcolor{red}{0.018} & \textbf{0.171} & 0.019 & 0.171 \\ 
+%   &  & 0.029 & 0.778 & \textcolor{red}{0.021} & \textbf{0.708} \\ 
+%\hline
+%\end{tabular}
+%}
+%\caption{ \textcolor{red}{Raudonai} pažymėti mažesni CAMRBIAS, o \textbf{patamsinti} mažesni CRMSE. }
+%\end{table}
+%    \end{column}
+%    \begin{column}{0.4\textwidth}
+%$MRBIAS_{\theta MVP}=\frac{1}{S}\sum_1^S\frac{\hat{\theta}_{MVP}-\theta}{\theta}$; $MRMSE_{\theta MVP}=\frac{1}{S}\sum_1^S\left(\frac{\hat{\theta}_{MVP}-\theta}{\theta}\right)^2$; $CAMRBIAS_{MVP}=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}|MRBIAS_{\theta MVP}|$;$CMRMSE_{MVP}=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}MRMSE_{\theta MVP}$
