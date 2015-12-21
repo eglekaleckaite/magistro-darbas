@@ -12,7 +12,7 @@ source("10code.R")
 ## Statistics
 ############################################################################
 ############################################################################
-load("Output/mcmc_stats_all.RData")
+load("Output/mcmc_stats_all_1.RData")
 rres[Balansas == "UB" & P == "20", P := "P1"]
 rres[Balansas == "B" & P == "20", P := "P2"]
 rres[Balansas == "UB" & P == "35", P := "P3"]
@@ -31,7 +31,7 @@ parr <- data.table(Parametras = c("g00", "g01", "g10", "g11", "sigma2", "tau00",
 
 pres <- foreach(cc = c("g00", "g01", "g10", "g11", "sigma2", "tau00", "tau01", "tau11")) %do% {
   pres <- rres[Parametras == cc]
-  pres <- pres[, list(Metodas = Metodas, th = th, MRBIAS = boldmin(MRBIAS),
+  pres <- pres[, list(Metodas = Metodas, th = th, MRABIAS = boldmin(MRABIAS),
               MRMSE = boldmin(MRMSE)), by = c("P", "V", "Paklaidos")]
   pres <- arrange(pres, P, V, Paklaidos, Metodas)
   ppres <- cbind(pres[Metodas == "REML", ], pres[Metodas == "MINQUE(0)", ],
@@ -68,7 +68,7 @@ print( xtable(pres[["tau11"]], digits=3,
 # ## Compound statistics
 # ############################################################################
 # ############################################################################
-# load("Output/mcmc_stats_all.RData")
+# load("Output/mcmc_stats_all_1.RData")
 # rres[Balansas == "UB" & P == "20", P := "P1"]
 # rres[Balansas == "B" & P == "20", P := "P2"]
 # rres[Balansas == "UB" & P == "35", P := "P3"]
@@ -84,9 +84,9 @@ print( xtable(pres[["tau11"]], digits=3,
 # fres <- rres[Parametras %in% c("g00", "g01", "g10", "g11"), ]
 # rrres <- rres[Parametras %in% c("sigma2", "tau00", "tau01", "tau11"), ]
 # 
-# fcres <- fres[, list(CAMRBIAS = mean(abs(MRBIAS)), CRMSE = mean(MRMSE)),
+# fcres <- fres[, list(CAMRBIAS = mean(abs(MRABIAS)), CRMSE = mean(MRMSE)),
 #               by = c("Paklaidos", "Metodas", "P", "V")]
-# rcres <- rrres[, list(CAMRBIAS = mean(abs(MRBIAS)), CRMSE = mean(MRMSE)),
+# rcres <- rrres[, list(CAMRBIAS = mean(abs(MRABIAS)), CRMSE = mean(MRMSE)),
 #                by = c("Paklaidos", "Metodas", "P", "V")]
 # 
 # fcres <- fcres[, list(Metodas = Metodas, CAMRBIAS = boldmin(CAMRBIAS),
@@ -158,7 +158,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #              ldply(rresY1[[cc]],
 #                    function(x) ldply(x, function(y) ldply(y, function(z) ldply(z, function(w){
 #                      #w[w<0] <- 0
-#                      dd <- data.table(th = mean(w), MRBIAS = mean(w/trth[Parametras == cc, Tikroji]-1), MRMSE = mean((w/trth[Parametras == cc, Tikroji]-1)^2))
+#                      dd <- data.table(th = mean(w), MRABIAS = mean(abs(w/trth[Parametras == cc, Tikroji]-1)), MRMSE = mean((w/trth[Parametras == cc, Tikroji]-1)^2))
 #                      return(dd)
 #                    }, .id = "V"), .id = "P"), .id = "Balansas"), .id = "Metodas"))
 # }
@@ -169,7 +169,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #              ldply(rresY2[[cc]],
 #                    function(x) ldply(x, function(y) ldply(y, function(z) ldply(z, function(w){
 #                      #w[w<0] <- 0
-#                      dd <- data.table(th = mean(w), MRBIAS = mean(w/trth[Parametras == cc, Tikroji]-1), MRMSE = mean((w/trth[Parametras == cc, Tikroji]-1)^2))
+#                      dd <- data.table(th = mean(w), MRABIAS = mean(abs(w/trth[Parametras == cc, Tikroji]-1)), MRMSE = mean((w/trth[Parametras == cc, Tikroji]-1)^2))
 #                      return(dd)
 #                    }, .id = "V"), .id = "P"), .id = "Balansas"), .id = "Metodas"))
 # }
@@ -186,7 +186,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #                        w <- z[[bb]]
 #                        if(cc!="tau01")
 #                          w[w<0] <- 0
-#                        dd <- data.table(V = bb, th = mean(w), MRBIAS = mean(w/unlist(ttau[V == bb, cc, with = F])-1), MRMSE = mean((w/unlist(ttau[V == bb, cc, with = F])-1)^2))
+#                        dd <- data.table(V = bb, th = mean(w), MRABIAS = mean(abs(w/unlist(ttau[V == bb, cc, with = F])-1)), MRMSE = mean((w/unlist(ttau[V == bb, cc, with = F])-1)^2))
 #                        return(dd)
 #                      }}, .id = "P"), .id = "Balansas"), .id = "Metodas"))
 # }
@@ -199,7 +199,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #                        w <- z[[bb]]
 #                        if(cc!="tau01")
 #                          w[w<0] <- 0
-#                        dd <- data.table(V = bb, th = mean(w), MRBIAS = mean(w/unlist(ttau[V == bb, cc, with = F])-1), MRMSE = mean((w/unlist(ttau[V == bb, cc, with = F])-1)^2))
+#                        dd <- data.table(V = bb, th = mean(w), MRABIAS = mean(abs(w/unlist(ttau[V == bb, cc, with = F])-1)), MRMSE = mean((w/unlist(ttau[V == bb, cc, with = F])-1)^2))
 #                        return(dd)
 #                      }}, .id = "P"), .id = "Balansas"), .id = "Metodas"))
 # }
@@ -207,7 +207,7 @@ print( xtable(pres[["tau11"]], digits=3,
 # 
 # rres <- rbind(rres, rres2, rres3, rres4)
 # 
-# save(rres, file = "Output/mcmc_stats_all.RData")
+# save(rres, file = "Output/mcmc_stats_all_1.RData")
 
 
 
