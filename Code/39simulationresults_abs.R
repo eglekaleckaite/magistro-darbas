@@ -12,7 +12,7 @@ source("10code.R")
 ## Statistics
 ############################################################################
 ############################################################################
-load("Output/mcmc_stats_all.RData")
+load("Output/mcmc_stats_all_1.RData")
 rres[Balansas == "UB" & P == "20", P := "P1"]
 rres[Balansas == "B" & P == "20", P := "P2"]
 rres[Balansas == "UB" & P == "35", P := "P3"]
@@ -31,7 +31,7 @@ parr <- data.table(Parametras = c("g00", "g01", "g10", "g11", "sigma2", "tau00",
 
 pres <- foreach(cc = c("g00", "g01", "g10", "g11", "sigma2", "tau00", "tau01", "tau11")) %do% {
   pres <- rres[Parametras == cc]
-  pres <- pres[, list(Metodas = Metodas, th = th, MRBIAS = boldmin(MRBIAS),
+  pres <- pres[, list(Metodas = Metodas, th = th, MRABIAS = boldmin(MRABIAS),
               MRMSE = boldmin(MRMSE)), by = c("P", "V", "Paklaidos")]
   pres <- arrange(pres, P, V, Paklaidos, Metodas)
   ppres <- cbind(pres[Metodas == "REML", ], pres[Metodas == "MINQUE(0)", ],
@@ -68,7 +68,7 @@ print( xtable(pres[["tau11"]], digits=3,
 # ## Compound statistics
 # ############################################################################
 # ############################################################################
-# load("Output/mcmc_stats_all.RData")
+# load("Output/mcmc_stats_all_1.RData")
 # rres[Balansas == "UB" & P == "20", P := "P1"]
 # rres[Balansas == "B" & P == "20", P := "P2"]
 # rres[Balansas == "UB" & P == "35", P := "P3"]
@@ -84,9 +84,9 @@ print( xtable(pres[["tau11"]], digits=3,
 # fres <- rres[Parametras %in% c("g00", "g01", "g10", "g11"), ]
 # rrres <- rres[Parametras %in% c("sigma2", "tau00", "tau01", "tau11"), ]
 # 
-# fcres <- fres[, list(CAMRBIAS = mean(abs(MRBIAS)), CRMSE = mean(MRMSE)),
+# fcres <- fres[, list(CAMRBIAS = mean(abs(MRABIAS)), CRMSE = mean(MRMSE)),
 #               by = c("Paklaidos", "Metodas", "P", "V")]
-# rcres <- rrres[, list(CAMRBIAS = mean(abs(MRBIAS)), CRMSE = mean(MRMSE)),
+# rcres <- rrres[, list(CAMRBIAS = mean(abs(MRABIAS)), CRMSE = mean(MRMSE)),
 #                by = c("Paklaidos", "Metodas", "P", "V")]
 # 
 # fcres <- fcres[, list(Metodas = Metodas, CAMRBIAS = boldmin(CAMRBIAS),
@@ -158,7 +158,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #              ldply(rresY1[[cc]],
 #                    function(x) ldply(x, function(y) ldply(y, function(z) ldply(z, function(w){
 #                      #w[w<0] <- 0
-#                      dd <- data.table(th = mean(w), MRBIAS = mean(w/trth[Parametras == cc, Tikroji]-1), MRMSE = mean((w/trth[Parametras == cc, Tikroji]-1)^2))
+#                      dd <- data.table(th = mean(w), MRABIAS = mean(abs(w/trth[Parametras == cc, Tikroji]-1)), MRMSE = mean((w/trth[Parametras == cc, Tikroji]-1)^2))
 #                      return(dd)
 #                    }, .id = "V"), .id = "P"), .id = "Balansas"), .id = "Metodas"))
 # }
@@ -169,7 +169,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #              ldply(rresY2[[cc]],
 #                    function(x) ldply(x, function(y) ldply(y, function(z) ldply(z, function(w){
 #                      #w[w<0] <- 0
-#                      dd <- data.table(th = mean(w), MRBIAS = mean(w/trth[Parametras == cc, Tikroji]-1), MRMSE = mean((w/trth[Parametras == cc, Tikroji]-1)^2))
+#                      dd <- data.table(th = mean(w), MRABIAS = mean(abs(w/trth[Parametras == cc, Tikroji]-1)), MRMSE = mean((w/trth[Parametras == cc, Tikroji]-1)^2))
 #                      return(dd)
 #                    }, .id = "V"), .id = "P"), .id = "Balansas"), .id = "Metodas"))
 # }
@@ -186,7 +186,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #                        w <- z[[bb]]
 #                        if(cc!="tau01")
 #                          w[w<0] <- 0
-#                        dd <- data.table(V = bb, th = mean(w), MRBIAS = mean(w/unlist(ttau[V == bb, cc, with = F])-1), MRMSE = mean((w/unlist(ttau[V == bb, cc, with = F])-1)^2))
+#                        dd <- data.table(V = bb, th = mean(w), MRABIAS = mean(abs(w/unlist(ttau[V == bb, cc, with = F])-1)), MRMSE = mean((w/unlist(ttau[V == bb, cc, with = F])-1)^2))
 #                        return(dd)
 #                      }}, .id = "P"), .id = "Balansas"), .id = "Metodas"))
 # }
@@ -199,7 +199,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #                        w <- z[[bb]]
 #                        if(cc!="tau01")
 #                          w[w<0] <- 0
-#                        dd <- data.table(V = bb, th = mean(w), MRBIAS = mean(w/unlist(ttau[V == bb, cc, with = F])-1), MRMSE = mean((w/unlist(ttau[V == bb, cc, with = F])-1)^2))
+#                        dd <- data.table(V = bb, th = mean(w), MRABIAS = mean(abs(w/unlist(ttau[V == bb, cc, with = F])-1)), MRMSE = mean((w/unlist(ttau[V == bb, cc, with = F])-1)^2))
 #                        return(dd)
 #                      }}, .id = "P"), .id = "Balansas"), .id = "Metodas"))
 # }
@@ -207,7 +207,7 @@ print( xtable(pres[["tau11"]], digits=3,
 # 
 # rres <- rbind(rres, rres2, rres3, rres4)
 # 
-# save(rres, file = "Output/mcmc_stats_all.RData")
+# save(rres, file = "Output/mcmc_stats_all_1.RData")
 
 
 
@@ -216,19 +216,19 @@ print( xtable(pres[["tau11"]], digits=3,
 ## combine output files
 ############################################################################
 ############################################################################
-# 
-# rresY2 <- list()
+
+# rresY1 <- list()
 # 
 # foreach(aa = c("20", "35", "80"), .final = NULL) %do% {
 #   foreach(bb = c("100_50_100", "800_400_800", "2000_1000_2000"), .final = NULL) %do% {
-#     load(paste0("Output/mcmcY2_simulMy_2000_", bb, "_", aa, ".RData"))
+#     load(paste0("Output/mcmcY1_simulMy_2000_", bb, "_", aa, ".RData"))
 #     # REML
 #     dd <- alply(mcmc[, c(1:4, 29, 36, 37, 39)], 2)
 #     names(dd) <- c("g00", "g01", "g10", "g11", 
 #                    "sigma2", 
 #                    "tau00", "tau01", "tau11")
 #     foreach(cc = names(dd), .final = NULL) %do% {
-#       rresY2[[cc]][["REML"]][["UB"]][[aa]][[bb]] <- dd[[cc]]
+#       rresY1[[cc]][["REML"]][["UB"]][[aa]][[bb]] <- dd[[cc]]
 #     }
 #     #MINQUE0
 #     dd <- alply(mcmc[, c(5:8, 30, 40, 41, 43)], 2)
@@ -236,7 +236,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #                    "sigma2", 
 #                    "tau00", "tau01", "tau11")
 #     foreach(cc = names(dd), .final = NULL) %do% {
-#       rresY2[[cc]][["MINQUE(0)"]][["UB"]][[aa]][[bb]] <- dd[[cc]]
+#       rresY1[[cc]][["MINQUE(0)"]][["UB"]][[aa]][[bb]] <- dd[[cc]]
 #     }
 #     #MINQUE1
 #     dd <- alply(mcmc[, c(13:16, 32, 48, 49, 51)], 2)
@@ -244,17 +244,17 @@ print( xtable(pres[["tau11"]], digits=3,
 #                    "sigma2", 
 #                    "tau00", "tau01", "tau11")
 #     foreach(cc = names(dd), .final = NULL) %do% {
-#       rresY2[[cc]][["MINQUE(1)"]][["UB"]][[aa]][[bb]] <- dd[[cc]]
+#       rresY1[[cc]][["MINQUE(1)"]][["UB"]][[aa]][[bb]] <- dd[[cc]]
 #     }
 #     
-#     load(paste0("Output/mcmcY2_simulMy_2000_", bb, "_", aa, "_add.RData"))
+#     load(paste0("Output/mcmcY1_simulMy_2000_", bb, "_", aa, "_add.RData"))
 #     #MINQUEth
 #     dd <- alply(mcmc[, c(5:8, 10, 15, 16, 18)], 2)
 #     names(dd) <- c("g00", "g01", "g10", "g11", 
 #                    "sigma2", 
 #                    "tau00", "tau01", "tau11")
 #     foreach(cc = names(dd), .final = NULL) %do% {
-#       rresY2[[cc]][["MINQUE(th)"]][["UB"]][[aa]][[bb]] <- dd[[cc]]
+#       rresY1[[cc]][["MINQUE(th)"]][["UB"]][[aa]][[bb]] <- dd[[cc]]
 #     }
 #     NULL
 #   }
@@ -264,14 +264,14 @@ print( xtable(pres[["tau11"]], digits=3,
 # 
 # foreach(aa = c("20", "35", "80"), .final = NULL) %do% {
 #   foreach(bb = c("100_50_100", "800_400_800", "2000_1000_2000"), .final = NULL) %do% {
-#     load(paste0("Output/mcmcY2_simulMy_2000_", bb, "_", aa, "_fixed.RData"))
+#     load(paste0("Output/mcmcY1_simulMy_2000_", bb, "_", aa, "_fixed.RData"))
 #     # REML
 #     dd <- alply(mcmc[, c(1:4, 17, 21, 22, 24)], 2)
 #     names(dd) <- c("g00", "g01", "g10", "g11", 
 #                    "sigma2", 
 #                    "tau00", "tau01", "tau11")
 #     foreach(cc = names(dd), .final = NULL) %do% {
-#       rresY2[[cc]][["REML"]][["B"]][[aa]][[bb]] <- dd[[cc]]
+#       rresY1[[cc]][["REML"]][["B"]][[aa]][[bb]] <- dd[[cc]]
 #     }
 #     #MINQUE0
 #     dd <- alply(mcmc[, c(5:8, 18, 25, 26, 28)], 2)
@@ -279,7 +279,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #                    "sigma2", 
 #                    "tau00", "tau01", "tau11")
 #     foreach(cc = names(dd), .final = NULL) %do% {
-#       rresY2[[cc]][["MINQUE(0)"]][["B"]][[aa]][[bb]] <- dd[[cc]]
+#       rresY1[[cc]][["MINQUE(0)"]][["B"]][[aa]][[bb]] <- dd[[cc]]
 #     }
 #     #MINQUE1
 #     dd <- alply(mcmc[, c(9:12, 19, 29, 30, 32)], 2)
@@ -287,7 +287,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #                    "sigma2", 
 #                    "tau00", "tau01", "tau11")
 #     foreach(cc = names(dd), .final = NULL) %do% {
-#       rresY2[[cc]][["MINQUE(1)"]][["B"]][[aa]][[bb]] <- dd[[cc]]
+#       rresY1[[cc]][["MINQUE(1)"]][["B"]][[aa]][[bb]] <- dd[[cc]]
 #     }
 #     #MINQUEth
 #     dd <- alply(mcmc[, c(13:16, 20, 33, 34, 36)], 2)
@@ -295,7 +295,7 @@ print( xtable(pres[["tau11"]], digits=3,
 #                    "sigma2", 
 #                    "tau00", "tau01", "tau11")
 #     foreach(cc = names(dd), .final = NULL) %do% {
-#       rresY2[[cc]][["MINQUE(th)"]][["B"]][[aa]][[bb]] <- dd[[cc]]
+#       rresY1[[cc]][["MINQUE(th)"]][["B"]][[aa]][[bb]] <- dd[[cc]]
 #     }
 #     NULL
 #   }
@@ -303,5 +303,5 @@ print( xtable(pres[["tau11"]], digits=3,
 # }
 # 
 # 
-# save(rresY2, file = "Output/mcmcY2_simulMy.RData")
+# save(rresY1, file = "Output/mcmcY1_simulMy.RData")
 

@@ -1,0 +1,293 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[left=3.25cm,right=3.25cm]{geometry}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amssymb,amsmath}
+\usepackage{theorem}
+\usepackage{calc}
+\usepackage{color}
+\usepackage{bm}
+\usepackage{verbatim}
+\usepackage{soul}
+\usepackage{hyperref} 
+\usepackage{multicol}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{makeidx}
+\usepackage{float}
+\usepackage[toc,page]{appendix}
+%\usepackage{tocbibind}
+
+\oddsidemargin=0cm
+%\topmargin=1cm
+\headsep=0pt
+\textwidth 6.5in
+\textheight 9.00in
+%\headheight=0pt
+%\textwidth=440pt
+%\textheight=640pt
+%\footskip=40pt
+\makeatletter
+\renewcommand\paragraph{%
+   \@startsection{paragraph}{4}{0mm}%
+      {-\baselineskip}%
+      {.5\baselineskip}%
+      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\begin{document}
+	\begin{center}{\large\textbf{Dviejų lygių HLM modelių vertinimo metodų palyginimas MC simuliacijų būdu: REML vs MINQUE}}\end{center}
+
+\section{Turinys}
+
+
+
+\section{Problemos}
+\begin{itemize}
+\item HLM modeliams vertinti dažniausiai naudojamas REML metodas, tačiau jis remiasi normalumo prielaida, kuri tiriant mokyklų duomenis negali būti užtikrinta.
+\item Hierarchinėms struktūroms REML įverčiai yra paslinkti, mažesni nei iš tikrųjų (Timm\footnote{Timm, N.H., \textit{Applied Multivariate Analysis}, Springer Texts in Statistics, 2002}).
+\item Tiriamas alternatyvus metodas MINQUE, kuris nereikalauja jokių žinių apie skirstinį.
+\item Tikimasi, jog MINQUE įverčiai turės mažesnį poslinkį.
+\item Kita problema, mokyklų duomenys dažniausiai pateikiami su imties svoriais ir į juos reikia atsižvelgti. R'e nepavyko rasti tokio vertinimo metodo. Bandyta sukurti MINQUE svėrimą ir patikrinta simuliacijomis.
+\item  Yra daug paketų, kurie vertina HLM (SAS, SPSS, HLM, MLwiN). Orientacija į TIMSS ir į R.
+\end{itemize}
+
+\section{HLM}
+\begin{itemize}
+\item HLM - hierarchinis tiesinis modelis (\textit{angl. Hierarchical Linear Model});
+\item Dviejų lygių modelio pavidalas: 
+\[ \left\{
+  \begin{array}{l}
+    Y_{ij} = \beta_{0j}+\sum^P_{p = 1} \beta_{pj}\times X_{pij}+\varepsilon_{ij}; \\
+    \beta_{pj} = \gamma_{p0} + \sum^{Q_p}_{q=1}\gamma_{pq}\times W_{pqj}+u_{pj};\ \forall p = 0 , \dots, P,
+  \end{array} \right.\]
+kur\\
+\begin{scriptsize}
+$j$ - j-otoji grupė;\\
+$i$ - i-tasis individas j-tojoje grupėje;\\
+$\beta_{0j}$ - atsitiktinis postūmis;\\
+$\beta_{pj}$ - atsitiktinis posvyris;\\
+$\gamma_{pq}$ - fiksuoti efektai;\\
+$X_{pij}$ - pirmo lygio kintamieji;\\
+$W_{pqj}$ - antro lygio kintamieji;\\
+$Y_{ij}$ - aiškinamasis kintamasis.
+\end{scriptsize}
+\small
+\item Bendras modelio pavidalas (jungtinė lygtis): $ Y_{ij} =\sum^P_{p = 1} \sum^{Q_p}_{q=1}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 1} X_{pij}\times u_{pj}+\epsilon_{ij}$, kurį galima suvesti į bendrą matricinį pavidalą. Matriciniai pažymėjimai į skaidres netilpo.
+\begin{equation}
+\mathbf{Y}=\mathbf{X}\boldsymbol{\gamma}+\mathbf{Z}\mathbf{u}+\boldsymbol{\varepsilon}
+\end{equation}
+\end{itemize}
+
+\section{MINQUE}
+
+\indent MINQUE - mažiausios normos kvadratinis nepaslinktas įvertinys (\textit{angl. Minimum Norm Quadratic Unbiased Estimator}), kurį pasiūlė Rao(1970)\footnote{Rao, C. R.  \textit{Estimation of heteroscedastic variances in linear models}, Journal of the American Statistical Association, 65, 161–172 psl., 1970}.\\
+ 
+
+\indent Pasak Rao, jei $Y$ dispersiją galima išreikšti tiesine nežinomų parametrų ir žinomų matricų kombinacija $V= \sum^l_{r=1}\theta_r Q_r$, tai tiesinės kombinacijos $g_1 \theta_1+\dots+g_l \theta_l$ MINQUE yra $Y'AY$, jei matrica $A$ gaunama išsprendus:
+\[tr(AVAV) \to min\]
+su sąlygomis:
+\[AX = 0\]
+\[tr(AQ_r)=g_r\]
+Tada $\hat{\theta} = (\hat{\theta_1},\dots,\hat{\theta_l})'=S^{-1}q$, kur $S=\{s_{ij}\}$, $s_{ij}=tr(CQ_iCQ_j)$, o
+$q=\{q_i\}$, $q_i=Y'CQ_iCY$, $C = \hat{V}^{-1}(I-X(X' \hat{V}^{-1}X)^{-1}X \hat{V}^{-1})$, $\hat{V}=\sum^l_{r=1}\alpha_rQ_r$, $\alpha_r$ - \textit{a priori} reikšmės.
+
+Fiksuotų parametrų įverčiai gaunami:
+\[\hat{\gamma}=(X'\hat{V}^{-1}X)^{-1}X'\hat{V}^{-1}Y\]
+
+\section{REML}
+REML - apribotasis didžiausio tikėtinumo metodas (\textit{angl. Restricted Maximum Likelihood}), kurį pasiūlė Harley ir Rao\footnote{Harley, H. 0., Rao, J., \textit{Maximum-likelihood estimation for the mixed analysis of variance model}, Biometrika, 54, 1967, 93}\\
+Jei turimas modelis $\mathbf{Y}_j=\mathbf{X}_j\boldsymbol{\gamma}+\mathbf{Z}_j\mathbf{u}_j+\boldsymbol{\varepsilon}_j$, $\mathbf{u}_j\sim \mathcal{N}(\mathbf{0}, \mathbf{T})$, $\boldsymbol{\varepsilon}_j\sim \mathcal{N}(\mathbf{0}, \sigma^2 \mathbf{I}_{n_j})$, o $Var(\mathbf{Y}_j)=\mathbf{V}_j=\sigma^2 \mathbf{I}_{n_j} + \mathbf{Z}_j\mathbf{T}\mathbf{Z}'_j$, tai REML įverčiai gaunami maksimizuojant \textit{log}-tikėtinumo funkciją, t.y.
+\[
+L(\sigma^2, \mathbf{T})=\sum_j L_j(\sigma^2, \mathbf{T}) \to max,
+\]
+kur
+\[
+L_j(\sigma^2, \mathbf{T})=-\frac{1}{2}\left( log|\mathbf{V}_j|+(\mathbf{Y}_j-\mathbf{X}_j\gamma)'\mathbf{V}_j^{-1}(\mathbf{Y}_j-\mathbf{X}_j\gamma)+log|\mathbf{X}'_j\mathbf{V}_j^{-1}\mathbf{X}_j|\right)
+\]
+Fiksuotų parametrų įverčiai gaunami:
+\[\hat{\gamma}=(X'\hat{V}^{-1}X)^{-1}X'\hat{V}^{-1}Y\]
+
+\section{MINQUE privalumai ir trūkumai. Žodžiu?????}
+Privalumai:
+\begin{itemize}
+\item Nereikalauja duomenų normalumo;
+\item Nereikia žinoti skirstinio;
+\item Nepaslinktumas;
+\item Invariantiškumas.
+\end{itemize}
+Trūkumai:
+\begin{itemize}
+\item Priklauso nuo \textit{a priori} reikšmių;
+\item Negarantuoja teigiamų dispersijos įverčių;
+\item Vertinimas reikalauja daug resursų (didelės matricos).
+\end{itemize}
+\section{REML privalumai ir trūkumai: Žodžiu????}
+Privalumai:
+\begin{itemize}
+\item Mažesnis poslinkis nei ML
+\end{itemize}
+Trūkumai:
+\begin{itemize}
+\item Reikalauja normalumo prielaidos;
+\item Dispersijos komponenčių įverčiai paslinkti žemyn.
+\end{itemize}
+
+\section{Buvę tyrimai}
+Tyrimų buvo atlikta daug ir įvairių. Tai paminėsiu tik du dėl kurių kilo noras atlikti būtent tokį tyrimą. Bla Bla. Abu tyrė tik MINQUE su saviranka, bet man kilo klausimas, gal čia ne paties metodo įtaką, o savirankos. Todėl lyginu tik metodus.
+
+\section{Atlikta}
+
+\begin{itemize}
+\item Suvestas matricinis dviejų lygių HLM pavidalas tinkamas MINQUE procedūrai;
+\item Parašytos $R$ funkcijos dviejų lygių HLM modeliams vertinti MINQUE metodu;
+\item Simuliacijų būdu palyginti REML ir MINQUE(0), MINQUE(1) bei MINQUE($\theta$) per RBIAS ir RMSE;
+\item Sukurtas alternatyvus metodas (WMINQUE) vertinti su svoriais;
+\item Simuliacijų būdu parodyta, jog WMINQUE tikslesnis vertinant modelius su svoriais.
+\end{itemize}
+
+\section{Simuliacijų struktūra(1)}
+\begin{itemize}
+\item Modelis su atsitiktiniu posvyriu ir postūmiu:
+\begin{equation*} \label{eq:2lvldelpish}
+\left\{
+\begin{array}{l}
+Y_{ij} = \beta_{0j}+ \beta_{1j}\times X_{ij}+\varepsilon_{ij}; \\
+\beta_{0j} = \gamma_{00} +\gamma_{01}\times W_{j}+u_{0j};\\
+\beta_{1j} = \gamma_{10} +\gamma_{11}\times W_{j}+u_{1j};\\
+\end{array} \right.
+\end{equation*}
+čia \\
+\begin{small}
+$\varepsilon_{ij}\sim \left(0;\sigma^2\right)$;\\
+$\begin{pmatrix}
+u_{0j} \\
+u_{1j} \\
+\end{pmatrix}\sim \left(0_2, T\right), \mathbf{T}=\begin{pmatrix}
+\tau_{00} & \tau_{01} \\
+\tau_{10} & \tau_{11} \\
+\end{pmatrix}$; \\
+$\gamma_{pq}$ - fiksuoti modelio efektai,$\ p,g = \{0,1\}$;\\
+$W_j$ - antrojo lygio aiškinantysis kintamasis;\\
+$X_{ij}$ - pirmojo lygio aiškinantysis kintamasis.\\ 
+\ \\
+\end{small}
+\item 500 simuliacijų kievienam atvejui. Naudojami $\mathcal{N}$ ir $\chi^2$ paklaidų pasiskirstymai. Viso 36 atvejai.
+\end{itemize}
+
+\section{Simuliacijų struktūra(2)}
+
+\begin{table}[!htb]
+\begin{small}
+
+\begin{tabular}{|c|r|}
+\hline
+Pavadinimas & Reikšmė\\
+\hline
+$\gamma_{00}$& 450  \\
+$\gamma_{01}$& 10  \\
+$\gamma_{10}$& 30 \\
+$\gamma_{11}$& 5  \\
+$\sigma^2$& 2000  \\
+$X_{ij}$ &  $B\left(1; 0,2\right)$ \\
+$W_{j}$ &  Indeksas \\
+\hline
+\end{tabular}
+
+\begin{tabular}{|c|cc|}
+\hline
+ & \multicolumn{2}{c|}{$n_j$}\\
+\hline
+$m$& Nesubalansuotas & \ \ \ \ \ \ \ \ \ \ 30\ \ \ \ \ \ \ \ \ \ \\
+\hline
+20& P1&P2\\
+35&P3&P4\\
+80& P5&P6\\
+\hline
+\end{tabular}
+
+\begin{tabular}{|c|cccc|}
+\hline
+ Pažymėjimas & $\sigma^2$&$\tau_{00}$&$\tau_{01}=\tau_{10}$&$\tau_{11}$\\
+\hline
+V1&2000&100&50&100\\
+V2&2000&800&400&800\\
+V3&2000&2000&1000&2000\\
+\hline
+
+\hline
+\end{tabular}
+\end{small}
+\end{table}
+
+\section{Simuliacijų rezultatai}
+
+\begin{itemize}
+\item Visų fiksuotų parametrų ir $\sigma^2$ įverčių santykinis poslinkis mažesnis nei 5\%;
+\item Didžiausias santykinis poslinkis atsitiktiniams efektams gautas kuomet $\frac{\tau_{00}}{\sigma^2}<0.4$, nesvarbu koks paklaidų pasiskirstymas ar antro lygio subjektų skaičius;
+\item MINQUE($\theta$) anksčiau minėtu atveju poslinkis mažesnis, tačiau REML tikslesnis;
+\item Poslinkis didesnis ir mažesnis tikslumas, kai turimos $\chi^2$ paklaidos visiems metodams;
+\item Beveik visais atvejais MINQUE($\theta$) įverčių poslinkis mažesnis, tačiau subalansuotam dizainui įverčių kintamumas mažesnis REML metodui;
+\item Kuo didesnis antro lygio objektų skaičius tuo mažesnis skirtumas tarp REML ir MINQUE($\theta$).
+\item Esant mažam ($m < 35$) antro lygio objektų skaičiui ir $\chi^2$ paklaidų pasiskirstymui MINQUE($\theta$) įverčių paslinktumas ir kintamumas mažesnis nei REML.
+\end{itemize}
+
+
+
+\section{Jungtinės rezultatų lentelės fragmentas}
+Čia pateiktas tik fragmentas iš lentelės su jungtinėmis statistikomis. Yra tokios lentelės kiekvienam parametrui atskirai. Čia tik atsitiktiniams parametrams.
+\begin{table}
+\centering
+{\scriptsize 
+\begin{tabular}{cc|cc|cc|}
+   & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
+ &  & CAMRBIAS & CRMSE & CAMRBIAS & CRMSE \\ 
+  \hline
+\multirow{6}{*}{P1} & \multirow{2}{*}{V1} & 0.206 & \textbf{1.155} &  \textcolor{red}{0.104} & 1.283 \\ 
+   &  & 0.254 & 1.968 & \textcolor{red}{0.115} & \textbf{1.861} \\ 
+   & \multirow{2}{*}{V2} & 0.015 & 0.23 & \textcolor{red}{0.008} & \textbf{0.212} \\ 
+   &  & 0.028 & 0.767  & \textcolor{red}{0.008} & \textbf{0.71} \\ 
+   & \multirow{2}{*}{V3} & \textcolor{red}{0.005} & 0.16  & \textcolor{red}{0.005} & \textbf{0.151} \\ 
+   &  & 0.023 & 0.625 & \textcolor{red}{0.007} & \textbf{0.588} \\ 
+   \hline \hline
+\multirow{6}{*}{P2} & \multirow{2}{*}{V1} & 0.246 & \textbf{1.116}  & \textcolor{red}{0.13} & 1.188 \\ 
+   &  & 0.249 & \textbf{2.265} & \textcolor{red}{0.155} & 2.37 \\ 
+   & \multirow{2}{*}{V2} & 0.01 & \textbf{0.212} & \textcolor{red}{0.009} & 0.214 \\ 
+   &  & \textcolor{red}{0.014} & \textbf{0.8} & 0.018 & 0.811 \\ 
+   & \multirow{2}{*}{V3} & \textcolor{red}{0.018} & \textbf{0.171} & 0.019 & 0.171 \\ 
+   &  & 0.029 & 0.778 & \textcolor{red}{0.021} & \textbf{0.708} \\ 
+\hline
+\end{tabular}
+}
+\caption{ \textcolor{red}{Raudonai} pažymėti mažesni CAMRBIAS, o \textbf{patamsinti} mažesni CRMSE. }
+\end{table}
+
+\centering
+{
+$MRBIAS=\frac{1}{S}\sum_{i=1}^S\frac{\hat{\theta}_i-\theta}{\theta}$;
+$MRMSE=\frac{1}{S}\sum_{i=1}^S\left(\frac{\hat{\theta}_{i}-\theta}{\theta}\right)^2$;\\
+$CAMRBIAS=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}|MRBIAS_{\theta}|;CMRMSE=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}MRMSE_{\theta }$
+
+}
+
+\section{Apibendrinimas}
+\begin{itemize}
+\item Sukurtas lankstus R funkcijų rinkinys dviejų lygių HLM vertinimui MINQUE metodu;
+\item Pritaikytas PWIGLS svėrimo metodas MINQUE metodui;
+\item Simuliacijų būdu patikrinta, jog REML metodo įverčiai dviejų lygių HLM nėra reikšmingai labiau paslinkti nei MINQUE kuomet turimas pakankamai didelis ($\geq 35$) antrojo lygio objektų skaičius ir $\frac{\tau_{00}}{\sigma^2}\geq 0.4$;
+\item Beveik visais atvejais REML metodu gauti įverčiai stabilesni, kai turimas subalansuotas dizainas.
+
+\end{itemize}
+
+
+\end{document}
+
+	
+
+	
