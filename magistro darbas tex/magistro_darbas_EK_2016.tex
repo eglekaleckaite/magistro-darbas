@@ -707,148 +707,44 @@ $m$& Nesubalansuotas & \ \ \ \ \ \ \ \ \ \ 30\ \ \ \ \ \ \ \ \ \ \\
 
 
 
-\indent Šiame darbe atliekama 500 Monte Carlo simuliacijų. Kiekvienos iš jų metu sugeneruojama populiacija aukščiau aprašytu būdu, tuomet traukiama imtis pagal anksčiau aprašytą metodą. Ir vertinamas modelis (\ref{eq:simul}) visais metodais (REML, REML su saviranka, MINQUE su saviranka). Gauti parametrų įverčiai, jų standartinės paklaidos bei pasikliautiniai intervalai analizuojami toliau pateiktais būdais.
+\indent Šiame darbe atliekama 500 Monte Carlo simuliacijų kiekvienam iš 36 atvejų. Kiekvienos iš simuliacijų metu sugeneruojama populiacija aukščiau aprašytu būdu, tuomet traukiama imtis pagal anksčiau aprašytą metodą. Ir vertinamas modelis (\ref{eq:simul}) visais metodais (REML, MINQUE(0), MINQUE(1) ir MINQUE($\theta$)). Gauti parametrų įverčiai analizuojami toliau pateiktomis statistikomis. Sklaičiavimai atlikti su statistinės analizės programa Revolution $\R$ Open 3.2.2, naudotas keturių branduolių procesorius \textit{Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz}. Gauti rezultatai pateikti kitame skyrelyje.
 
-\subparagraph{Santykinis poslinkis} (\textit{angl. Relative Bias}) skaičiuojamas $\frac{\hat{\theta}_r-\theta}{\theta}$, kur $\theta$ - tikroji reikšmė, o $\hat{\theta}_r$ - $r$ - tosios simuliacijos $\theta$ įvertis. Šis indeksas dažnai žymimas \textit{RBIAS}. Jei šis indeksas yra mažesnis nei 5\%, tai sakome, jog poslinkio nėra. Jei tarp 5\% ir 20\%, tai sakome, jog turime vidutinį poslinkį. Ir jei daugiau nei 20\%, tai sakome, jog poslinkis didelis.
+\subparagraph{Vidutinis santykinis poslinkis -- MRBIAS} (\textit{angl. Mean Relative Bias}) skaičiuojamas:
+\[
+MRBIAS_{jkl}=\frac{1}{S}\sum_{s=1}^S\frac{\hat{\theta}_{sjkl}-\theta_j}{\theta_j},
+\]
+kur \\
+$\theta_j$ - tikroji $j$-tojo parametro reikšmė, \\
+$\hat{\theta}_sjkl$ - $s$ - tosios simuliacijos $j$-tojo parametro gauto pagal $k$-tąjį metodą iš $l$-tosios duomenų struktūros $\theta_j$ įvertis,\\
+$s$ - simuliacijos numeris, $s=1,\dots,S$,\\
+$j$ - parametro pažymėjimas, įgyja reikšmes - $\gamma_{pq}$, $\sigma^2$ ir $\tau_{00}$,  $\tau_{01}$,  $\tau_{11}$\\
+$k$ - metodo pažymėjimas, įgyja reikšmes - REML, MINQUE(0), MINQUE(1) ir MINQUE($\theta$),\\
+$l$ - duomenų struktūros pažymėjimas, įgyja reikšmes pagal kombinacijas iš \ref{table:struct1} lentelės.\\
+\indent Jei šis indeksas yra mažesnis nei 5\%, tai sakome, jog poslinkio nėra. Jei tarp 5\% ir 20\%, tai sakome, jog turime vidutinį poslinkį. Ir jei daugiau nei 20\%, tai sakome, jog poslinkis didelis. Taip pat skaičiuojama bendra statistika atskirai fiksuotiems ir atsitiktiniams dydžiams -- \textbf{CAMRBIAS} -- jungtinis absoliutus vidutinis santykinis poslinkis (\textit{angl. Compound Absolute Mean Relative Bias}), skaičiuojama:
+\[
+CAMRBIAS_{kl}=\frac{1}{n_{kl}}\sum_{j=1}^{n_{kl}}\left|MRBIAS_{jkl}\right|
+\]
 
-\subparagraph{Santykinė vidutinė kvadratinė paklaida} (\textit{angl. Relative Mean Squared Error}) skaičiuojama $RMSE=\frac{1}{R}\left(\sum^R_{r=1}\frac{(\hat{\theta}_r-\theta)^2}{\theta}\right)^\frac{1}{2}$, kur $R$ - Monte Carlo simuliacijų skaičius, $\hat{\theta}_r$ - $r$ - tasis simuliacijos įvertis.
 
-\subparagraph{Pasikliautinių intervalų padengiamumas} (\textit{angl. Coverage}) skaičiuojamas labai paprastai. Tiesiog imamas procentas, kiek kartų tikroji reikšmė papuolė į simuliacijų metu gautus pasikliautinuosius intervalus.\\
+\subparagraph{Vidutinė santykinė kvadratinė paklaida -- MRSE } (\textit{angl.  Mean Relative Squared Error}) skaičiuojama: 
+\[
+MRSE_{jkl}=\frac{1}{S}\sum_{s=1}^S\left(\frac{\hat{\theta}_{sjkl}-\theta_j}{\theta_j}\right)^2,
+\]
+kur \\
+$\theta_j$ - tikroji $j$-tojo parametro reikšmė, \\
+$\hat{\theta}_sjkl$ - $s$ - tosios simuliacijos $j$-tojo parametro gauto pagal $k$-tąjį metodą iš $l$-tosios duomenų struktūros $\theta_j$ įvertis,\\
+$s$ - simuliacijos numeris, $s=1,\dots,S$,\\
+$j$ - parametro pažymėjimas, įgyja reikšmes - $\gamma_{pq}$, $\sigma^2$ ir $\tau_{00}$,  $\tau_{01}$,  $\tau_{11}$\\
+$k$ - metodo pažymėjimas, įgyja reikšmes - REML, MINQUE(0), MINQUE(1) ir MINQUE($\theta$),\\
+$l$ - duomenų struktūros pažymėjimas, įgyja reikšmes pagal kombinacijas iš \ref{table:struct1} lentelės.\\
+\indent Jei statistika MRSE yra mažesnė už 0,5, tai laikysime, jog įverčiai išsibarstę nedaug. Taip pat skaičiuojama bendra statistika atskirai fiksuotiems ir atsitiktiniams parametrams -- CMRSE -- jungtinė vidutinė santykinė kvadratinė paklaida (\textit{angl. Coumpound Mean Relative Squared Absolute Bias}):
+\[
+CMRSE_{kl}=\frac{1}{n_{kl}}\sum_{j=1}^{n_{kl}}MRSE_{jkl}.
+\]
 
-\indent Saviranka reikalauja daug kompiuterio resursų, ypač esant didesniam duomenų skaičiui, todėl buvo pasirinkta $B=500$. Net turint tik 200 Monte Carlo simuliacijų ir 500 savirankos iteracijų, modelių vertinimas kiekvienai iš galimų paklaidų kombinacijų ir kiekvienam metodui užtruko apie tris savaites (naudotas keturių branduolių procesorius \textit{Intel CORE i7}). Gauti rezultatai pateikti kitame skyrelyje.
 
 \subsection{Simuliacijų rezultatai}
-\indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Žemiau esančiose lentelėse pateikti simuliacijų rezultatai. Įverčiai pateikti visiems trims metodams. REML reiškia, jog pateiktas įvertinys gautas vertinant paprastu REML metodu; bREML - REML su saviranka; bMINQUE - MINQUE su saviranka. Gauti rezultatai yra kitokie nei tikėtasi. Šios simuliacijos atveju, kitaip nei Delpish, parametų įverčiai praktiškai sutampa, kai abiejų lygių paklaidos nepriklausomai vienodai pasiskirsčiusios pagal normalųjį skirstinį (lentelė \ref{table:y1}). Tiesa, lentelėse pateikti skaičiai yra suapvalinti, o skirtumas tarp metodų yra labai mažas, todėl pateiktos reikšmės atrodo identiškai daugeliui atvejų. 
-
-\indent Lentelėje \ref{table:ci1} pateiktas pasikliautinių intervalų padengiamumas. Tai rodo, kiek kartų tikroji reikšmė pateko į gautą intervalą. Matyti, jog nėra ryškaus skirtumo tarp visų trijų metodų.
-
-\indent Įverčiai, kuomet turime skirtingai pasiskirsčiusias paklaidas per lygius, nėra pateikiami. Jų rezultatai nesiskiria nuo gautųjų su abiem $\chi^2$ skirstinio paklaidomis. Rezultatai pateikti \ref{table:y2} ir \ref{table:ci2} lentelėse. REML vertinimo metodas yra pakankamai atsparus netenkinamai normalumo prielaidai. Tačiau dispersijos komponenčių standartinės paklaidos ir, tuo pačiu, pasikliautiniai intervalai yra paslinkti. Palyginus MINQUE su saviranka ir REML su saviranka, didelio skirtumo nematyti, tad negalime teigti, jog MINQUE su saviranka yra geresnis metodas nei REML. Tai prieštarauja Delphish gautiems rezultatams. To priežastys gali būti:
-\begin{itemize}
-\item Delpish neatsižvelgė į tai, jog I-MINQUE ir REML metodai sutampa, kuomet sutampa \textit{a priori} reikšmės. Šios autorės daktaro disertacijoje netiriamas REML metodas su saviranka.
-\item Šiame magistro darbe pateikiamas išvestas MINQUE metodas HLM modeliams, kuris nebūtinai sutampa su Delpish ar Bagaka's nagrinėtu vertinimo metodu.
-\item Pasirinktas savirankos metodas nėra tinkamas nagrinėjamai simuliacijai. Viena iš priežasčių gali būti - per mažas iteracijų skaičius.
-\end{itemize}
-
-\indent Kadangi empirinių simuliacijų būdu buvo parodyta, jog REML su saviranka nėra akivaizdžiai blogesnis už MINQUE su saviranka, Lietuvos TIMSS duomenų modelis bus kuriamas REML su savirankos būdu gautais pasikliautiniais intervalais ir standartinėmis paklaidomis.
-
-\begin{small}
-\begin{table}[ht]
-\label{table:y1}
-\centering
-\begin{tabular}{r|rrrrr|rrrrr|}
-\hline
-\multicolumn{11}{c}{Fiksuoti efektai}\\
-\hline
-& \multicolumn{5}{c|}{$\gamma_{00} = 500$}&\multicolumn{5}{c|}{$\gamma_{01} = 20$}\\
-\hline
-Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
-\hline
-REML & -0.01 & 0.02 & -0.07 & 0.03 & 0.02& 0.06 & 0.88 & -1.88 & 2.57 & 0.88 \\
-bREML & -0.01 & 0.02 & -0.07 & 0.03 & 0.02& 0.06 & 0.88 & -1.88 & 2.57 & 0.88 \\
-bMINQUE & -0.01 & 0.02 & -0.06 & 0.10 & 0.03& 0.06 & 0.88 & -1.88 & 2.55 & 0.88\\
-\hline
-& \multicolumn{5}{c|}{$\gamma_{10} = 50$}&\multicolumn{5}{c|}{$\gamma_{20} = -4$}\\
-\hline
-Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
-\hline
-REML & 0.00 & 0.00 & 0.00 & 0.00 & 0.00& 0.06 & 0.77 & -2.30 & 2.17 & 0.77\\
-bREML &0.00 & 0.00 & 0.00 & 0.00 & 0.00& 0.06 & 0.77 & -2.30 & 2.17 & 0.77\\
-bMINQUE &0.00 & 0.00 & 0.00 & 0.00 & 0.00& 0.06 & 0.77 & -2.30 & 2.17 & 0.77\\
-\hline
-\multicolumn{11}{c}{Atsitiktiniai efektai}\\
-\hline
-& \multicolumn{5}{c|}{$\sigma^2=2000$}&\multicolumn{5}{c|}{$\tau_{00}=1300$}\\
-\hline
-Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
-\hline
-REML &0.01 & 0.23 & -0.60 & 0.62 & 0.23& -0.00 & 0.05 & -0.11 & 0.13 & 0.05\\
-bREML & 0.01 & 0.23 & -0.60 & 0.62 & 0.23& -0.00 & 0.05 & -0.11 & 0.13 & 0.05\\
-bMINQUE & 0.01 & 0.23 & -0.60 & 0.62 & 0.23& -0.00 & 0.05 & -0.11 & 0.13 & 0.05\\
-\hline
-\end{tabular}
-\caption{Lentelėje pateiktos santykinio poslinkio statistikos (MBias - santykinio poslinkio vidurkis, SDBias - santykinio poslinkio standartinis nuokrypis, Min ir Max- atitinkamai mažiausia ir didžiausia įgyta santykinio poslinkio reikšmė, RMSE - santykinė vidutinė kvadratinė paklaida) visiems metodams, kai abiejų lygių paklaidos normaliosios.}
-\end{table}
-\end{small}
-
-\begin{small}
-\begin{table}[H]
-\label{table:ci1}
-\centering
-\begin{tabular}{c|ccc}
-\hline
-Parametras & REML & bREML & bMINQUE\\
-\hline
-$\gamma_{00}$ &0.938&0.942&0.943\\
-$\gamma_{01}$ &0.931&0.938&0.937\\
-$\gamma_{10}$ &0.950&0.953&0.952\\
-$\gamma_{20}$ &0.932&0.941&0.941\\
-$\sigma^2$ &0.949&0.951&0.948\\
-$\tau_{00}$&0.944&0.954&0.945\\
-\hline
-\end{tabular}
-\caption{Lentelėje pateikiamas pasikliautinių intervalų padengiamumas, kai vertinami duomenys pasiskirstę pagal nomalųjį skirstinį (t.y. pirmo ir antro lygio paklaidos normaliosios.), tikroji reikšmė 0,95.}
-\end{table}
-\end{small}
-
-
-\begin{small}
-\begin{table}[H]
-\label{table:y2}
-\centering
-\begin{tabular}{r|rrrrr|rrrrr|}
-\hline
-\multicolumn{11}{c}{Fiksuoti efektai}\\
-\hline
-& \multicolumn{5}{c|}{$\gamma_{00} = 500$}&\multicolumn{5}{c|}{$\gamma_{01} = 20$}\\
-\hline
-Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
-\hline
-REML & -0.01 & 0.02 & -0.06 & 0.06 & 0.03 & 0.07 & 0.82 & -1.54 & 2.71 & 0.82 \\
-bREML& -0.01 & 0.02 & -0.06 & 0.06 & 0.03& 0.07 & 0.82 & -1.54 & 2.70 & 0.82 \\
-bMINQUE & -0.01 & 0.02 & -0.06 & 0.07 & 0.03& 0.07 & 0.82 & -1.54 & 2.72 & 0.82\\
-\hline
-& \multicolumn{5}{c|}{$\gamma_{10} = 50$}&\multicolumn{5}{c|}{$\gamma_{20} = -4$}\\
-\hline
-Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
-\hline
-REML & 0.00 & 0.00 & 0.00 & 0.01 & 0.00& -0.05 & 0.73 & -1.89 & 2.11 & 0.73\\
-bREML & 0.00 & 0.00 & 0.00 & 0.01 & 0.00& -0.05 & 0.73 & -1.88 & 2.12 & 0.73\\
-bMINQUE & 0.00 & 0.00 & 0.00 & 0.01 & 0.00& -0.05 & 0.73 & -1.89 & 2.11 & 0.73\\
-\hline
-\multicolumn{11}{c}{Atsitiktiniai efektai}\\
-\hline
-& \multicolumn{5}{c|}{$\tau_{00}=1300$}&\multicolumn{5}{c|}{$\sigma^2=2000$}\\
-\hline
-Metodas & MBias & SDBias & Min & Max & RMSE & MBias & SDBias & Min & Max & RMSE\\
-\hline
-REML &-0.04 & 0.31 & -0.63 & 0.98 & 0.31& -0.00 & 0.05 & -0.10 & 0.14 & 0.05\\
-bREML & -0.04 & 0.31 & -0.63 & 0.99 & 0.32& -0.00 & 0.05 & -0.10 & 0.14 & 0.05\\
-bMINQUE & -0.04 & 0.31 & -0.63 & 0.98 & 0.31& -0.00 & 0.05 & -0.10 & 0.14 & 0.05\\
-\hline
-\end{tabular}
-\caption{Lentelėje pateiktos santykinio poslinkio statistikos (MBias - santykinio poslinkio vidurkis, SDBias - santykinio poslinkio standartinis nuokrypis, Min ir Max- atitinkamai mažiausia ir didžiausia įgyta santykinio poslinkio reikšmė, RMSE - santykinė vidutinė kvadratinė paklaida) visiems metodams, kai abiejų lygių paklaidos pasiskirsčiusios pagal $\chi^2$ skirstinį.}
-\end{table}
-\end{small}
-
-\begin{small}
-\begin{table}[H]
-\label{table:ci2}
-\centering
-\begin{tabular}{c|ccc}
-\hline
-Parametras & REML & bREML & bMINQUE\\
-\hline
-$\gamma_{00}$ &0.928&0.943&0.942\\
-$\gamma_{01}$ &0.925&0.936&0.938\\
-$\gamma_{10}$ &0.944&0.954&0.951\\
-$\gamma_{20}$ &0.912&0.923&0.926\\
-$\sigma^2$ &0.920&0.925&0.931\\
-$\tau_{00}$&0.567&0.921&0.915\\
-\hline
-\end{tabular}
-\caption{Lentelėje pateikiamas pasikliautinių intervalų padengiamumas, kai vertinami duomenys pasiskirstę pagal $\chi^2$ skirstinį (t.y. pirmo ir antro lygio paklaidos iš $\chi^2$).}
-\end{table}
-\end{small}
+\indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Žemiau esančiose lentelėse pateikti simuliacijų rezultatai visiems metodams. 
 
 
 
@@ -907,7 +803,7 @@ $u_{1j}$ - atsitiktinis efektas.\\
 Šis modelis vertintas su \textit{HLM6} programa visoms 5 galimoms matematinio raštingumo reikšmėms ir su imties svoriais.\\
 \indent Kitas pavyzdys, modelis sudarytas Robitaille ir Beaton \cite{timssLiet} 1995 metų TIMSS duomenims. Autoriai sudarė net trijų lygių modelį su atsitiktiniais postūmiais. Kaip antro ir trečio lygio kintamieji buvo naudoti suvidurkinti (atitinkamai pagal klases ir pagal mokyklas) mokinio lygio kintamieji. Čia vietoje anksčiau minėto modelio namų mokymosi išteklių imti atskiri kategoriniai kintamieji - tėvų išsilavinimas, mokinio turimi mokymosi reikmenys ir jo užklasinė veikla. Tačiau atsitiktiniai posvyriai neįtraukti, be to, nagrinėta visa šalių grupė, o ne atskiros šalys. Modeliai vertinti taip pat su \textit{HLM6} programa visoms 5 galimoms matematinio raštingumo reikšmėms ir su imties svoriais.
 
-\indent Lietuvoje Lietuvos TIMSS duomenims sudarytų HLM modelių beveik nerasta. Galbūt dėl to, jog tokie modeliai sudaromi studijų baigiamuosiuose darbuose, kurie nėra labai viešinami. Vienintelis darbas, kuriame sudaromi HLM modeliai Lietuvos TIMSS duomenims, kurį pavyko gauti, tai Dudaitės daktaro laipsnio disertacija \cite{liet2003}. Savo darbe Dudaitė plačiai nagrinėja 1995, 1999 ir 2003 metų TIMSS tyrimo duomenis įvairiais aspektais, tačiau pagrindinis tikslas - nustatyti matematinio raštingumo kaitą, keičiantis Lietuvos mokymo aplinkai. HLM modeliai sudaryti 2003 metų duomenims ir tik su labai mažu kintamųjų kiekiu. Galima sakyti, jog beveik kiekvienam aiškinančiajam kintamajam sudarytas atskiras modelis. Modelio pavyzdys:
+\indent Lietuvoje Lietuvos TIMSS duomenims sudarytų HLM modelių beveik nerasta. Galbūt dėl to, jog tokie modeliai sudaromi studijų baigiamuosiuose darbuose, kurie nėra viešinami. Vienintelis darbas, kuriame sudaromi HLM modeliai Lietuvos TIMSS duomenims, kurį pavyko gauti, tai Dudaitės daktaro laipsnio disertacija \cite{liet2003}. Savo darbe Dudaitė plačiai nagrinėja 1995, 1999 ir 2003 metų TIMSS tyrimo duomenis įvairiais aspektais, tačiau pagrindinis tikslas - nustatyti matematinio raštingumo kaitą, keičiantis Lietuvos mokymo aplinkai. HLM modeliai sudaryti 2003 metų duomenims ir tik su mažu kintamųjų kiekiu. Galima sakyti, jog beveik kiekvienam aiškinančiajam kintamajam sudarytas atskiras modelis. Modelio pavyzdys:
 \begin{small}
 \[
 \left\{
@@ -989,7 +885,8 @@ MKITKALB.1& mokykloje. & 2 - 10\% - 50\%; & \\
 
 \indent Šiame skyrelyje pateikiama detalesnė turimų ir nagrinėjamų TIMSS duomenų analizė, sudaromas nulinis modelis bei pateikiamas galutinis modelis ir jo statistikos. Nulinio ir galutinio modelio įverčiai pateikiami įvertinti visais nagrinėjamais metodais. Galiausiai aptariami rezultatai ir padaromos išvados.
 
-\indent Pirmiausia, domina aiškinamasis kintamasis - matematinio raštingumo testo rezultatai. Kaip jau buvo minėta, TIMSS pateikia 5 galimas testo atlikimo reikšmes, tačiau šiame darbe naudojama tik viena - pirmoji. Taip daroma, dėl skaičiavimų sudėtingumo (tai nėra implementuota R statistinės analizės pakete) ir dėl to, jog vėliau rezultatus galima pritaikyti ir likusioms galimoms testo atlikimo reikšmėms. Lieka klausimas, ar galime laikyti aiškinamąjį kintamąjį pasiskirsčiusiu pagal normalųjį skirstinį. Paveikslėlyje \ref{fig:y} pateiktas pirmosios galimos matematinio raštingumo testo atlikimo reikšmės teorinių kvantilių grafikas. Jame galime įžvelgti, jog turime sunkias uodegas. Aiškinančiajam kintamajam buvo atliktas Shapiro-Wilk normalumo testas. gauta testo statistika $W = 0.9977$ ir $\text{p-value}<0,01$. Todėl hipotezė apie aiškinamojo kintamojo pasiskirstymą pagal normalųjį skirstinį atmetama.
+\indent Pirmiausia, domina aiškinamasis kintamasis - matematinio raštingumo testo rezultatai. Kaip jau buvo minėta, TIMSS pateikia 5 galimas testo atlikimo reikšmes, tačiau šiame darbe naudojama tik viena - pirmoji. ???Taip daroma, dėl skaičiavimų sudėtingumo (tai nėra implementuota R statistinės analizės pakete) ir dėl to, jog vėliau rezultatus galima pritaikyti ir likusioms galimoms testo atlikimo reikšmėms. 
+???Lieka klausimas, ar galime laikyti aiškinamąjį kintamąjį pasiskirsčiusiu pagal normalųjį skirstinį. Paveikslėlyje \ref{fig:y} pateiktas pirmosios galimos matematinio raštingumo testo atlikimo reikšmės teorinių kvantilių grafikas. Jame galime įžvelgti, jog turime sunkias uodegas. Aiškinančiajam kintamajam buvo atliktas Shapiro-Wilk normalumo testas. Gauta testo statistika $W = 0.9977$ ir $\text{p-value}<0,01$. Todėl hipotezė apie aiškinamojo kintamojo pasiskirstymą pagal normalųjį skirstinį atmetama.
 
 \begin{figure}[H]
 \centering
@@ -1000,9 +897,9 @@ MKITKALB.1& mokykloje. & 2 - 10\% - 50\%; & \\
 
 \indent Aiškinantieji kintamieji šiame darbe negali būti laikomi pasiskirstę pagal normalųjį skirstinį, tačiau kategoriniai kintamieji nėra modeliuojami. Dudaitė savo daktaro disertacijoje \cite{liet2003} ne tik sudarinėjo labai menkus modelius, bet ir naudojo kategorinius kintamuosius (kurie įgyja iki 5 reikšmių) kaip regresorius. Šiame darbe kategoriniai kintamieji išskaidyti į fiktyvius kintamuosius. Tokių yra du mokinio lygyje ir keturi mokyklos lygyje. Pačiuose pateiktuose TIMSS duomenyse kategoriniai kintamieji suvesti į indeksus, kurie įgyja daugiau nei 5 reikšmes. Nors jie ir negali būti laikomi pasiskirstę pagal normalųjį dėsnį, modeliuojant nėra stipriai nusižengiama. Šeši indeksai yra imami kaip mokinio lygio aiškinantieji kintamieji ir 3 mokyklos lygio kintamieji. Detalesni kintamųjų aprašymai pateikti \ref{table:duom} lentelėje \ref{subsec:duom} skyrelyje. Modeliuoti ir suvidurkinti mokytojo bei klasės kintamieji, tačiau jie nepasirodė statistiškai reikšmingi, todėl apie šiuos kintamuosius šiame darbe nepasakojama.
 
-\indent HLM modelio sudarymas yra sudėtingas procesas. Kad modeliai būtų palyginami, jie turi būti sudaryti tiems patiems duomenims. Čia susiduriama su problema, jog TIMSS duomenys turi daug neatsakytų reikšmių, t.y. trūkstamų duomenų. Modeliuojant atsižvelgiama ne tik į tai, kiek kintamasis paaiškina dispersijos, bet ir į tai, ar jis neturi daug praleistų reikšmių. Šiame darbe modeliai sudaryti įtraukiant po vieną pirmo po to antro lygio kintamąjį ir lyginant su nuliniu ir prieš tai gautu modeliais, kiekvieną kartą perskaičiuojant pašalinus mokinį ar mokyklą su trūkstamais duomenimis. Gavus galutinį modelį, visi modelių įverčiai buvo pervertinti jau galutiniam duomenų kiekiui. Taip išvengiama per didelio duomenų pašalinimo pirmame etape. Modeliai parinkti vadovaujantis logika ir \ref{subsec:parink} skyrelyje pateiktais kriterijais. Toliau bus pateikti tik nulinis ir galutinis modeliai, o tarpiniai modeliai praleisti.
+\indent ??? HLM modelio sudarymas yra sudėtingas procesas. Kad modeliai būtų palyginami, jie turi būti sudaryti tiems patiems duomenims. Čia susiduriama su problema, jog TIMSS duomenys turi daug neatsakytų reikšmių, t.y. trūkstamų duomenų. Modeliuojant atsižvelgiama ne tik į tai, kiek kintamasis paaiškina dispersijos, bet ir į tai, ar jis neturi daug praleistų reikšmių. Šiame darbe modeliai sudaryti įtraukiant po vieną pirmo po to antro lygio kintamąjį ir lyginant su nuliniu ir prieš tai gautu modeliais, kiekvieną kartą perskaičiuojant pašalinus mokinį ar mokyklą su trūkstamais duomenimis. Gavus galutinį modelį, visi modelių įverčiai buvo pervertinti jau galutiniam duomenų kiekiui. Taip išvengiama per didelio duomenų pašalinimo pirmame etape. Modeliai parinkti vadovaujantis logika ir \ref{subsec:parink} skyrelyje pateiktais kriterijais. Toliau bus pateikti tik nulinis ir galutinis modeliai, o tarpiniai modeliai praleisti.
 
-\indent Pagrindines 2011 metų TIMSS tyrimo suvestines galima rasti jau minėtoje Nacionalinio egzaminų cento ataskaitoje \cite{timss2011lt}. Todėl šiame darbe bus pateikti trumpi rezultatai po duomenų pašalinimo. Pašalinus mokyklas ir mokinius su trūkstamais duomenimis iš 141 tyrime dalyvavusios mokyklos liko 128 mokyklos, o iš 4747 mokinių liko 4167 mokiniai. Tai optimalus skaičius siekiant paaiškinti kuo daugiau kaitos su kuo mažesniu mokinių praradimu. Svertinis pirmos galimos matematinio raštingumo reikšmės vidurkis likusiems duomenims yra 504,57. Toliau pateikiama nulinio modelio išraiška ir REML su saviranka metodu gauti įverčiai.
+\indent Pagrindines 2011 metų TIMSS tyrimo suvestines galima rasti jau minėtoje Nacionalinio egzaminų cento ataskaitoje \cite{timss2011lt}. Todėl šiame darbe bus pateikti trumpi rezultatai po duomenų pašalinimo. Pašalinus mokyklas ir mokinius su trūkstamais duomenimis iš 141 tyrime dalyvavusios mokyklos liko 128 mokyklos, o iš 4747 mokinių liko 4167 mokiniai. Tai optimalus skaičius siekiant paaiškinti kuo daugiau kaitos su kuo mažesniu mokinių praradimu. Svertinis pirmos galimos matematinio raštingumo reikšmės vidurkis likusiems duomenims yra 504,57. Toliau pateikiama nulinio modelio išraiška ir gauti įverčiai.
 
 \subparagraph{Nulinis modelis} aprašytas \ref{subsec:parink} skyrelyje sudarytas jau mažesnės apimties duomenims. Pakartota (\ref{eq:null}) modelio išraiška:
 \begin{equation}
@@ -1016,7 +913,8 @@ Tegul $Y_{ij}$ žymi $i$ - tojo mokinio iš $j$ - tosios mokyklos matematinio ra
 \[
 MatRes_{ij}=\gamma_{00}+u_{0j}+\varepsilon_{ij}.
 \]
-Šis modelis įvertintas REML su saviranka metdu. Rezutatai pateikti lentelėje \ref{table:null}. Šio modelio $ICC \approx 0,2$. Tai rodo, jog apie 20\% mokinių rezutatų skirtumų lemia mokyklos. Skyrelyje \ref{subsec:parink} minėta $R^2_1$ statistika yra apie 0,22.
+Šis modelis įvertintas REML, MINQUE(1), WMINQUE(1), MINQUE($\theta$) ir WMINQUE($\theta$) metodais. Rezutatai pateikti lentelėje \ref{table:null}. 
+%Šio modelio $ICC \approx 0,2$. Tai rodo, jog apie 20\% mokinių rezutatų skirtumų lemia mokyklos. Skyrelyje \ref{subsec:parink} minėta $R^2_1$ statistika yra apie 0,22.
 
 \begin{small}
 \begin{table}[H]
@@ -1035,7 +933,7 @@ $\tau_{00}$&1165.54&141.75&878.04&1540.50&662.46\\
 \end{table}
 \end{small}
 
-\subparagraph{Galutinis modelis} sudarytas atsižvelgiant į kintamųjų multikoliniarumą, pasitelkiant logiką bei skyrelyje \ref{subsec:parink} pateiktais indeksus ir statistikas. Mokinio lygio kintamieji - indeksai SMCONF, SMLIKE, SMVALUE ir SMENG - sudaryti iš skirtingų mokinio klausimyno klausimų, tačiau tarpusavyje labai susiję. Į modelį įtraukus visus kintamuosius, koeficientų įverčiai prie šių kintamųjų tampa nebe paaiškinami. Atsižvelgiant į tai jog SMCONF paaiškino labai daug (apie 1000) pirmo lygio dispersijos, tik šis kintamasis buvo įtrauktas į galutinį modelį.
+\subparagraph{Galutinis modelis} sudarytas atsižvelgiant į kintamųjų multikoliniarumą, pasitelkiant logiką bei skyrelyje \ref{subsec:parink} pateiktus indeksus ir statistikas. Mokinio lygio kintamieji - indeksai SMCONF, SMLIKE, SMVALUE ir SMENG - sudaryti iš skirtingų mokinio klausimyno klausimų, tačiau tarpusavyje labai susiję. Į modelį įtraukus visus kintamuosius, koeficientų įverčiai prie šių kintamųjų tampa nebe paaiškinami. Atsižvelgiant į tai jog SMCONF paaiškino labai daug (apie 1000) pirmo lygio dispersijos, tik šis kintamasis buvo įtrauktas į galutinį modelį.
 
 \indent Panaši situacija ir su mokyklos lygio fiktyviais kintamaisiais. Tad į galutinį modelį įtraukti tik keli iš jų. Galutinio modelio išraiška pateikta toliau:
 \begin{small}
@@ -1104,7 +1002,7 @@ $\tau_{22}$&&&&&\\
 \end{table}
 \end{small}
 
-\section{IŠVADOS}
+\section{???IŠVADOS}
 \indent Pagrindiniai šio magistro darbo rezultatai:
 \begin{itemize}
 \item Parašytos $\R$ funkcijos MINQUE su saviranka metodui, kuris skirtas HLM modelių parametrų bei jų pasikliautinių intervalų vertinimui.
