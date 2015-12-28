@@ -44,7 +44,7 @@
 \contentsline {subsection}{\numberline {5.4}HLM modelis 2011 met\IeC {\k u} TIMSS duomenims}{33}{subsection.5.4}
 \contentsline {subparagraph}{Nulinis modelis}{35}{section*.17}
 \contentsline {subparagraph}{Galutinis modelis}{35}{section*.18}
-\contentsline {section}{\numberline {6}???I\IeC {\v S}VADOS}{36}{section.6}
+\contentsline {section}{\numberline {6}???I\IeC {\v S}VADOS}{35}{section.6}
 \contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{37}{section.6}
 \contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{37}{section*.19}
 \contentsline {section}{Priedas}{41}{section*.20}

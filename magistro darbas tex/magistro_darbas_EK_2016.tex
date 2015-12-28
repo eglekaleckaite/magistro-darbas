@@ -1147,22 +1147,23 @@ MatRes_{ij}=\gamma_{00}+u_{0j}+\varepsilon_{ij}.
 Šis modelis įvertintas REML, MINQUE(1), WMINQUE(1), MINQUE($\theta$) ir WMINQUE($\theta$) metodais. Rezutatai pateikti lentelėje \ref{table:null}. 
 %Šio modelio $ICC \approx 0,2$. Tai rodo, jog apie 20\% mokinių rezutatų skirtumų lemia mokyklos. Skyrelyje \ref{subsec:parink} minėta $R^2_1$ statistika yra apie 0,22.
 
-\begin{small}
-\begin{table}[H]
-\label{table:null}
-\centering
-\begin{tabular}{c|cc|cc|c}
-\hline
-Parametras & Įvertis & St. paklaida & \multicolumn{2}{c|}{Pasikliautinis intervalas}&Ilgis\\
-\hline
-$\gamma_{00}$ &504.7&3.15&498.32&511.07&12.75\\
-$\sigma^2$ &4531.98&102.682&4339.86&4735.34&395.48\\
-$\tau_{00}$&1165.54&141.75&878.04&1540.50&662.46\\
-\hline
-\end{tabular}
-\caption{Nulinio modelio parametų įverčiai; REML su saviranka metodas.}
-\end{table}
-\end{small}
+%\begin{small}
+%\begin{table}[H]
+%
+%\centering
+%\begin{tabular}{c|cc|cc|c}
+%\hline
+%Parametras & Įvertis & St. paklaida & \multicolumn{2}{c|}{Pasikliautinis intervalas}&Ilgis\\
+%\hline
+%$\gamma_{00}$ &504.7&3.15&498.32&511.07&12.75\\
+%$\sigma^2$ &4531.98&102.682&4339.86&4735.34&395.48\\
+%$\tau_{00}$&1165.54&141.75&878.04&1540.50&662.46\\
+%\hline
+%\end{tabular}
+%\caption{Nulinio modelio parametų įverčiai; REML su saviranka metodas.}
+%\label{table:null}
+%\end{table}
+%\end{small}
 
 \subparagraph{Galutinis modelis} sudarytas atsižvelgiant į kintamųjų multikoliniarumą, pasitelkiant logiką bei skyrelyje \ref{subsec:parink} pateiktus indeksus ir statistikas. Mokinio lygio kintamieji - indeksai SMCONF, SMLIKE, SMVALUE ir SMENG - sudaryti iš skirtingų mokinio klausimyno klausimų, tačiau tarpusavyje labai susiję. Į modelį įtraukus visus kintamuosius, koeficientų įverčiai prie šių kintamųjų tampa nebe paaiškinami. Atsižvelgiant į tai jog SMCONF paaiškino labai daug (apie 1000) pirmo lygio dispersijos, tik šis kintamasis buvo įtrauktas į galutinį modelį.
 
@@ -1199,39 +1200,7 @@ MatRes_{ij}=\gamma_{00}+\gamma_{01}\times MDYDIS_j+\gamma_{02}\times MSUCCESS_j\
 \end{equation}
 \end{small}
 
-\begin{small}
-\begin{table}[H]
-\label{table:final}
-\centering
-\begin{tabular}{c|cc|cc|c}
-\hline
-Parametras & Įvertis & St. paklaida & \multicolumn{2}{c|}{Pasikliautinis intervalas}&Ilgis\\
-\hline
-$\gamma_{00}$ &146.31&33.7&89.19 &219.72&130.53\\
-$\gamma_{01}$ &0.01&0.007&-0.01 &   0.02&0.03\\
-$\gamma_{02}$ &12.75&4.87&3.47   &23.55&20.08\\
-$\gamma_{03}$ &26.69&8.52&9.31   &43.00&33.69\\
-$\gamma_{05}$ &32.97&3.16&25.45&   38.65&13.20\\
-$\gamma_{06}$ &62.26&21.60&17.04  &110.18&93.14\\
-$\gamma_{07}$ &-367.12 &91.20&-555.59 &-186.85&368.74\\
-$\gamma_{10}$ &10.93&1.86&7.41& 14.32&6.91\\
-$\gamma_{21}$ &12.40&2.86&6.37  & 18.19&11.82\\
-$\gamma_{30}$ &18.73&0.48&17.82&   19.71&1.89\\
-$\gamma_{40}$ &15.34&1.81&12.08 &  18.57&6.49\\
-$\gamma_{42}$ &-3.65&&&&\\
-$\gamma_{51}$ &-1.74&&&&\\
-$\sigma^2$ &&&&&\\
-$\tau_{00}$&&&&&\\
-$\tau_{01}$&&&&&\\
-$\tau_{02}$&&&&&\\
-$\tau_{11}$&&&&&\\
-$\tau_{12}$&&&&&\\
-$\tau_{22}$&&&&&\\
-\hline
-\end{tabular}
-\caption{Nulinio modelio parametų įverčiai; REML su saviranka metodas.}
-\end{table}
-\end{small}
+
 
 \section{???IŠVADOS}
 \indent Pagrindiniai šio magistro darbo rezultatai:

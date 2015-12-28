@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  28 DEC 2015 22:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  29 DEC 2015 00:24
 entering extended mode
-**D:/minque/Magistro*darbas/magistro*darbas*tex/magistro_darbas_EK_2016.tex
-("D:/minque/Magistro darbas/magistro darbas tex/magistro_darbas_EK_2016.tex"
+**magistro_darbas_EK_2016.tex
+("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -1194,31 +1194,19 @@ re.1}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.1142 \end{equation}
                       <D:/minque/Magistro darbas/magistro darbas tex/teorkv.pdf
->] [35pdfTeX warning (ext4): destination with the same identifier (name{table.8
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1235 
-       ] [36pdfTeX warning (ext4): destination with the same identifier (name{t
-able.9}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1248 \newpage
-               ]
+>] [35] [36]
 
 Package hyperref Warning: Composite letter `\textasciimacron+U'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciimacron' on input line 1251.
+(hyperref)                removing `\textasciimacron' on input line 1220.
 
 
 Package hyperref Warning: Composite letter `\textasciimacron+U'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciimacron' on input line 1252.
+(hyperref)                removing `\textasciimacron' on input line 1221.
 
 [37] [38]
-Underfull \hbox (badness 5607) in paragraph at lines 1309--1310
+Underfull \hbox (badness 5607) in paragraph at lines 1278--1279
 []\L7x/lmr/m/it/10.95 Sample De-sign and Imp-le-men-ta-tion\L7x/lmr/m/n/10.95 ,
  [þiû-rë-ta 2015-11-23], pri-ei-ga per in-ter-ne-tà :
  []
@@ -1227,7 +1215,7 @@ Underfull \hbox (badness 5607) in paragraph at lines 1309--1310
 n}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1315 \bibitem{mlwin}
+l.1284 \bibitem{mlwin}
                        Steele, F., Clarke, P., Goldstein, H., \textit{Weight...
 [40] [41] [42] [43] [44] [45] [46]
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.lot"
@@ -1241,150 +1229,150 @@ l.1315 \bibitem{mlwin}
 Overfull \vbox (37.20335pt too high) has occurred while \output is active []
 
 
-[50pdfTeX warning (ext4): destination with the same identifier (name{table.10})
- has been already used, duplicate ignored
+[50pdfTeX warning (ext4): destination with the same identifier (name{table.8}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1704 
+l.1673 
        ] [51pdfTeX warning (ext4): destination with the same identifier (name{t
-able.11}) has been already used, duplicate ignored
+able.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1806 
+l.1775 
        ] [52pdfTeX warning (ext4): destination with the same identifier (name{t
-able.12}) has been already used, duplicate ignored
+able.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1857 
+l.1826 
        ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1863--1906
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1832--1875
  [][] 
  []
 
-[53pdfTeX warning (ext4): destination with the same identifier (name{table.13})
+[53pdfTeX warning (ext4): destination with the same identifier (name{table.11})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1908 
+l.1877 
        ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1914--1957
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1883--1926
  [][] 
  []
 
-[54pdfTeX warning (ext4): destination with the same identifier (name{table.14})
+[54pdfTeX warning (ext4): destination with the same identifier (name{table.12})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1959 
+l.1928 
        ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1965--2008
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1934--1977
  [][] 
  []
 
-[55pdfTeX warning (ext4): destination with the same identifier (name{table.15})
+[55pdfTeX warning (ext4): destination with the same identifier (name{table.13})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2010 
+l.1979 
        ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 2016--2059
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1985--2028
  [][] 
  []
 
-[56pdfTeX warning (ext4): destination with the same identifier (name{table.16})
+[56pdfTeX warning (ext4): destination with the same identifier (name{table.14})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2061 
-       ] <Ngammaseqdg.pdf, id=887, 1156.32pt x 820.06375pt>
+l.2030 
+       ] <Ngammaseqdg.pdf, id=885, 1156.32pt x 820.06375pt>
 File: Ngammaseqdg.pdf Graphic file (type pdf)
 
 <use Ngammaseqdg.pdf>
-Package pdftex.def Info: Ngammaseqdg.pdf used on input line 2064.
+Package pdftex.def Info: Ngammaseqdg.pdf used on input line 2033.
 (pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
 
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2064--2065
+Overfull \hbox (71.75656pt too wide) in paragraph at lines 2033--2034
  [][] 
  []
 
-[57pdfTeX warning (ext4): destination with the same identifier (name{table.17})
+[57pdfTeX warning (ext4): destination with the same identifier (name{table.15})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2067 \end{sidewaysfigure}
-                           ] <Nraneqdg.pdf, id=893, 1156.32pt x 820.06375pt>
+l.2036 \end{sidewaysfigure}
+                           ] <Nraneqdg.pdf, id=891, 1156.32pt x 820.06375pt>
 File: Nraneqdg.pdf Graphic file (type pdf)
 
 <use Nraneqdg.pdf>
-Package pdftex.def Info: Nraneqdg.pdf used on input line 2071.
+Package pdftex.def Info: Nraneqdg.pdf used on input line 2040.
 (pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
 
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2071--2072
+Overfull \hbox (71.75656pt too wide) in paragraph at lines 2040--2041
  [][] 
  []
 
-<Xfixeqdg.pdf, id=895, 1156.32pt x 820.06375pt>
+<Xfixeqdg.pdf, id=893, 1156.32pt x 820.06375pt>
 File: Xfixeqdg.pdf Graphic file (type pdf)
  <use Xfixeqdg.pdf>
-Package pdftex.def Info: Xfixeqdg.pdf used on input line 2078.
+Package pdftex.def Info: Xfixeqdg.pdf used on input line 2047.
 (pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
 
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2078--2079
+Overfull \hbox (71.75656pt too wide) in paragraph at lines 2047--2048
  [][] 
  []
 
-<Xraneqdg.pdf, id=897, 1156.32pt x 820.06375pt>
+<Xraneqdg.pdf, id=895, 1156.32pt x 820.06375pt>
 File: Xraneqdg.pdf Graphic file (type pdf)
  <use Xraneqdg.pdf>
-Package pdftex.def Info: Xraneqdg.pdf used on input line 2085.
+Package pdftex.def Info: Xraneqdg.pdf used on input line 2054.
 (pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
 
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2085--2086
+Overfull \hbox (71.75656pt too wide) in paragraph at lines 2054--2055
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2090.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2059.
 [58pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2090 \end{document}
+l.2059 \end{document}
                       <D:/minque/Magistro darbas/magistro darbas tex/Ngammaseqd
 g.pdf>] [59pdfTeX warning (ext4): destination with the same identifier (name{fi
 gure.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2090 \end{document}
+l.2059 \end{document}
                       <D:/minque/Magistro darbas/magistro darbas tex/Nraneqdg.p
 df>] [60pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2090 \end{document}
+l.2059 \end{document}
                       <D:/minque/Magistro darbas/magistro darbas tex/Xfixeqdg.p
 df>] [61pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2090 \end{document}
+l.2059 \end{document}
                       <D:/minque/Magistro darbas/magistro darbas tex/Xraneqdg.p
 df>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2090.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2059.
  ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2090.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2090.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2059.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2059.
 
 Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 .
@@ -1393,45 +1381,48 @@ Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2090.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2059.
  ) 
 Here is how much of TeX's memory you used:
- 10453 strings out of 493921
- 146372 string characters out of 3144879
- 411066 words of memory out of 3000000
- 13224 multiletter control sequences out of 15000+200000
+ 10451 strings out of 493921
+ 146351 string characters out of 3144879
+ 410059 words of memory out of 3000000
+ 13223 multiletter control sequences out of 15000+200000
  93737 words of font info for 106 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,15n,32p,1774b,549s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-l7x.enc}{C:/Program Files (x86)/MiK
-TeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/MiKTeX 2.9/fon
-ts/enc/dvips/lm/lm-mathit.enc} <C:\Users\Egle\AppData\Local\MiKTeX\2.9\fonts\pk
-\ljfour\public\bbm\dpi600\bbm12.pk>{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc
-/dvips/lm/lm-mathex.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/l
-m/lmbsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.p
-fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/lm/lmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
-/lm/lmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi8.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmib10.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
-e1/public/lm/lmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
-lmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/lm/lmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt
-10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on magistro_darbas_EK_2016.pdf (63 pages, 830293 bytes).
+ 29i,15n,32p,1728b,549s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{table.16} has been referenced but does not exist,
+ replaced by a fixed one
+
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-l7x.enc}{C:/Program Files (x86)/MiKTe
+X 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts
+/enc/dvips/lm/lm-mathit.enc} <C:\Users\Egle\AppData\Local\MiKTeX\2.9\fonts\pk\l
+jfour\public\bbm\dpi600\bbm12.pk>{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/d
+vips/lm/lm-mathex.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
+lmbsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb
+><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/public/lm/lmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/l
+m/lmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi8.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmib10.pfb><C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/lm/lmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
+/public/lm/lmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
+r7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/lm/lmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on magistro_darbas_EK_2016.pdf (63 pages, 827990 bytes).
 PDF statistics:
- 1091 PDF objects out of 1200 (max. 8388607)
- 268 named destinations out of 1000 (max. 500000)
+ 1089 PDF objects out of 1200 (max. 8388607)
+ 267 named destinations out of 1000 (max. 500000)
  322 words of extra memory for PDF output out of 10000 (max. 10000000)
 
