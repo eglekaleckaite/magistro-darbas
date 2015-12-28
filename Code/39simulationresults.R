@@ -56,7 +56,7 @@ addtorow$pos <- list(-1, 6, 12, 18, 24, 30)
 addtorow$command <- c(" & & \\multicolumn{3}{c|}{REML}&\\multicolumn{3}{c|}{MINQUE(0)}&\\multicolumn{3}{c|}{MINQUE(1)}&\\multicolumn{3}{c|}{MINQUE($\\theta$)}\\\\",
                       "\\hline \\hline", "\\hline \\hline", "\\hline \\hline", "\\hline \\hline", "\\hline \\hline")
 
-print( xtable(pres[["tau01"]], digits=3, 
+print( xtable(pres[["tau11"]], digits=3, 
               align = c("c","c","c|","c","c","c|","c","c","c|","c","c","c|","c","c","c|")),
               include.rownames = FALSE, 
        add.to.row = addtorow, sanitize.colnames.function = identity, 
