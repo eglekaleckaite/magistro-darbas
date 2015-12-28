@@ -24,40 +24,42 @@
 \contentsline {subparagraph}{Dvimatis $\chi ^2$ skirstinys}{17}{section*.10}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{17}{section*.11}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{17}{section*.12}
-\contentsline {subparagraph}{Mano MINQUE}{18}{section*.13}
-\contentsline {subsubsection}{\numberline {3.4.5}A priori}{18}{subsubsection.3.4.5}
-\contentsline {subsection}{\numberline {3.5}Saviranka}{19}{subsection.3.5}
-\contentsline {subparagraph}{Neparametrin\IeC {\.e} atvej\IeC {\k u} saviranka.}{19}{section*.14}
-\contentsline {subparagraph}{Savirankos metodas.}{20}{section*.15}
-\contentsline {section}{\numberline {4}EMPIRIN\IeC {\.E}S SIMULIACIJOS}{21}{section.4}
-\contentsline {subsection}{\numberline {4.1}Monte Carlo simuliacijos}{21}{subsection.4.1}
-\contentsline {subparagraph}{Vidutinis santykinis poslinkis -- MRBIAS}{23}{section*.16}
-\contentsline {subparagraph}{Vidutin\IeC {\.e} santykin\IeC {\.e} kvadratin\IeC {\.e} paklaida -- MRSE }{23}{section*.17}
-\contentsline {subsection}{\numberline {4.2}Simuliacij\IeC {\k u} rezultatai}{23}{subsection.4.2}
-\contentsline {section}{\numberline {5}HLM MODELIS TIMSS DUOMENIMS}{24}{section.5}
-\contentsline {subsection}{\numberline {5.1}TIMSS tyrimo apra\IeC {\v s}ymas}{24}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}TIMSS tyrim\IeC {\k u} ap\IeC {\v z}valga}{25}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}TIMSS duomenys}{26}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}HLM modelis 2011 met\IeC {\k u} TIMSS duomenims}{28}{subsection.5.4}
-\contentsline {subparagraph}{Nulinis modelis}{30}{section*.18}
-\contentsline {subparagraph}{Galutinis modelis}{30}{section*.19}
-\contentsline {section}{\numberline {6}???I\IeC {\v S}VADOS}{31}{section.6}
-\contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{32}{section.6}
-\contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{32}{section*.20}
-\contentsline {section}{Priedas}{36}{section*.21}
-\contentsline {section}{Lenteli\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{42}{section*.21}
-\contentsline {section}{Lenteli\k {u} s\k {a}ra\v {s}as}{42}{section*.22}
-\contentsline {section}{Iliustracij\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{42}{section*.22}
-\contentsline {section}{Iliustracij\k {u} s\k {a}ra\v {s}as}{42}{section*.23}
-\contentsline {section}{\numberline {A}MINQUE}{43}{appendix.A}
-\contentsline {section}{\numberline {B}Bagaka's MINQUE}{43}{appendix.B}
-\contentsline {subparagraph}{Dvigubas eksponentinis skirstinys}{44}{section*.24}
-\contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{44}{section*.25}
-\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{45}{section*.26}
-\contentsline {section}{\numberline {C}Delpish MINQUE}{45}{appendix.C}
-\contentsline {subparagraph}{Dvimatis $\chi ^2$ skirstinys}{46}{section*.27}
-\contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{46}{section*.28}
-\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{46}{section*.29}
-\contentsline {section}{\numberline {D}A priori}{47}{appendix.D}
-\contentsline {section}{\numberline {E}Simuliacij\IeC {\k u} rezultatai}{48}{appendix.E}
-\contentsline {section}{\numberline {F}Fixed tables}{49}{appendix.F}
+\contentsline {subsubsection}{\numberline {3.4.5}Mano MINQUE???}{18}{subsubsection.3.4.5}
+\contentsline {subsubsection}{\numberline {3.4.6}A priori}{18}{subsubsection.3.4.6}
+\contentsline {subsubsection}{\numberline {3.4.7}PWMINQUE}{19}{subsubsection.3.4.7}
+\contentsline {subsection}{\numberline {3.5}Saviranka}{20}{subsection.3.5}
+\contentsline {subparagraph}{Neparametrin\IeC {\.e} atvej\IeC {\k u} saviranka.}{21}{section*.13}
+\contentsline {subparagraph}{Savirankos metodas.}{21}{section*.14}
+\contentsline {section}{\numberline {4}EMPIRIN\IeC {\.E}S SIMULIACIJOS}{22}{section.4}
+\contentsline {subsection}{\numberline {4.1}Monte Carlo simuliacijos}{22}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Be imties svori\IeC {\k u}}{22}{subsubsection.4.1.1}
+\contentsline {subparagraph}{Vidutinis santykinis poslinkis -- MRBIAS}{24}{section*.15}
+\contentsline {subparagraph}{Vidutin\IeC {\.e} santykin\IeC {\.e} kvadratin\IeC {\.e} paklaida -- MRSE }{24}{section*.16}
+\contentsline {subsubsection}{\numberline {4.1.2}Su imties svoriais}{25}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Simuliacij\IeC {\k u} rezultatai}{25}{subsection.4.2}
+\contentsline {section}{\numberline {5}HLM MODELIS TIMSS DUOMENIMS}{29}{section.5}
+\contentsline {subsection}{\numberline {5.1}TIMSS tyrimo apra\IeC {\v s}ymas}{29}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}TIMSS tyrim\IeC {\k u} ap\IeC {\v z}valga}{30}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}TIMSS duomenys}{31}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}HLM modelis 2011 met\IeC {\k u} TIMSS duomenims}{33}{subsection.5.4}
+\contentsline {subparagraph}{Nulinis modelis}{35}{section*.17}
+\contentsline {subparagraph}{Galutinis modelis}{35}{section*.18}
+\contentsline {section}{\numberline {6}???I\IeC {\v S}VADOS}{36}{section.6}
+\contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{37}{section.6}
+\contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{37}{section*.19}
+\contentsline {section}{Priedas}{41}{section*.20}
+\contentsline {section}{Lenteli\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{47}{section*.20}
+\contentsline {section}{Lenteli\k {u} s\k {a}ra\v {s}as}{47}{section*.21}
+\contentsline {section}{Iliustracij\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{48}{section*.21}
+\contentsline {section}{Iliustracij\k {u} s\k {a}ra\v {s}as}{48}{section*.22}
+\contentsline {section}{\numberline {A}MINQUE}{49}{appendix.A}
+\contentsline {section}{\numberline {B}Bagaka's MINQUE}{49}{appendix.B}
+\contentsline {subparagraph}{Dvigubas eksponentinis skirstinys}{50}{section*.23}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{50}{section*.24}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{51}{section*.25}
+\contentsline {section}{\numberline {C}Delpish MINQUE}{51}{appendix.C}
+\contentsline {subparagraph}{Dvimatis $\chi ^2$ skirstinys}{52}{section*.26}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{52}{section*.27}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{52}{section*.28}
+\contentsline {section}{\numberline {D}A priori}{53}{appendix.D}
+\contentsline {section}{\numberline {E}Simuliacij\IeC {\k u} rezultatai}{54}{appendix.E}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  26 DEC 2015 22:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  28 DEC 2015 21:50
 entering extended mode
 **D:/minque/Magistro*darbas/magistro*darbas*tex/magistro_darbas_EK_2016.tex
 ("D:/minque/Magistro darbas/magistro darbas tex/magistro_darbas_EK_2016.tex"
@@ -899,9 +899,19 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 \rot@float@box=\box62
 \rot@mess@toks=\toks39
 )
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\rotfloat\rotfloat.sty"
+Package: rotfloat 2004/01/04 v1.2 Combining float+rotating package (AS)
+Package rotfloat Info: float package v1.3 detected on input line 74.
+)
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux"
 
 LaTeX Warning: Label `eq:deq' multiply defined.
+
+
+LaTeX Warning: Label `eq:deq' multiply defined.
+
+
+LaTeX Warning: Label `mlwin' multiply defined.
 
 
 LaTeX Warning: Label `eq:beqa' multiply defined.
@@ -916,22 +926,22 @@ LaTeX Warning: Label `eq:2lvldelpish' multiply defined.
 LaTeX Warning: Label `eq:deq' multiply defined.
 
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for L7x/lmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for L7x/lmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -982,7 +992,7 @@ LaTeX Font Info:    ... okay on input line 50.
 \everyMPtoPDFconversion=\toks41
 )
 \AtBeginShipoutBox=\box64
-Package hyperref Info: Link coloring OFF on input line 50.
+Package hyperref Info: Link coloring OFF on input line 51.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -991,9 +1001,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count152
 )
-LaTeX Info: Redefining \ref on input line 50.
-LaTeX Info: Redefining \pageref on input line 50.
-LaTeX Info: Redefining \nameref on input line 50.
+LaTeX Info: Redefining \ref on input line 51.
+LaTeX Info: Redefining \pageref on input line 51.
+LaTeX Info: Redefining \nameref on input line 51.
 
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.out")
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.out")
@@ -1003,40 +1013,40 @@ LaTeX Info: Redefining \nameref on input line 50.
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 82.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 83.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 82.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 83.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 82.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 83.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 82.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 83.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 82.
+(Font)              <14.4> on input line 83.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 82.
+(Font)              <10> on input line 83.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 82.
-LaTeX Font Info:    Try loading font information for U+msa on input line 82.
+(Font)              <7> on input line 83.
+LaTeX Font Info:    Try loading font information for U+msa on input line 83.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 82.
+LaTeX Font Info:    Try loading font information for U+msb on input line 83.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1044,7 +1054,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.95 \end{titlepage}
+l.96 \end{titlepage}
                      [1]
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.toc"
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1057,16 +1067,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.52 ...on}{\numberline {A}MINQUE}{43}{appendix.A}
+l.53 ...eC {\k a}ra\IeC {\v s}as}{48}{section*.21}
                                                    [1])
 \tf@toc=\write4
  [2] [3] [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 172--182
+Underfull \hbox (badness 10000) in paragraph at lines 173--183
 
  []
 
 [6] [7] [8]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 342.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 343.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
@@ -1074,244 +1084,304 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 
 Package hyperref Warning: Composite letter `\textasciimacron+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciimacron' on input line 359.
+(hyperref)                removing `\textasciimacron' on input line 360.
 
 [10] [11] [12]
 
 Package hyperref Warning: Composite letter `\textasciimacron+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciimacron' on input line 448.
+(hyperref)                removing `\textasciimacron' on input line 449.
 
-LaTeX Font Info:    Try loading font information for L7x+lmtt on input line 452
+LaTeX Font Info:    Try loading font information for L7x+lmtt on input line 453
 .
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\l7xlmtt.fd"
 File: l7xlmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [13] [14]
 [15] [16] [17]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 553.
- [18] [19] [20]
+(Font)              <10.95> on input line 554.
+
+Overfull \hbox (9.01007pt too wide) in paragraph at lines 590--591
+[]\L7x/lmr/m/n/10.95 Pagal \L7x/lmr/m/it/10.95 a pri-o-ri \L7x/lmr/m/n/10.95 re
+ik-mes MI-NQUE me-to-das skai-do-mas · MI-NQUE(0), MI-NQUE(1) ir MINQUE($\OML/
+lmm/m/it/10.95 $\L7x/lmr/m/n/10.95 ).
+ []
+
+[18]
+Overfull \hbox (16.12198pt too wide) in paragraph at lines 626--628
+\L7x/lmr/m/n/10.95 kur $[] \OT1/lmr/m/n/10.95 = \OMS/lmsy/m/n/10.95 f[]g$\L7x/l
+mr/m/n/10.95 , $[] \OT1/lmr/m/n/10.95 = [][] \OML/lmm/m/it/10.95 tr []$ \L7x/lm
+r/m/n/10.95 ir $[] \OT1/lmr/m/n/10.95 = []$\L7x/lmr/m/n/10.95 , $[] \OT1/lmr/m/
+n/10.95 = [][] \OML/lmm/m/it/10.95 tr []$\L7x/lmr/m/n/10.95 ,
+ []
+
+[19] [20] [21]
 
 Package hyperref Warning: Composite letter `\textdotaccent+E'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textdotaccent' on input line 627.
+(hyperref)                removing `\textdotaccent' on input line 677.
 
-[21] [22pdfTeX warning (ext4): destination with the same identifier (name{table
+[22] [23pdfTeX warning (ext4): destination with the same identifier (name{table
 .1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.715 \]
-        pdfTeX warning (ext4): destination with the same identifier (name{table
-.2}) has been already used, duplicate ignored
+l.764 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.2
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.715 \]
-        pdfTeX warning (ext4): destination with the same identifier (name{table
-.3}) has been already used, duplicate ignored
+l.764 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.3
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.715 \]
-        ] [23] [24] [25] [26]
-Underfull \hbox (badness 1478) in paragraph at lines 855--855
+l.764 
+      ] [24] [25]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 860.
+ [26pdfTeX warning (ext4): destination with the same identifier (name{table.4})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.906 \newpage
+              ]
+Underfull \hbox (badness 10000) in paragraph at lines 965--965
+[]|\L7x/lmr/m/n/12 Tikroji
+ []
+
+[27pdfTeX warning (ext4): destination with the same identifier (name{table.5}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.981 
+      ] [28pdfTeX warning (ext4): destination with the same identifier (name{ta
+ble.6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.982 \newpage
+              ] [29] [30] [31]
+Underfull \hbox (badness 1478) in paragraph at lines 1086--1086
 []|\L7x/lmr/m/n/10.95 Mokinys yra en-gia-mas mo-
  []
 
 
-Underfull \hbox (badness 1400) in paragraph at lines 856--856
+Underfull \hbox (badness 1400) in paragraph at lines 1087--1087
 \L7x/lmr/m/n/10.95 ¡ei-na tÎ-v¯ i-si-la-vi-ni-mas, ar
  []
 
 
-Underfull \hbox (badness 3895) in paragraph at lines 860--860
+Underfull \hbox (badness 3895) in paragraph at lines 1091--1091
 []|\L7x/lmr/m/n/10.95 Mokytoj¯ tei-gi-mu mo-kyk-la
  []
 
 
-Overfull \hbox (9.88174pt too wide) in alignment at lines 840--864
+Overfull \hbox (9.88174pt too wide) in alignment at lines 1071--1095
  [] [] [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 864
+Underfull \vbox (badness 10000) detected at line 1095
  []
 
 
-Overfull \hbox (9.88174pt too wide) in alignment at lines 864--880
+Overfull \hbox (9.88174pt too wide) in alignment at lines 1095--1111
  [] [] [] [] 
  []
 
-[27] <teorkv.pdf, id=562, 722.7pt x 505.89pt>
+[32] <teorkv.pdf, id=627, 722.7pt x 505.89pt>
 File: teorkv.pdf Graphic file (type pdf)
  <use teorkv.pdf>
-Package pdftex.def Info: teorkv.pdf used on input line 893.
+Package pdftex.def Info: teorkv.pdf used on input line 1124.
 (pdftex.def)             Requested size: 284.53154pt x 199.16928pt.
- [28] [29pdfTeX warning (ext4): destination with the same identifier (name{figu
+ [33] [34pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.911 \end{equation}
-                     <D:/minque/Magistro darbas/magistro darbas tex/teorkv.pdf>
-] [30pdfTeX warning (ext4): destination with the same identifier (name{table.5}
-) has been already used, duplicate ignored
+l.1142 \end{equation}
+                      <D:/minque/Magistro darbas/magistro darbas tex/teorkv.pdf
+>] [35pdfTeX warning (ext4): destination with the same identifier (name{table.8
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1004 
-       ] [31pdfTeX warning (ext4): destination with the same identifier (name{t
-able.6}) has been already used, duplicate ignored
+l.1235 
+       ] [36pdfTeX warning (ext4): destination with the same identifier (name{t
+able.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1017 \newpage
+l.1248 \newpage
                ]
 
 Package hyperref Warning: Composite letter `\textasciimacron+U'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciimacron' on input line 1020.
+(hyperref)                removing `\textasciimacron' on input line 1251.
 
 
 Package hyperref Warning: Composite letter `\textasciimacron+U'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciimacron' on input line 1021.
+(hyperref)                removing `\textasciimacron' on input line 1252.
 
-[32] [33]
-Underfull \hbox (badness 5607) in paragraph at lines 1072--1073
+[37] [38]
+Underfull \hbox (badness 5607) in paragraph at lines 1309--1310
 []\L7x/lmr/m/it/10.95 Sample De-sign and Imp-le-men-ta-tion\L7x/lmr/m/n/10.95 ,
- [˛i˚-rÎ-ta 2013-11-23], pri-ei-ga per in-ter-ne-t‡ :
+ [˛i˚-rÎ-ta 2015-11-23], pri-ei-ga per in-ter-ne-t‡ :
  []
 
-[34] [35] [36] [37] [38] [39] [40] [41]
-("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.lot")
+[39]pdfTeX warning (ext4): destination with the same identifier (name{cite.mlwi
+n}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1315 \bibitem{mlwin}
+                       Steele, F., Clarke, P., Goldstein, H., \textit{Weight...
+[40] [41] [42] [43] [44] [45] [46]
+("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.lot"
+[47])
 \tf@lot=\write5
 
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.lof")
 \tf@lof=\write6
 
-[42] [43]pdfTeX warning (ext4): destination with the same identifier (name{dexp
+[48] [49]pdfTeX warning (ext4): destination with the same identifier (name{dexp
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1448 ...entinis skirstinys} \hypertarget{dexp} P
+l.1686 ...entinis skirstinys} \hypertarget{dexp} P
                                                   ats paprasƒçiausias b≈´das...
 pdfTeX warning (ext4): destination with the same identifier (name{Bsimdiz}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1450 ...acij≈≥ dizainas} \hypertarget{Bsimdiz} N
+l.1688 ...acij≈≥ dizainas} \hypertarget{Bsimdiz} N
                                                   agrinƒójamas atsitiktinis ...
 pdfTeX warning (ext4): destination with the same identifier (name{Brez}) has be
 en already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1452 ...iacij≈≥ rezultatai} \hypertarget{Brez} P
+l.1690 ...iacij≈≥ rezultatai} \hypertarget{Brez} P
                                                   arametr≈≥ ƒØverƒçi≈≥ gerum...
-[44] [45]pdfTeX warning (ext4): destination with the same identifier (name{chi}
+[50] [51]pdfTeX warning (ext4): destination with the same identifier (name{chi}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1492 ...$\chi^2$ skirstinys} \hypertarget{chi} D
+l.1730 ...$\chi^2$ skirstinys} \hypertarget{chi} D
                                                   elpish savo disertacijoje ...
 pdfTeX warning (ext4): destination with the same identifier (name{Dsimdiz}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1500 ...acij≈≥ dizainas} \hypertarget{Dsimdiz} D
+l.1738 ...acij≈≥ dizainas} \hypertarget{Dsimdiz} D
                                                   elpish nagrinƒója atvejus,...
 pdfTeX warning (ext4): destination with the same identifier (name{Drez}) has be
 en already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1502 ...liacij≈≥ rezultatai} \hypertarget{Drez}A
+l.1740 ...liacij≈≥ rezultatai} \hypertarget{Drez}A
                                                   tlikus simuliacijas gauti ...
-[46] [47] [48]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 1548.
-
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1654--1697
+[52] [53]
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1969--2012
  [][] 
  []
 
 
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1706--1749
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 2020--2063
  [][] 
  []
 
 
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1758--1801
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 2071--2114
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1812--1812
-[]|\L7x/lmr/m/n/12 Tikroji
- []
-
-
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 2983--3026
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 2122--2165
  [][] 
  []
 
-
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 3033--3076
- [][] 
- []
-
-
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 3083--3126
- [][] 
- []
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3128.
-[49] [50pdfTeX warning (ext4): destination with the same identifier (name{table
-.7}) has been already used, duplicate ignored
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2168.
+[54] [55pdfTeX warning (ext4): destination with the same identifier (name{table
+.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.3128 \end{document}
-                     ] [51pdfTeX warning (ext4): destination with the same iden
-tifier (name{table.8}) has been already used, duplicate ignored
+l.2168 \end{document}
+                     ] [56pdfTeX warning (ext4): destination with the same iden
+tifier (name{table.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.3128 \end{document}
-                     ] [52] [53] [54] [55pdfTeX warning (ext4): destination wit
-h the same identifier (name{table.9}) has been already used, duplicate ignored
+l.2168 \end{document}
+                     ] [57pdfTeX warning (ext4): destination with the same iden
+tifier (name{table.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.3128 \end{document}
-                     ] [56] [57] [58] [59]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3128.
+l.2168 \end{document}
+                     ] [58pdfTeX warning (ext4): destination with the same iden
+tifier (name{table.13}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2168 \end{document}
+                     ] [59pdfTeX warning (ext4): destination with the same iden
+tifier (name{table.14}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2168 \end{document}
+                     ] [60pdfTeX warning (ext4): destination with the same iden
+tifier (name{table.15}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2168 \end{document}
+                     ] [61pdfTeX warning (ext4): destination with the same iden
+tifier (name{table.16}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2168 \end{document}
+                     ] [62pdfTeX warning (ext4): destination with the same iden
+tifier (name{table.17}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2168 \end{document}
+                     ]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2168.
 
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3128.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3128.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2168.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2168.
 
 Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 .
-(rerunfilecheck)             Checksum: C89ED93D4EC2C5B251438FB29D48034A;2457.
+(rerunfilecheck)             Checksum: 6A97E2AE0CB3486C39D6A7C2D5F2E610;2707.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3128.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2168.
  ) 
 Here is how much of TeX's memory you used:
- 10404 strings out of 493921
- 145481 string characters out of 3144879
- 544921 words of memory out of 3000000
- 13183 multiletter control sequences out of 15000+200000
+ 10450 strings out of 493921
+ 146242 string characters out of 3144879
+ 600487 words of memory out of 3000000
+ 13204 multiletter control sequences out of 15000+200000
  93737 words of font info for 106 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,13n,32p,1774b,550s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,15n,32p,1774b,549s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-l7x.enc}{C:/Program Files (x86)/MiK
-TeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 2.9/fon
-ts/enc/dvips/lm/lm-mathsy.enc} <C:\Users\Egle\AppData\Local\MiKTeX\2.9\fonts\pk
+TeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/enc/dvips/lm/lm-mathit.enc} <C:\Users\Egle\AppData\Local\MiKTeX\2.9\fonts\pk
 \ljfour\public\bbm\dpi600\bbm12.pk>{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc
 /dvips/lm/lm-mathex.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/l
 m/lmbsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.p
@@ -1330,13 +1400,13 @@ lmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/
 Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmt
-t12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/
-msbm10.pfb>
-Output written on magistro_darbas_EK_2016.pdf (61 pages, 747242 bytes).
+nts/type1/public/lm/lmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt
+10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on magistro_darbas_EK_2016.pdf (64 pages, 810481 bytes).
 PDF statistics:
- 944 PDF objects out of 1000 (max. 8388607)
- 268 named destinations out of 1000 (max. 500000)
- 310 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1110 PDF objects out of 1200 (max. 8388607)
+ 289 named destinations out of 1000 (max. 500000)
+ 334 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2865,14 +2865,19 @@ multiplot <- function(..., plotlist=NULL, cols) {
   }
   
 }
-boldmin <- function(x){
+
+
+boldmin <- function(x, th1 = 0.006, th2 = 0.05){
   x <- round(x, 3)
-  wm <- which(abs(x) == min(abs(x)))
+  y <- x
+  wm <- which(abs(x)- min(abs(x)) <= th1)
   x[wm] <- paste0("\\textbf{", x[wm], "}")
   wm <- which(x=="0")
   x[wm] <- "0.000"
   wm <- which(x=="\\textbf{0}")
   x[wm] <- "\\textbf{0.000}"
   
+  wh <- which(y>=th2)
+  x[wh] <- paste0("\\framebox{", x[wh], "}")
   return(x)
 }
