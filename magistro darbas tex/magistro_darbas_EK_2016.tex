@@ -67,31 +67,31 @@
 {\bf \Large Comparison of Two-Level HLM Estimators via MC Simulations: REML vs MINQUE}
 \end{center}
 \bigskip
-\centerline{\Large Eglė Kaleckaitė }
+\centerline{\Large Eglė Kaleckaitė}
 \vskip 90pt
 \vskip 120pt
-\centerline{\large \textbf{VILNIUS 2015}}
+\centerline{\large \textbf{VILNIUS 2016}}
 \end{titlepage}
 \begin{titlepage}
-\centerline {\bf \large MATEMATIKOS IR INFORMATIKOS FAKULTETAS}
+
 \centerline {\bf EKONOMETRINĖS ANALIZĖS KATEDRA}
-\centerline {\bf MATEMATINĖS ANALIZĖS KATEDRA}
+
 
 \vskip 120pt
 \large Darbo vadovas prof. Vydas Čekanavičius
 
-\large Darbo recenzentas \underline{\hskip 265pt}
+\large Darbo recenzentas dr. Jūratė Šliogerė
 \vskip 150pt
 
-{\large Darbas apgintas \underline{\hskip 98pt }}
+{\large Darbas apgintas \underline{ 2016 m. sausio  14   d. }}
 
-\large Darbas įvertintas \underline{\hskip 94pt }
+\large Darbas įvertintas \underline{\hskip 132pt }
 
 \vskip 120pt
 
-{\large Registravimo NR. \underline{\hskip 95pt }
+{\large Registravimo NR. \underline{111000-9.1-5/\hskip 50pt }
 
-Atidavimo į katedrą data \underline{\hskip 135pt} }
+Atidavimo į katedrą data \underline{2016-01-04\hskip 23pt} }
 
 \end{titlepage}
 
@@ -355,7 +355,7 @@ R^2_1=1-\dfrac{\sum^J_{j=1}\left(Y_{j}-\hat{Y}_{j}\right)'\left(Y_{j}-\hat{Y}_{j
 \indent Šiame skyrelyje pateikta vertinimo metodų literatūros apžvalga, aprašyti patys metodai ir pateiktas sukurtų funkcijų aprašymas.
 
 
-???? Literatūroje nurodoma (Delphish 2006 \cite{delpish}), jog šis metodas duomenims, kurie netenkina normalumo prielaidos, duoda tikslesnius parametrų (dispersijos komponenčių) įverčius. Po ilgų paieškų $\R$ statistinės analizės programoje nepavyko rasti norimo MINQUE metodo hierarchiniams tiesiniams modeliams vertinti. Paketo \textit{varComp} funkcija \textit{minque} vertina tik centruotą aiškinamąjį kintamąjį. Paketo \textit{maanova} funkcija \textit{fitmaanova} vertina tik ANOVA mikro vektoriams. O Demidenko knygos \cite{mixedR} priede pateikta funkcija\\ \textit{lmevarMINQUE} vertina tik labai atskirą atvejį ir negalima pasirinkti \textit{a priori} reikšmių. Dėl šios priežasties žemiau aprašytas MINQUE vertinimo metodas buvo realizuotas $\R$ aplinkoje pačios šio magistro darbo autorės.
+???? Literatūroje nurodoma (Delphish 2006 \cite{delpish}), jog šis metodas duomenims, kurie netenkina normalumo prielaidos, duoda tikslesnius parametrų (dispersijos komponenčių) įverčius. Po ilgų paieškų $\R$ statistinės analizės programoje nepavyko rasti norimo MINQUE metodo hierarchiniams tiesiniams modeliams vertinti. Paketo \textit{varComp} funkcija \textit{minque} vertina tik centruotą aiškinamąjį kintamąjį. Paketo \textit{maanova} funkcija \textit{fitmaanova} vertina tik ANOVA mikro vektoriams. Paketas \textit{minque} pritaikytas labai mažoms imtims. Paketo \textit{CLME} funkcija \textit{minque} taikoma tik specininėms to paketo struktūroms. Paketo \textit{dmm} funcija \textit{minque} skirta  tik diadinio modelio lygtims (\textit{angl. dyadic model}). O Demidenko knygos \cite{mixedR} priede pateikta funkcija\\ \textit{lmevarMINQUE} vertina tik labai atskirą atvejį ir negalima pasirinkti \textit{a priori} reikšmių. Dėl šios priežasties žemiau aprašytas MINQUE vertinimo metodas buvo realizuotas $\R$ aplinkoje pačios šio magistro darbo autorės.
 
 \subsection{Literatūros apžvalga}
 
@@ -762,6 +762,17 @@ $m$& Nesubalansuotas & \ \ \ \ \ \ \ \ \ \ 30\ \ \ \ \ \ \ \ \ \ \\
 
 \indent Šiame darbe atliekama 500 Monte Carlo simuliacijų kiekvienam iš 36 atvejų. Kiekvienos iš simuliacijų metu sugeneruojama populiacija aukščiau aprašytu būdu, tuomet traukiama imtis pagal anksčiau aprašytą metodą. Ir vertinamas modelis (\ref{eq:simul}) visais metodais (REML, MINQUE(0), MINQUE(1) ir MINQUE($\theta$)). Gauti parametrų įverčiai analizuojami toliau pateiktomis statistikomis. Sklaičiavimai atlikti su statistinės analizės programa Revolution $\R$ Open 3.2.2, naudotas keturių branduolių procesorius \textit{Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz}. Gauti rezultatai pateikti kitame skyrelyje.
 
+\subparagraph{Vidutinis įvertis} gaunamas tiesiog suvidurkinus simuliacijų metu gautus parametro įverčius:
+\[
+\hat{\theta}_{jkl}=\frac{1}{S}\sum_{s=1}^S\hat{\theta}_{sjkl},
+\]
+kur \\
+$\hat{\theta}_sjkl$ - $s$ - tosios simuliacijos $j$-tojo parametro gauto pagal $k$-tąjį metodą iš $l$-tosios duomenų struktūros $\theta_j$ įvertis,\\
+$s$ - simuliacijos numeris, $s=1,\dots,S$,\\
+$j$ - parametro pažymėjimas, įgyja reikšmes - $\gamma_{pq}$, $\sigma^2$ ir $\tau_{00}$,  $\tau_{01}$,  $\tau_{11}$\\
+$k$ - metodo pažymėjimas, įgyja reikšmes - REML, MINQUE(0), MINQUE(1) ir MINQUE($\theta$),\\
+$l$ - duomenų struktūros pažymėjimas, įgyja reikšmes pagal kombinacijas iš \ref{table:struct1} lentelės.\\
+
 \subparagraph{Vidutinis santykinis poslinkis -- MRBIAS} (\textit{angl. Mean Relative Bias}) skaičiuojamas:
 \[
 MRBIAS_{jkl}=\frac{1}{S}\sum_{s=1}^S\frac{\hat{\theta}_{sjkl}-\theta_j}{\theta_j},
@@ -773,7 +784,7 @@ $s$ - simuliacijos numeris, $s=1,\dots,S$,\\
 $j$ - parametro pažymėjimas, įgyja reikšmes - $\gamma_{pq}$, $\sigma^2$ ir $\tau_{00}$,  $\tau_{01}$,  $\tau_{11}$\\
 $k$ - metodo pažymėjimas, įgyja reikšmes - REML, MINQUE(0), MINQUE(1) ir MINQUE($\theta$),\\
 $l$ - duomenų struktūros pažymėjimas, įgyja reikšmes pagal kombinacijas iš \ref{table:struct1} lentelės.\\
-\indent Jei šis indeksas yra mažesnis nei 5\%, tai sakome, jog poslinkio nėra. Jei tarp 5\% ir 20\%, tai sakome, jog turime vidutinį poslinkį. Ir jei daugiau nei 20\%, tai sakome, jog poslinkis didelis. Taip pat skaičiuojama bendra statistika atskirai fiksuotiems ir atsitiktiniams dydžiams -- \textbf{CAMRBIAS} -- jungtinis absoliutus vidutinis santykinis poslinkis (\textit{angl. Compound Absolute Mean Relative Bias}), skaičiuojama:
+\indent Jei ši statistika yra mažesnė nei 0,05, tai sakome, jog poslinkio nėra. Jei tarp 0,05 ir 0,2, tai sakome, jog turime vidutinį poslinkį. Ir jei daugiau nei 0,2, tai sakome, jog poslinkis didelis. Taip pat skaičiuojama bendra statistika atskirai fiksuotiems ir atsitiktiniams dydžiams -- \textbf{CAMRBIAS} -- jungtinis absoliutus vidutinis santykinis poslinkis (\textit{angl. Compound Absolute Mean Relative Bias}), skaičiuojama:
 \[
 CAMRBIAS_{kl}=\frac{1}{n_{kl}}\sum_{j=1}^{n_{kl}}\left|MRBIAS_{jkl}\right|
 \]
@@ -796,7 +807,7 @@ CMRSE_{kl}=\frac{1}{n_{kl}}\sum_{j=1}^{n_{kl}}MRSE_{jkl}.
 \]
 
 
-\subsubsection{Su imties svoriais}
+\subsubsection{Su imties svoriais}\label{subsubsec:susvoriais}
 \indent Šiame skyrelyje nusakoma, kaip buvo sudaryta populiacija, imčių ėmimas ir svorių sudarymas. Kadangi informatyvų ėmimo dizainą gana sunku sudaryti, jis pasirinktas toks pat kaip Steele, Clarke ir Goldstein straipsnyje \textit{Weighting in MLwiN}\cite{mlwin}. 
 
 \indent Sugeneruojama $M=300$ mokyklų dydžio populiacija pagal hierarchinį modelį:
@@ -845,12 +856,13 @@ Y_{ij} = \gamma_{00} +\gamma_{01}\times X_{2j}+ \gamma_{10}\times X_{1ij}+u_{0j}
 
 \indent Parenkama $m=35$ antrojo lygio subjektų ir $n_j=20$ pirmojo, tad patekimo į imtį svoriai yra $w_j=\frac{m}{\pi_j}$, $w_{i|j}=\frac{n_j}{\pi_{i|j}}$ ir $w_{ij}=w_j\times w_{i|j}$.
 
-\indent Atliekama 500 Monte Carlo simuliacijų kievienam iš metodų. Rezultatai pateikti žemiau.
+\indent Atliekama 1500 Monte Carlo simuliacijų kievienam iš metodų. Rezultatai pateikti toliau.
 
 
 \subsection{Simuliacijų rezultatai}
 \indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Rezultatai lyginami kaip anksčiau pateiktame skyrelyje. Žemiau esančiose lentelėse pateikti simuliacijų rezultatai visiems metodams.
 
+\subsubsection{Be svorių}
 \newpage
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
 % Mon Dec 28 21:00:27 2015
@@ -955,28 +967,45 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
 \caption{Lentelėje pateiktos modelio (\ref{eq:simul}) atsitiktinių efektų įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampių apvestos statistikos, kurios viršyja 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \end{sidewaystable}
 
-\begin{sidewaystable}[H]
-\renewcommand{\arraystretch}{1.5}% Wider
+
+\subsubsection{Su svoriais}
+\indent Šiame skyrelyje pateikti skyrelyje \ref{subsubsec:susvoriais} aprašyto simuliacijų dizaino rezultatai. Jie pateikti \ref{table:wsimul} lentelėje. Šiuo atveju REML ir MINQUE(1) bei MINQUE($\theta$) įverčiai skiriasi labai neženkliai. Šiek tiek didesnį vidutitį santykinį poslinkį ir išsibarstymą turi $\tau_{01}$ ir $\tau_{11}$ įverčiai MINQUE(1) metodu. Mažiausias vidutinis santykinis poslinkis stebimas parametrams $\gamma_{01}$ ir $\gamma_{10}$. Tokio dydžio poslinkį laikome nereikšmingu. Parametrų $\sigma^2$ ir $\tau_{00}$ MRBIAS yra tarp 0,05 ir 0,2, todėl laikomas vidutiniu poslinkiu. Likusių parametrų -- $\gamma_{00}$, $\tau_{01}$ ir $\tau_{11}$ -- poslinkį laikome dideliu. Mažiausias išsibarstymas (MRSE) yra parametrui $\sigma^2$, didžiausias -- $\tau_{01}$. 
+
+\indent Akivaizdžiai parametrų vertintų PWMINQUE poslinkis mažesnis nei nesvertinių metodų. Čia reikėtų pastebėti, jog įverčių išsibarstymas beveik visur didesnis vertinant su PWMINQUE, bet skirtumas nėra didelis palyginus su nauda gauta sumažėjus poslinkiui.    MRBIAS > 0,05 tik $\tau_{00}$ vertintam PWMINQUE(1) ir $\gamma_{00}$ abiems PWMINQUE. $\gamma_{00}$ poslinkis sumažėja, parametras yra pervertinamas, tačiau išsibarstymas mažesnis nei nesvertinių metodų. Šie rezultatai sutampa su gautais  Pfeffermann ir k.t.\cite{pfeff} bei Steele ir k.t.\cite{mlwin} PWIGLS metodui.
+
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Thu Dec 17 19:55:10 2015
-\centering
-\begin{tabular}{|l|c|ccc|ccc|ccc|}
-\hline
-& \multicolumn{1}{m{2cm}|}{Tikroji reikšmė}& \multicolumn{3}{c|}{REML}&\multicolumn{3}{c|}{MINQUE($\theta$)}&\multicolumn{3}{c|}{WMINQUE($\theta$)}\\
+% Tue Dec 29 16:27:05 2015
+\begin{sidewaystable}[H]
+\footnotesize{
+\begin{tabular}{|cc|ccc|ccc|ccc|}\cline{3-11}
+\multicolumn{2}{c|}{ }&\multicolumn{3}{c|}{REML}&\multicolumn{3}{c|}{MINQUE(1)}&\multicolumn{3}{c|}{PWMINQUE(1)}\\ \hline
+ Parametras & Tikroji & Vidurkis & MRBIAS & MRSE & Vidurkis & MRBIAS & MRSE & Vidurkis & MRBIAS & MRSE \\ 
   \hline
-Efektas & & $\hat{\theta}$ & RBIAS & RMSE & $\hat{\theta}$ & RBIAS & RMSE& $\hat{\theta}$ & RBIAS & RMSE  \\ 
-  \hline
-$\gamma_{00}$ & 1 & 0.781 & -0.219 & 0.252 & 0.781 & -0.219 & 0.252 & 1.166 & 0.166 & 0.219 \\ 
- $\gamma_{01}$ & 1 & 1.001 & 0.001 & 0.171 & 1.001 & 0.001 & 0.171 & 0.998 & -0.002 & 0.187 \\ 
- $\gamma_{10}$ & 1 & 1.002 & 0.002 & 0.133 & 1.002 & 0.002 & 0.133 & 1.002 & 0.002 & 0.181 \\ 
- $\sigma^2$ & 1 & 0.949 & -0.051 & 0.076 & 0.948 & -0.052 & 0.076 & 0.944 & -0.056 & 0.082 \\ 
-$ \tau_{00}$ & $\frac{1}{4}$ & 0.221 & -0.115 & 0.293 & 0.221 & -0.115 & 0.293 & 0.261 & 0.044 & 0.384 \\ 
-$ \tau_{01} =  \tau_{10}$ &$ \frac{\sqrt{3}}{8}$ & 0.159 & -0.265 & 0.451 & 0.159 & -0.266 & 0.451 & 0.217 & 0.003 & 0.571 \\ 
-  $ \tau_{11}$ & $\frac{3}{4}$ & 0.583 & -0.223 & 0.316 & 0.584 & -0.222 & 0.316 & 0.762 & 0.017 & 0.34 \\ 
+$\gamma_{00}$ & 1 & 0.781 & -0.219 & 0.063 & 0.782 & -0.218 & 0.063 & 1.165 & 0.165 & 0.048 \\ 
+  $\gamma_{01}$ & 1 & 1.001 & 0.001 & 0.029 & 1.003 & 0.003 & 0.03 & 1.000 & 0.000 & 0.032  \\ 
+  $\gamma_{10}$ & 1 & 1.002 & 0.002 & 0.018 & 1.005 & 0.005 & 0.018 & 1.001 & 0.001 & 0.025 \\ 
+  $\sigma^2$ & 1 & 0.949 & -0.051 & 0.006 & 0.95 & -0.05 & 0.006 & 0.98 & -0.02 & 0.007 \\ 
+  $\tau_{00}$ & $\frac{1}{4}$ & 0.221 & -0.115 & 0.086 & 0.221 & -0.115 & 0.091 & 0.264 & 0.054 & 0.113 \\ 
+  $\tau_{01}$ & $\frac{\sqrt{3}}{8}\approx 0.217$ & 0.159 & -0.265 & 0.204 & 0.155 & -0.283 & 0.218 & 0.217 & 0.001 & 0.248  \\ 
+  $\tau_{11}$ & $\frac{3}{4}$ & 0.583 & -0.223 & 0.1 & 0.574 & -0.235 & 0.108 & 0.746 & -0.005 & 0.112  \\ 
    \hline
 \end{tabular}
-\caption{Lentelėje pateiktos informatyvaus ėmimo modelio įverčių simuliacijų statistikos.}
-\label{table:wminquerez}
+\begin{tabular}{|cc|ccc|ccc|}\cline{3-8}
+  & &\multicolumn{3}{c|}{MINQUE($\theta$)}&\multicolumn{3}{c|}{PWMINQUE($\theta$)}\\ \hline
+Parametras & Tikroji &  Vidurkis & MRBIAS & MRSE & Vidurkis & MRBIAS & MRSE \\ 
+  \hline
+$\gamma_{00}$ & 1 &  0.781 & -0.219 & 0.063 & 1.166 & 0.166 & 0.048 \\ 
+  $\gamma_{01}$ & 1 &  1.001 & 0.001 & 0.029 & 1.000 & 0.000 & 0.031 \\ 
+  $\gamma_{10}$ & 1 &  1.002 & 0.002 & 0.018 & 1.002 & 0.002 & 0.026 \\ 
+  $\sigma^2$ & 1 &  0.948 & -0.052 & 0.006 & 0.973 & -0.027 & 0.007 \\ 
+  $\tau_{00}$ & $\frac{1}{4}$ & 0.221 & -0.115 & 0.086 & 0.261 & 0.044 & 0.116 \\ 
+  $\tau_{01}$ & $\frac{\sqrt{3}}{8}\approx 0.217$ & 0.159 & -0.266 & 0.204 & 0.217 & 0.003 & 0.232 \\ 
+  $\tau_{11}$ & $\frac{3}{4}$ & 0.584 & -0.222 & 0.1 & 0.762 & 0.017 & 0.116 \\ 
+   \hline
+\end{tabular}
+}
+\caption{Lentelėje pateiktos modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos. Statistikos pračiau aprašytos skyrelyje \ref{subsubsec:besvoriu}.}
+\label{table:wsimul}
 \end{sidewaystable}
 
 \newpage
@@ -1227,12 +1256,6 @@ MatRes_{ij}=\gamma_{00}+\gamma_{01}\times MDYDIS_j+\gamma_{02}\times MSUCCESS_j\
 \bibitem{siaip1} Birenbaum, M., Tatsuoka, C., Yamada, T., \textit{Diagnostic Assesment in TIMSS-R: Comparison of Eight Graders Mathematics Knowladge States in The United States, Japan, Israel}, IRC, 2004.
 \bibitem{siaip2} Brečuko, B., \textit{How Family Background Influences Student Achievement}, IRC, 2004.
 \bibitem{siaip3} Campbell, J., Verna, M., Petruso, S., \textit{Gender Paradigms}, IRC, 2004.
-\bibitem{mlwin}Centre for Multilevel Modeling (CML) (2011) Weighting in MLwiN. Bristol: University of Bristol. 
-http://www.bristol.ac
-.uk/cmm/software/support/support
--
-faqs/weighting.pdf [accessed 8 
-January 2013]
 \bibitem{cek} V. Čekanavičius, G. Murauskas, \textit{Statistika ir jos taikymai}, 3 dalis, TEV, 2009.
 \bibitem{timssSchool2} Chen, Q., \textit{A Multilevel Analysis of Mathematically Low-Achieving Students in Singapore}, IRC, 2013.
 \bibitem{hlmmixed} Davidian, M., and Giltinan, D., \textit{Nonlinear Models for Repeated Measurement Data}, New York: Chapman \& Hall/CRC, 1995.
@@ -1289,6 +1312,7 @@ leidimas 66, Nr. 1 (balandis, 1976), psl. 178-183.
 \bibitem{mcmc} Vakilian, S., \textit{Simulation Studies on Estimation of Variance Components for Multilevel Models}, Theses and Dissertations (Comprehensive), paper 922, 2009.
 \bibitem{MLbetterMINQUE} Tong, H., Kumar, K., Huang, Y., \textit{Developing Econometrics}, John Wiley \& Sons, 2011.
 \bibitem{Rtest} Vonesh, E.F., Chinchilli, V.M., \textit{ Linear and Nonlinear Models for the Analysis of Repeated Measurements}, Marcel Dekker, 1997, 419–424.
+\bibitem{pwigls2} Veiga, A., C., \textit{Methods for analysing complex panel data using multilevel models with an application to the Brazilian labour force survey}, Thesis for the degree of Doctor of Philosophy, University of Southampton, 2010.
 \bibitem{timssCpalyg4} Wiberg, M., Andersson, E., \textit{School-Effectiveness in Mathematics in Sweden compared with countries in Europe and Asia-Pacific}, IRC, 2010.
 \bibitem{zhu} Zhu, J,. \textit{Estimation of Genetic Variance Components in the General Mixed Model},  Ph.D.
 Dissertation, NC State University, Raleigh, U.S.A, 1989.   

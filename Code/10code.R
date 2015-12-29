@@ -1,8 +1,9 @@
-mcmcRES <- function(x, x0) {
+mcmcRES <- function(x, x0, set.zero = F) {
+  if (set.zero) x[x<0] <- 0
   m  <- mean(x)
   RBias <- m/x0-1
-  RMSE <- sqrt(mean((x/x0-1)^2))
-  return(data.frame(Mean = m, RBias = RBias, RMSE = RMSE))
+  MRSE <- mean((x/x0-1)^2)
+  return(data.frame(Mean = m, RBias = RBias, MRSE = MRSE))
 }
 
 samplePOP1 <- function(dt, m = 35, nj = 20){
@@ -2615,48 +2616,59 @@ simPopMyW1 <- function(M = 300, m = 35, nj = 20, formul = "Y1 ~ 1+W+X1+(1+X1|IDS
   
   f.f <- strsplit(formul, "\\+\\(")
   r.f <- paste("~", gsub("\\)", "", f.f[[1]][2]))
-  f.f <- f.f[[1]][1]
-  iv <- summary(lm(f.f, smpl))
-  iva <- smpl[, as.list(c(coef(lm(Y1~1+X1)), 
-                          w=unique(W))), by = "IDSCHOOL"]
-  setnames(iva, c("IDSCHOOL", "b0", "b1", "W"))
-  tau0 <- try(gls(b0~1+W, data = iva))
-  if (class(tau0) == "try-error") browser()
-  iva$res0 <- tau0$residuals
-  iva <- na.omit(iva)
-  tau1 <- try(gls(b1~1, data = iva, na.action = na.omit))
-  if (class(tau1) == "try-error") browser()
-  iva$res1 <- tau1$residuals
-  apriori1 <- c(iv$sigma^2, tau0$sigma^2, 
-               cov(iva$res0, iva$res1), tau1$sigma^2)/iv$sigma^2
+  f.f <- f.f[[1]][1]  
   min1 <- try(myMINQUE(dt = smpl,
                        fixed = f.f,
                        random1 = r.f,
                        weights = NULL,
-                       apriori = apriori1))
-  if(class(min1)[1] == "try-error") min1 <- NULL
-  iv <- summary(lm(formula = f.f, data = smpl, weights = w12))
-  iva <- smpl[, as.list(c(coef(lm(Y1~1+X1, weights = w1)), 
-                          w=unique(W), w2 = unique(w2))), by = "IDSCHOOL"]
-  setnames(iva, c("IDSCHOOL", "b0", "b1", "W", "w2"))
-  iva <- na.omit(iva)
-  tau0 <- try(summary(lm(b0~1+W, data = iva, weights = w2)))
-  if (class(tau0) == "try-error") browser()
-  iva$res0 <- tau0$residuals
-  iva <- na.omit(iva)
-  tau1 <- try(summary(lm(b1~1, data = iva, weights = w2)))
-  if (class(tau1) == "try-error") browser()
-  iva$res1 <- tau1$residuals
-  apriori2 <- c(iv$sigma^2, tau0$sigma^2, 
-               cov(iva$res0, iva$res1), tau1$sigma^2)/iv$sigma^2
+                       apriori = c(1, 1, 1, 1)))
   min2 <- try(myMINQUE(dt = smpl,
                        fixed = f.f,
                        random1 = r.f,
                        weights = c("w1", "w2"),
-                       apriori = apriori2))
-  if(class(min2)[1] == "try-error") min2 <- NULL
-  gc()
-  
+                       apriori = c(1, 1, 1, 1)))
+
+#   iv <- summary(lm(f.f, smpl))
+#   iva <- smpl[, as.list(c(coef(lm(Y1~1+X1)), 
+#                           w=unique(W))), by = "IDSCHOOL"]
+#   setnames(iva, c("IDSCHOOL", "b0", "b1", "W"))
+#   tau0 <- try(gls(b0~1+W, data = iva))
+#   if (class(tau0) == "try-error") browser()
+#   iva$res0 <- tau0$residuals
+#   iva <- na.omit(iva)
+#   tau1 <- try(gls(b1~1, data = iva, na.action = na.omit))
+#   if (class(tau1) == "try-error") browser()
+#   iva$res1 <- tau1$residuals
+#   apriori1 <- c(iv$sigma^2, tau0$sigma^2, 
+#                cov(iva$res0, iva$res1), tau1$sigma^2)/iv$sigma^2
+#   min1 <- try(myMINQUE(dt = smpl,
+#                        fixed = f.f,
+#                        random1 = r.f,
+#                        weights = NULL,
+#                        apriori = apriori1))
+#   if(class(min1)[1] == "try-error") min1 <- NULL
+#   iv <- summary(lm(formula = f.f, data = smpl, weights = w12))
+#   iva <- smpl[, as.list(c(coef(lm(Y1~1+X1, weights = w1)), 
+#                           w=unique(W), w2 = unique(w2))), by = "IDSCHOOL"]
+#   setnames(iva, c("IDSCHOOL", "b0", "b1", "W", "w2"))
+#   iva <- na.omit(iva)
+#   tau0 <- try(summary(lm(b0~1+W, data = iva, weights = w2)))
+#   if (class(tau0) == "try-error") browser()
+#   iva$res0 <- tau0$residuals
+#   iva <- na.omit(iva)
+#   tau1 <- try(summary(lm(b1~1, data = iva, weights = w2)))
+#   if (class(tau1) == "try-error") browser()
+#   iva$res1 <- tau1$residuals
+#   apriori2 <- c(iv$sigma^2, tau0$sigma^2, 
+#                cov(iva$res0, iva$res1), tau1$sigma^2)/iv$sigma^2
+#   min2 <- try(myMINQUE(dt = smpl,
+#                        fixed = f.f,
+#                        random1 = r.f,
+#                        weights = c("w1", "w2"),
+#                        apriori = apriori2))
+#   if(class(min2)[1] == "try-error") min2 <- NULL
+#   gc()
+#   
   return(c(fixef(mm), min1$beta, min2$beta,
            sm$sigma^2, min1$sigma2, min2$sigma2,
            unlist(sm$varcor[[1]]),  unlist(min1$TT),  unlist(min2$TT)))
