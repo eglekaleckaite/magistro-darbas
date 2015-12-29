@@ -1339,7 +1339,29 @@ myMINQUE <- function(dt, fixed, random1 = NULL, weights = NULL, apriori = NULL,
   beta <- as.numeric(iM$beta)
   names(beta) <- colnames(X)
   
-  return(list(sigma2 = sigma2, TT = TT, beta = beta, N = N, n1 = n1))
+  V <- iM$V
+  Vj <- foreach(i = unique(id1)) %do% {V[id1 %in% i,id1 %in% i,drop = F]}
+  # Variances:
+  ccj <- crossprod(X, V)%*%tcrossprod(Y-X%*%iM$beta)%*%V%*%X
+  #Bcov <- (n1/(n1-1))*iM$P%*%ccj%*%iM$P
+  #varcov <- mapply(function(z, x, v, wgt) TT - TT%*%crossprod(z*unique(wgt), v)%*%(solve(v)-x%*%tcrossprod(Bcov,x))%*%v%*%(z*unique(wgt))%*%TT, Z1, Xj, Vj, wgt2i)
+  #Tcov <- (n1/(n1-1))*solve(iM$S)
+  ranef <- mapply(function(x, y, v, z, wgt) (TT%*%crossprod(z*unique(wgt), v)%*%(y - x%*%iM$beta)),Xj, Yj, Vj, Z1, wgt2i)
+  
+  fit <- mapply(function(x, z, u, wgt) x%*%iM$beta+(z/unique(wgt))%*%u, Xj, Z1, ranef, wgt2i)
+  fit <- do.call(rBind, fit)
+  ranef <- llply(ranef, t)
+  ranef <- do.call(rBind, ranef)
+  rownames(ranef) <- unique(id1)
+  residuals <- Y-fit
+  gc()
+#   vv <- do.call(cbind, llply(varcov, as.matrix))
+#   dim(vv) <- c(dim(varcov[[1]]), length(varcov))
+  ranef <- as.data.frame(as.matrix(ranef))
+  #attr(ranef, "postVar") <- vv
+  
+  
+  return(list(sigma2 = sigma2, TT = TT, beta = beta, N = N, n1 = n1, ranef = ranef, fit = fit, res = residuals))
   
 }
 

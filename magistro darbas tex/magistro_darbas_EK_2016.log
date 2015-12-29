@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  29 DEC 2015 21:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  30 DEC 2015 01:01
 entering extended mode
 **magistro_darbas_EK_2016.tex
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.tex"
@@ -1197,22 +1197,29 @@ re.1}) has been already used, duplicate ignored
 l.1171 \end{equation}
                       <D:/minque/Magistro darbas/magistro darbas tex/teorkv.pdf
 >]
+Overfull \hbox (7.14728pt too wide) in paragraph at lines 1183--1196
+ [][] 
+ []
 
-LaTeX Warning: Reference `table:null' on page 37 undefined on input line 1176.
+[37pdfTeX warning (ext4): destination with the same identifier (name{table.8}) 
+has been already used, duplicate ignored
 
-[37] [38]
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1233 \end{equation}
+                     ] [38]
 
 Package hyperref Warning: Composite letter `\textasciimacron+U'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciimacron' on input line 1249.
+(hyperref)                removing `\textasciimacron' on input line 1253.
 
 
 Package hyperref Warning: Composite letter `\textasciimacron+U'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciimacron' on input line 1250.
+(hyperref)                removing `\textasciimacron' on input line 1254.
 
 [39] [40]
-Underfull \hbox (badness 5607) in paragraph at lines 1301--1302
+Underfull \hbox (badness 5607) in paragraph at lines 1305--1306
 []\L7x/lmr/m/it/10.95 Sample De-sign and Imp-le-men-ta-tion\L7x/lmr/m/n/10.95 ,
  [þiû-rë-ta 2015-11-23], pri-ei-ga per in-ter-ne-tà :
  []
@@ -1229,167 +1236,164 @@ Underfull \hbox (badness 5607) in paragraph at lines 1301--1302
 Overfull \vbox (37.20335pt too high) has occurred while \output is active []
 
 
-[52pdfTeX warning (ext4): destination with the same identifier (name{table.8}) 
+[52pdfTeX warning (ext4): destination with the same identifier (name{table.9}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1697 
+l.1701 
        ] [53pdfTeX warning (ext4): destination with the same identifier (name{t
-able.9}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1799 
-       ] [54pdfTeX warning (ext4): destination with the same identifier (name{t
 able.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1850 
+l.1803 
+       ] [54pdfTeX warning (ext4): destination with the same identifier (name{t
+able.11}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1854 
        ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1856--1899
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1860--1903
  [][] 
  []
 
-[55pdfTeX warning (ext4): destination with the same identifier (name{table.11})
+[55pdfTeX warning (ext4): destination with the same identifier (name{table.12})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1901 
+l.1905 
        ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1907--1950
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1911--1954
  [][] 
  []
 
-[56pdfTeX warning (ext4): destination with the same identifier (name{table.12})
+[56pdfTeX warning (ext4): destination with the same identifier (name{table.13})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1952 
+l.1956 
        ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1958--2001
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 1962--2005
  [][] 
  []
 
-[57pdfTeX warning (ext4): destination with the same identifier (name{table.13})
+[57pdfTeX warning (ext4): destination with the same identifier (name{table.14})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2003 
+l.2007 
        ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 2009--2052
+Overfull \hbox (8.32024pt too wide) in paragraph at lines 2013--2056
  [][] 
  []
 
-[58pdfTeX warning (ext4): destination with the same identifier (name{table.14})
+[58pdfTeX warning (ext4): destination with the same identifier (name{table.15})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2054 
-       ] <Ngammaseqdg.pdf, id=913, 1156.32pt x 820.06375pt>
+l.2058 
+       ] <Ngammaseqdg.pdf, id=917, 1156.32pt x 820.06375pt>
 File: Ngammaseqdg.pdf Graphic file (type pdf)
 
 <use Ngammaseqdg.pdf>
-Package pdftex.def Info: Ngammaseqdg.pdf used on input line 2057.
+Package pdftex.def Info: Ngammaseqdg.pdf used on input line 2061.
 (pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
 
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2057--2058
+Overfull \hbox (71.75656pt too wide) in paragraph at lines 2061--2062
  [][] 
  []
 
-[59pdfTeX warning (ext4): destination with the same identifier (name{table.15})
+[59pdfTeX warning (ext4): destination with the same identifier (name{table.16})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2060 \end{sidewaysfigure}
-                           ] <Nraneqdg.pdf, id=920, 1156.32pt x 820.06375pt>
+l.2064 \end{sidewaysfigure}
+                           ] <Nraneqdg.pdf, id=924, 1156.32pt x 820.06375pt>
 File: Nraneqdg.pdf Graphic file (type pdf)
 
 <use Nraneqdg.pdf>
-Package pdftex.def Info: Nraneqdg.pdf used on input line 2064.
+Package pdftex.def Info: Nraneqdg.pdf used on input line 2068.
 (pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
 
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2064--2065
+Overfull \hbox (71.75656pt too wide) in paragraph at lines 2068--2069
  [][] 
  []
 
-<Xfixeqdg.pdf, id=922, 1156.32pt x 820.06375pt>
+<Xfixeqdg.pdf, id=926, 1156.32pt x 820.06375pt>
 File: Xfixeqdg.pdf Graphic file (type pdf)
  <use Xfixeqdg.pdf>
-Package pdftex.def Info: Xfixeqdg.pdf used on input line 2071.
+Package pdftex.def Info: Xfixeqdg.pdf used on input line 2075.
 (pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
 
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2071--2072
+Overfull \hbox (71.75656pt too wide) in paragraph at lines 2075--2076
  [][] 
  []
 
-<Xraneqdg.pdf, id=924, 1156.32pt x 820.06375pt>
+<Xraneqdg.pdf, id=928, 1156.32pt x 820.06375pt>
 File: Xraneqdg.pdf Graphic file (type pdf)
  <use Xraneqdg.pdf>
-Package pdftex.def Info: Xraneqdg.pdf used on input line 2078.
+Package pdftex.def Info: Xraneqdg.pdf used on input line 2082.
 (pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
 
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2078--2079
+Overfull \hbox (71.75656pt too wide) in paragraph at lines 2082--2083
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2083.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2087.
 [60pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2083 \end{document}
+l.2087 \end{document}
                       <D:/minque/Magistro darbas/magistro darbas tex/Ngammaseqd
 g.pdf>] [61pdfTeX warning (ext4): destination with the same identifier (name{fi
 gure.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2083 \end{document}
+l.2087 \end{document}
                       <D:/minque/Magistro darbas/magistro darbas tex/Nraneqdg.p
 df>] [62pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2083 \end{document}
+l.2087 \end{document}
                       <D:/minque/Magistro darbas/magistro darbas tex/Xfixeqdg.p
 df>] [63pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2083 \end{document}
+l.2087 \end{document}
                       <D:/minque/Magistro darbas/magistro darbas tex/Xraneqdg.p
 df>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2083.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2087.
  ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2083.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2083.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2087.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2087.
 
 Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 .
 (rerunfilecheck)             Checksum: 31157FFBD248E213DB2A5DB96A9FF875;2654.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2083.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2087.
  ) 
 Here is how much of TeX's memory you used:
- 10460 strings out of 493921
- 146487 string characters out of 3144879
- 411121 words of memory out of 3000000
+ 10461 strings out of 493921
+ 146495 string characters out of 3144879
+ 410194 words of memory out of 3000000
  13227 multiletter control sequences out of 15000+200000
  93737 words of font info for 106 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -1421,9 +1425,9 @@ blic/lm/lmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy
 8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on magistro_darbas_EK_2016.pdf (65 pages, 840833 bytes).
+Output written on magistro_darbas_EK_2016.pdf (65 pages, 843207 bytes).
 PDF statistics:
- 1121 PDF objects out of 1200 (max. 8388607)
- 272 named destinations out of 1000 (max. 500000)
+ 1125 PDF objects out of 1200 (max. 8388607)
+ 273 named destinations out of 1000 (max. 500000)
  338 words of extra memory for PDF output out of 10000 (max. 10000000)
 

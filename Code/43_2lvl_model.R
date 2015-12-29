@@ -76,8 +76,19 @@ data.2011[, WTOT := WGTFAC2*WGTFAC1]
 # Nulinis
 #############################################################################
 #############################################################################
+wm <- data.2011[, sum(BSMMAT01*WTOT)/sum(WTOT)]
+
+n <- mean(unlist(data.2011[, length(BSMMAT01), by = IDSCHOOL][, 2, with = F]))
+
 rm0 <- lmer("BSMMAT01 ~ 1+(1|IDSCHOOL)", data.2011)
-summary(rm0)
+sm0 <- summary(rm0)
+
+iccr <- sm0$varcor[[1]]/(sm0$varcor[[1]]+sm0$sigma^2)
+
+deffr <- 1+(n-1)*iccr
+
+r1r <- 1-sum(resid(rm0)^2)/sum((rm0@frame[,1]-mean(rm0@frame[,1]))^2)
+
 
 min01 <- myMINQUE(dt = data.2011,
                      fixed = "BSMMAT01 ~ 1",
@@ -85,11 +96,25 @@ min01 <- myMINQUE(dt = data.2011,
                      weights = NULL,
                      apriori = c(1, 1))
 
+icc01 <- min01$TT/(min01$TT+min01$sigma2)
+
+deff01 <- 1+(n-1)*icc01
+
+r101 <- 1-sum(min01$res^2)/sum((rm0@frame[,1]-mean(rm0@frame[,1]))^2)
+
+
 wmin01 <- myMINQUE(dt = data.2011,
                   fixed = "BSMMAT01 ~ 1",
                   random1 = "~1|IDSCHOOL",
                   weights = c("WGTFAC2", "WGTFAC1"),
                   apriori = c(1, 1, 1, 1))
+
+iccw01 <- wmin01$TT/(wmin01$TT+wmin01$sigma2)
+
+deffw01 <- 1+(n-1)*iccw01
+
+r1w01 <- 1-sum(wmin01$res^2)/sum((rm0@frame[,1]-wm)^2)
+
 
 iv <- summary(lm("BSMMAT01 ~ 1", data.2011))
 iva <- data.2011[, as.list(c(coef(lm(BSMMAT01 ~ 1)))), by = "IDSCHOOL"]
@@ -104,6 +129,12 @@ min0th <- myMINQUE(dt = data.2011,
                   random1 = "~1|IDSCHOOL",
                   weights = NULL,
                   apriori = apriori1)
+
+icc0th <- min0th$TT/(min0th$TT+min0th$sigma2)
+
+deff0th <- 1+(n-1)*icc0th
+
+r10th <- 1-sum(min0th$res^2)/sum((rm0@frame[,1]-mean(rm0@frame[,1]))^2)
 
 iv <- summary(lm(formula = "BSMMAT01 ~ 1", data = data.2011, weights = data.2011$WTOT))
 iva <- data.2011[, as.list(c(coef(lm(BSMMAT01 ~ 1, weights = WGTFAC2)), 
@@ -121,6 +152,13 @@ wmin0th <- myMINQUE(dt = data.2011,
                    random1 = "~1|IDSCHOOL",
                    weights = c("WGTFAC2", "WGTFAC1"),
                    apriori = apriori2)
+
+iccw0th <- wmin0th$TT/(wmin0th$TT+wmin0th$sigma2)
+
+deffw0th <- 1+(n-1)*iccw0th
+
+r1w0th <- 1-sum(wmin0th$res^2)/sum((rm0@frame[,1]-wm)^2)
+
 #############################################################################
 #############################################################################
 # Galutinis
