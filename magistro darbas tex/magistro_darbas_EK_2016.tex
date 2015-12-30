@@ -30,6 +30,7 @@
 \usepackage{listings}
 \usepackage{rotating}
 \usepackage{rotfloat}
+\usepackage{enumerate}
 \oddsidemargin=0cm
 %\topmargin=1cm
 \headsep=0pt
@@ -111,7 +112,7 @@ Atidavimo į katedrą data \underline{2016-01-04\hskip 23pt} }
 \vspace{\baselineskip}
 
 \noindent\textbf{Raktiniai žodžiai:}
-TIMSS, PWIGLS, HLM
+TIMSS, PWIGLS, HLM, MINQUE
 \end{small}
 \vspace{\baselineskip}
 \thispagestyle{empty}
@@ -126,7 +127,7 @@ TIMSS, PWIGLS, HLM
 \vspace{\baselineskip}
 
 \noindent\textbf{Key words:}
-TIMSS, PWIGLS, HLM
+TIMSS, PWIGLS, HLM, MINQUE
 \end{small}
 \vspace{\baselineskip}
 
@@ -334,7 +335,7 @@ Shackman savo 2001 metų darbe\cite{icc} pabrėžė: kuo mažesnis ICC koeficien
 \begin{equation}
 DEFF \approx 1 + (n - 1) \times ICC,
 \end{equation}
-kur $n$ yra vidutinis imties grupės dydis. Simuliacijų būdu, buvo nustatyta, jog kol $DEFF <2$, tol rezultatai nėra netikri (\textit{angl. spurious}).
+kur $n$ yra vidutinis imties grupės dydis. Simuliacijų būdu, buvo nustatyta, jog kol $DEFF <2$, tol modeliavimas viename lygmenyje nėra blogiau nei dviejuose.
 
 \subparagraph{Statistika $\mathbf{R^2}$} \hypertarget{r2} dažnai naudojama ir vieno, ir kelių lygių modeliuose. Ji naudojama nustatyti ar įtrauktas kintamasis (įtraukti kintamieji) pagerina modeliuojamo kintamojo įverčio tikslumą. Hierarchiniuose modeliuose skaičiuojami atskiri $R^2$ kiekvienam lygiui. Pavyzdžiui, įtraukus pirmo lygio kintamąjį, imamas santykinis skirtumas $\frac{\hat{\sigma}^2_{(nul)}-\hat{\sigma}^2_1}{\hat{\sigma}^2_{(nul)}}$ ($\hat{\sigma}^2_{(nul)}$ - besąlyginio modelio, $\hat{\sigma}^2_1$ - sąlyginio modelio) ir žiūrima, kiek skirtumo buvo paaiškinta. Įtraukus antro lygio kintamąjį analogiškai skaičiuojama $\frac{\hat{\tau}_{00(nul)}-\hat{\tau}_{00}}{\hat{\tau}_{00(nul)}}$. Šie koeficientai dar vadinami pirmo ir antro lygio $R^2$.
 
@@ -597,7 +598,7 @@ Tokiu būdu gavome dispersijos išskaidymą kaip ir Rao MINQUE atveju. Pagrindin
 \item Gauti $\hat{\beta}_{pj}$ naudojami kaip aiškinamasis kintamasis toliau vertinant antrąją modelio (\ref{eq:2lvl}) lygtį $\hat{\beta}_{pj} = \gamma_{p0} + \sum^{Q_p}_{q=1}\gamma_{pq}\times W_{pqj}+u_{pj}$ GLS metodu. Taip gaunami $\hat{\gamma}_{pq}, \ p=1,\dots,P,\  q=1,\dots,Q_P$. O kartu ir $\hat{\tau}_{pp}$ bei $\hat{u}_{pj}, \forall p,\ p=1,\dots,P$. Turint $\hat{u}_{pj}$, galime suskaičiuoti jų empirinę koreliaciją ir taip gauti $\hat{\tau}_{pp}$.
 \end{enumerate}
 
-\indent Aukščiau išvardintu būdu, gauti įverčiai $\hat{\sigma}^2,\ \hat{\tau}_{pp}, \forall p,\ p=1,\dots,P$ naudojami kaip \textit{a priori} reikšmės vertinant MINQUE($\theta$) metodu. Plačiau apie dviejų žingsnių metodą galima rasti Hanushek 1974\cite{hanushek}, Saxonhouse 1976\cite{saxonhouse}, Jusko ir Shively \cite{jusko},  Achen 2005\cite{achen} ir k.t.
+\indent Aukščiau išvardintu būdu, gauti įverčiai $\hat{\sigma}^2,\ \hat{\tau}_{pp}, \forall p,\ p=1,\dots,P$ dalijami iš $\hat{\sigma}^2$ ir naudojami kaip \textit{a priori} reikšmės vertinant MINQUE($\theta$) metodu. Plačiau apie dviejų žingsnių metodą galima rasti Hanushek 1974\cite{hanushek}, Saxonhouse 1976\cite{saxonhouse}, Jusko ir Shively \cite{jusko},  Achen 2005\cite{achen} ir k.t. PWMINQUE($\theta$) atveju abiejuose aukščiau surašytuose žingsniuose naudojami imties svoriai.
 
 
 \subsubsection{PWMINQUE}
@@ -806,6 +807,23 @@ $l$ - duomenų struktūros pažymėjimas, įgyja reikšmes pagal kombinacijas i�
 CMRSE_{kl}=\frac{1}{n_{kl}}\sum_{j=1}^{n_{kl}}MRSE_{jkl}.
 \]
 
+\subparagraph{Empiriniai kvantilių sklaidos grafikai -- EQDG}(\textit{angl. Empirical Quantile Dispersion Graphs}) metodų palyginimui buvo pasiūlyti Lee ir Khuri\cite{eqdg1} ir panaudoti REML lyginimui su MINQUE ir kitais metodais Leithy ir kt.\cite{MMINQUE}. Toliau pateikiamas trumpas metodo aprašymas (plačiau pasiskaityti minėtuose straipsniuose):
+\begin{enumerate}[a)] 
+\item Tegu pasirenkamas specifinis parametrų vertinimo metodas (REML, MINQUE ir t.t.);
+\item Sugeneruojamas $\mathbf{Y}$ pagal pasirinktą duomenis generuojantį procesą;
+\item Gaunami parametrų įverčiai su a) žingsnyje pasirinktu metodu;
+\item Žingsniai b) ir c) kartojami didelį skaičių kartų.
+\item Pasirenkamas vienas iš vertintų parametrų, sakykime $\tau_{00}$ ir skaičiuojamas dydis $q_s=\frac{\hat{\tau}_{00}}{\tau_{00}}$, kur s žymi s-tąjį įvertį;
+\item Su pasirinktomis percentilių reikšmėmis $p_h$ gaunami empiriniai kvantiliai $w_{h1}$ iš $q_s$, h -- indeksas žymintis percentilį.
+\item Žingsniai e) ir f) kartojami kiekvienam parametrui;
+\item Pasirenkama kita duomenų struktūrą ir atliekami žingsniai b) - g), taip ganaumas $w_{h2}$;
+\item Žingsnis h) kartojamas įvairioms struktūroms, kol išsemiami visi taškai;
+\item Susmaičiuojamas $\max (w_{h1},\dots,w_{hh^*})$, kur $h^*$ žymi skaičių taškų esančių nusakytame regione su $p_h$. Šis maksimumas yra EQM -- empinių kvantilių maksimumas (\textit{angl.Empirical Quantile Maximum});
+\item Pasirenkamas kitas metodas ir kartojami ankstesni žingsniai, gaunami kiti EQM kiekvienam parametrui;
+\item Kartojama tiek kartų, keik yra metodų;
+\item Kiekvienam parametrui gaunamas grafikas, kur x ašyje yra $p_h$, o y ašyje -- EQM.
+\end{enumerate}
+\indent Kuo EQM arčiau vieneto tuo geriau. Aukštesnioji kreivė laikoma prastesne.
 
 \subsubsection{Su imties svoriais}\label{subsubsec:susvoriais}
 \indent Šiame skyrelyje nusakoma, kaip buvo sudaryta populiacija, imčių ėmimas ir svorių sudarymas. Kadangi informatyvų ėmimo dizainą gana sunku sudaryti, jis pasirinktas toks pat kaip Steele, Clarke ir Goldstein straipsnyje \textit{Weighting in MLwiN}\cite{mlwin}. 
@@ -863,6 +881,8 @@ Y_{ij} = \gamma_{00} +\gamma_{01}\times X_{2j}+ \gamma_{10}\times X_{1ij}+u_{0j}
 \indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Rezultatai lyginami kaip anksčiau pateiktame skyrelyje. Žemiau esančiose lentelėse pateikti simuliacijų rezultatai visiems metodams.
 
 \subsubsection{Be svorių}
+ EQDM grafikai pateikti šio darbo \ref{sec:lenteles} priede. Fiksuotų efektų įverčių lentelėje praktiškai nėra jokio skirtumo tarp metodų. Atsitiktinių efektų parametrų įverčių lentelėje jau matyti nežymūs metodų skirtumai. Akivaizdžiai MINQUE(0) blogiausias $\sigma^2$. REML lyg ir kažkiek geriau $\tau_{01}$, tačiau prasčiau $\tau_{11}$, čia geriausias MINQUE(1). 
+
 \newpage
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
 % Mon Dec 28 21:00:27 2015
@@ -1165,16 +1185,18 @@ MKITKALB.1& mokykloje. & 2 - 10\% - 50\%; & \\
 \begin{equation}
 \left\{
 \begin{array}{l}
-MatRes_{ij}=\beta_{0j}+\varepsilon_{ij}, \ \varepsilon_{ij}\sim (0, \sigma^2);\\
-\  \ \ \ \ \ \ \ \ \beta_{0j}=\gamma_{00}+u_{0j}, \ u_{0j}\sim (0, \tau_{00}).
+\begin{split}
+MatRes_{ij}&=\beta_{0j}+\varepsilon_{ij}, &\ \varepsilon_{ij}\sim (0, \sigma^2);\\
+\beta_{0j}&=\gamma_{00}+u_{0j}, &\ u_{0j}\sim (0, \tau_{00}).
+\end{split}
 \end{array} \right.
 \end{equation}
 Tegul $Y_{ij}$ žymi $i$ - tojo mokinio iš $j$ - tosios mokyklos matematinio raštingumo testo rezultato pirmąją galimą reikšmę. Jungtinė modelio lygtis:
 \[
 MatRes_{ij}=\gamma_{00}+u_{0j}+\varepsilon_{ij}.
 \]
-Šis modelis įvertintas REML, MINQUE(1), PWMINQUE(1), MINQUE($\theta$) ir PWMINQUE($\theta$) metodais. Rezutatai pateikti lentelėje \ref{table:null}. 
-Šio modelio $ICC \approx 0,2$. Tai rodo, jog apie 20\% mokinių rezutatų skirtumų lemia mokyklos. Skyrelyje \ref{subsec:parink} minėta $R^2_1$ statistika yra apie 0,22.
+\indent Šis modelis įvertintas REML, MINQUE(1), PWMINQUE(1), MINQUE($\theta$) ir PWMINQUE($\theta$) metodais. Rezutatai pateikti  \ref{table:null} lentelėje. 
+Šio modelio $ICC \approx 0,15-0,2$. Tai rodo, jog apie 15\% -- 20\% mokinių rezutatų skirtumų lemia mokyklos. $DEFF$ yra labai aukštas visiems metodams, mažiausias PWMINQUE(1). Skyrelyje \ref{subsec:parink} minėta $R^2_1$ statistika yra apie 0,22 visais metodais. Čia reikėtų paminėti, jog PWMINQUE $R^2_1$ statistika skaičiuota $\bar{Y}$ keičiant į svertinį visos populiacijos vidurkį $\bar{Y}^*$.
 
 \begin{small}
 \begin{table}[H]
@@ -1205,34 +1227,60 @@ $R_1^2$ & 0.223  & 0.223  & 0.224 & 0.223& 0.225\\
 \begin{equation} \label{eq:timss2}
 \left\{
 \begin{array}{l}
-MatRes_{ij}=\beta_{0j}+\beta_{1j}\times SSEX_{ij}+\beta_{2j} \times STHMWRK_{ij}+\beta_{3j}\times CSMCONF_{ij}+\\
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ +\beta_{4j}\times CSHEDRES_{ij}+\beta_{5j}\times CSBULLED_{ij}+\varepsilon_{ij};\\
-\beta_{0j}=\gamma_{00}+\gamma_{01}\times MDYDIS_j+\gamma_{02}\times MSUCCESS_j\times MVIETA.4_j+\\
-\ \ \ \ \ +\gamma_{03}\times MSMLIKE_j\times MVIETA.4_j+\gamma_{05}\times MSHEDRES_j+\\
-\ \ \ \ \ +\gamma_{06}\times MAINCOME.1_j+\gamma_{07}\times MVIETA.4_j+u_{0j};\\
-\beta_{1j} = \gamma_{10};\\
-\beta_{2j}=\gamma_{21}\times MVIETA.5_j;\\
-\beta_{3j}=\gamma_{30}+u_{3j};\\
-\beta_{4j}=\gamma_{40}+\gamma_{42}\times MVIETA.5_j+u_{4j};\\
-\beta_{5j}=\gamma_{51}\times MVIETA.3_j.
+\begin{split}
+MatRes_{ij}&=\beta_{0j}+\beta_{1j}\times SSEX_{ij}+\beta_{2j} \times STHMWRK_{ij}+\beta_{3j}\times CSMCONF_{ij}+\\
+&+\beta_{4j}\times CSHEDRES_{ij}+\varepsilon_{ij};\\
+\beta_{0j}&=\gamma_{00}+\gamma_{01}\times MVIETA.2_j+\gamma_{02}\times MSUCCESS_j+\gamma_{03}\times MDYDIS_j+u_{0j};\\
+\beta_{1j}& = \gamma_{10};\\
+\beta_{2j}&=\gamma_{20};\\
+\beta_{3j}&=\gamma_{30}+u_{3j};\\
+\beta_{4j}&=\gamma_{40}.\\
+\end{split}
 \end{array} \right.
 \end{equation}
 \end{small}
 Jungtinė \ref{eq:timss2} modelio lygtis yra:
 \begin{small}
 \begin{equation} \label{eq:timss3}
-\begin{array}{l}
-MatRes_{ij}=\gamma_{00}+\gamma_{01}\times MDYDIS_j+\gamma_{02}\times MSUCCESS_j\times MVIETA.4_j+\\
-\ \ \ \ \ +\gamma_{03}\times MSMLIKE_j\times MVIETA.4_j+\\
-\ \ \ \ \ +\gamma_{05}\times MSHEDRES_j+\gamma_{06}\times MAINCOME.1_j+\gamma_{07}\times MVIETA.4_j+\\
-\ \ \ \ \ +\gamma_{10}\times SSEX_{ij}+\gamma_{21}\times MVIETA.5_j \times STHMWRK_{ij}+\gamma_{30}\times CSMCONF_{ij}+\\
-\ \ \ \ \ +\gamma_{40}\times CSHEDRES_{ij}+\\
-\ \ \ \ \ +\gamma_{42}\times MVIETA.5_j\times CSHEDRES_{ij}+\gamma_{51}\times MVIETA.3_j\times CSBULLED_{ij}+\\
-\ \ \ \ \ +[u_{0j}+u_{3j}\times CSMCONF_{ij}+u_{4j}\times CSHEDRES_{ij}+\varepsilon_{ij}]
-\end{array}
+\begin{split}
+MatRes_{ij}&=\gamma_{00}+\gamma_{01}\times MVIETA.2_j+\gamma_{02}\times MSUCCESS_j+\gamma_{03}\times MDYDIS_j+\\
+&+ \gamma_{10}\times SSEX_{ij}+\gamma_{20} \times STHMWRK_{ij}+\gamma_{30}\times CSMCONF_{ij}+\\
+&+ \gamma_{40}\times CSHEDRES_{ij}+u_{0j}+u_{3j}\times  CSMCONF_{ij} +\varepsilon_{ij}.
+\end{split}
 \end{equation}
 \end{small}
 
+\indent Modelis įvertintas visais aukščiau išvardintais metodais. Gauti parametrų įverčiai pateikti \ref{table:final} lentelėje. Prie fiksuotų koeficientų surašyti juos atitinkantys kintamieji, kad būtų paprasčiau atsirinkti ir interpretuoti įverčius. Įverčiai drastiškai nesiskiria, išskyrus  PWMINQUE(1) metodu gautus įverčius. Kaip jau buvo minėta, MINQUE metodas nėra apsaugotas nuo neigiamų atsitiktinių efektų kovariacijos matricos elementų įverčių. Šioje vietoje tai ir pastebime,  $\hat{\tau_{11}}^{PWMINQUE(1)}= -12.328$. Nors $\hat{\tau_{11}}^{MINQUE(1)}= 1.053$, atsitiktinių efektų kovariacijų matrica gaunama neigiamai apibrėžta. Taip nutiko, nes skirtumas tarp $\hat{\tau_{11}}$ ir $\hat{\sigma}^2$ labai didelis, o priskiriamos vienodos \textit{a priori} reikšmės.
+
+\indent Palyginus su nulinio modelio įverčiais, $\hat{\sigma}^2$ ir $\hat{\tau_{00}}$ galutinio modelio įverčiai ženkliai mažesni, tai reikškia, jog įtraukti kintamieji paaiškina nemažai mokinių matematikos rezultatų kintamumo. Mažiausias $\hat{\tau_{00}}=704.666$ gautas PWMINQUE($\theta$) metodu. Kaip ir buvo galima tikėtis, REML ir MINQUE($\theta$) panašūs.
+
+\begin{small}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Parametras & REML & MINQUE(1) & PWMINQUE(1) & MINQUE($\theta$) & PWMINQUE($\theta$)\\
+\hline
+$\gamma_{00}$ & 471.913 & 481.680 & 399.091 & 471.271 & 444.265 \\ 
+$\gamma_{01}$ {\footnotesize  (MVIETA.2)}& -27.960 & -29.294 & -80.377 & -27.889 & -26.661 \\ 
+$\gamma_{02}$ {\footnotesize (MSUCCESS)} & 1.916 & 1.134 & 16.545 & 1.965 & 5.120 \\ 
+$\gamma_{03}$  {\footnotesize(MDYDIS)}& 0.018 & 0.015 & -0.063 & 0.018 & 0.006 \\ 
+$\gamma_{10}$ {\footnotesize (SSEX)} & 11.112 & 11.090 & 11.903 & 11.112 & 13.061 \\ 
+$\gamma_{20}$  {\footnotesize(STHMWRK)}& 6.539 & 6.521 & -8.669 & 6.533 & 4.518 \\ 
+$\gamma_{30}$  {\footnotesize(CSMCONF)}& 18.579 & 18.551 & 21.220 & 18.580 & 19.102 \\ 
+$\gamma_{40}$  {\footnotesize(CSHEDRES)}& 9.518 & 9.328 & 11.168 & 9.525 & 10.951 \\ 
+$\sigma^2$ &2843.308 & 2842.028 & 2858.521 & 2843.560 & 2890.473 \\
+$\tau_{00}$ & 946.783 & 998.554 & 853.321 & 928.238 & 704.666 \\ 
+$\tau_{01}$ & -92.772 & -82.178 & -141.233 & -91.622 & -106.479 \\ 
+$\tau_{11}$ & 21.711 & 1.053 & -12.328 & 22.754 & 25.003 \\
+\hline
+$R_1^2$ & 0.516 & 0.504 & -12.251 & 0.517 & 0.515\\
+\hline
+\end{tabular}
+\caption{Lentelėje pateikti modelio  \ref{eq:timss2} parametrų įverčiai bei statistikos $R_1^2$.}
+\label{table:final}
+\end{table}
+\end{small}
 
 
 \section{???IŠVADOS}
@@ -1283,6 +1331,7 @@ MatRes_{ij}=\gamma_{00}+\gamma_{01}\times MDYDIS_j+\gamma_{02}\times MSUCCESS_j\
 \bibitem{countryHLM} Kyriakides, L., Charalambous, C., \textit{ Extending the Scope of Analysing Data of IEA Studies: Applying Multilevel Modeling Techniques to Analyse TIMSS Data}, IRC, 2004.
 \bibitem{timssCpalyg2} Kim, S. J., Park, J. H., Park, S. W., Kim, S. S., \textit{The Effects of School and Students’ Educational Contexts in Korea, Singapore, and Finland using TIMSS 2011}, IRC, 2013.
 \bibitem{siaip5} Kunter, M., Baumert, J., \textit{Constructivist Approches in the Secondary School Mathematics Classroom and Their Effects on Students' Learning, Interest and Sense of Challange: a Re-analysis of the German TIMSS Data}, IRC, 2004.
+\bibitem{eqdg1}Lee, J., Khuri, A.I., \textit{Graphical technique for comparing designs for random models}, Journal of Statistical Planning and Inference, 91,  933–947, 2000.
 \bibitem{bootML} Van der Leeden, R., Busing, F. M. T. A., and Meijer, E., \textit{Bootstrap methods for two-level models}, Technical Report PRM 97-04, Leiden University, Department of Psychology, Leiden, 1997.
 \bibitem{EBi} Leeuw, J., Meijer, E., \textit{Handbook of Multilevel Analysis}, Springer, 2007.
 \bibitem{shrinkage} Leeuw, J., Kreft, I., \textit{Questioning Multilevel Models}, Journal of Educational and Behavioral Statistics, Summer 1995, Vol. 20, No. 2, 171-189.
@@ -1646,7 +1695,7 @@ bb$sigma
   
 
 \newpage
-\section{Simuliacijų rezultatai}
+\section{Simuliacijų rezultatai}\label{sec:lenteles}
 
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
 % Mon Dec 28 21:31:41 2015

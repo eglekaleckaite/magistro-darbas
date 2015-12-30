@@ -2915,3 +2915,14 @@ boldmin <- function(x, th1 = 0.006, th2 = 0.05){
   x[wh] <- paste0("\\framebox{", x[wh], "}")
   return(x)
 }
+
+R12 <- function(rmm) {
+  r1r <- 1-sum(resid(rmm)^2)/sum((rmm@frame[,1]-mean(rmm@frame[,1]))^2)
+  return(r1r)
+}
+
+ICC <- function(smm, n){
+  iccr <- smm$varcor[[1]][1,1]/(smm$varcor[[1]][1,1]+smm$sigma^2)
+  deffr <- 1+(n-1)*iccr
+  return(c(iccr, deffr))
+}
