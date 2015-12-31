@@ -8,32 +8,33 @@
 \BOOKMARK [2][-]{subsection.3.2}{Efektu vertinimas}{section.3}% 8
 \BOOKMARK [2][-]{subsection.3.3}{REML metodas}{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.4}{MINQUE metodas}{section.3}% 10
-\BOOKMARK [3][-]{subsubsection.3.4.1}{MINQUE literaturos ap\236valga????}{subsection.3.4}% 11
-\BOOKMARK [3][-]{subsubsection.3.4.2}{MINQUE pritaikymas HLM modeliams.}{subsection.3.4}% 12
-\BOOKMARK [3][-]{subsubsection.3.4.3}{Bagaka's MINQUE}{subsection.3.4}% 13
-\BOOKMARK [3][-]{subsubsection.3.4.4}{Delpish MINQUE}{subsection.3.4}% 14
-\BOOKMARK [3][-]{subsubsection.3.4.5}{Mano MINQUE???}{subsection.3.4}% 15
-\BOOKMARK [3][-]{subsubsection.3.4.6}{A priori}{subsection.3.4}% 16
-\BOOKMARK [3][-]{subsubsection.3.4.7}{PWMINQUE}{subsection.3.4}% 17
-\BOOKMARK [2][-]{subsection.3.5}{Saviranka}{section.3}% 18
-\BOOKMARK [1][-]{section.4}{EMPIRINES SIMULIACIJOS}{}% 19
-\BOOKMARK [2][-]{subsection.4.1}{Monte Carlo simuliacijos}{section.4}% 20
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Be imties svoriu}{subsection.4.1}% 21
-\BOOKMARK [3][-]{subsubsection.4.1.2}{Su imties svoriais}{subsection.4.1}% 22
-\BOOKMARK [2][-]{subsection.4.2}{Simuliaciju rezultatai}{section.4}% 23
-\BOOKMARK [3][-]{subsubsection.4.2.1}{Be svoriu}{subsection.4.2}% 24
-\BOOKMARK [3][-]{subsubsection.4.2.2}{Su svoriais}{subsection.4.2}% 25
-\BOOKMARK [1][-]{section.5}{HLM MODELIS TIMSS DUOMENIMS}{}% 26
-\BOOKMARK [2][-]{subsection.5.1}{TIMSS tyrimo apra\235ymas}{section.5}% 27
-\BOOKMARK [2][-]{subsection.5.2}{TIMSS tyrimu ap\236valga}{section.5}% 28
-\BOOKMARK [2][-]{subsection.5.3}{TIMSS duomenys}{section.5}% 29
-\BOOKMARK [2][-]{subsection.5.4}{HLM modelis 2011 metu TIMSS duomenims}{section.5}% 30
-\BOOKMARK [1][-]{section.6}{???I\227VADOS}{}% 31
-\BOOKMARK [1][-]{section.6}{LITERATURA IR \227ALTINIAI}{}% 32
+\BOOKMARK [3][-]{subsubsection.3.4.1}{MINQUE metodo apra\235ymas}{subsection.3.4}% 11
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Bagaka's MINQUE}{subsection.3.4}% 12
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Delpish MINQUE}{subsection.3.4}% 13
+\BOOKMARK [2][-]{subsection.3.5}{Saviranka}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{DARBE TAIKOMAS MINQUE}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{MINQUE pritaikymas HLM}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{A priori reik\235mes}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{PWMINQUE}{section.4}% 18
+\BOOKMARK [1][-]{section.5}{EMPIRINES SIMULIACIJOS}{}% 19
+\BOOKMARK [2][-]{subsection.5.1}{Monte Carlo simuliacijos}{section.5}% 20
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Be imties svoriu}{subsection.5.1}% 21
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Su imties svoriais}{subsection.5.1}% 22
+\BOOKMARK [2][-]{subsection.5.2}{Simuliaciju rezultatai}{section.5}% 23
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Be svoriu}{subsection.5.2}% 24
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Su svoriais}{subsection.5.2}% 25
+\BOOKMARK [1][-]{section.6}{HLM MODELIS TIMSS DUOMENIMS}{}% 26
+\BOOKMARK [2][-]{subsection.6.1}{TIMSS tyrimo apra\235ymas}{section.6}% 27
+\BOOKMARK [2][-]{subsection.6.2}{TIMSS tyrimu ap\236valga}{section.6}% 28
+\BOOKMARK [2][-]{subsection.6.3}{TIMSS duomenys}{section.6}% 29
+\BOOKMARK [2][-]{subsection.6.4}{HLM modelis 2011 metu TIMSS duomenims}{section.6}% 30
+\BOOKMARK [1][-]{section.7}{???I\227VADOS}{}% 31
+\BOOKMARK [1][-]{section.7}{LITERATURA IR \227ALTINIAI}{}% 32
 \BOOKMARK [1][-]{section*.21}{LITERATURA IR \227ALTINIAI}{}% 33
-\BOOKMARK [1][-]{section*.22}{Priedas}{}% 34
-\BOOKMARK [1][-]{section*.22}{Lenteliu sara\235as}{}% 35
-\BOOKMARK [1][-]{section*.23}{Lenteliu sara\235as}{}% 36
-\BOOKMARK [1][-]{section*.23}{Iliustraciju sara\235as}{}% 37
-\BOOKMARK [1][-]{section*.24}{Iliustraciju sara\235as}{}% 38
-\BOOKMARK [1][-]{appendix.A}{Simuliaciju rezultatai}{}% 39
+\BOOKMARK [1][-]{appendix.A}{\(PW\)MINQUE R kodas}{}% 34
+\BOOKMARK [1][-]{appendix.A}{Priedas}{}% 35
+\BOOKMARK [1][-]{appendix.B}{Simuliaciju rezultatai}{}% 36
+\BOOKMARK [1][-]{figure.5}{Lenteliu sara\235as}{}% 37
+\BOOKMARK [1][-]{section*.23}{Lenteliu sara\235as}{}% 38
+\BOOKMARK [1][-]{section*.23}{Iliustraciju sara\235as}{}% 39
+\BOOKMARK [1][-]{section*.24}{Iliustraciju sara\235as}{}% 40

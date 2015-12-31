@@ -12,48 +12,49 @@
 \contentsline {subsection}{\numberline {3.2}Efekt\IeC {\k u} vertinimas}{11}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}REML metodas}{12}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}MINQUE metodas}{12}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}MINQUE metodo apra\IeC {\v s}ymas}{12}{subsubsection.3.4.1}
 \contentsline {subparagraph}{I-MINQUE metodas}{13}{section*.5}
-\contentsline {subsubsection}{\numberline {3.4.1}MINQUE literat\IeC {\=u}ros ap\IeC {\v z}valga????}{13}{subsubsection.3.4.1}
 \contentsline {subparagraph}{Pastabos.}{14}{section*.6}
-\contentsline {subsubsection}{\numberline {3.4.2}MINQUE pritaikymas HLM modeliams.}{14}{subsubsection.3.4.2}
-\contentsline {subsubsection}{\numberline {3.4.3}Bagaka's MINQUE}{14}{subsubsection.3.4.3}
+\contentsline {subsubsection}{\numberline {3.4.2}Bagaka's MINQUE}{14}{subsubsection.3.4.2}
 \contentsline {subparagraph}{Dvigubas eksponentinis skirstinys}{15}{section*.7}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{15}{section*.8}
-\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{16}{section*.9}
-\contentsline {subsubsection}{\numberline {3.4.4}Delpish MINQUE}{17}{subsubsection.3.4.4}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{15}{section*.9}
+\contentsline {subsubsection}{\numberline {3.4.3}Delpish MINQUE}{16}{subsubsection.3.4.3}
 \contentsline {subparagraph}{Dvimatis $\chi ^2$ skirstinys}{17}{section*.10}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{17}{section*.11}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{17}{section*.12}
-\contentsline {subsubsection}{\numberline {3.4.5}Mano MINQUE???}{18}{subsubsection.3.4.5}
-\contentsline {subsubsection}{\numberline {3.4.6}A priori}{18}{subsubsection.3.4.6}
-\contentsline {subsubsection}{\numberline {3.4.7}PWMINQUE}{19}{subsubsection.3.4.7}
-\contentsline {subsection}{\numberline {3.5}Saviranka}{20}{subsection.3.5}
-\contentsline {subparagraph}{Neparametrin\IeC {\.e} atvej\IeC {\k u} saviranka.}{21}{section*.13}
-\contentsline {subparagraph}{Savirankos metodas.}{21}{section*.14}
-\contentsline {section}{\numberline {4}EMPIRIN\IeC {\.E}S SIMULIACIJOS}{22}{section.4}
-\contentsline {subsection}{\numberline {4.1}Monte Carlo simuliacijos}{22}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}Be imties svori\IeC {\k u}}{22}{subsubsection.4.1.1}
-\contentsline {subparagraph}{Vidutinis \IeC {\k i}vertis}{24}{section*.15}
-\contentsline {subparagraph}{Vidutinis santykinis poslinkis -- MRBIAS}{24}{section*.16}
-\contentsline {subparagraph}{Vidutin\IeC {\.e} santykin\IeC {\.e} kvadratin\IeC {\.e} paklaida -- MRSE }{24}{section*.17}
-\contentsline {subparagraph}{Empiriniai kvantili\IeC {\k u} sklaidos grafikai -- EQDG}{25}{section*.18}
-\contentsline {subsubsection}{\numberline {4.1.2}Su imties svoriais}{26}{subsubsection.4.1.2}
-\contentsline {subsection}{\numberline {4.2}Simuliacij\IeC {\k u} rezultatai}{26}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Be svori\IeC {\k u}}{26}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Su svoriais}{29}{subsubsection.4.2.2}
-\contentsline {section}{\numberline {5}HLM MODELIS TIMSS DUOMENIMS}{31}{section.5}
-\contentsline {subsection}{\numberline {5.1}TIMSS tyrimo apra\IeC {\v s}ymas}{31}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}TIMSS tyrim\IeC {\k u} ap\IeC {\v z}valga}{32}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}TIMSS duomenys}{33}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}HLM modelis 2011 met\IeC {\k u} TIMSS duomenims}{35}{subsection.5.4}
-\contentsline {subparagraph}{Nulinis modelis}{37}{section*.19}
-\contentsline {subparagraph}{Galutinis modelis}{37}{section*.20}
-\contentsline {section}{\numberline {6}???I\IeC {\v S}VADOS}{38}{section.6}
-\contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{40}{section.6}
-\contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{40}{section*.21}
-\contentsline {section}{Priedas}{44}{section*.22}
-\contentsline {section}{Lenteli\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{50}{section*.22}
-\contentsline {section}{Lenteli\k {u} s\k {a}ra\v {s}as}{50}{section*.23}
-\contentsline {section}{Iliustracij\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{51}{section*.23}
-\contentsline {section}{Iliustracij\k {u} s\k {a}ra\v {s}as}{51}{section*.24}
-\contentsline {section}{\numberline {A}Simuliacij\IeC {\k u} rezultatai}{53}{appendix.A}
+\contentsline {subsection}{\numberline {3.5}Saviranka}{18}{subsection.3.5}
+\contentsline {subparagraph}{Neparametrin\IeC {\.e} atvej\IeC {\k u} saviranka.}{18}{section*.13}
+\contentsline {subparagraph}{Savirankos metodas.}{19}{section*.14}
+\contentsline {section}{\numberline {4}DARBE TAIKOMAS MINQUE}{20}{section.4}
+\contentsline {subsection}{\numberline {4.1}MINQUE pritaikymas HLM}{20}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}A priori reik\IeC {\v s}m\IeC {\.e}s}{20}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}PWMINQUE}{21}{subsection.4.3}
+\contentsline {section}{\numberline {5}EMPIRIN\IeC {\.E}S SIMULIACIJOS}{23}{section.5}
+\contentsline {subsection}{\numberline {5.1}Monte Carlo simuliacijos}{23}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Be imties svori\IeC {\k u}}{23}{subsubsection.5.1.1}
+\contentsline {subparagraph}{Vidutinis \IeC {\k i}vertis}{25}{section*.15}
+\contentsline {subparagraph}{Vidutinis santykinis poslinkis -- MRBIAS}{25}{section*.16}
+\contentsline {subparagraph}{Vidutin\IeC {\.e} santykin\IeC {\.e} kvadratin\IeC {\.e} paklaida -- MRSE }{25}{section*.17}
+\contentsline {subparagraph}{Empiriniai kvantili\IeC {\k u} sklaidos grafikai -- EQDG}{26}{section*.18}
+\contentsline {subsubsection}{\numberline {5.1.2}Su imties svoriais}{27}{subsubsection.5.1.2}
+\contentsline {subsection}{\numberline {5.2}Simuliacij\IeC {\k u} rezultatai}{27}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Be svori\IeC {\k u}}{27}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Su svoriais}{30}{subsubsection.5.2.2}
+\contentsline {section}{\numberline {6}HLM MODELIS TIMSS DUOMENIMS}{32}{section.6}
+\contentsline {subsection}{\numberline {6.1}TIMSS tyrimo apra\IeC {\v s}ymas}{32}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}TIMSS tyrim\IeC {\k u} ap\IeC {\v z}valga}{33}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}TIMSS duomenys}{34}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}HLM modelis 2011 met\IeC {\k u} TIMSS duomenims}{36}{subsection.6.4}
+\contentsline {subparagraph}{Nulinis modelis}{38}{section*.19}
+\contentsline {subparagraph}{Galutinis modelis}{38}{section*.20}
+\contentsline {section}{\numberline {7}???I\IeC {\v S}VADOS}{39}{section.7}
+\contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{41}{section.7}
+\contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{41}{section*.21}
+\contentsline {section}{\numberline {A}(PW)MINQUE R kodas}{45}{appendix.A}
+\contentsline {section}{Priedas}{45}{appendix.A}
+\contentsline {section}{\numberline {B}Simuliacij\IeC {\k u} rezultatai}{52}{appendix.B}
+\contentsline {section}{Lenteli\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{64}{figure.5}
+\contentsline {section}{Lenteli\k {u} s\k {a}ra\v {s}as}{64}{section*.23}
+\contentsline {section}{Iliustracij\IeC {\k u} s\IeC {\k a}ra\IeC {\v s}as}{65}{section*.23}
+\contentsline {section}{Iliustracij\k {u} s\k {a}ra\v {s}as}{65}{section*.24}
