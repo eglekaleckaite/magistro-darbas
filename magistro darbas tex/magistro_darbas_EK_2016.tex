@@ -134,26 +134,33 @@ TIMSS, PWIGLS, HLM, MINQUE
 \newpage
 \section{ĮVADAS}
 
-\indent Hierarchiniai tiesiniai modeliai (\textit{angl. Hierarchical Linear Models}) naudojami tirti tokias struktūras, kuomet vieni individai yra suskirstyti į kelias nesikertančias grupes, o šios yra dar didesnių grupių pogrupiai. Tipinis pavyzdys: mokyklų duomenys, kai mokiniai yra klasėse, o klasės mokyklose; arba organizcijos, kurių darbuotojai dirba skirtinguose padaliniuose. Šie modeliai naudojami ekonomikoje, biologijoje ir dar daug kur.
+\indent Hierarchiniai tiesiniai modeliai (\textit{angl. Hierarchical Linear Models}) naudojami tirti tokias struktūras, kuomet vieni individai yra suskirstyti į kelias nesikertančias grupes, o šios yra dar didesnių grupių pogrupiai. Tipinis pavyzdys: mokyklų duomenys, kai mokiniai yra klasėse, o klasės mokyklose; arba organizcijos, kurių darbuotojai dirba skirtinguose padaliniuose. Šie modeliai naudojami ekonomikoje, biologijoje ir dar daug kur.\cite{cek}
 
-\indent HLM modeliai yra platesnės mišrių efektų modelių klasės dalis. Dažniausiai sutinkama vertinimo procedūra yra REML - apribotas didžiausio tikėtinumo metodas (\textit{angl. Restricted Maximum Likelihood}), kurio log-tikėtinumo funkcija sudaryta darnt prielaidą, jog modelio paklaidos yra iš normaliojo skirstinio. 1970-1972 metais Rao išleido straipsnių ciklą, kur pristatė naują mišrių efektų modelių vertinimo procedūrą, nereikalaujančią jokių žinių apie paklaidų pasiskirtymą, MINQUE - nepaslinktą mažiausios kvadratinės normos įvertinį (\textit{Minimum Norm Quadratic Unbiased Estimator}). 
-%Tiesa, prie tam tikrų sąlygų ši procedūra yra identiška REML. 
-1992 metais Bagaka's pritaikė MINQUE dviejų lygių HLM modeliams su atsitiktiniu postūmiu vertinti. Kadangi MINQUE procedūrai nebuvo apibrėžtas standartinių paklaidų skaičiavimas, Bagaka's tam panaudojo savirankos metodą (\textit{angl. bootstrap}). 2006 metais Delpish savo daktaro disertacijoje simuliacijų būdu nustatė, jog MINQUE su saviranka duoda tikslesnius rezultatus nei REML (parenmas normalumo prielaida). Vienas iš šio magistro darbo tikslų yra Monte Carlo simuliacijų būdu nustatyti, ar TIMSS duomenų struktųrai MINQUE metodas gali potencialiai duoti geresnius rezultatus.
+\indent HLM modeliai yra platesnės mišrių efektų modelių klasės dalis. Dažniausiai sutinkama vertinimo procedūra yra REML -- apribotas didžiausio tikėtinumo metodas (\textit{angl. Restricted Maximum Likelihood}), kurio log-tikėtinumo funkcija sudaryta darnt prielaidą, jog modelio paklaidos yra iš normaliojo skirstinio. 1970--1972 metais Rao išleido straipsnių ciklą  (1970\cite{rao1970}, 1971a\cite{rao1971a} , 1971b\cite{rao1971b} , 1972\cite{rao1972}), kur pristatė naują mišrių efektų modelių vertinimo procedūrą, nereikalaujančią jokių žinių apie paklaidų ar atsitiktinių efektų pasiskirtymą, MINQUE - nepaslinktą mažiausios kvadratinės normos įvertinį (\textit{Minimum Norm Quadratic Unbiased Estimator}). Šis metodas pasižymi trokštamomis savybėmis -- invariantiškumu ir nepaslinktumu. MINQUE yra funkcija nuo \textit{a priori} reikšmių, todėl nepaslinktumo sąlyga galioja tik jų aplinkoje. Dėl to dar naudojamas ir I-MINQUE -- iteratyvus MINQUE -- metodas, kuris yra identiškas REML. Deja, I-MINQUE nepaslinktumasnegali būti garantuotas. Kai normalumo sąlyga galioja MINQUE sutampa su MIVQUE ir yra dispersijos komponenčių geriausias nepaslinktas įvertinys\cite{rao1971b}. Pagal Tong ir k.t. \cite{MLbetterMINQUE} REML metodas veikia geriau, kai paklaidų efektas yra reikšmingas ir paklaidos pasiskirstę pagal normalųjį dėsnį, kitu atveju MINQUE įverčiai turėtų būti mažiau paslinkti. Dėl iteratyvumo REML metodas yra linkęs pervertinti nulinius ar arti nulio esančius parametrus, čia MINQUE turėtų būti tikslesnis. Mišrių efektų modeliams parametrų įverčiai REML metodu yra nepaslinkti, tačiau dispersijos komponenčių įverčiai gali būti paslinkti, mažesni nei iš tikrųjų, o tai tapatų parametrų standartinių paklaidų (\textit{ang. Standard Error}) paslinktumą į mažesnę pusę ir išpustas testų statistikas \cite{downwardbias}.
 
-\indent HLM neretai naudojamas ir TIMSS - tarptautinio matematikos ir gamtos mokslų tyrimo (\textit{angl. Trends in International Mathematics and Science Study}) - duomenims tirti. Šie duomenys ypatingi tuo, jog regresoriai yra indeksai, kategoriniai kintamieji bei sveikieji skaičiai (pvz.: mokinių skaičius mokykloje). Modeliams su tokiomis struktūromis normalumas dažnai negali būti garantuotas. 
+\indent 1992 metais Bagaka's\cite{bagaka} pritaikė MINQUE dviejų lygių HLM modeliams su atsitiktiniu postūmiu vertinti. Kadangi MINQUE procedūrai nebuvo apibrėžtas standartinių paklaidų skaičiavimas, Bagaka's tam panaudojo savirankos metodą (\textit{angl. bootstrap}). 2006 metais Delpish\cite{delpish} savo daktaro disertacijoje simuliacijų būdu nustatė, jog MINQUE su saviranka duoda efektyvesnius rezultatus nei REML (paremtas normalumo prielaida).
 
-\indent TIMSS imtys yra sudaromos informatyviai ir yra pateikiami imties svoriai kiekvienam lygiui. HLM su imties svoriais vertinti naudojamas PWIGLS - iteratyvus tikimybėmis pasvertas apibendrintasis mažiausių kvadratų metodas (\textit{angl. Posibility Weighted Iterative General Least Squares}), kuris kaip ir REML reikalauja paklaidų normalumo. Vertinimui dažniausiai naudojami paketai yra \textit{SAS}, \textit{SPSS}, \textit{HLM7}, \textit{MLwiN} ir k.t.. Tačiau šie paketai yra mokami ir galima legaliai gauti tik trumpalaikes apribotas versijas. Mokslinėje visuomenėje yra paplitęs nemokamas ir laisvai prieinamas statistinės analizės paketas $\R$. Nors hierarchinių modelių vertinimo su svoriais metodas nėra realizuotas, šiame darbe naudotas $\R$ statistinės analizės paketas. Tad, šio darbo tikslas yra sukurti $\R$ funkcijas skirtas dviejų lygių HLM modeliams vertinti MINQUE metodu bei realizuoti šiam metodui svėrimą tikimybėmis. Galiausiai, sudaryti dviejų lygių hierarchinį tiesinį modelį TIMSS duomenims ir jį įvertinti tirtais metodais.
+\indent HLM neretai naudojamas ir TIMSS - tarptautinio matematikos ir gamtos mokslų tyrimo (\textit{angl. Trends in International Mathematics and Science Study}) - duomenims tirti. Šie duomenys ypatingi tuo, jog regresoriai yra indeksai, kategoriniai kintamieji bei sveikieji skaičiai (pvz.: mokinių skaičius mokykloje)\cite{timssug}. Modeliams su tokiomis struktūromis normalumas dažnai negali būti garantuotas.  Vienas iš šio magistro darbo tikslų yra Monte Carlo simuliacijų būdu nustatyti, ar TIMSS duomenų struktūrai MINQUE metodas gali potencialiai duoti geresnius rezultatus.
 
-???? Literatūroje nurodoma (Delphish 2006 \cite{delpish}), jog šis metodas duomenims, kurie netenkina normalumo prielaidos, duoda tikslesnius parametrų (dispersijos komponenčių) įverčius. Po ilgų paieškų $\R$ statistinės analizės programoje nepavyko rasti norimo MINQUE metodo hierarchiniams tiesiniams modeliams vertinti. Paketo \textit{varComp} funkcija \textit{minque} vertina tik centruotą aiškinamąjį kintamąjį. Paketo \textit{maanova} funkcija \textit{fitmaanova} vertina tik ANOVA mikro vektoriams. Paketas \textit{minque} pritaikytas labai mažoms imtims. Paketo \textit{CLME} funkcija \textit{minque} taikoma tik specininėms to paketo struktūroms. Paketo \textit{dmm} funcija \textit{minque} skirta  tik diadinio modelio lygtims (\textit{angl. dyadic model}). O Demidenko knygos \cite{mixedR} priede pateikta funkcija \textit{lmevarMINQUE} vertina tik labai atskirą atvejį ir negalima pasirinkti \textit{a priori} reikšmių. Dėl šios priežasties šiame darbe aprašytas MINQUE vertinimo metodas buvo realizuotas $\R$ aplinkoje pačios šio magistro darbo autorės.
+\indent TIMSS imtys yra sudaromos informatyviai ir yra pateikiami imties svoriai kiekvienam lygiui\cite{2011Sample}. HLM su imties svoriais vertinti naudojamas PWIGLS - iteratyvus tikimybėmis pasvertas apibendrintasis mažiausių kvadratų metodas (\textit{angl. Posibility Weighted Iterative General Least Squares}), kuris kaip ir REML reikalauja paklaidų normalumo.
 
-\indent Šio darbo tikslai???
+\indent Hierarchinių tiesinių modelių vertinimui dažniausiai naudojami paketai yra \textit{SAS}, \textit{SPSS}, \textit{HLM7}, \textit{MLwiN} ir k.t.. Tačiau šie paketai yra mokami ir galima legaliai gauti tik trumpalaikes apribotas versijas. Mokslinėje visuomenėje yra paplitęs nemokamas ir laisvai prieinamas, lankstus statistinės analizės paketas $\R$. Vertinti REML metudu naudota paketo $lme4$ funkcija $lmer$.Po ilgų paieškų $\R$ paketuose nepavyko rasti norimo MINQUE metodo hierarchiniams tiesiniams modeliams vertinti, taip pat nepavyko rasti realizuoto metodo hierarchinių modelių vertinimui su svoriais . Paketo \textit{varComp} funkcija \textit{minque} vertina tik centruotą aiškinamąjį kintamąjį. Paketo \textit{maanova} funkcija \textit{fitmaanova} vertina tik ANOVA mikro vektoriams. Paketas \textit{minque} pritaikytas labai mažoms imtims. Paketo \textit{CLME} funkcija \textit{minque} taikoma tik specininėms to paketo struktūroms. Paketo \textit{dmm} funcija \textit{minque} skirta  tik diadinio modelio lygtims (\textit{angl. dyadic model}). O Demidenko knygos \cite{mixedR} priede pateikta funkcija \textit{lmevarMINQUE} vertina tik labai atskirą atvejį ir negalima pasirinkti \textit{a priori} reikšmių. Dėl šios priežasties šiame darbe aprašytas MINQUE vertinimo metodas buvo realizuotas $\R$ aplinkoje pačios šio magistro darbo autorės. Taip pat MINQUE metodui pritaikytas Pfefferman ir k.t.\cite{pfeff} pasiūlytas svėrimas IGLS metodui.
 
-\indent Šis magistro darbo struktūra išvardinta žemiau:
+\indent Šio darbo tikslai ir lūkesčiai:
+\begin{enumerate}
+\item Sukurti lansčią $\R$ funkciją MINQUE metodui -- su pasirenkamomis \textit{a priori} reikšmėmis,  imties svoriais bei iteracijomis.
+\item Simuliacijų būdu palyginti REML ir MINQUE su skirtingomis \textit{a priori} reikšmėmis metodus HLM struktūrai su skirtingais antro lygio subjektų kiekiais (20, 35, 80), skirtingais pirmo lygio subjektų kiekiais (atsitiktinis, subalansuotas = 30) bei skirtingais paklaidų ir atsitiktinių efektų santykiais ($\frac{\tau_{00}}{\sigma^2}=0,05;0,4;1$) ir pasiskirstymais ($\mathcal{N}$ ir $\chi^2$). Tikimasi, jog bent vienu iš tiriamų atvejų MINQUE dispersijos komponenčių įverčiai bus mažiau paslinkti nei REML, kuomet normalumo sąlyga negali būti garantuota.
+\item Simuliacijų būdu palyginti REML ir MINQUE be svorių su MINQUE su imties svoriais. Tikimiasi, jog MINQUE su svoriais informatyviam ėmimui abiejuose lygiuose duos mažiau paslinktus įverčius.
+\item Lietuvos aštuntokų TIMSS 2011 metų duomenims sudaryti HLM modelį ir gauti įverčius REML ir MINQUE metodais.
+\end{enumerate}
+
+\indent Šis darbo struktūra išvardinta žemiau:
 \begin{itemize}
 \item \ref{sec:hlm} skyriuje aprašoma hierarchinių tiesinių modelių teorija.
-\item \ref{sec:vert} skyrius skirtas hierarchinių tiesinių modelių parametrų vertinimo metodams. Aptariamas MINQUE metodas ir jo realizacija $\R$ aplinkoje.
+\item \ref{sec:vert} skyrius skirtas hierarchinių tiesinių modelių parametrų vertinimo metodams -- REML ir MINQUE.
+\item \ref{sec:hlmminque} skyriuje aptariamas MINQUE metodas hierarchiniams tiesiniams modeliams ir jo realizacija $\R$ aplinkoje.
 \item \ref{sec:simul} skyrius skiriamas empirinėms parametrų vertinimo skirtingais metodais simuliacijoms.
-\item \ref{sec:timss} skyriuje aprašomas TIMSS tyrimas, sudaromas bei įvertinamas modelis Lietuvos TIMSS duomenims atsižvelgiant į \ref{sec:simul} skyriaus rezultatus.
+\item \ref{sec:timss} skyriuje aprašomas TIMSS tyrimas, sudaromas bei įvertinamas modelis Lietuvos TIMSS duomenims.
 \item Pagrindiniai šio magistro darbo rezultatai dar kartą trumpai aptariami išvadose.
 \end{itemize}
 
@@ -368,8 +375,14 @@ R^2_1=1-\dfrac{\sum^J_{j=1}\left(Y_{j}-\hat{Y}_{j}\right)'\left(Y_{j}-\hat{Y}_{j
 
 Savo diseraticoje \textit{Estimation of Genetic Variance Components in the General Mixed Model}\cite{zhu} Zhu Monte Carlo simuliacijų būdu palygino HEND3 (\textit{Henderono trečiasis metodas}), ML, REML, MINQUE(1) ir MINQUE($\theta$) metodų galią genetinėms dispersijos komponentėms vertinti. Kuomet duomenų dizainas subalansuotas, HEND3 metodo galia sutapo su likusiais metodais. Nesubalansuoto dizaino atveju REML, MINQUE(1) ir MINQUE($\theta$) galia skyrėsi. Kuomet dispersijos komponentės nenulinės visi trys metodai gali duoti nepalinktus įverčius su panašia galia. Kai yra nulinių komponenčių, MINQUE(1) ir MINQUE($\theta$) gali duoti įverčius panašius į tikrąją reikšmę, tačiau REML visuomet pervertina. Tad autorius siūlo MINQUE(1) ir MINQUE($\theta$) kaip tinkamus dispersijos - kovariacijos komponenčių vertinumui.
 
+\indent MINQUE metodas nereikalauja žinių apie atsitiktinių efektų ir paklaidų pasiskirstymą, nereikalauja iteracijų, tiesiog yra tiesinių lygčių sprendinys. Tačiau MINQUE yra funkcija nuo \textit{a priori} reikšmių ir minimumo savybė galioja tik toms \textit{a priori} reikšmėms. Su tais pat duomenimis ir tuo pačiu modeliu $N$ skirtingų žmonių gali gauti $N$ skirtingų įverčių. Nepaisant to, MINQUE visada yra nepaslinktas. Visgi autoriai teigia, jog MINQUE metodas nėra praktiškas vertinant tiesinius mišrių efektų modelius. (Searly ir k.t. \cite{minquereml2}).
+
+\indent  MINQUE metodas reikalauja didelių matricų operacijų, o tai nėra efektyvu. Tad specifiniams atvejams tyrėjai bando suvesti šį metodą į bematricinį. Vienas iš pavyzdžių Kleffe ir Seifert \cite{papminque}. Šaime darbe bus taikomas paprastas Rao MINQUE.
 
 \indent MINQUE procedūra neužtikrina neneigiamų kovariacijos komponenčių įverčių. Vienas būdas - visiems neigiamiems įverčiams priskirti reikšmę 0. Kitas būdas, naudoti saviranką (Bagaka's \cite{bagaka}).
+
+\indent Aptardami vertinimo metodus Tong ir k.t.\cite{MLbetterMINQUE} pabrėžia jog REML metodas duoda geresnius atsitiktinių efektų parametrų įverčius, kai paklaidų efektas yra reikšmingas ir jos yra normaliai pasiskirstę, kitu atveju MINQUE metodu gauti įverčiai turėtų būti mažiau paslinkti nei REML.
+
 
 
 \subsection{Efektų vertinimas}
@@ -1276,8 +1289,8 @@ $R_1^2$ & 0.516 & 0.504 & -12.251 & 0.517 & 0.515\\
 \end{table}
 \end{small}
 
-
-\section{???IŠVADOS}
+\newpage
+\section{IŠVADOS}
 \indent Pagrindiniai šio magistro darbo rezultatai:
 \begin{itemize}
 \item Parašytos $\R$ funkcijos MINQUE su saviranka metodui, kuris skirtas HLM modelių parametrų bei jų pasikliautinių intervalų vertinimui.
@@ -1290,7 +1303,6 @@ $R_1^2$ & 0.516 & 0.504 & -12.251 & 0.517 & 0.515\\
 
 
 \newpage
-
  \renewcommand\refname{LITERATŪRA IR ŠALTINIAI}
 \addcontentsline{toc}{section}{LITERATŪRA IR ŠALTINIAI}
 \begin{thebibliography}{1}
@@ -1321,6 +1333,7 @@ $R_1^2$ & 0.516 & 0.504 & -12.251 & 0.517 & 0.515\\
 \bibitem{hanushek} Hanushek, E., A., \textit{Efficient Estimators for Regressing Regression Coefficients}, The American Statistician, leidimas 28, Nr. 2 (gegužė, 1974), 66-67 psl.
 \bibitem{minquereml1} Jarošova, E., \textit{Estimation with the Linear Mixed Effects Model}, Journal of Applied Mathematics, volume3, number 3, 2010.
 \bibitem{jusko} Jusko, K., L., Shively, W., P., \textit{Applying a Two-Step Strategy to the Analysis of Cross-National Public Opinion Data}, Political Analysis (Ruduo 2005) 13 (4): 327-344. 
+\bibitem{papminque} J. Kleffe, B. Seifert, \textit{Matrix free computation of C.R. Rao's MINQUE for unbalanced nested classification models}, Computational Statistics \& Data Analysis, Volume 2, Issue 3, November 1984, Pages 215–228.
 \bibitem{siaip4} Kiamanesh, A., \textit{Items Affecting Iranian Students' Achievment in Mathematics}, IRC, 2004.
 \bibitem{countryHLM} Kyriakides, L., Charalambous, C., \textit{ Extending the Scope of Analysing Data of IEA Studies: Applying Multilevel Modeling Techniques to Analyse TIMSS Data}, IRC, 2004.
 \bibitem{timssCpalyg2} Kim, S. J., Park, J. H., Park, S. W., Kim, S. S., \textit{The Effects of School and Students’ Educational Contexts in Korea, Singapore, and Finland using TIMSS 2011}, IRC, 2013.
@@ -1356,8 +1369,9 @@ leidimas 66, Nr. 1 (balandis, 1976), psl. 178-183.
 \bibitem{MMIVQUE}Subramani J. \textit{On modified minimum variance quadratic unbiased estimation (MIVQUE) of variance components in mixed linear models}, Model Assis Stat, 7:179–200, 2012 birželis.
 \bibitem{liet1} Švietimo ir mokslo ministerijos bei Atviros Lietuvos fondo spaudos konferencija, \textit{Tarptautinis matematikos ir gamtos mokslų tyrimas TIMSS – R}, 2000.
 \bibitem{downwardbias}Timm, N.H., \textit{Applied Multivariate Analysis}, Springer Texts in Statistics, 2002.
-\bibitem{mcmc} Vakilian, S., \textit{Simulation Studies on Estimation of Variance Components for Multilevel Models}, Theses and Dissertations (Comprehensive), paper 922, 2009.
+\bibitem{timssug} P. Foy, A. Arora, G. M. Stanco, \textit{TIMSS 2011 User Guide for the International Database, Suplement 1}, International Association for the Evaluation of Educational Achievement, 2013.
 \bibitem{MLbetterMINQUE} Tong, H., Kumar, K., Huang, Y., \textit{Developing Econometrics}, John Wiley \& Sons, 2011.
+\bibitem{mcmc} Vakilian, S., \textit{Simulation Studies on Estimation of Variance Components for Multilevel Models}, Theses and Dissertations (Comprehensive), paper 922, 2009.
 \bibitem{Rtest} Vonesh, E.F., Chinchilli, V.M., \textit{ Linear and Nonlinear Models for the Analysis of Repeated Measurements}, Marcel Dekker, 1997, 419–424.
 \bibitem{pwigls2} Veiga, A., C., \textit{Methods for analysing complex panel data using multilevel models with an application to the Brazilian labour force survey}, Thesis for the degree of Doctor of Philosophy, University of Southampton, 2010.
 \bibitem{timssCpalyg4} Wiberg, M., Andersson, E., \textit{School-Effectiveness in Mathematics in Sweden compared with countries in Europe and Asia-Pacific}, IRC, 2010.

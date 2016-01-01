@@ -11,20 +11,20 @@
 \contentsline {subsection}{\numberline {3.1}Literat\IeC {\=u}ros ap\IeC {\v z}valga}{10}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Efekt\IeC {\k u} vertinimas}{11}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}REML metodas}{12}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}MINQUE metodas}{12}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}MINQUE metodo apra\IeC {\v s}ymas}{12}{subsubsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4}MINQUE metodas}{13}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}MINQUE metodo apra\IeC {\v s}ymas}{13}{subsubsection.3.4.1}
 \contentsline {subparagraph}{I-MINQUE metodas}{13}{section*.5}
 \contentsline {subparagraph}{Pastabos.}{14}{section*.6}
-\contentsline {subsubsection}{\numberline {3.4.2}Bagaka's MINQUE}{14}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.2}Bagaka's MINQUE}{15}{subsubsection.3.4.2}
 \contentsline {subparagraph}{Dvigubas eksponentinis skirstinys}{15}{section*.7}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{15}{section*.8}
-\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{15}{section*.9}
-\contentsline {subsubsection}{\numberline {3.4.3}Delpish MINQUE}{16}{subsubsection.3.4.3}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{16}{section*.9}
+\contentsline {subsubsection}{\numberline {3.4.3}Delpish MINQUE}{17}{subsubsection.3.4.3}
 \contentsline {subparagraph}{Dvimatis $\chi ^2$ skirstinys}{17}{section*.10}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{17}{section*.11}
-\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{17}{section*.12}
+\contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{18}{section*.12}
 \contentsline {subsection}{\numberline {3.5}Saviranka}{18}{subsection.3.5}
-\contentsline {subparagraph}{Neparametrin\IeC {\.e} atvej\IeC {\k u} saviranka.}{18}{section*.13}
+\contentsline {subparagraph}{Neparametrin\IeC {\.e} atvej\IeC {\k u} saviranka.}{19}{section*.13}
 \contentsline {subparagraph}{Savirankos metodas.}{19}{section*.14}
 \contentsline {section}{\numberline {4}DARBE TAIKOMAS MINQUE}{20}{section.4}
 \contentsline {subsection}{\numberline {4.1}MINQUE pritaikymas HLM}{20}{subsection.4.1}
@@ -48,7 +48,7 @@
 \contentsline {subsection}{\numberline {6.4}HLM modelis 2011 met\IeC {\k u} TIMSS duomenims}{36}{subsection.6.4}
 \contentsline {subparagraph}{Nulinis modelis}{38}{section*.19}
 \contentsline {subparagraph}{Galutinis modelis}{38}{section*.20}
-\contentsline {section}{\numberline {7}???I\IeC {\v S}VADOS}{39}{section.7}
+\contentsline {section}{\numberline {7}I\IeC {\v S}VADOS}{40}{section.7}
 \contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{41}{section.7}
 \contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{41}{section*.21}
 \contentsline {section}{\numberline {A}(PW)MINQUE R kodas}{45}{appendix.A}
