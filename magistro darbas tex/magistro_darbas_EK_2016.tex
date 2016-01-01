@@ -98,6 +98,7 @@ Atidavimo į katedrą data \underline{2016-01-04\hskip 23pt} }
 
 \newpage
 \pagestyle{plain}
+
 \tableofcontents
 
 \newpage
@@ -549,7 +550,7 @@ Y_{ij} = \gamma_{00} +\gamma_{01}\times W_{j}+ \gamma_{10}\times X_{ij}+\gamma_{
 \indent Toliau tirtas CI padengiamumas. Esant normaliosioms paklaidoms ir mažam grupių skaičiui sukonstruoti REML antrojo lygmens atsitiktinių parametrų pasiklaiutinumo intervalai buvo persiauri, o tai reikškia, jog standartinės paklaidos nuvertintos. Grupių skaičius kitais atvejais įtakos neturėjo. $ICC$ dydis neturėjo jokios įtakos pasikliautinių intervalų tikslumui. Prie $\chi^2_1$ skirstinio fiksuotų parametrų CI buvo pakankamai tikslūs. Atsitiktinių efektų parametrų įverčių CI REML metodui stipriai nuvertinami ir standartinės paklais paslinktos. $ICC$ dydis neturėjo reikšmės REML intervalų padengiamumui, tačiau darė įtaką MINQUE su saviranka metodui.Tačiau bendu atveju MINQUE su saviranka davė geresnius pasikliautinių intervalų įverčius.
 
 
-\subsection{Saviranka}\label{subsec:saviranka}
+\subsection{??? Saviranka-- ar reikia???}\label{subsec:saviranka}
 
 \indent Savirankos metodas pristatytas 1979 metais Efron \cite{efron} ir yra plačiai paplitęs modeliavime. Šio metodo esmė, perrinkti turimą imtį be galo daug kartų, kad būtų atspindėta populiacija, jos skirstinys. Kitaip: sakome, kad turima imtis yra mini populiacija ir iš jos traukiame be galo daug imčių, taip siekdami gauti stabilesnius įverčius. Tad šis metodas naudojamas poslinkio koregavimui, standartinėms paklaidoms bei pasikliautiniams intervalams gauti. Ir reikalauja iš turimos imties tik tiek, jog ji būtų atsitiktinai parinkta ir kuo geriau atspindėtų populiaciją. Standartiškai, iš turimos imties parenkama tokio paties dydžio imtis su grąžinimu ir skaičiuojami įverčiai ar kitos charakteristikos. Tai kartojama kažkokį didelį B kartų skaičių ir atliekami papildomi skaičiavimai, kaip kad randamos standartinės paklaidos. Tačiau turint kelių lygių arba hierarchinę struktūrą (tuo labiau lizdinę imtį), savirankos metodą reikia pritaikyti turimam atvejui, kadangi matavimai nėra nepriklausomi ir vienodai pasiskirstę.
 
@@ -885,17 +886,27 @@ Y_{ij} = \gamma_{00} +\gamma_{01}\times X_{2j}+ \gamma_{10}\times X_{1ij}+u_{0j}
 
 
 \subsection{Simuliacijų rezultatai}
-\indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Rezultatai lyginami kaip anksčiau pateiktame skyrelyje. Žemiau esančiose lentelėse pateikti simuliacijų rezultatai visiems metodams.
+\indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Rezultatai lyginami statistikomis, pateiktomis skyrelyje \ref{subsubsec:besvoriu}.
 
 \subsubsection{Be svorių}
- EQDM grafikai pateikti šio darbo \ref{sec:lenteles} priede. Fiksuotų efektų įverčių lentelėje praktiškai nėra jokio skirtumo tarp metodų. Atsitiktinių efektų parametrų įverčių lentelėje jau matyti nežymūs metodų skirtumai. Akivaizdžiai MINQUE(0) blogiausias $\sigma^2$. REML lyg ir kažkiek geriau $\tau_{01}$, tačiau prasčiau $\tau_{11}$, čia geriausias MINQUE(1). 
+\indent Šiame skyrelyje pateikiami simuliacijų nusakytų \ref{subsubsec:besvoriu} rezultatai. Metodai lyginami statistikomis aprašytomis prie simuliacijų dizaino skyrelio pabaigoje. Vertinamų parametrų buvo 8 -- 4 fiksuoti ir 4 dispersijos komponentės. Kiekvienam iš jų sudarytos lentelės, kur kiekvienam iš nagrinėtų atvejų iš metodų pateiktos statistikos. Dėl rezultatų kiekio sudarytos jungtinės lentelės atskirai fiksuotiems parametrams ir dispersijos komponentėms, jose pateiktos jungtinės statistikos aprašytos minėto skyrelio pabaigoje. Žemiau pateikiamos tik jungtinės lentelės, atskiras lenteles galima rasti šio darbo \hyperlink{appendixb}{B} priede. Taip pat pateikiami  EQDM grafikai.
+
+\indent Fiksuotų parametrų įverčių jungtinės statistikos pateiktos \ref{table:jfixed} lentelėje. Kaip ir buvo galima tikėtis, fiksuotų parametrų įverčiai daugeliu atvejų yra nepaslinkti su nedidele sklaida. CAMBRIAS prasme prasčiausiai pasirodė MINQUE(0) metodas, o tai patvirtina jog šis metodas linkęs pervertinti. Čia didžiausias poslinkis gautas $\gamma_{10}$ ir $\gamma_{11}$.
+
+\indent Dispersijos komponenčių įverčių statistikos pateiktos \ref{table:jrandom} lentelėje ir  \hyperlink{appendixb}{B} priede. $\sigma^2$ visi keturi metodai įvertino labai tiksliai. $\tau_{00}$ poslinkis taip pat nėra didelis, įverčių išsibarsstymas didesnis. Didžiausi poslinkiai ir išsibarstymai gauti $\tau_{01}$ ir $\tau_{11}$ įverčiams. REML metodu gauti $\tau_{01}$ įverčiai turi neigiamą poslinkį, MINQUE poslinkis daugeliu atvejų mažesnis.
+
+\indent Pažvelgus į jungtinę lentelę, kaip ir buvo galima tikėtis, kai paklaidos ir atsitiktiniai efektai pasiskirstę pagal $\chi^2$, poslinkis ir įverčių skalida didesnė visiems metodams nei pagal normalųjį. Kai $\frac{\tau_{00}}{\sigma^2}=0,05$ ir  $\chi^2$ pasiskirstymas, MINQUE(1) poslinkis mažiausias iš likusių metodų. Kai $\frac{\tau_{00}}{\sigma^2}=0,05$ MINQUE metodais gautų įverčių poslinkis yra ženkliai mažesnis nei REML metodu gautų įverčių, tačiau išsibarstymas didesnis.  To iš dalies buvo galima tikėtis, $\frac{\tau_{00}}{\sigma^2}=0,05$ yra mažas, o REML linkęs mažas reikšmes pervertinti. Kuom $m \geq 35$ ir $\frac{\tau_{00}}{\sigma^2}\geq 0,4$ visais metodais gauti įverčiai nepaslinkti ir su mažu išsibarstymu. Bendoje sumoje, išskyrus minėtą vieną atvejį, REML ir MINQUE(1) bei MINQUE($\theta$) duoda panašius įverčius.
+
+
+\indent EQDM grafikai pateikti šio darbo \hyperlink{appendixb}{B} priede. Fiksuotų efektų įverčių lentelėje praktiškai nėra jokio skirtumo tarp metodų. Atsitiktinių efektų parametrų įverčių lentelėje jau matyti nežymūs metodų skirtumai. Akivaizdžiai MINQUE(0) blogiausias $\sigma^2$. REML lyg ir kažkiek geriau $\tau_{01}$, tačiau prasčiau $\tau_{11}$, čia geriausias MINQUE(1). 
 
 \newpage
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
 % Mon Dec 28 21:00:27 2015
+{\scriptsize
 \begin{sidewaystable}[H]
 \centering
-{\footnotesize
+{\scriptsize
 \begin{tabular}{cc|cc|cc|cc|cc|}
    & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE(0)}&\multicolumn{2}{c|}{MINQUE(1)}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
 P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE \\ 
@@ -940,7 +951,9 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
 \end{tabular}
 }
 \caption{Lentelėje pateiktos modelio (\ref{eq:simul}) fiksuotų efektų įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampių apvestos statistikos, kurios viršyja 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$.}
+\label{table:jfixed}
 \end{sidewaystable}
+}
 
 \newpage 
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
@@ -992,6 +1005,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
 \end{tabular}
 }
 \caption{Lentelėje pateiktos modelio (\ref{eq:simul}) atsitiktinių efektų įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampių apvestos statistikos, kurios viršyja 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\label{table:jrandom}
 \end{sidewaystable}
 
 
@@ -1293,18 +1307,18 @@ $R_1^2$ & 0.516 & 0.504 & -12.251 & 0.517 & 0.515\\
 \section{IŠVADOS}
 \indent Pagrindiniai šio magistro darbo rezultatai:
 \begin{itemize}
-\item Parašytos $\R$ funkcijos MINQUE su saviranka metodui, kuris skirtas HLM modelių parametrų bei jų pasikliautinių intervalų vertinimui.
-\item Atliktos empirinės simuliacijos, kurios parodė, jog Delphish tirtas MINQUE metodas su saviranka nėra geresnis nei REML metodas su saviranka. Tikslesni pasikliautiniai intervalai savirankos būdu gaunami ir turint duomenis pasiskirsčiusius pagal normalųjį skirstinį, ir pagal Puasono (ar bet kokį kitą ???) skirstinį. To priežastys gali būti tai, jog Delpish netyrė REML su saviranka arba šiame darbe pristatytas MINQUE metodas nėra tapatus Bagaka's ir Delphish metodui.
-
-\item Sudarytas sudėtingesnis hierarchinis tiesinis modelis (nei anksčiau buvę) Lietuvos matematinio raštingumo testo rezultatams.
+\item Parašytos $\R$ funkcijos MINQUE metodui, kuris skirtas HLM modelių parametrų vertinimui.
+\item Sukurtas PWMINQUE metodas, simuliacijų būdu parodyta, jog šis metodas duoda mažiau paslinktus įverčius nei nesvertiniai metodai.
+\item Atliktos empirinės simuliacijos, kurios parodė, jog išskyrus vieną atvejį ($\frac{\tau_{00}}{\sigma^2}=0,05$) REML, MINQUE(1) ir MINQUE($\theta$) metodai yra panašūs. O tai nepateisino lūkesčių, jog pažeidus normalumo sąlyga MINQUE metodu gauti įverčiai bus mažiau paslinkti.
+\item Sudarytas hierarchinis tiesinis modelis su atsitiktiniu postūmiu Lietuvos matematinio raštingumo testo rezultatams, šis modelis įvertintas REML, MINQUE(1), PWMINQUE(1), MINQUE($\theta$) ir PWMINQUE($\theta$).
 \end{itemize}
 
-\indent Tolimesnis tyrimas galėtų apimti daugiau metodų fiksuotiems ir atsitiktiniams efektams vertinti (pvz.: Hamilton'o III metodas). Sudėtingesni neparametrinės savirankos metodai taip pat galėtų pagerinti įvertinių tikslumą.
+\indent Tolimesnis tyrimas galėtų apimti daugiau metodų fiksuotiems ir atsitiktiniams efektams vertinti (pvz.: Hamilton'o III metodas, AUE ir pan.), palyginti metodus su saviranka, taikyti sumuštinio (\textit{angl. sandwitch}) principo standartines paklaidas, įtraukti daugiau dispersijos komponenčių reikšmių, pabandyti kitus paklaidų pasiskirstymus.
 
 
 \newpage
- \renewcommand\refname{LITERATŪRA IR ŠALTINIAI}
-\addcontentsline{toc}{section}{LITERATŪRA IR ŠALTINIAI}
+\renewcommand\refname{LITERATŪRA IR ŠALTINIAI}
+%\addcontentsline{toc}{section}{LITERATŪRA IR ŠALTINIAI}
 \begin{thebibliography}{1}
 \bibitem{achen} Achen, C., H., \textit{Two-Step Hierarchical Estimation: Beyond Regression Analysis},  Political Analysis (Autumn 2005) 13 (4): 447-456.
 \bibitem{timssCpalyg1} Afana, Y., Lietz, P., \textit{The relationship between school resources and mathematics achievement at grade 8: A comparison of Israeli and Palestinian schools in TIMSS 2007}, Journal for Educational Research Online 5.1, 2013, 59-89.
@@ -1384,9 +1398,10 @@ Dissertation, NC State University, Raleigh, U.S.A, 1989.
 \newpage
 \begin{appendix}
 
- \hypertarget{appendix}{\section*{PRIEDAS}}
-\section{(PW)MINQUE R kodas}
-\addcontentsline{toc}{section}{Priedas}
+ \hypertarget{appendixa}{\section*{A PRIEDAS}}
+\addcontentsline{toc}{section}{A PRIEDAS}
+\section*{MINQUE R KODAS}
+
 \begin{footnotesize}
 \begin{verbatim}
 
@@ -1697,7 +1712,9 @@ min2$sigma
 
 
 \newpage
-\section{Simuliacijų rezultatai}\label{sec:lenteles}
+ \hypertarget{appendixb}{\section*{B PRIEDAS}}
+\addcontentsline{toc}{section}{B PRIEDAS}
+\section*{SIMULIACIJŲ REZULTATAI}\label{sec:lenteles}
 
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
 % Mon Dec 28 21:31:41 2015
@@ -2138,11 +2155,13 @@ min2$sigma
 \newpage
 
 %\begin{appendix}
-\addcontentsline{toc}{section}{Lentelių sąrašas}
+%\addcontentsline{toc}{section}{LENTELIŲ SĄRAŠAS}
+\renewcommand\refname{LENTELIŲ SĄRAŠAS}
 \listoftables
 %\end{appendix}
  %\begin{appendix}
- \addcontentsline{toc}{section}{Iliustracijų sąrašas}
+\renewcommand\refname{ILIUSTRACIJŲ SĄRAŠAS}
+% \addcontentsline{toc}{section}{Iliustracijų sąrašas}
  \listoffigures
  %\end{appendix}
   
