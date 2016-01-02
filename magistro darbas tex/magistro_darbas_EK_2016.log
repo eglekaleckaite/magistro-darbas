@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  2 JAN 2016 18:07
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  3 JAN 2016 01:15
 entering extended mode
 **D:/minque/Magistro*darbas/magistro*darbas*tex/magistro_darbas_EK_2016.tex
 ("D:/minque/Magistro darbas/magistro darbas tex/magistro_darbas_EK_2016.tex"
@@ -15,8 +15,8 @@ an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
-File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size11.clo"
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -907,30 +907,100 @@ Package rotfloat Info: float package v1.3 detected on input line 74.
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \@enLab=\toks40
 )
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2015/09/17 v3.3-111 Customizing captions (AR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2015/09/20 v1.7-115 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen153
+\captionmargin@=\dimen154
+\captionwidth=\dimen155
+\caption@tempdima=\dimen156
+\caption@indent=\dimen157
+\caption@parindent=\dimen158
+\caption@hangindent=\dimen159
+)
+\c@ContinuedFloat=\count146
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\ltcaption.sty"
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+)
+Package caption Info: rotating package is loaded.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\adjustbox\adjustbox.sty"
+Package: adjustbox 2012/05/21 v1.0 Adjusting TeX boxes (trim, clip, ...)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+\XKV@toks=\toks41
+\XKV@tempa@toks=\toks42
+\XKV@depth=\count147
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\adjustbox\adjcalc.sty"
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\adjustbox\trimclip.sty"
+Package: trimclip 2012/05/16 v1.0 Trim and clip general TeX material
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\collectbox\collectbox.sty"
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box63
+)
+\tc@llx=\dimen160
+\tc@lly=\dimen161
+\tc@urx=\dimen162
+\tc@ury=\dimen163
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\adjustbox\tc-pdftex.def"
+File: tc-pdftex.def 2012/05/13 v1.0 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen164
+\adjbox@Height=\dimen165
+\adjbox@Depth=\dimen166
+\adjbox@Totalheight=\dimen167
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ifoddpage\ifoddpage.sty"
+Package: ifoddpage 2011/09/13 v1.0 Conditionals for odd/even page detection
+\c@checkoddpage=\count148
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\varwidth.sty"
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box64
+\sift@deathcycles=\count149
+\@vwid@loff=\dimen168
+\@vwid@roff=\dimen169
+))
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux"
 
 LaTeX Warning: Label `eq:deq' multiply defined.
 
-
-LaTeX Warning: Label `eq:deq' multiply defined.
-
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for L7x/lmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for L7x/lmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -951,12 +1021,12 @@ LaTeX Font Info:    ... okay on input line 52.
 * \topmargin=-7.86334pt
 * \headheight=12.0pt
 * \headsep=0.0pt
-* \topskip=12.0pt
+* \topskip=11.0pt
 * \footskip=30.0pt
-* \marginparwidth=35.0pt
+* \marginparwidth=50.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -968,74 +1038,76 @@ LaTeX Font Info:    ... okay on input line 52.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count146
-\scratchdimen=\dimen153
-\scratchbox=\box63
-\nofMPsegments=\count147
-\nofMParguments=\count148
-\everyMPshowfont=\toks41
-\MPscratchCnt=\count149
-\MPscratchDim=\dimen154
-\MPnumerator=\count150
-\makeMPintoPDFobject=\count151
-\everyMPtoPDFconversion=\toks42
+\scratchcounter=\count150
+\scratchdimen=\dimen170
+\scratchbox=\box65
+\nofMPsegments=\count151
+\nofMParguments=\count152
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count153
+\MPscratchDim=\dimen171
+\MPnumerator=\count154
+\makeMPintoPDFobject=\count155
+\everyMPtoPDFconversion=\toks44
 )
-\AtBeginShipoutBox=\box64
-Package hyperref Info: Link coloring OFF on input line 52.
+\AtBeginShipoutBox=\box66
+Package hyperref Info: Link coloring OFF on input line 54.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count152
+\c@section@level=\count156
 )
-LaTeX Info: Redefining \ref on input line 52.
-LaTeX Info: Redefining \pageref on input line 52.
-LaTeX Info: Redefining \nameref on input line 52.
+LaTeX Info: Redefining \ref on input line 54.
+LaTeX Info: Redefining \pageref on input line 54.
+LaTeX Info: Redefining \nameref on input line 54.
 
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.out")
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.out")
 \@outlinefile=\write3
-\c@lstlisting=\count153
+\c@lstlisting=\count157
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 87.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 89.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 87.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 89.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 87.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 89.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 87.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 89.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 87.
+(Font)              <12> on input line 89.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 87.
+(Font)              <8> on input line 89.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 87.
-LaTeX Font Info:    Try loading font information for U+msa on input line 87.
+(Font)              <6> on input line 89.
+LaTeX Font Info:    Try loading font information for U+msa on input line 89.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 87.
+LaTeX Font Info:    Try loading font information for U+msb on input line 89.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1043,449 +1115,295 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.97 \end{titlepage}
+l.99 \end{titlepage}
                      [1]
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.toc"
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 5.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 5.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 5.
+(Font)              <10.95> on input line 5.
+)
+\tf@toc=\write4
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.56 ...\k {u} s\k {a}ra\v {s}as}{66}{section*.27}
-                                                   [1])
-\tf@toc=\write4
- [2] [3] [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 186--196
+l.107 \newpage
+               [1] [2] [3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 188--198
 
  []
 
-[6] [7] [8]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 356.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
+[5] [6]
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 342.
+
+LaTeX Font Info:    Try loading font information for U+bbm on input line 361.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-)
-[9]
+) [7] [8]
 
 Package hyperref Warning: Composite letter `\textasciimacron+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciimacron' on input line 370.
+(hyperref)                removing `\textasciimacron' on input line 375.
 
-[10] [11] [12]
-LaTeX Font Info:    Try loading font information for L7x+lmtt on input line 466
+[9] [10]
+Overfull \hbox (50.17613pt too wide) in paragraph at lines 438--440
+[]\L7x/lmr/m/n/10.95 Viso mo-de-lio log-tikëtinumas ga-li bû-ti uþ-ra-ðy-tas ka
+ip at-ski-rø gru-piø su-ma $\OML/lmm/m/it/10.95 L\OT1/lmr/m/n/10.95 (\OML/lmm/m
+/it/10.95 []; \OT1/lmr/bx/n/10.95 T\OML/lmm/m/it/10.95 ; \OML/lmm/b/it/10.95 
+\OT1/lmr/m/n/10.95 ) = [][] \OML/lmm/m/it/10.95 L[]\OT1/lmr/m/n/10.95 (\OML/lmm
+/m/it/10.95 []; \OT1/lmr/bx/n/10.95 T\OML/lmm/m/it/10.95 ; \OML/lmm/b/it/10.95
+ \OT1/lmr/m/n/10.95 )$\L7x/lmr/m/n/10.95 .
+ []
+
+[11]
+LaTeX Font Info:    Try loading font information for L7x+lmtt on input line 469
 .
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\l7xlmtt.fd"
 File: l7xlmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-[13] [14] [15] [16] [17] [18] [19]
+) [12]
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 491.
+
+[13] [14]
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 536.
+
+[15] [16] [17]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 587.
-
-
-LaTeX Warning: Reference `subsec:apriori' on page 20 undefined on input line 61
-8.
+(Font)              <10> on input line 594.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 594.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 594.
 
 
 Package hyperref Warning: Composite letter `\textdotaccent+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textdotaccent' on input line 622.
+(hyperref)                removing `\textdotaccent' on input line 629.
 
-
-Overfull \hbox (9.01007pt too wide) in paragraph at lines 623--624
-[]\L7x/lmr/m/n/10.95 Pagal \L7x/lmr/m/it/10.95 a pri-o-ri \L7x/lmr/m/n/10.95 re
-ikð-mes MI-NQUE me-to-das skai-do-mas á MI-NQUE(0), MI-NQUE(1) ir MINQUE($\OML/
-lmm/m/it/10.95 $\L7x/lmr/m/n/10.95 ).
- []
-
-[20]
-Overfull \hbox (16.12198pt too wide) in paragraph at lines 659--661
-\L7x/lmr/m/n/10.95 kur $[] \OT1/lmr/m/n/10.95 = \OMS/lmsy/m/n/10.95 f[]g$\L7x/l
-mr/m/n/10.95 , $[] \OT1/lmr/m/n/10.95 = [][] \OML/lmm/m/it/10.95 tr []$ \L7x/lm
-r/m/n/10.95 ir $[] \OT1/lmr/m/n/10.95 = []$\L7x/lmr/m/n/10.95 , $[] \OT1/lmr/m/
-n/10.95 = [][] \OML/lmm/m/it/10.95 tr []$\L7x/lmr/m/n/10.95 ,
- []
-
-[21] [22]
+[18] [19] [20]
 
 Package hyperref Warning: Composite letter `\textdotaccent+E'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textdotaccent' on input line 687.
+(hyperref)                removing `\textdotaccent' on input line 691.
 
-[23] [24pdfTeX warning (ext4): destination with the same identifier (name{table
-.1}) has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.774 
-      pdfTeX warning (ext4): destination with the same identifier (name{table.2
-}) has been already used, duplicate ignored
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 709.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.774 
-      pdfTeX warning (ext4): destination with the same identifier (name{table.3
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.774 
-      ]
-Underfull \hbox (badness 10000) in paragraph at lines 778--785
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 784--791
 
  []
 
-[25] [26] [27] [28]
+[22]
+Overfull \hbox (1.88245pt too wide) in paragraph at lines 825--826
+ []\L7x/lmr/bx/n/10.95 Empiriniai kvan-ti-liø sklai-dos gra-fi-kai -- EQDG[] \L
+7x/lmr/m/n/10 (\L7x/lmr/m/it/10 angl. Em-pi-ri-cal Qu-an-ti-le Dis-per-sion Gra
+phs\L7x/lmr/m/n/10 )
+ []
+
+[23]
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 854.
+
+[24] [25] [26] [27]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 918.
- [29pdfTeX warning (ext4): destination with the same identifier (name{table.4})
- has been already used, duplicate ignored
+(Font)              <9> on input line 1038.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.966 \newpage
-              ] [30pdfTeX warning (ext4): destination with the same identifier 
-(name{table.5}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1022 
-       ]
-Underfull \hbox (badness 10000) in paragraph at lines 1029--1056
+Underfull \hbox (badness 10000) in paragraph at lines 1038--1065
 [][]
  []
 
-[31] [32pdfTeX warning (ext4): destination with the same identifier (name{table
-.6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1060 \newpage
-               ] [33] [34] [35]
-Underfull \hbox (badness 1478) in paragraph at lines 1164--1164
-[]|\L7x/lmr/m/n/10.95 Mokinys yra en-gia-mas mo-
+[28] [29] [30] [31]
+Underfull \hbox (badness 10000) in paragraph at lines 1161--1161
+[]|\L7x/lmr/m/n/10 Originalus
  []
 
 
-Underfull \hbox (badness 1400) in paragraph at lines 1165--1165
-\L7x/lmr/m/n/10.95 Áei-na të-vø ið-si-la-vi-ni-mas, ar
+Overfull \hbox (5.5275pt too wide) in paragraph at lines 1167--1168
+[]|[]| 
  []
 
 
-Underfull \hbox (badness 3895) in paragraph at lines 1169--1169
-[]|\L7x/lmr/m/n/10.95 Mokytojø tei-gi-mu mo-kyk-la
+Underfull \hbox (badness 1424) in paragraph at lines 1172--1172
+[]|\L7x/lmr/m/n/10 Indeksas. Di-des-në reikð-më -
  []
 
 
-Overfull \hbox (9.88174pt too wide) in alignment at lines 1149--1173
- [] [] [] [] 
+Underfull \hbox (badness 1424) in paragraph at lines 1173--1173
+[]|\L7x/lmr/m/n/10 Indeksas. Di-des-në reikð-më -
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1173
+Underfull \vbox (badness 10000) detected at line 1182
  []
 
 
-Overfull \hbox (9.88174pt too wide) in alignment at lines 1173--1189
- [] [] [] [] 
+Underfull \hbox (badness 1845) in paragraph at lines 1184--1184
+[]|\L7x/lmr/m/n/10 Mokytojai skun-dþia-si mo-ky-mo
  []
 
-[36] <teorkv.pdf, id=682, 722.7pt x 505.89pt>
+[32] <teorkv.pdf, id=635, 722.7pt x 505.89pt>
 File: teorkv.pdf Graphic file (type pdf)
  <use teorkv.pdf>
-Package pdftex.def Info: teorkv.pdf used on input line 1202.
+Package pdftex.def Info: teorkv.pdf used on input line 1211.
 (pdftex.def)             Requested size: 284.53154pt x 199.16928pt.
- [37]
+ [33]
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1220.
+(amsmath)                trying to recover with `aligned' on input line 1229.
 
-[38pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
- has been already used, duplicate ignored
+[34 <D:/minque/Magistro darbas/magistro darbas tex/teorkv.pdf>]
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1222 \end{equation}
-                      <D:/minque/Magistro darbas/magistro darbas tex/teorkv.pdf
->]
-Overfull \hbox (7.14728pt too wide) in paragraph at lines 1234--1247
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 1276.
+
+
+Overfull \hbox (1.52678pt too wide) in paragraph at lines 1298--1318
  [][] 
  []
 
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1267.
-
-[39pdfTeX warning (ext4): destination with the same identifier (name{table.8}) 
-has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1279 \end{equation}
-                     ]
-Overfull \hbox (30.1483pt too wide) in paragraph at lines 1289--1309
- [][] 
+[35] [36]
+Overfull \hbox (19.01175pt too wide) in paragraph at lines 1330--1331
+\L7x/lmr/m/n/10 re-zul-ta-tams, ðis mo-de-lis áver-tin-tas REML, MI-NQUE(1), PW
+-MI-NQUE(1), MINQUE($\OML/lmm/m/it/10 $\L7x/lmr/m/n/10 ) ir PWMINQUE($\OML/lmm
+/m/it/10 $\L7x/lmr/m/n/10 ). 
  []
 
-[40pdfTeX warning (ext4): destination with the same identifier (name{table.9}) 
-has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1314 \newpage
-               ] [41]
+[37]
 
 Package hyperref Warning: Composite letter `\textasciimacron+U'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciimacron' on input line 1330.
+(hyperref)                removing `\textasciimacron' on input line 1339.
 
-[42] [43]
-Underfull \hbox (badness 5607) in paragraph at lines 1383--1384
-[]\L7x/lmr/m/it/10.95 Sample De-sign and Imp-le-men-ta-tion\L7x/lmr/m/n/10.95 ,
- [þiû-rë-ta 2015-11-23], pri-ei-ga per in-ter-ne-tà :
- []
-
-[44] [45] [46]
-Overfull \hbox (2.74364pt too wide) in paragraph at lines 1514--1514
-[]  \L7x/lmtt/m/n/10 X <- as(foreach(ii = 1:length(Xj), .combine = rbind) %do% 
-as.matrix(Xj[[ii]]), "Matrix")[] 
+[38]
+Underfull \hbox (badness 6995) in paragraph at lines 1385--1386
+[]\L7x/lmr/m/n/10 F. Ste-e-le, P. Clar-ke, H. Golds-t-ein, \L7x/lmr/m/it/10 Wei
+gh-ting in ML-wiN\L7x/lmr/m/n/10 , Cent-re for Mul-ti-le-vel Mo-
  []
 
 
-Overfull \hbox (2.74364pt too wide) in paragraph at lines 1516--1516
-[]  \L7x/lmtt/m/n/10 Y <- as(foreach(ii = 1:length(Xj), .combine = rbind) %do% 
-as.matrix(Yj[[ii]]), "Matrix")[] 
+Underfull \hbox (badness 10000) in paragraph at lines 1385--1386
+\L7x/lmr/m/n/10 de-ling (CML), Bri-s-tol: Uni-ver-si-ty of Bri-s-tol, 2011, []h
+ttp://www.bristol.ac.uk/media-
  []
 
-[47]
-Overfull \hbox (139.24324pt too wide) in paragraph at lines 1520--1520
-[]  \L7x/lmtt/m/n/10 Vj <- foreach(i = 1:length(unique(id1))) %do% solve(Reduce
-("+", mapply(function(qj, th) th*qj[[i]], Qj, apriori)))[] 
+[39] [40] [41]
+Overfull \hbox (78.34395pt too wide) in paragraph at lines 1512--1512
+[]  \L7x/lmtt/m/n/9 Vj <- foreach(i = 1:length(unique(id1))) %do% solve(Reduce(
+"+", mapply(function(qj, th) th*qj[[i]], Qj, apriori)))[] 
  []
 
-
-Overfull \hbox (165.49316pt too wide) in paragraph at lines 1555--1555
-[]  \L7x/lmtt/m/n/10 ranef <- mapply(function(x, y, v, z, wgt) (TT%*%crossprod(
-z*unique(wgt), v)%*%(y - x%*%iM$beta)),Xj, Yj, Vj, Z1, wgt2i)[] 
+[42]
+Overfull \hbox (101.9689pt too wide) in paragraph at lines 1547--1547
+[]  \L7x/lmtt/m/n/9 ranef <- mapply(function(x, y, v, z, wgt) (TT%*%crossprod(z
+*unique(wgt), v)%*%(y - x%*%iM$beta)),Xj, Yj, Vj, Z1, wgt2i)[] 
  []
 
-
-Overfull \hbox (18.49359pt too wide) in paragraph at lines 1557--1557
-[]  \L7x/lmtt/m/n/10 fit <- mapply(function(x, z, u, wgt) x%*%iM$beta+(z/unique
-(wgt))%*%u, Xj, Z1, ranef, wgt2i)[] 
- []
-
-[48] [49] [50] [51] [52]
-Overfull \vbox (70.04672pt too high) has occurred while \output is active []
+[43] [44] [45] [46]
+Overfull \vbox (62.60529pt too high) has occurred while \output is active []
 
 
-[53pdfTeX warning (ext4): destination with the same identifier (name{table.10})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1777 
-       ] [54pdfTeX warning (ext4): destination with the same identifier (name{t
-able.11}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1879 
-       ] [55pdfTeX warning (ext4): destination with the same identifier (name{t
-able.12}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1930 
-       ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1936--1979
- [][] 
- []
-
-[56pdfTeX warning (ext4): destination with the same identifier (name{table.13})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1981 
-       ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 1987--2030
- [][] 
- []
-
-[57pdfTeX warning (ext4): destination with the same identifier (name{table.14})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.2032 
-       ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 2038--2081
- [][] 
- []
-
-[58pdfTeX warning (ext4): destination with the same identifier (name{table.15})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.2083 
-       ]
-Overfull \hbox (8.32024pt too wide) in paragraph at lines 2089--2132
- [][] 
- []
-
-[59pdfTeX warning (ext4): destination with the same identifier (name{table.16})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.2134 
-       ] <Ngammaseqdg.pdf, id=865, 1156.32pt x 820.06375pt>
+[47] [48] [49] [50] [51] [52] [53]
+<Ngammaseqdg.pdf, id=801, 1156.32pt x 820.06375pt>
 File: Ngammaseqdg.pdf Graphic file (type pdf)
+ <use Ngammaseqdg.pdf>
+Package pdftex.def Info: Ngammaseqdg.pdf used on input line 2156.
+(pdftex.def)             Requested size: 641.924pt x 455.24408pt.
 
-<use Ngammaseqdg.pdf>
-Package pdftex.def Info: Ngammaseqdg.pdf used on input line 2137.
-(pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
-
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2137--2138
- [][] 
- []
-
-[60pdfTeX warning (ext4): destination with the same identifier (name{table.17})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.2141 
-       ] <Nraneqdg.pdf, id=872, 1156.32pt x 820.06375pt>
+[54] <Nraneqdg.pdf, id=809, 1156.32pt x 820.06375pt>
 File: Nraneqdg.pdf Graphic file (type pdf)
  <use Nraneqdg.pdf>
-Package pdftex.def Info: Nraneqdg.pdf used on input line 2144.
-(pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
+Package pdftex.def Info: Nraneqdg.pdf used on input line 2163.
+(pdftex.def)             Requested size: 641.924pt x 455.24408pt.
 
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2144--2145
- [][] 
- []
-
-[61pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.2148 
-        <D:/minque/Magistro darbas/magistro darbas tex/Ngammaseqdg.pdf>]
-<Xfixeqdg.pdf, id=887, 1156.32pt x 820.06375pt>
+[55 <D:/minque/Magistro darbas/magistro darbas tex/Ngammaseqdg.pdf>]
+<Xfixeqdg.pdf, id=824, 1156.32pt x 820.06375pt>
 File: Xfixeqdg.pdf Graphic file (type pdf)
  <use Xfixeqdg.pdf>
-Package pdftex.def Info: Xfixeqdg.pdf used on input line 2151.
-(pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
-
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2151--2152
- [][] 
- []
-
-[62pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.2155 
-        <D:/minque/Magistro darbas/magistro darbas tex/Nraneqdg.pdf>]
-<Xraneqdg.pdf, id=901, 1156.32pt x 820.06375pt>
+Package pdftex.def Info: Xfixeqdg.pdf used on input line 2170.
+(pdftex.def)             Requested size: 641.924pt x 455.24408pt.
+ [56 <D:/minque/Magistro darbas/magistro darbas tex/Nraneqdg.pdf>]
+<Xraneqdg.pdf, id=839, 1156.32pt x 820.06375pt>
 File: Xraneqdg.pdf Graphic file (type pdf)
  <use Xraneqdg.pdf>
-Package pdftex.def Info: Xraneqdg.pdf used on input line 2158.
-(pdftex.def)             Requested size: 722.18655pt x 512.1496pt.
-
-Overfull \hbox (71.75656pt too wide) in paragraph at lines 2158--2159
- [][] 
- []
-
-[63pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.2162 
-        <D:/minque/Magistro darbas/magistro darbas tex/Xfixeqdg.pdf>] [64pdfTeX
- warning (ext4): destination with the same identifier (name{figure.5}) has been
- already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.2163 \newpage
-                <D:/minque/Magistro darbas/magistro darbas tex/Xraneqdg.pdf>]
+Package pdftex.def Info: Xraneqdg.pdf used on input line 2177.
+(pdftex.def)             Requested size: 641.924pt x 455.24408pt.
+ [57 <D:/minque/Magistro darbas/magistro darbas tex/Xfixeqdg.pdf>] [58 <D:/minq
+ue/Magistro darbas/magistro darbas tex/Xraneqdg.pdf>]
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.lot"
-[65])
+[59])
 \tf@lot=\write5
 
 ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.lof")
 \tf@lof=\write6
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2177.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2196.
 
-[66]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2177.
+[60]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2196.
  ("D:\minque\Magistro darbas\magistro darbas tex\magistro_darbas_EK_2016.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2177.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2177.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2196.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2196.
 
 Package rerunfilecheck Info: File `magistro_darbas_EK_2016.out' has not changed
 .
-(rerunfilecheck)             Checksum: E4D9B69BB669FF1900096F6AA80BB56C;2425.
-
-
-LaTeX Warning: There were undefined references.
+(rerunfilecheck)             Checksum: FB1DD351275DF718641AC9E214EEE23E;2183.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2177.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2196.
  ) 
 Here is how much of TeX's memory you used:
- 10522 strings out of 493921
- 147125 string characters out of 3144879
- 405891 words of memory out of 3000000
- 13256 multiletter control sequences out of 15000+200000
- 95422 words of font info for 107 fonts, out of 3000000 for 9000
+ 12232 strings out of 493921
+ 177542 string characters out of 3144879
+ 439168 words of memory out of 3000000
+ 14966 multiletter control sequences out of 15000+200000
+ 97067 words of font info for 108 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,15n,32p,2035b,551s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,15n,85p,2035b,563s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{appendix} has been referenced but does not exist,
  replaced by a fixed one
 
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-l7x.enc}{C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/M
-iKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts
+les (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKTe
+X 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts
 /enc/dvips/lm/lm-mathit.enc} <C:\Users\Egle\AppData\Local\MiKTeX\2.9\fonts\pk\l
-jfour\public\bbm\dpi600\bbm12.pk>{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/d
+jfour\public\bbm\dpi657\bbm10.pk>{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/d
 vips/lm/lm-mathex.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
 lmbsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
-e1/public/lm/lmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/l
-m/lmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi8.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmib10.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/lm/lmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
-/public/lm/lmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
-r7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/lm/lmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
-ic/lm/lmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.
-pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on magistro_darbas_EK_2016.pdf (68 pages, 874204 bytes).
+)/MiKTeX 2.9/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/lm/lmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
+/lmmi5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi6.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/public/lm/lmmib10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
+public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
+r12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr5.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
+lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
+ublic/lm/lmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmt
+t10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on magistro_darbas_EK_2016.pdf (62 pages, 899533 bytes).
 PDF statistics:
- 1193 PDF objects out of 1200 (max. 8388607)
- 302 named destinations out of 1000 (max. 500000)
- 314 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1136 PDF objects out of 1200 (max. 8388607)
+ 257 named destinations out of 1000 (max. 500000)
+ 290 words of extra memory for PDF output out of 10000 (max. 10000000)
 
