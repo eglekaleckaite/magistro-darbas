@@ -898,15 +898,15 @@ Y_{ij} = \gamma_{00} +\gamma_{01}\times X_{2j}+ \gamma_{10}\times X_{1ij}+u_{0j}
 \indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Rezultatai lyginami statistikomis, pateiktomis skyrelyje \ref{subsubsec:besvoriu}.
 
 \subsubsection*{Be svorių}
-\indent Šiame skyrelyje pateikiami simuliacijų nusakytų \ref{subsubsec:besvoriu} rezultatai. Metodai lyginami statistikomis aprašytomis prie simuliacijų dizaino skyrelio pabaigoje. Vertinamų parametrų buvo 8 -- 4 fiksuoti ir 4 dispersijos komponentės. Kiekvienam iš jų sudarytos lentelės, kur kiekvienam iš nagrinėtų atvejų ir metodų pateiktos statistikos. Dėl rezultatų kiekio sudarytos jungtinės lentelės atskirai fiksuotiems parametrams ir dispersijos komponentėms, jose pateiktos jungtinės statistikos aprašytos minėto skyrelio pabaigoje. Žemiau pateikiamos tik jungtinės lentelės, atskiras lenteles galima rasti šio darbo \hyperlink{appendixb}{B} priede. Taip pat pateikiami  EQDM grafikai.
+\indent Šiame skyrelyje pateikiami simuliacijų nusakytų \ref{subsubsec:besvoriu} rezultatai. Metodai lyginami statistikomis aprašytomis prie simuliacijų dizaino skyrelio pabaigoje. Vertinamų parametrų buvo 8 -- 4 fiksuoti ir 4 dispersijos komponentės. Kiekvienam iš jų sudarytos lentelės, kur kiekvienam iš nagrinėtų atvejų ir metodų pateiktos statistikos. Dėl rezultatų kiekio sudarytos jungtinės lentelės atskirai fiksuotiems parametrams ir dispersijos komponentėms, jose pateiktos jungtinės statistikos aprašytos minėto skyrelio pabaigoje. Lenteles galima rasti šio darbo \hyperlink{appendixb}{B} priede. Jame pateikiami ir EQDM grafikai.
 
 \indent Fiksuotų parametrų įverčių jungtinės statistikos pateiktos \ref{table:jfixed} lentelėje. Kaip ir buvo galima tikėtis, fiksuotų parametrų įverčiai daugeliu atvejų yra nepaslinkti su nedidele sklaida. CAMBRIAS prasme prasčiausiai pasirodė MINQUE(0) metodas, o tai patvirtina jog šis metodas linkęs pervertinti. Čia didžiausias poslinkis gautas $\gamma_{10}$ ir $\gamma_{11}$ parametrams.
 
-\indent Dispersijos komponenčių įverčių statistikos pateiktos \ref{table:jrandom} lentelėje ir  \hyperlink{appendixb}{B} priede. $\sigma^2$ visi keturi metodai įvertino labai tiksliai. $\tau_{00}$ poslinkis taip pat nėra didelis, įverčių išsibarstymas didesnis. Didžiausi poslinkiai ir išsibarstymai gauti $\tau_{01}$ ir $\tau_{11}$ įverčiams. REML metodu gauti $\tau_{01}$ įverčiai turi neigiamą poslinkį, MINQUE poslinkis daugeliu atvejų mažesnis.
+\indent Dispersijos komponenčių įverčių statistikos pateiktos \ref{table:jrandom} lentelėje \hyperlink{appendixb}{B} priede. $\sigma^2$ visi keturi metodai įvertino labai tiksliai. $\tau_{00}$ poslinkis taip pat nėra didelis, įverčių išsibarstymas didesnis. Didžiausi poslinkiai ir išsibarstymai gauti $\tau_{01}$ ir $\tau_{11}$ įverčiams. REML metodu gauti $\tau_{01}$ įverčiai turi neigiamą poslinkį, MINQUE poslinkis daugeliu atvejų mažesnis.
 
-\indent Pažvelgus į jungtinę lentelę, kaip ir buvo galima tikėtis, kai paklaidos ir atsitiktiniai efektai pasiskirstę pagal $\chi^2$, poslinkis ir įverčių sklaida didesnė visiems metodams ir visiems atvejams. Didžiausias santykinis poslinkis (pagal CAMRBIAS) ir įverčių sklaida (pagal CMRSE) dispersijos komponentėms gauti, kuomet $\frac{\tau_{00}}{\sigma^2}=0,05$, nesvarbu, koks paklaidų ir atsitiktinių efektų pasiskirstymas ar antro bei pirmo lygio subjektų skaičius. Augant antro lygio subjektų skaičiui poslinkis ir sklaida mažėja ir tampa nereikšmingi MINQUUE metodams, kuomet $m=80$. Minėtu atveju geriausiai pasirodė MINQUE(1) metodas, kurio vidutinis santykinis poslinkis daugeliu atvejų mažiausias, o sklaida ne daug didesnė nei REML. REML poslinkis didelis, kai $m=20$, vidutinis, kai $m\geq35$. MINQUE($\theta$) vidutinis santykinis poslinkis yra vidutinio dydžio, kai $m=20;35$, ir poslinkio nėra (jis mažesnis nei 0,05), kai $m=80$. MINQUE($\theta$) poslinkiai didesni nei MINQUE(1) ir MINQUE(0). Tai galėjo nutikti, dėl \textit{a priori} reikšmių, kurios gaunamos dviejų žingsnių mažiausių kvadratų metodu.
+\indent Pažvelgus į jungtinę lentelę \ref{table:jrandom}, kaip ir buvo galima tikėtis, kai paklaidos ir atsitiktiniai efektai pasiskirstę pagal $\chi^2$, poslinkis ir įverčių sklaida didesnė visiems metodams ir visiems atvejams. Didžiausias santykinis poslinkis (pagal CAMRBIAS) ir įverčių sklaida (pagal CMRSE) dispersijos komponentėms gauti, kuomet $\frac{\tau_{00}}{\sigma^2}=0,05$, nesvarbu, koks paklaidų ir atsitiktinių efektų pasiskirstymas ar antro bei pirmo lygio subjektų skaičius. Augant antro lygio subjektų skaičiui poslinkis ir sklaida mažėja ir tampa nereikšmingi MINQUUE metodams, kuomet $m=80$. Minėtu atveju geriausiai pasirodė MINQUE(1) metodas, kurio vidutinis santykinis poslinkis daugeliu atvejų mažiausias, o sklaida ne daug didesnė nei REML. REML poslinkis didelis, kai $m=20$, vidutinis, kai $m\geq35$. MINQUE($\theta$) vidutinis santykinis poslinkis yra vidutinio dydžio, kai $m=20;35$, ir poslinkio nėra (jis mažesnis nei 0,05), kai $m=80$. MINQUE($\theta$) poslinkiai didesni nei MINQUE(1) ir MINQUE(0). Tai galėjo nutikti, dėl \textit{a priori} reikšmių, kurios gaunamos dviejų žingsnių mažiausių kvadratų metodu.
 
-\indent Iš jungtinės dispersijos komponenčių lentelės taip pat galima pastebėti, jog padidėjus santykiui $\frac{\tau_{00}}{\sigma^2}$ iki 0,4, vidutiniai santykiniai poslinkiai visiems metodams tampa nereikšmingi (CAMRBIAS $\leq 0,05$), tačiau įverčių išsibarstymas dar gana didelis. Nors tokį poslinkį laikome nereikšmingu, verta paminėti, jog praktiškai visais subalansuoto dizaino atvejais MINQUE($\theta$) duoda mažiausiai paslinktus ir išsibarsčiusius dispersijos komponenčių įverčius. Kuomet dizainas subalansuotas (P2, P4 ir P6), visi metodai (išskyrus MINQUE(0)) vertina apylygiai.
+\indent Iš jungtinės dispersijos komponenčių lentelės \ref{table:jrandom} taip pat galima pastebėti, jog padidėjus santykiui $\frac{\tau_{00}}{\sigma^2}$ iki 0,4, vidutiniai santykiniai poslinkiai visiems metodams tampa nereikšmingi (CAMRBIAS $\leq 0,05$), tačiau įverčių išsibarstymas dar gana didelis. Nors tokį poslinkį laikome nereikšmingu, verta paminėti, jog praktiškai visais subalansuoto dizaino atvejais MINQUE($\theta$) duoda mažiausiai paslinktus ir išsibarsčiusius dispersijos komponenčių įverčius. Kuomet dizainas subalansuotas (P2, P4 ir P6), visi metodai (išskyrus MINQUE(0)) vertina apylygiai.
 
 \indent Santykiui $\frac{\tau_{00}}{\sigma^2}$ padidėjus iki 1, įverčių sklaida dar labiau sumažėja ir CMRSE $\leq 0,5$. Čia taip pat verta paminėti, jog, kai paklaidos bei atsitiktiniai efektai pasiskirstę pagal normalųjį dėsnį, visi (išskyrus MINQUE(0)) metodai duoda panašius rezultatus. Kai pasiskirstymas $\chi^2$ sunku išskirti vieną metodą. Kai $m=20;35$ ir dizainas subalansuotas,  REML įverčių skalaida mažiausia. Kai $m=20$ ir dizainas nesubalansuotas, MINQUE(1) įverčių poslinkis ir sklaida yra mažiausi. Likusiais atvejais trys minėti metodai yra labai panašūs. Visais atvejais MINQUE(0) įverčių išsibartymas didžiausias.
 
@@ -916,155 +916,10 @@ Y_{ij} = \gamma_{00} +\gamma_{01}\times X_{2j}+ \gamma_{10}\times X_{1ij}+u_{0j}
 MINQUE($\theta$) -- tirtais atvejais duoda panašius rezultatus. Čia reikėtų išskirti vieną atvejį, kai $\frac{\tau_{00}}{\sigma^2}=0,05$, kuomet MINQUE metodais gautų dispersijos komponenčių įverčių vidutinis santykinis poslinkis gautas stipriai mažesnis nei gautų REML metodu. Tikėtasi, jog MINQUE metodas prie $\chi^2$ skirstinio duos geresnius rezultatus, nei REML. Šis tyrimas to nepatvirtino. Vis gi, MINQUE metodas reikalauja didelių matricų operacijų ir daug kompiuterio resursų, todėl rekomenduojama naudoti REML metodą, kuomet antro lygio subjektų skaičius didelis (t.y. daugiau nei 35).
 
 \subsubsection*{Su svoriais}
-\indent Šiame skyrelyje pateikti skyrelyje \ref{subsubsec:susvoriais} aprašyto simuliacijų dizaino rezultatai. Jie pateikti \ref{table:wsimul} lentelėje. Šiuo atveju REML ir MINQUE(1) bei MINQUE($\theta$) įverčiai skiriasi labai neženkliai. Šiek tiek didesnį vidutinį santykinį poslinkį ir išsibarstymą turi $\tau_{01}$ ir $\tau_{11}$ įverčiai MINQUE(1) metodu. Mažiausias vidutinis santykinis poslinkis stebimas parametrams $\gamma_{01}$ ir $\gamma_{10}$. Tokio dydžio poslinkį laikome nereikšmingu. Parametrų $\sigma^2$ ir $\tau_{00}$ MRBIAS yra tarp 0,05 ir 0,2, todėl laikomas vidutiniu poslinkiu. Likusių parametrų -- $\gamma_{00}$, $\tau_{01}$ ir $\tau_{11}$ -- poslinkį laikome dideliu. Mažiausias išsibarstymas (MRSE) yra parametrui $\sigma^2$, didžiausias -- $\tau_{01}$. 
+\indent Šiame skyrelyje pateikti skyrelyje \ref{subsubsec:susvoriais} aprašyto simuliacijų dizaino rezultatai. Jie pateikti \ref{table:wsimul} lentelėje šiodarbo \hyperlink{appendixb}{B} priede. Šiuo atveju REML ir MINQUE(1) bei MINQUE($\theta$) įverčiai skiriasi labai neženkliai. Šiek tiek didesnį vidutinį santykinį poslinkį ir išsibarstymą turi $\tau_{01}$ ir $\tau_{11}$ įverčiai MINQUE(1) metodu. Mažiausias vidutinis santykinis poslinkis stebimas parametrams $\gamma_{01}$ ir $\gamma_{10}$. Tokio dydžio poslinkį laikome nereikšmingu. Parametrų $\sigma^2$ ir $\tau_{00}$ MRBIAS yra tarp 0,05 ir 0,2, todėl laikomas vidutiniu poslinkiu. Likusių parametrų -- $\gamma_{00}$, $\tau_{01}$ ir $\tau_{11}$ -- poslinkį laikome dideliu. Mažiausias išsibarstymas (MRSE) yra parametrui $\sigma^2$, didžiausias -- $\tau_{01}$. 
 
 \indent Akivaizdžiai parametrų vertintų PWMINQUE poslinkis mažesnis nei nesvertinių metodų. Čia reikėtų pastebėti, jog įverčių išsibarstymas beveik visur didesnis vertinant su PWMINQUE, bet skirtumas nėra didelis palyginus su nauda gauta sumažėjus poslinkiui.    MRBIAS > 0,05 tik $\tau_{00}$ vertintam PWMINQUE(1) ir $\gamma_{00}$ abiems PWMINQUE. $\gamma_{00}$ poslinkis sumažėja, parametras yra pervertinamas, tačiau išsibarstymas mažesnis nei nesvertinių metodų. Šie rezultatai sutampa su gautais  Pfeffermann ir k.t.\cite{pfeff} bei Steele ir k.t.\cite{mlwin} PWIGLS metodui.
 
-% latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Mon Dec 28 21:00:27 2015
-{\footnotesize
-\begin{sidewaystable}[H]
-\captionsetup{width=19cm}
-\centering
-{\scriptsize
-\begin{tabular}{cc|cc|cc|cc|cc|}
-   & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE(0)}&\multicolumn{2}{c|}{MINQUE(1)}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
-P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE \\ 
-  \hline
-\multirow{6}{*}{P1} & \multirow{2}{*}{V1} & \textbf{0.01} & \textbf{0.128} & 0.031 & \framebox{0.573} & \textbf{0.01} & \textbf{0.13} & \textbf{0.008} & \textbf{0.127} \\ 
-   &  & \textbf{0.011} & \textbf{0.118} & \textbf{0.009} & \textbf{0.12} & 0.047 & \framebox{3.299} & \textbf{0.012} & \textbf{0.113} \\ 
-   & \multirow{2}{*}{V2} & 0.029 & \textbf{0.282} & 0.046 & 0.395 & 0.029 & \textbf{0.283} & \textbf{0.009} & \textbf{0.298} \\ 
-   &  & \textbf{0.025} & \textbf{0.289} & \framebox{0.154} & \framebox{18.062} & \textbf{0.022} & \textbf{0.29} & \textbf{0.021} & \textbf{0.308} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.021} & \framebox{\textbf{0.521}} & \framebox{0.108} & \framebox{6.229} & \textbf{0.021} & \framebox{\textbf{0.521}} & \textbf{0.023} & \framebox{\textbf{0.51}} \\ 
-   &  & \framebox{0.076} & \framebox{\textbf{0.512}} & \framebox{0.104} & \framebox{1.618} & \framebox{0.076} & \framebox{\textbf{0.511}} & \textbf{0.026} & \framebox{0.602} \\ 
-   \hline \hline\multirow{6}{*}{P2} & \multirow{2}{*}{V1} & \textbf{0.012} & \textbf{0.12} & \textbf{0.013} & \textbf{0.122} & \textbf{0.012} & \textbf{0.121} & \textbf{0.013} & \textbf{0.122} \\ 
-   &  & \textbf{0.007} & \textbf{0.131} & \textbf{0.005} & \textbf{0.134} & \textbf{0.002} & 0.17 & \textbf{0.007} & \textbf{0.136} \\ 
-   & \multirow{2}{*}{V2} & \textbf{0.023} & \textbf{0.267} & \textbf{0.022} & \textbf{0.273} & \textbf{0.023} & \textbf{0.267} & \textbf{0.023} & \textbf{0.268} \\ 
-   &  & \textbf{0.01} & \textbf{0.275} & 0.023 & 0.457 & \textbf{0.01} & \textbf{0.275} & \textbf{0.011} & \textbf{0.275} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.009} & \framebox{\textbf{0.565}} & \textbf{0.007} & \framebox{\textbf{0.593}} & \textbf{0.009} & \framebox{\textbf{0.565}} & \textbf{0.009} & \framebox{\textbf{0.565}} \\ 
-   &  & \textbf{0.029} & \framebox{\textbf{0.592}} & \framebox{0.138} & \framebox{12.971} & \textbf{0.03} & \framebox{\textbf{0.591}} & \textbf{0.029} & \framebox{\textbf{0.592}} \\ 
-   \hline \hline\multirow{6}{*}{P3} & \multirow{2}{*}{V1} & \textbf{0.006} & \textbf{0.062} & \textbf{0.006} & \textbf{0.062} & \textbf{0.006} & \textbf{0.062} & 0.014 & \textbf{0.065} \\ 
-   &  & \textbf{0.012} & \textbf{0.064} & \textbf{0.012} & \textbf{0.064} & \textbf{0.012} & \textbf{0.065} & \textbf{0.013} & \textbf{0.069} \\ 
-   & \multirow{2}{*}{V2} & 0.01 & \textbf{0.154} & 0.015 & \textbf{0.166} & 0.01 & \textbf{0.154} & \textbf{0.003} & \textbf{0.17} \\ 
-   &  & \textbf{0.007} & \textbf{0.163} & \framebox{0.332} & \framebox{85.974} & \textbf{0.007} & \textbf{0.163} & \textbf{0.006} & \textbf{0.153} \\ 
-   & \multirow{2}{*}{V3} & 0.023 & 0.354 & 0.023 & 0.353 & 0.023 & 0.353 & \textbf{0.003} & \textbf{0.312} \\ 
-   &  & 0.026 & \textbf{0.298} & \framebox{0.052} & \framebox{0.519} & 0.026 & \textbf{0.298} & \textbf{0.013} & \textbf{0.306} \\ 
-   \hline \hline\multirow{6}{*}{P4} & \multirow{2}{*}{V1} & \textbf{0.005} & \textbf{0.065} & \textbf{0.004} & \textbf{0.065} & \textbf{0.005} & \textbf{0.065} & \textbf{0.005} & \textbf{0.065} \\ 
-   &  & \textbf{0.003} & \textbf{0.062} & \textbf{0.003} & \textbf{0.063} & \textbf{0.003} & \textbf{0.063} & \textbf{0.003} & \textbf{0.063} \\ 
-   & \multirow{2}{*}{V2} & \textbf{0.017} & \textbf{0.143} & \textbf{0.016} & \textbf{0.144} & \textbf{0.017} & \textbf{0.143} & \textbf{0.017} & \textbf{0.143} \\ 
-   &  & \textbf{0.007} & \textbf{0.159} & \textbf{0.008} & 0.194 & \textbf{0.008} & \textbf{0.159} & \textbf{0.007} & \textbf{0.16} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.013} & \textbf{0.326} & \textbf{0.014} & \textbf{0.328} & \textbf{0.013} & \textbf{0.326} & \textbf{0.013} & \textbf{0.327} \\ 
-   &  & \textbf{0.004} & \textbf{0.291} & \textbf{0.009} & 0.442 & \textbf{0.004} & \textbf{0.291} & \textbf{0.004} & \textbf{0.291} \\ 
-   \hline \hline\multirow{6}{*}{P5} & \multirow{2}{*}{V1} & \textbf{0.003} & \textbf{0.027} & \textbf{0.003} & \textbf{0.027} & \textbf{0.003} & \textbf{0.027} & \textbf{0.005} & \textbf{0.029} \\ 
-   &  & \textbf{0.003} & \textbf{0.027} & \textbf{0.003} & \textbf{0.027} & \textbf{0.003} & \textbf{0.028} & \textbf{0.002} & \textbf{0.026} \\ 
-   & \multirow{2}{*}{V2} & \textbf{0.007} & \textbf{0.072} & \textbf{0.007} & \textbf{0.072} & \textbf{0.007} & \textbf{0.072} & \textbf{0.008} & \textbf{0.067} \\ 
-   &  & \textbf{0.008} & \textbf{0.063} & \framebox{0.051} & \framebox{1.969} & \textbf{0.008} & \textbf{0.063} & \textbf{0.013} & \textbf{0.071} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.009} & \textbf{0.131} & \textbf{0.009} & \textbf{0.132} & \textbf{0.009} & \textbf{0.131} & \textbf{0.004} & \textbf{0.145} \\ 
-   &  & \textbf{0.01} & \textbf{0.146} & \textbf{0.007} & \framebox{0.901} & \textbf{0.009} & \textbf{0.146} & \textbf{0.008} & \textbf{0.116} \\ 
-   \hline \hline\multirow{6}{*}{P6} & \multirow{2}{*}{V1} & \textbf{0.003} & \textbf{0.03} & \textbf{0.003} & \textbf{0.03} & \textbf{0.003} & \textbf{0.03} & \textbf{0.003} & \textbf{0.03} \\ 
-   &  & \textbf{0.001} & \textbf{0.027} & \textbf{0.001} & \textbf{0.027} & \textbf{0.001} & \textbf{0.027} & \textbf{0.001} & \textbf{0.027} \\ 
-   & \multirow{2}{*}{V2} & \textbf{0.003} & \textbf{0.068} & \textbf{0.003} & \textbf{0.068} & \textbf{0.003} & \textbf{0.068} & \textbf{0.003} & \textbf{0.068} \\ 
-   &  & \textbf{0.011} & \textbf{0.065} & \textbf{0.012} & \textbf{0.064} & \textbf{0.011} & \textbf{0.065} & \textbf{0.01} & \textbf{0.065} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.018} & \textbf{0.14} & \textbf{0.018} & \textbf{0.14} & \textbf{0.018} & \textbf{0.14} & \textbf{0.018} & \textbf{0.14} \\ 
-   &  & 0.017 & \textbf{0.132} & \textbf{0.01} & 0.386 & 0.017 & \textbf{0.132} & 0.017 & \textbf{0.132} \\ 
-   \hline
-\end{tabular}
-}
-\caption{Lentelėje pateiktos modelio (\ref{eq:simul}) fiksuotų efektų įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$.}
-\label{table:jfixed}
-\end{sidewaystable}
-}
-
-
-% latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Mon Dec 28 20:33:12 2015
-{\scriptsize
-\begin{sidewaystable}[H]
-\captionsetup{width=19cm}
-\centering
-{\scriptsize
-\begin{tabular}{cc|cc|cc|cc|cc|}
-   & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE(0)}&\multicolumn{2}{c|}{MINQUE(1)}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
-P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE \\ 
-  \hline
-\multirow{6}{*}{P1} & \multirow{2}{*}{V1} & \framebox{0.206} & \framebox{\textbf{1.155}} & \framebox{\textbf{0.064}} & \framebox{1.294} & \framebox{\textbf{0.067}} & \framebox{1.235} & \framebox{0.111} & \framebox{1.4} \\ 
-   &  & \framebox{0.254} & \framebox{1.968} & \framebox{\textbf{0.113}} & \framebox{2.387} & \framebox{\textbf{0.114}} & \framebox{1.998} & \framebox{0.121} & \framebox{\textbf{1.907}} \\ 
-   & \multirow{2}{*}{V2} & 0.015 & \textbf{0.23} & \textbf{0.011} & 0.308 & 0.017 & \textbf{0.238} & \textbf{0.008} & \textbf{0.212} \\ 
-   &  & 0.028 & \framebox{0.767} & 0.024 & \framebox{1.338} & 0.026 & \framebox{0.791} & \textbf{0.008} & \framebox{\textbf{0.71}} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.005} & \textbf{0.16} & 0.011 & 0.255 & \textbf{0.006} & \textbf{0.163} & \textbf{0.005} & \textbf{0.151} \\ 
-   &  & 0.023 & \framebox{\textbf{0.625}} & \textbf{0.014} & \framebox{1.047} & 0.025 & \framebox{0.667} & 0.037 & \framebox{0.739} \\ 
-   \hline \hline\multirow{6}{*}{P2} & \multirow{2}{*}{V1} & \framebox{0.246} & \framebox{\textbf{1.116}} & \framebox{\textbf{0.105}} & \framebox{1.233} & \framebox{0.111} & \framebox{1.2} & \framebox{0.132} & \framebox{1.272} \\ 
-   &  & \framebox{0.249} & \framebox{\textbf{2.265}} & \framebox{0.169} & \framebox{2.947} & \framebox{\textbf{0.144}} & \framebox{\textbf{2.267}} & \framebox{0.161} & \framebox{2.485} \\ 
-   & \multirow{2}{*}{V2} & \textbf{0.01} & \textbf{0.212} & 0.015 & 0.32 & \textbf{0.007} & \textbf{0.215} & \textbf{0.009} & \textbf{0.214} \\ 
-   &  & \textbf{0.014} & \framebox{\textbf{0.8}} & 0.022 & \framebox{1.621} & \textbf{0.015} & \framebox{\textbf{0.826}} & \textbf{0.018} & \framebox{\textbf{0.811}} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.018} & \textbf{0.171} & \textbf{0.014} & 0.249 & \textbf{0.018} & \textbf{0.174} & \textbf{0.019} & \textbf{0.171} \\ 
-   &  & 0.029 & \framebox{\textbf{0.778}} & \textbf{0.018} & \framebox{1.19} & \textbf{0.021} & \framebox{\textbf{0.793}} & 0.029 & \framebox{\textbf{0.781}} \\ 
-   \hline \hline\multirow{6}{*}{P3} & \multirow{2}{*}{V1} & \framebox{0.109} & \framebox{\textbf{0.566}} & \textbf{0.026} & \framebox{0.695} & \textbf{0.026} & \framebox{0.666} & \framebox{0.06} & \framebox{0.663} \\ 
-   &  & \framebox{0.102} & \framebox{\textbf{0.61}} & 0.035 & \framebox{0.778} & \textbf{0.029} & \framebox{0.703} & \framebox{0.087} & \framebox{1.187} \\ 
-   & \multirow{2}{*}{V2} & 0.02 & \textbf{0.118} & \textbf{0.015} & 0.181 & 0.019 & \textbf{0.121} & \textbf{0.01} & \textbf{0.109} \\ 
-   &  & 0.019 & \textbf{0.426} & 0.021 & \framebox{0.764} & 0.016 & \textbf{0.435} & \textbf{0.01} & \textbf{0.418} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.015} & \textbf{0.083} & \textbf{0.015} & 0.143 & 0.017 & \textbf{0.086} & \textbf{0.01} & \textbf{0.078} \\ 
-   &  & 0.028 & \textbf{0.356} & \textbf{0.023} & \framebox{0.591} & 0.031 & \textbf{0.362} & 0.049 & \framebox{0.505} \\ 
-   \hline \hline\multirow{6}{*}{P4} & \multirow{2}{*}{V1} & \framebox{0.109} & \framebox{\textbf{0.58}} & \textbf{0.032} & \framebox{0.701} & \textbf{0.032} & \framebox{0.665} & 0.041 & \framebox{0.675} \\ 
-   &  & \framebox{0.129} & \framebox{\textbf{0.98}} & \framebox{\textbf{0.085}} & \framebox{1.189} & \framebox{\textbf{0.087}} & \framebox{1.069} & \framebox{0.098} & \framebox{1.081} \\ 
-   & \multirow{2}{*}{V2} & \textbf{0.014} & \textbf{0.108} & \textbf{0.014} & 0.151 & \textbf{0.013} & \textbf{0.11} & \textbf{0.015} & \textbf{0.108} \\ 
-   &  & \textbf{0.027} & \framebox{\textbf{0.527}} & \textbf{0.025} & \framebox{0.892} & \textbf{0.029} & \framebox{\textbf{0.553}} & \textbf{0.029} & \framebox{\textbf{0.527}} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.003} & \textbf{0.083} & \textbf{0.006} & 0.134 & \textbf{0.003} & \textbf{0.083} & \textbf{0.003} & \textbf{0.083} \\ 
-   &  & \textbf{0.012} & \textbf{0.354} & 0.018 & \framebox{0.581} & \textbf{0.014} & \textbf{0.371} & \textbf{0.013} & \textbf{0.356} \\ 
-   \hline \hline\multirow{6}{*}{P5} & \multirow{2}{*}{V1} & \framebox{0.071} & \textbf{0.279} & 0.042 & 0.344 & 0.037 & 0.314 & \textbf{0.015} & \textbf{0.29} \\ 
-   &  & \framebox{0.054} & \textbf{0.425} & 0.016 & \framebox{0.564} & \textbf{0.011} & 0.459 & 0.034 & 0.488 \\ 
-   & \multirow{2}{*}{V2} & \textbf{0.004} & \textbf{0.049} & 0.011 & \textbf{0.076} & \textbf{0.005} & \textbf{0.051} & 0.011 & \textbf{0.047} \\ 
-   &  & 0.034 & 0.245 & 0.045 & 0.46 & 0.032 & 0.252 & \textbf{0.008} & \textbf{0.195} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.009} & \textbf{0.035} & 0.016 & \textbf{0.057} & \textbf{0.009} & \textbf{0.035} & \textbf{0.005} & \textbf{0.037} \\ 
-   &  & \textbf{0.008} & \textbf{0.172} & \textbf{0.009} & 0.287 & \textbf{0.009} & \textbf{0.184} & \textbf{0.007} & \textbf{0.169} \\ 
-   \hline \hline\multirow{6}{*}{P6} & \multirow{2}{*}{V1} & \framebox{0.056} & \textbf{0.297} & \textbf{0.021} & 0.364 & \textbf{0.025} & 0.331 & 0.027 & 0.331 \\ 
-   &  & \framebox{0.06} & \textbf{0.467} & 0.037 & \framebox{0.683} & \textbf{0.021} & \textbf{0.49} & 0.028 & \framebox{0.509} \\ 
-   & \multirow{2}{*}{V2} & \textbf{0.002} & \textbf{0.044} & \textbf{0.006} & \textbf{0.067} & \textbf{0.001} & \textbf{0.046} & \textbf{0.003} & \textbf{0.044} \\ 
-   &  & \textbf{0.014} & \textbf{0.169} & 0.024 & 0.274 & \textbf{0.012} & \textbf{0.172} & \textbf{0.013} & \textbf{0.169} \\ 
-   & \multirow{2}{*}{V3} & \textbf{0.008} & \textbf{0.036} & \textbf{0.012} & \textbf{0.06} & \textbf{0.007} & \textbf{0.037} & \textbf{0.008} & \textbf{0.036} \\ 
-   &  & \textbf{0.013} & \textbf{0.161} & \textbf{0.018} & 0.274 & \textbf{0.014} & \textbf{0.161} & \textbf{0.013} & \textbf{0.161} \\ 
-   \hline
-\end{tabular}
-}
-\caption{Lentelėje pateiktos modelio (\ref{eq:simul}) dispersijos komponenčių įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
-\label{table:jrandom}
-\end{sidewaystable}
-}
-
-% latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Tue Dec 29 16:27:05 2015
-\begin{sidewaystable}[H]
-\footnotesize{
-\begin{tabular}{|cc|ccc|ccc|ccc|}\cline{3-11}
-\multicolumn{2}{c|}{ }&\multicolumn{3}{c|}{REML}&\multicolumn{3}{c|}{MINQUE(1)}&\multicolumn{3}{c|}{PWMINQUE(1)}\\ \hline
- Parametras & Tikroji & Vidurkis & MRBIAS & MRSE & Vidurkis & MRBIAS & MRSE & Vidurkis & MRBIAS & MRSE \\ 
-  \hline
-$\gamma_{00}$ & 1 & 0.781 & -0.219 & 0.063 & 0.782 & -0.218 & 0.063 & 1.165 & 0.165 & 0.048 \\ 
-  $\gamma_{01}$ & 1 & 1.001 & 0.001 & 0.029 & 1.003 & 0.003 & 0.03 & 1.000 & 0.000 & 0.032  \\ 
-  $\gamma_{10}$ & 1 & 1.002 & 0.002 & 0.018 & 1.005 & 0.005 & 0.018 & 1.001 & 0.001 & 0.025 \\ 
-  $\sigma^2$ & 1 & 0.949 & -0.051 & 0.006 & 0.95 & -0.05 & 0.006 & 0.98 & -0.02 & 0.007 \\ 
-  $\tau_{00}$ & $\frac{1}{4}$ & 0.221 & -0.115 & 0.086 & 0.221 & -0.115 & 0.091 & 0.264 & 0.054 & 0.113 \\ 
-  $\tau_{01}$ & $\frac{\sqrt{3}}{8}\approx 0.217$ & 0.159 & -0.265 & 0.204 & 0.155 & -0.283 & 0.218 & 0.217 & 0.001 & 0.248  \\ 
-  $\tau_{11}$ & $\frac{3}{4}$ & 0.583 & -0.223 & 0.1 & 0.574 & -0.235 & 0.108 & 0.746 & -0.005 & 0.112  \\ 
-   \hline
-\end{tabular}
-\begin{tabular}{|cc|ccc|ccc|}\cline{3-8}
-  & &\multicolumn{3}{c|}{MINQUE($\theta$)}&\multicolumn{3}{c|}{PWMINQUE($\theta$)}\\ \hline
-Parametras & Tikroji &  Vidurkis & MRBIAS & MRSE & Vidurkis & MRBIAS & MRSE \\ 
-  \hline
-$\gamma_{00}$ & 1 &  0.781 & -0.219 & 0.063 & 1.166 & 0.166 & 0.048 \\ 
-  $\gamma_{01}$ & 1 &  1.001 & 0.001 & 0.029 & 1.000 & 0.000 & 0.031 \\ 
-  $\gamma_{10}$ & 1 &  1.002 & 0.002 & 0.018 & 1.002 & 0.002 & 0.026 \\ 
-  $\sigma^2$ & 1 &  0.948 & -0.052 & 0.006 & 0.973 & -0.027 & 0.007 \\ 
-  $\tau_{00}$ & $\frac{1}{4}$ & 0.221 & -0.115 & 0.086 & 0.261 & 0.044 & 0.116 \\ 
-  $\tau_{01}$ & $\frac{\sqrt{3}}{8}\approx 0.217$ & 0.159 & -0.266 & 0.204 & 0.217 & 0.003 & 0.232 \\ 
-  $\tau_{11}$ & $\frac{3}{4}$ & 0.584 & -0.222 & 0.1 & 0.762 & 0.017 & 0.116 \\ 
-   \hline
-\end{tabular}
-}
-\caption{Lentelėje pateiktos modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos. Statistikos plačiau aprašytos skyrelyje \ref{subsubsec:besvoriu}.}
-\label{table:wsimul}
-\end{sidewaystable}
 
 \newpage
 \section{HLM MODELIS TIMSS DUOMENIMS} \label{sec:timss}
@@ -1714,6 +1569,116 @@ min2$sigma
  \hypertarget{appendixb}{\section*{B PRIEDAS}}
 \addcontentsline{toc}{section}{B PRIEDAS}
 \section*{SIMULIACIJŲ REZULTATAI}\label{sec:lenteles}
+% latex table generated in R 3.2.2 by xtable 1.7-4 package
+% Mon Dec 28 21:00:27 2015
+{\footnotesize
+\begin{sidewaystable}[H]
+\captionsetup{width=19cm}
+\centering
+{\scriptsize
+\begin{tabular}{cc|cc|cc|cc|cc|}
+   & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE(0)}&\multicolumn{2}{c|}{MINQUE(1)}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
+P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE \\ 
+  \hline
+\multirow{6}{*}{P1} & \multirow{2}{*}{V1} & \textbf{0.01} & \textbf{0.128} & 0.031 & \framebox{0.573} & \textbf{0.01} & \textbf{0.13} & \textbf{0.008} & \textbf{0.127} \\ 
+   &  & \textbf{0.011} & \textbf{0.118} & \textbf{0.009} & \textbf{0.12} & 0.047 & \framebox{3.299} & \textbf{0.012} & \textbf{0.113} \\ 
+   & \multirow{2}{*}{V2} & 0.029 & \textbf{0.282} & 0.046 & 0.395 & 0.029 & \textbf{0.283} & \textbf{0.009} & \textbf{0.298} \\ 
+   &  & \textbf{0.025} & \textbf{0.289} & \framebox{0.154} & \framebox{18.062} & \textbf{0.022} & \textbf{0.29} & \textbf{0.021} & \textbf{0.308} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.021} & \framebox{\textbf{0.521}} & \framebox{0.108} & \framebox{6.229} & \textbf{0.021} & \framebox{\textbf{0.521}} & \textbf{0.023} & \framebox{\textbf{0.51}} \\ 
+   &  & \framebox{0.076} & \framebox{\textbf{0.512}} & \framebox{0.104} & \framebox{1.618} & \framebox{0.076} & \framebox{\textbf{0.511}} & \textbf{0.026} & \framebox{0.602} \\ 
+   \hline \hline\multirow{6}{*}{P2} & \multirow{2}{*}{V1} & \textbf{0.012} & \textbf{0.12} & \textbf{0.013} & \textbf{0.122} & \textbf{0.012} & \textbf{0.121} & \textbf{0.013} & \textbf{0.122} \\ 
+   &  & \textbf{0.007} & \textbf{0.131} & \textbf{0.005} & \textbf{0.134} & \textbf{0.002} & 0.17 & \textbf{0.007} & \textbf{0.136} \\ 
+   & \multirow{2}{*}{V2} & \textbf{0.023} & \textbf{0.267} & \textbf{0.022} & \textbf{0.273} & \textbf{0.023} & \textbf{0.267} & \textbf{0.023} & \textbf{0.268} \\ 
+   &  & \textbf{0.01} & \textbf{0.275} & 0.023 & 0.457 & \textbf{0.01} & \textbf{0.275} & \textbf{0.011} & \textbf{0.275} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.009} & \framebox{\textbf{0.565}} & \textbf{0.007} & \framebox{\textbf{0.593}} & \textbf{0.009} & \framebox{\textbf{0.565}} & \textbf{0.009} & \framebox{\textbf{0.565}} \\ 
+   &  & \textbf{0.029} & \framebox{\textbf{0.592}} & \framebox{0.138} & \framebox{12.971} & \textbf{0.03} & \framebox{\textbf{0.591}} & \textbf{0.029} & \framebox{\textbf{0.592}} \\ 
+   \hline \hline\multirow{6}{*}{P3} & \multirow{2}{*}{V1} & \textbf{0.006} & \textbf{0.062} & \textbf{0.006} & \textbf{0.062} & \textbf{0.006} & \textbf{0.062} & 0.014 & \textbf{0.065} \\ 
+   &  & \textbf{0.012} & \textbf{0.064} & \textbf{0.012} & \textbf{0.064} & \textbf{0.012} & \textbf{0.065} & \textbf{0.013} & \textbf{0.069} \\ 
+   & \multirow{2}{*}{V2} & 0.01 & \textbf{0.154} & 0.015 & \textbf{0.166} & 0.01 & \textbf{0.154} & \textbf{0.003} & \textbf{0.17} \\ 
+   &  & \textbf{0.007} & \textbf{0.163} & \framebox{0.332} & \framebox{85.974} & \textbf{0.007} & \textbf{0.163} & \textbf{0.006} & \textbf{0.153} \\ 
+   & \multirow{2}{*}{V3} & 0.023 & 0.354 & 0.023 & 0.353 & 0.023 & 0.353 & \textbf{0.003} & \textbf{0.312} \\ 
+   &  & 0.026 & \textbf{0.298} & \framebox{0.052} & \framebox{0.519} & 0.026 & \textbf{0.298} & \textbf{0.013} & \textbf{0.306} \\ 
+   \hline \hline\multirow{6}{*}{P4} & \multirow{2}{*}{V1} & \textbf{0.005} & \textbf{0.065} & \textbf{0.004} & \textbf{0.065} & \textbf{0.005} & \textbf{0.065} & \textbf{0.005} & \textbf{0.065} \\ 
+   &  & \textbf{0.003} & \textbf{0.062} & \textbf{0.003} & \textbf{0.063} & \textbf{0.003} & \textbf{0.063} & \textbf{0.003} & \textbf{0.063} \\ 
+   & \multirow{2}{*}{V2} & \textbf{0.017} & \textbf{0.143} & \textbf{0.016} & \textbf{0.144} & \textbf{0.017} & \textbf{0.143} & \textbf{0.017} & \textbf{0.143} \\ 
+   &  & \textbf{0.007} & \textbf{0.159} & \textbf{0.008} & 0.194 & \textbf{0.008} & \textbf{0.159} & \textbf{0.007} & \textbf{0.16} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.013} & \textbf{0.326} & \textbf{0.014} & \textbf{0.328} & \textbf{0.013} & \textbf{0.326} & \textbf{0.013} & \textbf{0.327} \\ 
+   &  & \textbf{0.004} & \textbf{0.291} & \textbf{0.009} & 0.442 & \textbf{0.004} & \textbf{0.291} & \textbf{0.004} & \textbf{0.291} \\ 
+   \hline \hline\multirow{6}{*}{P5} & \multirow{2}{*}{V1} & \textbf{0.003} & \textbf{0.027} & \textbf{0.003} & \textbf{0.027} & \textbf{0.003} & \textbf{0.027} & \textbf{0.005} & \textbf{0.029} \\ 
+   &  & \textbf{0.003} & \textbf{0.027} & \textbf{0.003} & \textbf{0.027} & \textbf{0.003} & \textbf{0.028} & \textbf{0.002} & \textbf{0.026} \\ 
+   & \multirow{2}{*}{V2} & \textbf{0.007} & \textbf{0.072} & \textbf{0.007} & \textbf{0.072} & \textbf{0.007} & \textbf{0.072} & \textbf{0.008} & \textbf{0.067} \\ 
+   &  & \textbf{0.008} & \textbf{0.063} & \framebox{0.051} & \framebox{1.969} & \textbf{0.008} & \textbf{0.063} & \textbf{0.013} & \textbf{0.071} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.009} & \textbf{0.131} & \textbf{0.009} & \textbf{0.132} & \textbf{0.009} & \textbf{0.131} & \textbf{0.004} & \textbf{0.145} \\ 
+   &  & \textbf{0.01} & \textbf{0.146} & \textbf{0.007} & \framebox{0.901} & \textbf{0.009} & \textbf{0.146} & \textbf{0.008} & \textbf{0.116} \\ 
+   \hline \hline\multirow{6}{*}{P6} & \multirow{2}{*}{V1} & \textbf{0.003} & \textbf{0.03} & \textbf{0.003} & \textbf{0.03} & \textbf{0.003} & \textbf{0.03} & \textbf{0.003} & \textbf{0.03} \\ 
+   &  & \textbf{0.001} & \textbf{0.027} & \textbf{0.001} & \textbf{0.027} & \textbf{0.001} & \textbf{0.027} & \textbf{0.001} & \textbf{0.027} \\ 
+   & \multirow{2}{*}{V2} & \textbf{0.003} & \textbf{0.068} & \textbf{0.003} & \textbf{0.068} & \textbf{0.003} & \textbf{0.068} & \textbf{0.003} & \textbf{0.068} \\ 
+   &  & \textbf{0.011} & \textbf{0.065} & \textbf{0.012} & \textbf{0.064} & \textbf{0.011} & \textbf{0.065} & \textbf{0.01} & \textbf{0.065} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.018} & \textbf{0.14} & \textbf{0.018} & \textbf{0.14} & \textbf{0.018} & \textbf{0.14} & \textbf{0.018} & \textbf{0.14} \\ 
+   &  & 0.017 & \textbf{0.132} & \textbf{0.01} & 0.386 & 0.017 & \textbf{0.132} & 0.017 & \textbf{0.132} \\ 
+   \hline
+\end{tabular}
+}
+\caption{Lentelėje pateiktos modelio (\ref{eq:simul}) fiksuotų efektų įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$.}
+\label{table:jfixed}
+\end{sidewaystable}
+}
+
+
+% latex table generated in R 3.2.2 by xtable 1.7-4 package
+% Mon Dec 28 20:33:12 2015
+{\scriptsize
+\begin{sidewaystable}[H]
+\captionsetup{width=19cm}
+\centering
+{\scriptsize
+\begin{tabular}{cc|cc|cc|cc|cc|}
+   & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE(0)}&\multicolumn{2}{c|}{MINQUE(1)}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
+P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE \\ 
+  \hline
+\multirow{6}{*}{P1} & \multirow{2}{*}{V1} & \framebox{0.206} & \framebox{\textbf{1.155}} & \framebox{\textbf{0.064}} & \framebox{1.294} & \framebox{\textbf{0.067}} & \framebox{1.235} & \framebox{0.111} & \framebox{1.4} \\ 
+   &  & \framebox{0.254} & \framebox{1.968} & \framebox{\textbf{0.113}} & \framebox{2.387} & \framebox{\textbf{0.114}} & \framebox{1.998} & \framebox{0.121} & \framebox{\textbf{1.907}} \\ 
+   & \multirow{2}{*}{V2} & 0.015 & \textbf{0.23} & \textbf{0.011} & 0.308 & 0.017 & \textbf{0.238} & \textbf{0.008} & \textbf{0.212} \\ 
+   &  & 0.028 & \framebox{0.767} & 0.024 & \framebox{1.338} & 0.026 & \framebox{0.791} & \textbf{0.008} & \framebox{\textbf{0.71}} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.005} & \textbf{0.16} & 0.011 & 0.255 & \textbf{0.006} & \textbf{0.163} & \textbf{0.005} & \textbf{0.151} \\ 
+   &  & 0.023 & \framebox{\textbf{0.625}} & \textbf{0.014} & \framebox{1.047} & 0.025 & \framebox{0.667} & 0.037 & \framebox{0.739} \\ 
+   \hline \hline\multirow{6}{*}{P2} & \multirow{2}{*}{V1} & \framebox{0.246} & \framebox{\textbf{1.116}} & \framebox{\textbf{0.105}} & \framebox{1.233} & \framebox{0.111} & \framebox{1.2} & \framebox{0.132} & \framebox{1.272} \\ 
+   &  & \framebox{0.249} & \framebox{\textbf{2.265}} & \framebox{0.169} & \framebox{2.947} & \framebox{\textbf{0.144}} & \framebox{\textbf{2.267}} & \framebox{0.161} & \framebox{2.485} \\ 
+   & \multirow{2}{*}{V2} & \textbf{0.01} & \textbf{0.212} & 0.015 & 0.32 & \textbf{0.007} & \textbf{0.215} & \textbf{0.009} & \textbf{0.214} \\ 
+   &  & \textbf{0.014} & \framebox{\textbf{0.8}} & 0.022 & \framebox{1.621} & \textbf{0.015} & \framebox{\textbf{0.826}} & \textbf{0.018} & \framebox{\textbf{0.811}} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.018} & \textbf{0.171} & \textbf{0.014} & 0.249 & \textbf{0.018} & \textbf{0.174} & \textbf{0.019} & \textbf{0.171} \\ 
+   &  & 0.029 & \framebox{\textbf{0.778}} & \textbf{0.018} & \framebox{1.19} & \textbf{0.021} & \framebox{\textbf{0.793}} & 0.029 & \framebox{\textbf{0.781}} \\ 
+   \hline \hline\multirow{6}{*}{P3} & \multirow{2}{*}{V1} & \framebox{0.109} & \framebox{\textbf{0.566}} & \textbf{0.026} & \framebox{0.695} & \textbf{0.026} & \framebox{0.666} & \framebox{0.06} & \framebox{0.663} \\ 
+   &  & \framebox{0.102} & \framebox{\textbf{0.61}} & 0.035 & \framebox{0.778} & \textbf{0.029} & \framebox{0.703} & \framebox{0.087} & \framebox{1.187} \\ 
+   & \multirow{2}{*}{V2} & 0.02 & \textbf{0.118} & \textbf{0.015} & 0.181 & 0.019 & \textbf{0.121} & \textbf{0.01} & \textbf{0.109} \\ 
+   &  & 0.019 & \textbf{0.426} & 0.021 & \framebox{0.764} & 0.016 & \textbf{0.435} & \textbf{0.01} & \textbf{0.418} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.015} & \textbf{0.083} & \textbf{0.015} & 0.143 & 0.017 & \textbf{0.086} & \textbf{0.01} & \textbf{0.078} \\ 
+   &  & 0.028 & \textbf{0.356} & \textbf{0.023} & \framebox{0.591} & 0.031 & \textbf{0.362} & 0.049 & \framebox{0.505} \\ 
+   \hline \hline\multirow{6}{*}{P4} & \multirow{2}{*}{V1} & \framebox{0.109} & \framebox{\textbf{0.58}} & \textbf{0.032} & \framebox{0.701} & \textbf{0.032} & \framebox{0.665} & 0.041 & \framebox{0.675} \\ 
+   &  & \framebox{0.129} & \framebox{\textbf{0.98}} & \framebox{\textbf{0.085}} & \framebox{1.189} & \framebox{\textbf{0.087}} & \framebox{1.069} & \framebox{0.098} & \framebox{1.081} \\ 
+   & \multirow{2}{*}{V2} & \textbf{0.014} & \textbf{0.108} & \textbf{0.014} & 0.151 & \textbf{0.013} & \textbf{0.11} & \textbf{0.015} & \textbf{0.108} \\ 
+   &  & \textbf{0.027} & \framebox{\textbf{0.527}} & \textbf{0.025} & \framebox{0.892} & \textbf{0.029} & \framebox{\textbf{0.553}} & \textbf{0.029} & \framebox{\textbf{0.527}} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.003} & \textbf{0.083} & \textbf{0.006} & 0.134 & \textbf{0.003} & \textbf{0.083} & \textbf{0.003} & \textbf{0.083} \\ 
+   &  & \textbf{0.012} & \textbf{0.354} & 0.018 & \framebox{0.581} & \textbf{0.014} & \textbf{0.371} & \textbf{0.013} & \textbf{0.356} \\ 
+   \hline \hline\multirow{6}{*}{P5} & \multirow{2}{*}{V1} & \framebox{0.071} & \textbf{0.279} & 0.042 & 0.344 & 0.037 & 0.314 & \textbf{0.015} & \textbf{0.29} \\ 
+   &  & \framebox{0.054} & \textbf{0.425} & 0.016 & \framebox{0.564} & \textbf{0.011} & 0.459 & 0.034 & 0.488 \\ 
+   & \multirow{2}{*}{V2} & \textbf{0.004} & \textbf{0.049} & 0.011 & \textbf{0.076} & \textbf{0.005} & \textbf{0.051} & 0.011 & \textbf{0.047} \\ 
+   &  & 0.034 & 0.245 & 0.045 & 0.46 & 0.032 & 0.252 & \textbf{0.008} & \textbf{0.195} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.009} & \textbf{0.035} & 0.016 & \textbf{0.057} & \textbf{0.009} & \textbf{0.035} & \textbf{0.005} & \textbf{0.037} \\ 
+   &  & \textbf{0.008} & \textbf{0.172} & \textbf{0.009} & 0.287 & \textbf{0.009} & \textbf{0.184} & \textbf{0.007} & \textbf{0.169} \\ 
+   \hline \hline\multirow{6}{*}{P6} & \multirow{2}{*}{V1} & \framebox{0.056} & \textbf{0.297} & \textbf{0.021} & 0.364 & \textbf{0.025} & 0.331 & 0.027 & 0.331 \\ 
+   &  & \framebox{0.06} & \textbf{0.467} & 0.037 & \framebox{0.683} & \textbf{0.021} & \textbf{0.49} & 0.028 & \framebox{0.509} \\ 
+   & \multirow{2}{*}{V2} & \textbf{0.002} & \textbf{0.044} & \textbf{0.006} & \textbf{0.067} & \textbf{0.001} & \textbf{0.046} & \textbf{0.003} & \textbf{0.044} \\ 
+   &  & \textbf{0.014} & \textbf{0.169} & 0.024 & 0.274 & \textbf{0.012} & \textbf{0.172} & \textbf{0.013} & \textbf{0.169} \\ 
+   & \multirow{2}{*}{V3} & \textbf{0.008} & \textbf{0.036} & \textbf{0.012} & \textbf{0.06} & \textbf{0.007} & \textbf{0.037} & \textbf{0.008} & \textbf{0.036} \\ 
+   &  & \textbf{0.013} & \textbf{0.161} & \textbf{0.018} & 0.274 & \textbf{0.014} & \textbf{0.161} & \textbf{0.013} & \textbf{0.161} \\ 
+   \hline
+\end{tabular}
+}
+\caption{Lentelėje pateiktos modelio (\ref{eq:simul}) dispersijos komponenčių įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\label{table:jrandom}
+\end{sidewaystable}
+}
 
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
 % Mon Dec 28 21:31:41 2015
@@ -1722,7 +1687,7 @@ min2$sigma
 \centering
 \captionsetup{width=19.5cm}
 {\footnotesize
-\resizebox{0.86\textwidth}{!}{
+%\resizebox{0.86\textwidth}{!}{
 \begin{tabular}{cc|ccc|ccc|ccc|ccc|}
    & & \multicolumn{3}{c|}{REML}&\multicolumn{3}{c|}{MINQUE(0)}&\multicolumn{3}{c|}{MINQUE(1)}&\multicolumn{3}{c|}{MINQUE($\theta$)}\\ \hline
  &  & $\hat{\gamma}_{00}$ & MRBIAS & MRMSE & $\hat{\gamma}_{00}$ & MRBIAS & MRMSE & $\hat{\gamma}_{00}$ & MRBIAS & MRMSE & $\hat{\gamma}_{00}$ & MRBIAS & MRMSE \\ 
@@ -1764,7 +1729,7 @@ min2$sigma
    & \multirow{2}{*}{V3} & 449.954 & \textbf{0.000} & \textbf{0.001} & 449.955 & \textbf{0.000} & \textbf{0.001} & 449.954 & \textbf{0.000} & \textbf{0.001} & 449.954 & \textbf{0.000} & \textbf{0.001} \\ 
    &  & 449.391 & \textbf{-0.001} & \textbf{0.001} & 449.426 & \textbf{-0.001} & \textbf{0.001} & 449.391 & \textbf{-0.001} & \textbf{0.001} & 449.390 & \textbf{-0.001} & \textbf{0.001} \\ 
    \hline
-\end{tabular}}
+\end{tabular}%}
 }
 \caption{Lentelėje pateiktos modelio (\ref{eq:simul}) $\gamma_{00}=450$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \end{sidewaystable}
@@ -2178,6 +2143,41 @@ min2$sigma
 \caption{Paveikslėlyje pateikti modelio (\ref{eq:simul}) su $\chi^2$ paklaidomis atsitiktinių efektų įverčių empiriniai kvantilių grafikai.}
 \label{fig:Xr}
 \end{sidewaysfigure}
+
+% latex table generated in R 3.2.2 by xtable 1.7-4 package
+% Tue Dec 29 16:27:05 2015
+\begin{sidewaystable}[H]
+\footnotesize{
+\begin{tabular}{|cc|ccc|ccc|ccc|}\cline{3-11}
+\multicolumn{2}{c|}{ }&\multicolumn{3}{c|}{REML}&\multicolumn{3}{c|}{MINQUE(1)}&\multicolumn{3}{c|}{PWMINQUE(1)}\\ \hline
+ Parametras & Tikroji & Vidurkis & MRBIAS & MRSE & Vidurkis & MRBIAS & MRSE & Vidurkis & MRBIAS & MRSE \\ 
+  \hline
+$\gamma_{00}$ & 1 & 0.781 & -0.219 & 0.063 & 0.782 & -0.218 & 0.063 & 1.165 & 0.165 & 0.048 \\ 
+  $\gamma_{01}$ & 1 & 1.001 & 0.001 & 0.029 & 1.003 & 0.003 & 0.03 & 1.000 & 0.000 & 0.032  \\ 
+  $\gamma_{10}$ & 1 & 1.002 & 0.002 & 0.018 & 1.005 & 0.005 & 0.018 & 1.001 & 0.001 & 0.025 \\ 
+  $\sigma^2$ & 1 & 0.949 & -0.051 & 0.006 & 0.95 & -0.05 & 0.006 & 0.98 & -0.02 & 0.007 \\ 
+  $\tau_{00}$ & $\frac{1}{4}$ & 0.221 & -0.115 & 0.086 & 0.221 & -0.115 & 0.091 & 0.264 & 0.054 & 0.113 \\ 
+  $\tau_{01}$ & $\frac{\sqrt{3}}{8}\approx 0.217$ & 0.159 & -0.265 & 0.204 & 0.155 & -0.283 & 0.218 & 0.217 & 0.001 & 0.248  \\ 
+  $\tau_{11}$ & $\frac{3}{4}$ & 0.583 & -0.223 & 0.1 & 0.574 & -0.235 & 0.108 & 0.746 & -0.005 & 0.112  \\ 
+   \hline
+\end{tabular}
+\begin{tabular}{|cc|ccc|ccc|}\cline{3-8}
+  & &\multicolumn{3}{c|}{MINQUE($\theta$)}&\multicolumn{3}{c|}{PWMINQUE($\theta$)}\\ \hline
+Parametras & Tikroji &  Vidurkis & MRBIAS & MRSE & Vidurkis & MRBIAS & MRSE \\ 
+  \hline
+$\gamma_{00}$ & 1 &  0.781 & -0.219 & 0.063 & 1.166 & 0.166 & 0.048 \\ 
+  $\gamma_{01}$ & 1 &  1.001 & 0.001 & 0.029 & 1.000 & 0.000 & 0.031 \\ 
+  $\gamma_{10}$ & 1 &  1.002 & 0.002 & 0.018 & 1.002 & 0.002 & 0.026 \\ 
+  $\sigma^2$ & 1 &  0.948 & -0.052 & 0.006 & 0.973 & -0.027 & 0.007 \\ 
+  $\tau_{00}$ & $\frac{1}{4}$ & 0.221 & -0.115 & 0.086 & 0.261 & 0.044 & 0.116 \\ 
+  $\tau_{01}$ & $\frac{\sqrt{3}}{8}\approx 0.217$ & 0.159 & -0.266 & 0.204 & 0.217 & 0.003 & 0.232 \\ 
+  $\tau_{11}$ & $\frac{3}{4}$ & 0.584 & -0.222 & 0.1 & 0.762 & 0.017 & 0.116 \\ 
+   \hline
+\end{tabular}
+}
+\caption{Lentelėje pateiktos modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos. Statistikos plačiau aprašytos skyrelyje \ref{subsubsec:besvoriu}.}
+\label{table:wsimul}
+\end{sidewaystable}
 
 \newpage
 
