@@ -1,5 +1,5 @@
 \select@language {lithuanian}
-\contentsline {section}{Turinys}{1}{section*.1}
+\contentsline {section}{TURINYS}{1}{section*.1}
 \contentsline {section}{\numberline {1}\IeC {\k I}VADAS}{4}{section.1}
 \contentsline {section}{\numberline {2}HIERARCHINIAI TIESINIAI MODELIAI}{6}{section.2}
 \contentsline {subsection}{\numberline {2.1}Hierarchinio tiesinio modelio apra\IeC {\v s}ymas}{6}{subsection.2.1}
