@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  3 JAN 2016 01:30
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.28)  3 JAN 2016 01:35
 entering extended mode
 **D:/minque/Magistro*darbas/magistro*darbas*tex/magistro_darbas_EK_2016.tex
 ("D:/minque/Magistro darbas/magistro darbas tex/magistro_darbas_EK_2016.tex"
@@ -1301,35 +1301,35 @@ Overfull \hbox (101.9689pt too wide) in paragraph at lines 1402--1402
 Overfull \vbox (62.60529pt too high) has occurred while \output is active []
 
 
-[44]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 1691.
- [45] [46] [47] [48] [49] [50] [51] [52]
-<Ngammaseqdg.pdf, id=793, 1156.32pt x 820.06375pt>
+[44] [45] [46] [47] [48] [49] [50] [51] [52]
+<Ngammaseqdg.pdf, id=790, 1156.32pt x 820.06375pt>
 File: Ngammaseqdg.pdf Graphic file (type pdf)
  <use Ngammaseqdg.pdf>
 Package pdftex.def Info: Ngammaseqdg.pdf used on input line 2121.
 (pdftex.def)             Requested size: 641.924pt x 455.24408pt.
 
-[53] <Nraneqdg.pdf, id=802, 1156.32pt x 820.06375pt>
+[53] <Nraneqdg.pdf, id=799, 1156.32pt x 820.06375pt>
 File: Nraneqdg.pdf Graphic file (type pdf)
  <use Nraneqdg.pdf>
 Package pdftex.def Info: Nraneqdg.pdf used on input line 2128.
 (pdftex.def)             Requested size: 641.924pt x 455.24408pt.
 
 [54 <D:/minque/Magistro darbas/magistro darbas tex/Ngammaseqdg.pdf>]
-<Xfixeqdg.pdf, id=817, 1156.32pt x 820.06375pt>
+<Xfixeqdg.pdf, id=814, 1156.32pt x 820.06375pt>
 File: Xfixeqdg.pdf Graphic file (type pdf)
  <use Xfixeqdg.pdf>
 Package pdftex.def Info: Xfixeqdg.pdf used on input line 2135.
 (pdftex.def)             Requested size: 641.924pt x 455.24408pt.
  [55 <D:/minque/Magistro darbas/magistro darbas tex/Nraneqdg.pdf>]
-<Xraneqdg.pdf, id=832, 1156.32pt x 820.06375pt>
+<Xraneqdg.pdf, id=829, 1156.32pt x 820.06375pt>
 File: Xraneqdg.pdf Graphic file (type pdf)
  <use Xraneqdg.pdf>
 Package pdftex.def Info: Xraneqdg.pdf used on input line 2142.
 (pdftex.def)             Requested size: 641.924pt x 455.24408pt.
  [56 <D:/minque/Magistro darbas/magistro darbas tex/Xfixeqdg.pdf>]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 2151.
+
 Underfull \hbox (badness 10000) in paragraph at lines 2151--2178
 [][]
  []
@@ -1359,50 +1359,50 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2196.
  ) 
 Here is how much of TeX's memory you used:
- 12232 strings out of 493921
- 177542 string characters out of 3144879
+ 12230 strings out of 493921
+ 177519 string characters out of 3144879
  440169 words of memory out of 3000000
- 14966 multiletter control sequences out of 15000+200000
- 97067 words of font info for 108 fonts, out of 3000000 for 9000
+ 14965 multiletter control sequences out of 15000+200000
+ 95378 words of font info for 107 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  39i,15n,85p,2035b,563s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{appendix} has been referenced but does not exist,
  replaced by a fixed one
 
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program
- Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-l7x.enc}{C:/Program Files (x86)/M
-iKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts
-/enc/dvips/lm/lm-mathit.enc} <C:\Users\Egle\AppData\Local\MiKTeX\2.9\fonts\pk\l
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 2.9/fo
+nts/enc/dvips/lm/lm-l7x.enc} <C:\Users\Egle\AppData\Local\MiKTeX\2.9\fonts\pk\l
 jfour\public\bbm\dpi657\bbm10.pk>{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/d
 vips/lm/lm-mathex.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
 lmbsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/lm/lmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
-1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
-/lmmi5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi6.pfb><
-C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/lm/lmmib10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
-public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
-r12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr5.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
-e1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
-lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
-ublic/lm/lmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmt
-t10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on magistro_darbas_EK_2016.pdf (62 pages, 900076 bytes).
+)/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/public/lm/lmmi5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
+/lmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi7.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi8.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/lm/lmmib10.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
+public/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
+r5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
+/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/lm/lmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
+ublic/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
+tt9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb>
+Output written on magistro_darbas_EK_2016.pdf (62 pages, 875741 bytes).
 PDF statistics:
- 1139 PDF objects out of 1200 (max. 8388607)
+ 1135 PDF objects out of 1200 (max. 8388607)
  257 named destinations out of 1000 (max. 500000)
  290 words of extra memory for PDF output out of 10000 (max. 10000000)
 
