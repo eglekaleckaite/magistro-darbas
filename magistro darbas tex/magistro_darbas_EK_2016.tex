@@ -113,7 +113,7 @@ Atidavimo į katedrą data \underline{2016-01-04\hskip 23pt} }
 \vspace{2\baselineskip}
 \begin{center}\textbf{Santrauka}\end{center}
 
-\indent Šio darbo tikslas buvo Monte Carlo simuliacijų būdu palyginti du HLM modelių parametrų vertinimo metodus -- REML ir MINQUE. Tikėtasi, jog MINQUE metodas, pasižymintis invariantiškumu ir nepaslinktumu bei nereikalaujantis žinių apie paklaidų ir atsitiktinių efektų pasikirstymą, duos mažiau paslinktus dispersijos komponenčių įverčius nei REML metodas, kai normalumo sąlyga negali būti užtikrinta. Specialus dėmesys skiriamas TIMSS duomenų stuktūrai, todėl stegtasi į ją atsižvelgti kuriant simuiacijų dizainą. Simuliacijų rezultatai nepatvirtino lūkesčių, akivaizdžiai mažesnis įverčių poslinkis gautas tik siauroje srityje, nesvarbu koks palaidų ir atsitiktinių efektų pasiskirstymas. HLM modelių vertinimui su imties svoriais vertinti MiNQUE metodu pritaikytas PWIGLS svėrimo metodas, pavadintas PWMINQUE. Simuliacijų būdu patvirtinta, jog šis metodas informatyviam ėmimui duoda mažiau paslinktus įverčius. Galiausiai, sudaromas dviejų lygių HLM modelis Lietuvos aštuntokų TIMSS 2011 duomenims. Šio modelio parametrai įvertinami REML ir MINQUE metodais.
+\indent Šio darbo tikslas buvo Monte Carlo simuliacijų būdu palyginti du HLM modelių parametrų vertinimo metodus -- REML ir MINQUE. Tikėtasi, jog MINQUE metodas, pasižymintis invariantiškumu ir nepaslinktumu bei nereikalaujantis žinių apie paklaidų ir atsitiktinių efektų pasikirstymą, duos mažiau paslinktus dispersijos komponenčių įverčius nei REML metodas, kai normalumo sąlyga negali būti užtikrinta. Specialus dėmesys skiriamas TIMSS duomenų stuktūrai, todėl stegtasi į ją atsižvelgti kuriant simuiacijų dizainą. Simuliacijų rezultatai nepatvirtino lūkesčių, akivaizdžiai mažesnis įverčių poslinkis gautas tik siauroje srityje, nesvarbu koks palaidų ir atsitiktinių efektų pasiskirstymas. HLM modelių vertinimui su imties svoriais vertinti MiNQUE metodu pritaikytas PWIGLS svėrimo metodas, pavadintas PWMINQUE. Simuliacijų būdu patvirtinta, jog šis metodas informatyviam ėmimui duoda mažiau paslinktus įverčius. Galiausiai, sudarytas dviejų lygių HLM modelis Lietuvos aštuntokų TIMSS 2011 duomenims. Šio modelio parametrai įvertinami REML ir MINQUE metodais.
 
 %\indent Hierarchinių tiesinių modelių modelių vertinimui dažniausiai naudojamas REML metodas yra paremtas normalumo prielaida, kuri mokyklos duomenims dažnai negali būti garantuota. Šiame darbe kaip alternatyvą buvo tirtas MINQUE metodas, kuris nereikalauja žinių apie paklaidų ir atsitiktinių efektų pasiskirsymą, yra invariantiškas ir nepaslinktas. Anksčiau atlikti tyrimai nebuvo taikyti hierarchinėms stuktūrms arba REML ir MINQUE HLM modeliams nelyginti tiesiogiai tarpusavyje. Tikėtasi, jog šis metodas duos mažiau paslinktus dispersijos komponenčių įverčius prie $\chi^2$ pasiskirstymo. Tačiau atliktas simuliacijų tyrimas to nepatvirtino.
 %
@@ -139,25 +139,8 @@ TIMSS, PWIGLS, HLM, MINQUE, PWMINQUE, REML
 \vspace{2\baselineskip}
 \begin{center}\textbf{Abstract}\end{center}
 
-\indent The purpose of the study was to compare the performance of two estimation procedures, REML and  MINQUE, for a two-level hierarchical linear model. It was expected that the variance-covariance components estimates provided by MINQUE procedure will have less bias then those obtained by REML when the normality can not be guaranteed. The investigated MINQUE method attained three types of \textit{a piori} values -- MINQUE(0), MINQUE(1) and MINQUE($\theta$). A special focus here lays on school data, to be precise on TIMSS data. The design of TIMSS data was taken into account while creating the simulation design of this study. Procedures tested under variety of sample size and random effects covariances. Through Monte Carlo simulations it was shown that except a small range ($\frac{\tau_{00}}{\sigma^2}=0.05$) REML and MINQUE procedures provided almost identical results regardless of the distribution of model residuals and random effects. PWMINQUE procedure was develop in the precess. This procedure takes into account sample weights and was created by the principle of PWIGLS procedure. PWMINQUE was tested though MC simulations and provided less bias than unweighted procedures when the sampling is informative. Taking into account the obtained results two-level HLM model for eight grade TIMSS 2011 data of Lithuania was composed. This model estimated by REML and MINQUE procedures.
+\indent The purpose of the study was to compare the performance of two estimation procedures, REML and  MINQUE, for a two-level hierarchical linear model. It was expected that the variance-covariance components estimates provided by MINQUE procedure will have less bias then those obtained by REML when the normality can not be guaranteed. The investigated MINQUE method attained three types of \textit{a piori} values -- MINQUE(0), MINQUE(1) and MINQUE($\theta$). A special focus was on hierarchical structure of TIMSS data. The design of TIMSS data was taken into account while creating the simulation design of this study. Procedures were tested under various sample sizes and random effects covariances. Applying Monte Carlo simulations it was shown that except for  a small range REML and MINQUE procedures provided almost identical results regardless of the distribution of model residuals and random effects. PWMINQUE procedure was developed in the process. This procedure takes into account sample weights and was based on  PWIGLS procedure. PWMINQUE was tested through MC simulations and provided less bias than unweighted procedures in the case of informative sampling. Taking into account the obtained results two-level HLM model for eight grade TIMSS 2011 data of Lithuania was constructed. This model was estimated by REML and MINQUE procedures.
 
-
-%Through Monte Carlo simulations, the importance of this assumption for the accuracy
-%of multilevel parameter estimates and their standard errors was assessed using the accuracy
-%index of relative bias and by observing the coverage percentages of 95% confidence intervals
-%constructed for both estimation procedures. The study systematically varied the number of
-%groups at level-2 (30 versus 100), the size of the intraclass correlation (0.01 versus 0.20) and
-%the distribution of the observations (normal versus $\chi^2$).
-%The number of groups and intraclass correlation factors produced effects consistent with
-%those previously reported—as the number of groups increased, the bias in the parameter
-%estimates decreased, with a more significant effect observed for those estimates obtained
-%via REML. High levels of the intraclass correlation also led to a decrease in the efficiency of
-%parameter estimation under both methods. Study results show that while both the restricted
-%maximum likelihood and the bootstrap via MINQUE estimates of the fixed effects were
-%accurate, the efficiency of the estimates was affected by the distribution of errors with the
-%bootstrap via MINQUE procedure outperforming the REML. Both procedures produced
-%less efficient estimators under the $\chi^2$ 1 distribution, particularly for the variance-covariance
-component estimates.
 
 \vspace{\baselineskip}
 
@@ -502,7 +485,7 @@ $\mathbf{q}=\{q_i\}$,
 
 \indent Literatūros apie MINQUE pritaikymą hierarchiniams tiesiniams modeliams nėra daug arba sunku tokią gauti. Delpish\cite{delpish} 2006 metų savo daktaro disertacijoje remiasi Bagaka's\cite{bagaka} darbu, kuriame pristatomas minėtasis MINQUE metodas ir jo pritaikymas dviejų lygių hierarchiniams modeliams su atsitiktiniu postūmiu. Pasak autorių, MINQUE neturi procedūros skaičiuoti standartinėms paklaidoms ir pasikliautinumo intervalams, tad šiam tikslui buvo pasitelktas savirankos metodas. Delpish savo darbe naudoja I-MINQUE metodo pirmas dvi iteracijas ir tik labai abstrakčiai pristato vertinimo metodą, o skaičiavimai atliekami su SAS programos PROC MIXED paketu. Dėl šių priežasčių šiame darbe pateikiamas MINQUE metodo suvedimas dviejų lygių tiesiniams hierarhiniams modeliams su atsitiktiniu postūmiu ir posvyriui. Plačiau apie tai skyriuje \ref{sec:hlmminque}.  Toliau pateikiami aukščiau minėtų Bagaka's ir Delpish tyrimų detalesni aprašymai.
 
-\subsubsection{Bagaka's MINQUE}\label{subsubsec:bminque}
+\subsubsection{Bagaka's tyrimas}\label{subsubsec:bminque}
 1992 metais savo nepublikuotoje disertacijoje \textit{Two-level nested hierarchical linear model with random intercepts via the bootstrap}\cite{bagaka} Bagaka's išvedė MINQUE procedūrą dviejų lygių tiesiniams hierarchiniams modeliams. Jo tikslas buvo Monte Carlo simuliacijų būdu palyginti MINQUE ir MINQUE su saviranka metodų gerumą ventinant dviejų lygių tiesinį hierarchinį modelį su atsitiktiniu poslinkiu kai normalumo sąlyga negali būti užtikrinta bei pažiūrėti ar MINQUE su saviranka išsprendžia neigiamų variacijos komponenčių įverčių problemą. Naudotas neparametrinės atvejų savirankos metodas. Savo disertacijoje Bagaka's suveda modelio su atsitiktiniu poslinkiu MINQUE vertinimo procedūrą į mažiau reikalaujančia didelių matricų operacijų, taip pat parodo, jog \textit{a priori} reikšmės šiuo atveju yra susiję su tarpklasinės koreliacijos koeficientu (\ref{eq:icc}). Dispersijos komponentėms $\sigma^2$ ir $\tau_{00}^2$ atitinkamai $w_0=1-ICC$ ir $w_1=ICC$.
 
 \indent Šiems svoriams gauti Bagaka's pasiūlė naudoti ANOVA paremtas \textit{a priori} reikšmes. $\hat{\sigma}^2_{e}$ gaunamas paprastu mažiausių kvadratų metodu (\textit{angl. OLS - ordinary least squares}) vertinant modelį (\ref{eq:bendrasHLM}) be atsitiktinių efektų. Tuomet atsitiktinių efektų dispersijos komponentės įvertis gaunamas iš
@@ -546,7 +529,7 @@ Y_{ij}=\mu+\alpha_k+\beta\times X_{ij}+u_j+\varepsilon_{ij},
 %\item MINQUE su saviranka parametrų įverčiai gauti gana tikslūs, taip pat ir pasikliautinių intervalų padengiamumas.
 %\end{enumerate}
 
-\subsubsection{Delpish MINQUE}
+\subsubsection{Delpish tyrimas}\label{subsubsec:dminque}
 
 \indent Remdamasi Bagaka's disertacija Delpish 2006 metais savo disertacijoje\cite{delpish} palygino du metodus HLM modeliams vertinti - REML ir MINQUE su saviranka. Naudoti du pirmieji I-MINQUE žingsniai su saviranka, savirankos metodas identiškas Bagaka's metodui. Nagrinėjamas šiek tiek sudėtingesnis dviejų lygių su atsitiktiniu poslinkiu ir posvyriu modelis:
 \begin{equation*} \label{eq:2lvldelpish}
@@ -741,9 +724,9 @@ Y_{ij}&=\beta_{0j}+\beta_{1j}X_{1ij}+\varepsilon_{ij}, &\varepsilon_{ij}\sim (0,
 Y_{ij} = \gamma_{00} +\gamma_{01}\times W_{j}+ \gamma_{10}\times X_{ij}+\gamma_{11}\times W_{j}\times X_{ij}+u_{0j}+u_{1j}\times X_{ij}+\varepsilon_{ij}.
 \end{equation}
 
-\indent Kiekvienai mokyklai $j =1,\dots,J=300$ sugeneruojamas aiškinamasis kintamasis $W_j$, kuris įgyja reikšmes atsitiktinai su lygiomis tikimybėmis iš intervalo $[1; 8]$ su žingsniu $\frac{1}{3}$. Tai galėtų būti indeksas žymintis mokykloje sudaromas sąlygas mokytis, kuo jis didesnis, tuo geresnės sąlygos. Pridedami atsitiktiniai efektai $u_{0j}$ ir $u_{1j}$. Antrojo lygio paklaidų koreliacija parenkama $\tau_{01} = \tau{10}=0,5$. O dispersijos $\tau_{00}=\tau_{11}$ parenkamos lygios paprastumo dėlei ir įgyja tris reikšmes (100; 800; 2000). Taip daroma pagal (bla bla!!!), kad būtų atspindėtas santykis $\frac{\tau_{00}}{\sigma^2}$ atitinkantis (0,05; 0,4; 1). Čia išskiriami du atvejai, $u_{0j}\sim \mathcal{N}(0; \tau_{00})$ ir $u_{1j}\sim \mathcal{N}(0; \tau_{11})$ arba $u_{0j}\sim \chi^2(0; \tau_{00})$ ir $u_{1j}\sim \chi^2(0; \tau_{11})$. Toks $\chi^2$ pasiskirstymas gaunamas sugeneravus $\tilde{u}_{0j}\sim\chi^2_1$, jį standartizavus ir padauginus iš $\sqrt{\tau_{pp}}$. Čia pasirinkta  $\gamma_{00}=450$, $\gamma_{01}=30$, $\gamma_{10}=10$ ir $\gamma_{11}=5$. Toliau kuriami mokinio (pirmojo) lygio kintamieji.
+\indent Kiekvienai mokyklai $j =1,\dots,J,\ J=300$ sugeneruojamas aiškinamasis kintamasis $W_j$, kuris įgyja reikšmes atsitiktinai su lygiomis tikimybėmis iš intervalo $[1; 8]$ su žingsniu $\frac{1}{3}$. Tai galėtų būti indeksas žymintis mokykloje sudaromas sąlygas mokytis, kuo jis didesnis, tuo geresnės sąlygos. Pridedami atsitiktiniai efektai $u_{0j}$ ir $u_{1j}$. Antrojo lygio paklaidų koreliacija parenkama $\tau_{01} = \tau{10}=0,5$. O dispersijos $\tau_{00}=\tau_{11}$ parenkamos lygios paprastumo dėlei ir įgyja tris reikšmes (100; 800; 2000). Taip daroma, kad būtų atspindėtas santykis $\frac{\tau_{00}}{\sigma^2}$ atitinkantis (0,05; 0,4; 1). Čia išskiriami du atvejai, $u_{0j}\sim \mathcal{N}(0; \tau_{00})$ ir $u_{1j}\sim \mathcal{N}(0; \tau_{11})$ arba $u_{0j}\sim \chi^2(0; \tau_{00})$ ir $u_{1j}\sim \chi^2(0; \tau_{11})$. Toks $\chi^2$ pasiskirstymas gaunamas sugeneravus $\tilde{u}_{0j}\sim\chi^2_1$, jį standartizavus ir padauginus iš $\sqrt{\tau_{pp}}$, kaip daroma Delpish tyrime aprašytame \ref{subsubsec:dminque} skyrelyje. Čia pasirinkta  $\gamma_{00}=450$, $\gamma_{01}=30$, $\gamma_{10}=10$ ir $\gamma_{11}=5$. Toliau kuriami mokinio (pirmojo) lygio kintamieji.
 
-\indent TIMSS tyrime parinktoje mokykloje renkama klasė ir tiriami visi jos mokiniai. Kiekvienoje iš mokyklų, sugeneruojamas jos dydis, panašiai kaip daryta Vakilian daktaro disertacijoje \cite{mcmc}. $j$ - tosios mokyklos dydis gaunamas $N_j=\left[50\times\exp{(\tilde{u}_{0j})}\right]$, čia laužtiniai skliaustai žymi sveikąją dalį, o $\tilde{u}_{0j}$ sugeneruotas iš $\mathcal{N}(0; 0,2)$ skirstinio apriboto tarp $-1,5 \sqrt{0,2}$ ir $1,5 \sqrt{0,2}$.  $N_j$ įgyja reikšmes tarp kažkur tarp 11 ir 225. Toliau mokyklos suskirstomos į klases pagal formulę $c_j=\left[\frac{N_j}{30}\right]$, kur $c_j$ žymi klasių skaičių. Tai yra kiekvienas mokinys priskiriamas į vieną iš klasių atitiktinai su lygiomis tikimybėmis. Čia kiek. Tuomet $X_{1ij}\sim \mathcal{B}(1; 0,2)$. Jis gali būti interpretuojamas kaip žymimasis kintamasis, kuris įgyja reikšmę 1, jei mokinys mėgsta mokytis matematiką. Ir galiausiai pridedami atsitiktiniai svyravimai. Kaip ir anksčiau, išskiriami du atvejai: $\varepsilon_{ij}\sim \mathcal{N}(0; \sigma^2)$ arba $\varepsilon_{ij}\sim \chi^2(0; \sigma^2)$ (gautas kaip anksčiau). $\sigma^2$ čia parinktas 2000 pagal pradinius TIMSS modelius.
+\indent TIMSS tyrime parinktoje mokykloje renkama klasė ir tiriami visi jos mokiniai. Kiekvienoje iš mokyklų, sugeneruojamas jos dydis, panašiai kaip daryta Vakilian daktaro disertacijoje \cite{mcmc}. $j$ - tosios mokyklos dydis gaunamas $N_j=\left[50\times\exp{(\tilde{u}_{0j})}\right]$, čia laužtiniai skliaustai žymi sveikąją dalį, o $\tilde{u}_{0j}$ sugeneruotas iš $\mathcal{N}(0; 0,2)$ skirstinio apriboto tarp $-1,5 \sqrt{0,2}$ ir $1,5 \sqrt{0,2}$.  $N_j$ įgyja reikšmes tarp kažkur 11 ir 225. Toliau mokyklos suskirstomos į klases pagal formulę $c_j=\left[\frac{N_j}{30}\right]$, kur $c_j$ žymi klasių skaičių. Tai yra kiekvienas mokinys priskiriamas į vieną iš klasių atitiktinai su lygiomis tikimybėmis. Tuomet $X_{1ij}\sim \mathcal{B}(1; 0,2)$. Jis gali būti interpretuojamas kaip žymimasis kintamasis, kuris įgyja reikšmę 1, jei mokinys mėgsta mokytis matematiką. Ir galiausiai pridedami atsitiktiniai svyravimai. Kaip ir anksčiau, išskiriami du atvejai: $\varepsilon_{ij}\sim \mathcal{N}(0; \sigma^2)$ arba $\varepsilon_{ij}\sim \chi^2(0; \sigma^2)$ (gautas kaip anksčiau). $\sigma^2$ čia parinktas 2000 pagal pradinius TIMSS modelius.
 
 \indent Sudarius populiaciją, parenkama $m$ dydžio imtis. Kaip jau minėta iš 300 mokyklų populiacijos atsitiktinai parenkamos 20, 35 ir 80 mokyklų su tikimybėmis atvirkščiai proporcingomis mokyklos mokinių skaičiui. Kiekvienai parinktai mokyklai atsitiktinai su lygiomis tikimybėmis parenkama viena klasė. Subalansuoto dizaino atveju, pirmojo lygio subjektai neskaidomi į klases, o tiesiog iš kiekvieno antrojo lygio subjekto su lygiomis tikimybėmis parenkama po 30 pirmo lygio subjektų. Visi simuliacijų parametrai pateikti lentelėse \ref{table:fixed} ir \ref{table:struct2}. Lentelėje \ref{table:struct1} pateikti simuliacijų struktūrų pažymėjimai. Viso 36 atvejai.
 
@@ -762,7 +745,7 @@ $X_{ij}$ &  $B\left(1; 0,2\right)$ \\
 $W_{j}$ &  Indeksas \\
 \hline
 \end{tabular}
-\caption[Fiksuotos modelio (\ref{eq:simul}) parametrų ir kintamųjų reikšmės]{Lentelėje pateiktos fiksuotos modelio (\ref{eq:simul}) parametrų ir kintamųjų reikšmės.}
+\caption[Fiksuotos modelio (\ref{eq:simul}) parametrų ir kintamųjų reikšmės]{Fiksuotos modelio (\ref{eq:simul}) parametrų ir kintamųjų reikšmės.}
 \label{table:fixed}
 \end{table}
 
@@ -777,7 +760,7 @@ V2&2000&800&400&800\\
 V3&2000&2000&1000&2000\\
 \hline
 \end{tabular}
-\caption[Pažymėjimai simuliacijose naudojamoms dispersijos komponenčių kombinacijoms]{Lentelėje pateikti pažymėjimai simuliacijose naudojamoms dispersijos komponenčių kombinacijoms.}
+\caption[Pažymėjimai simuliacijose naudojamoms dispersijos komponenčių kombinacijoms]{Pažymėjimai simuliacijose naudojamoms dispersijos komponenčių kombinacijoms.}
 \label{table:struct2}
 \end{table}
 
@@ -794,13 +777,70 @@ $m$& Nesubalansuotas & \ \ \ \ \ \ \ \ \ \ 30\ \ \ \ \ \ \ \ \ \ \\
 80& P5&P6\\
 \hline
 \end{tabular}
-\caption[Simuliacijų struktūrų pažymėjimai]{Lentelėje pateikti simuliacijų struktūrų pažymėjimai. Čia $m$ žymi antrojo lygio individų skaičių, $n_j$ žymi pirmojo lygio individų skaičių.}
+\caption[Simuliacijų struktūrų pažymėjimai]{Simuliacijų struktūrų pažymėjimai. Čia $m$ žymi antrojo lygio individų skaičių, $n_j$ žymi pirmojo lygio individų skaičių.}
 \label{table:struct1}
 \end{table}
 
 
 
-\indent Šiame darbe atliekama 500 Monte Carlo simuliacijų kiekvienam iš 36 atvejų. Kiekvienos iš simuliacijų metu sugeneruojama populiacija aukščiau aprašytu būdu, tuomet traukiama imtis pagal anksčiau aprašytą metodą. Ir vertinamas modelis (\ref{eq:simul}) visais metodais (REML, MINQUE(0), MINQUE(1) ir MINQUE($\theta$)). Gauti parametrų įverčiai analizuojami toliau pateiktomis statistikomis. Skaičiavimai atlikti su statistinės analizės programa Revolution $\R$ Open 3.2.2, naudotas keturių branduolių procesorius \textit{Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz}. Gauti rezultatai pateikti kitame skyrelyje.
+\indent Šiame darbe atliekama 500 Monte Carlo simuliacijų kiekvienam iš 36 atvejų -- 3 disprsijos komponenčių, 6 struktūrų ir 2 pakalaidų pasiskirstymo atvejai. Kiekvienos iš simuliacijų metu sugeneruojama populiacija aukščiau aprašytu būdu, tuomet traukiama imtis pagal anksčiau aprašytą metodą. Ir vertinamas modelis (\ref{eq:simul}) visais metodais (REML, MINQUE(0), MINQUE(1) ir MINQUE($\theta$)). Gauti parametrų įverčiai analizuojami toliau pateiktomis statistikomis. Skaičiavimai atlikti su statistinės analizės programa Revolution $\R$ Open 3.2.2, naudotas keturių branduolių procesorius \textit{Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz}. Gauti rezultatai pateikti \ref{subsec:simrez} skyrelyje.
+
+\subsubsection*{Su imties svoriais}\hypertarget{susvoriais}
+\indent Šiame skyrelyje nusakoma, kaip buvo sudaryta populiacija, imčių ėmimas ir svorių sudarymas. Kadangi informatyvų ėmimo dizainą gana sunku sudaryti, jis pasirinktas toks pat kaip Steele, Clarke ir Goldstein straipsnyje \textit{Weighting in MLwiN}\cite{mlwin}. 
+
+\indent Sugeneruojama $M=300$ mokyklų dydžio populiacija pagal hierarchinį modelį:
+\begin{equation*}\label{eq:wsimul}
+\left\{
+\begin{array}{l}
+\begin{split}
+Y_{ij}&=\beta_{0j}+\beta_{1j}X_{1ij}+\varepsilon_{ij}, &\varepsilon_{ij}\sim \mathcal{N}(0, \sigma^2);\\
+\beta_{0j}&=\gamma_{00}+\gamma_{01}X_{2j}+u_{0j}, & u_{0j}\sim \mathcal{N}(0, \tau_{00});\\
+\beta_{1j}&=\gamma_{10}+u_{1j}, & u_{1j}\sim \mathcal{N}(0, \tau_{11}).
+\end{split}
+\end{array} \right.
+\end{equation*}
+čia $\varepsilon_{ij}$ -modelio paklaidos su vidurkiu $0$ ir dispersija $\sigma^2=1$; $\left(u_{0j}, u_{1j}\right)$ - atsitiktiniai efektai su nuliniais vidurkiais ir kovariacijos matrica $\mathbf{T}=\begin{pmatrix}
+\tau_{00} & \tau_{01} \\
+\tau_{10} & \tau_{11} \\
+\end{pmatrix}=\begin{pmatrix}
+\frac{1}{4}& \frac{\sqrt{3}}{8} \\
+ \frac{\sqrt{3}}{8} & \frac{3}{4}\\
+\end{pmatrix}$; $\gamma_{pq}=1,\ p,g = \{0,1\}$ - fiksuoti modelio efektai. $X_{2j}$ - antrojo lygio aiškinantysis kintamasis, $X_2\sim \mathcal{B}(1;0,5)$, o $X_{ij}$ - pirmojo lygio aiškinantysis kintamasis, $X_1\sim \mathcal{N}(0;1)$ - centruotas pagal $j$. Šį pavidalą galima suvesti į:
+\begin{equation*} \label{eq:wdeq}
+Y_{ij} = \gamma_{00} +\gamma_{01}\times X_{2j}+ \gamma_{10}\times X_{1ij}+u_{0j}+u_{1j}\times X_{1ij}+\varepsilon_{ij}.
+\end{equation*}
+
+\indent Antro lygio subjektų parinkimo tikimybė yra susijusi su modelio atsitiktiniu posvyriu ir poslinkiu:
+\begin{equation*}
+\pi_j=
+\left\{
+\begin{array}{l}
+0,225, \text{ kai } u_{0j} \notin \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| > 1;\\
+0,425, \text{ kai } u_{0j} \in \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| > 1;\\
+0,525, \text{ kai } u_{0j} \notin \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| \leq 1;\\
+0,725, \text{ kai } u_{0j} \in \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| \leq 1,
+\end{array} \right.
+\end{equation*}
+\noindent čia $\bar{u}_0=\frac{1}{J}\sum_ju_{0j}$ ir $sd_0=\sqrt{\frac{1}{J}\sum_j(u_{0j}-\bar{u}_0)^2}$, atitinkamai $u_{0j}$ vidurkis ir standartinis nuokrypis. 
+
+\indent Pirmo lygmens subjektai parenkami pagal modelio paklaidas $\varepsilon_{ij}$:
+\begin{equation*}
+\pi_{i|j}=
+\left\{
+\begin{array}{l}
+0,25, \text{ kai } \varepsilon_{ij}>0;\\
+0,75, \text{ kai } \varepsilon_{ij}\leq0.\\
+
+\end{array} \right.
+\end{equation*}
+
+\indent Parenkama $m=35$ antrojo lygio subjektų ir $n_j=20$ pirmojo, tad patekimo į imtį svoriai yra $w_j=\frac{m}{\pi_j}$, $w_{i|j}=\frac{n_j}{\pi_{i|j}}$ ir $w_{ij}=w_j\times w_{i|j}$.
+
+\indent Atliekama 1500 Monte Carlo simuliacijų kiekvienam iš metodų. Rezultatai pateikti \ref{subsec:simrez} skyrelyje.
+
+
+\subsection{Statistikos}\label{subsec:stat}
+\indent Šiame skyrelyje pateikiamos statistikos naudojamos lyginant ir vertinant gautus rezultatus. Žymėjimai skirti bedram atvejui bet nesunkiai pritaikomi ir paprastsniam.
 
 \subparagraph{Vidutinis įvertis} gaunamas tiesiog suvidurkinus simuliacijų metu gautus parametro įverčius:
 \[
@@ -864,83 +904,31 @@ CMRSE_{kl}=\frac{1}{n_{kl}}\sum_{j=1}^{n_{kl}}MRSE_{jkl}.
 \end{enumerate}
 \indent Kuo EQM arčiau vieneto tuo geriau. Aukštesnioji kreivė laikoma prastesne.
 
-\subsubsection{Su imties svoriais}\label{subsubsec:susvoriais}
-\indent Šiame skyrelyje nusakoma, kaip buvo sudaryta populiacija, imčių ėmimas ir svorių sudarymas. Kadangi informatyvų ėmimo dizainą gana sunku sudaryti, jis pasirinktas toks pat kaip Steele, Clarke ir Goldstein straipsnyje \textit{Weighting in MLwiN}\cite{mlwin}. 
 
-\indent Sugeneruojama $M=300$ mokyklų dydžio populiacija pagal hierarchinį modelį:
-\begin{equation*}\label{eq:wsimul}
-\left\{
-\begin{array}{l}
-\begin{split}
-Y_{ij}&=\beta_{0j}+\beta_{1j}X_{1ij}+\varepsilon_{ij}, &\varepsilon_{ij}\sim \mathcal{N}(0, \sigma^2);\\
-\beta_{0j}&=\gamma_{00}+\gamma_{01}X_{2j}+u_{0j}, & u_{0j}\sim \mathcal{N}(0, \tau_{00});\\
-\beta_{1j}&=\gamma_{10}+u_{1j}, & u_{1j}\sim \mathcal{N}(0, \tau_{11}).
-\end{split}
-\end{array} \right.
-\end{equation*}
-čia $\varepsilon_{ij}$ -modelio paklaidos su vidurkiu $0$ ir dispersija $\sigma^2=1$; $\left(u_{0j}, u_{1j}\right)$ - atsitiktiniai efektai su nuliniais vidurkiais ir kovariacijos matrica $\mathbf{T}=\begin{pmatrix}
-\tau_{00} & \tau_{01} \\
-\tau_{10} & \tau_{11} \\
-\end{pmatrix}=\begin{pmatrix}
-\frac{1}{4}& \frac{\sqrt{3}}{8} \\
- \frac{\sqrt{3}}{8} & \frac{3}{4}\\
-\end{pmatrix}$; $\gamma_{pq}=1,\ p,g = \{0,1\}$ - fiksuoti modelio efektai. $X_{2j}$ - antrojo lygio aiškinantysis kintamasis, $X_2\sim \mathcal{B}(1;0,5)$, o $X_{ij}$ - pirmojo lygio aiškinantysis kintamasis, $X_1\sim \mathcal{N}(0;1)$ - centruotas pagal $j$. Šį pavidalą galima suvesti į:
-\begin{equation*} \label{eq:wdeq}
-Y_{ij} = \gamma_{00} +\gamma_{01}\times X_{2j}+ \gamma_{10}\times X_{1ij}+u_{0j}+u_{1j}\times X_{1ij}+\varepsilon_{ij}.
-\end{equation*}
-
-\indent Antro lygio subjektų parinkimo tikimybė yra susijusi su modelio atsitiktiniu posvyriu ir poslinkiu:
-\begin{equation*}
-\pi_j=
-\left\{
-\begin{array}{l}
-0,225, \text{ kai } u_{0j} \notin \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| > 1;\\
-0,425, \text{ kai } u_{0j} \in \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| > 1;\\
-0,525, \text{ kai } u_{0j} \notin \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| \leq 1;\\
-0,725, \text{ kai } u_{0j} \in \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| \leq 1,
-\end{array} \right.
-\end{equation*}
-\noindent čia $\bar{u}_0=\frac{1}{J}\sum_ju_{0j}$ ir $sd_0=\sqrt{\frac{1}{J}\sum_j(u_{0j}-\bar{u}_0)^2}$, atitinkamai $u_{0j}$ vidurkis ir standartinis nuokrypis. 
-
-\indent Pirmo lygmens subjektai parenkami pagal modelio paklaidas $\varepsilon_{ij}$:
-\begin{equation*}
-\pi_{i|j}=
-\left\{
-\begin{array}{l}
-0,25, \text{ kai } \varepsilon_{ij}>0;\\
-0,75, \text{ kai } \varepsilon_{ij}\leq0.\\
-
-\end{array} \right.
-\end{equation*}
-
-\indent Parenkama $m=35$ antrojo lygio subjektų ir $n_j=20$ pirmojo, tad patekimo į imtį svoriai yra $w_j=\frac{m}{\pi_j}$, $w_{i|j}=\frac{n_j}{\pi_{i|j}}$ ir $w_{ij}=w_j\times w_{i|j}$.
-
-\indent Atliekama 1500 Monte Carlo simuliacijų kiekvienam iš metodų. Rezultatai pateikti toliau.
-
-
-\subsection{Simuliacijų rezultatai}
-\indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Rezultatai lyginami statistikomis, pateiktomis skyrelyje \ref{subsubsec:besvoriu}.
+\subsection{Simuliacijų rezultatai}\label{subsec:simrez}
+\indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Rezultatai lyginami statistikomis, pateiktomis skyrelyje \ref{subsec:stat}.
 
 \subsubsection*{Be svorių}
-\indent Šiame skyrelyje pateikiami simuliacijų nusakytų \ref{subsubsec:besvoriu} rezultatai. Metodai lyginami statistikomis aprašytomis prie simuliacijų dizaino skyrelio pabaigoje. Vertinamų parametrų buvo 8 -- 4 fiksuoti ir 4 dispersijos komponentės. Kiekvienam iš jų sudarytos lentelės, kur kiekvienam iš nagrinėtų atvejų ir metodų pateiktos statistikos. Dėl rezultatų kiekio sudarytos jungtinės lentelės atskirai fiksuotiems parametrams ir dispersijos komponentėms, jose pateiktos jungtinės statistikos aprašytos minėto skyrelio pabaigoje. Lenteles galima rasti šio darbo \hyperlink{appendixb}{B} priede. Jame pateikiami ir EQDM grafikai.
+\indent Šiame skyrelyje pateikiami simuliacijų nusakytų \hyperlink{:besvoriu}{\textbf{Be imties svorių}} skyrelyje rezultatai. Metodai lyginami statistikomis aprašytomis prie simuliacijų dizaino \ref{subsec:stat} skyrelyje. Vertinamų parametrų buvo 8 -- 4 fiksuoti ir 4 dispersijos komponentės. Kiekvienam iš jų sudarytos lentelės, kur kiekvienam iš nagrinėtų atvejų ir metodų pateiktos statistikos. Dėl rezultatų kiekio sudarytos jungtinės lentelės atskirai fiksuotiems parametrams ir dispersijos komponentėms, jose pateiktos jungtinės statistikos aprašytos minėtame skyrelyje. Lenteles galima rasti šio darbo \hyperlink{appendixb}{B} priede. Jame pateikiami ir EQDM grafikai.
 
 \indent Fiksuotų parametrų įverčių jungtinės statistikos pateiktos \ref{table:jfixed} lentelėje. Kaip ir buvo galima tikėtis, fiksuotų parametrų įverčiai daugeliu atvejų yra nepaslinkti su nedidele sklaida. CAMBRIAS prasme prasčiausiai pasirodė MINQUE(0) metodas, o tai patvirtina jog šis metodas linkęs pervertinti. Čia didžiausias poslinkis gautas $\gamma_{10}$ ir $\gamma_{11}$ parametrams.
 
 \indent Dispersijos komponenčių įverčių statistikos pateiktos \ref{table:jrandom} lentelėje \hyperlink{appendixb}{B} priede. $\sigma^2$ visi keturi metodai įvertino labai tiksliai. $\tau_{00}$ poslinkis taip pat nėra didelis, įverčių išsibarstymas didesnis. Didžiausi poslinkiai ir išsibarstymai gauti $\tau_{01}$ ir $\tau_{11}$ įverčiams. REML metodu gauti $\tau_{01}$ įverčiai turi neigiamą poslinkį, MINQUE poslinkis daugeliu atvejų mažesnis.
 
-\indent Pažvelgus į jungtinę lentelę \ref{table:jrandom}, kaip ir buvo galima tikėtis, kai paklaidos ir atsitiktiniai efektai pasiskirstę pagal $\chi^2$, poslinkis ir įverčių sklaida didesnė visiems metodams ir visiems atvejams. Didžiausias santykinis poslinkis (pagal CAMRBIAS) ir įverčių sklaida (pagal CMRSE) dispersijos komponentėms gauti, kuomet $\frac{\tau_{00}}{\sigma^2}=0,05$, nesvarbu, koks paklaidų ir atsitiktinių efektų pasiskirstymas ar antro bei pirmo lygio subjektų skaičius. Augant antro lygio subjektų skaičiui poslinkis ir sklaida mažėja ir tampa nereikšmingi MINQUUE metodams, kuomet $m=80$. Minėtu atveju geriausiai pasirodė MINQUE(1) metodas, kurio vidutinis santykinis poslinkis daugeliu atvejų mažiausias, o sklaida ne daug didesnė nei REML. REML poslinkis didelis, kai $m=20$, vidutinis, kai $m\geq35$. MINQUE($\theta$) vidutinis santykinis poslinkis yra vidutinio dydžio, kai $m=20;35$, ir poslinkio nėra (jis mažesnis nei 0,05), kai $m=80$. MINQUE($\theta$) poslinkiai didesni nei MINQUE(1) ir MINQUE(0). Tai galėjo nutikti, dėl \textit{a priori} reikšmių, kurios gaunamos dviejų žingsnių mažiausių kvadratų metodu.
+\indent Pažvelgus į jungtinę lentelę \ref{table:jrandom}, kaip ir buvo galima tikėtis, kai paklaidos ir atsitiktiniai efektai pasiskirstę pagal $\chi^2$, poslinkis ir įverčių sklaida didesnė visiems metodams ir visiems atvejams. Didžiausias santykinis poslinkis (pagal CAMRBIAS) ir įverčių sklaida (pagal CMRSE) dispersijos komponentėms gauti, kuomet $\frac{\tau_{00}}{\sigma^2}=0,05$, nesvarbu, koks paklaidų ir atsitiktinių efektų pasiskirstymas ar antro bei pirmo lygio subjektų skaičius. Augant antro lygio subjektų skaičiui poslinkis ir sklaida mažėja ir tampa nereikšmingi MINQUUE metodams, kuomet $m=80$. Minėtu atveju geriausiai pasirodė MINQUE(1) metodas, kurio vidutinis santykinis poslinkis daugeliu atvejų mažiausias, o sklaida ne daug didesnė nei REML. REML poslinkis didelis, kai $m=20$, vidutinis, kai $m\geq35$. MINQUE($\theta$) vidutinis santykinis poslinkis yra vidutinio dydžio, kai $m=20;35$, ir poslinkio nėra (jis mažesnis nei 0,05), kai $m=80$. MINQUE($\theta$) poslinkiai didesni nei MINQUE(1) ir MINQUE(0). Tai galėjo nutikti, dėl \textit{a priori} reikšmių, kurios gaunamos dviejų žingsnių metodu.
 
-\indent Iš jungtinės dispersijos komponenčių lentelės \ref{table:jrandom} taip pat galima pastebėti, jog padidėjus santykiui $\frac{\tau_{00}}{\sigma^2}$ iki 0,4, vidutiniai santykiniai poslinkiai visiems metodams tampa nereikšmingi (CAMRBIAS $\leq 0,05$), tačiau įverčių išsibarstymas dar gana didelis. Nors tokį poslinkį laikome nereikšmingu, verta paminėti, jog praktiškai visais subalansuoto dizaino atvejais MINQUE($\theta$) duoda mažiausiai paslinktus ir išsibarsčiusius dispersijos komponenčių įverčius. Kuomet dizainas subalansuotas (P2, P4 ir P6), visi metodai (išskyrus MINQUE(0)) vertina apylygiai.
+\indent Iš jungtinės dispersijos komponenčių lentelės \ref{table:jrandom} taip pat galima pastebėti, jog padidėjus santykiui $\frac{\tau_{00}}{\sigma^2}$ iki 0,4, vidutiniai santykiniai poslinkiai visiems metodams tampa nereikšmingi (CAMRBIAS $\leq 0,05$), tačiau įverčių išsibarstymas dar gana didelis. Nors tokį poslinkį laikome nereikšmingu, verta paminėti, jog praktiškai visais nesubalansuoto dizaino atvejais MINQUE($\theta$) duoda mažiausiai paslinktus ir išsibarsčiusius dispersijos komponenčių įverčius. Kuomet dizainas subalansuotas (P2, P4 ir P6), visi metodai (išskyrus MINQUE(0)) vertina apylygiai.
 
 \indent Santykiui $\frac{\tau_{00}}{\sigma^2}$ padidėjus iki 1, įverčių sklaida dar labiau sumažėja ir CMRSE $\leq 0,5$. Čia taip pat verta paminėti, jog, kai paklaidos bei atsitiktiniai efektai pasiskirstę pagal normalųjį dėsnį, visi (išskyrus MINQUE(0)) metodai duoda panašius rezultatus. Kai pasiskirstymas $\chi^2$ sunku išskirti vieną metodą. Kai $m=20;35$ ir dizainas subalansuotas,  REML įverčių skalaida mažiausia. Kai $m=20$ ir dizainas nesubalansuotas, MINQUE(1) įverčių poslinkis ir sklaida yra mažiausi. Likusiais atvejais trys minėti metodai yra labai panašūs. Visais atvejais MINQUE(0) įverčių išsibartymas didžiausias.
 
 \indent EQDM grafikai pateikti šio darbo \hyperlink{appendixb}{B} priede. Fiksuotų efektų įverčių lentelėje praktiškai nėra jokio skirtumo tarp metodų. Atsitiktinių efektų parametrų įverčių lentelėje jau matyti nežymūs metodų skirtumai. Akivaizdžiai MINQUE(0) blogiausias $\sigma^2$. REML lyg ir kažkiek geriau $\tau_{01}$, tačiau prasčiau $\tau_{11}$, čia geriausias MINQUE(1). 
 
 \indent Apibendrinant, jei laikysime, kad poslinkis yra nereikšmingas, kai CAMRBIAS $\leq 0,05$, trys metodai -- REML, MINQUE(1) ir 
-MINQUE($\theta$) -- tirtais atvejais duoda panašius rezultatus. Čia reikėtų išskirti vieną atvejį, kai $\frac{\tau_{00}}{\sigma^2}=0,05$, kuomet MINQUE metodais gautų dispersijos komponenčių įverčių vidutinis santykinis poslinkis gautas stipriai mažesnis nei gautų REML metodu. Tikėtasi, jog MINQUE metodas prie $\chi^2$ skirstinio duos geresnius rezultatus, nei REML. Šis tyrimas to nepatvirtino. Vis gi, MINQUE metodas reikalauja didelių matricų operacijų ir daug kompiuterio resursų, todėl rekomenduojama naudoti REML metodą, kuomet antro lygio subjektų skaičius didelis (t.y. daugiau nei 35).
+MINQUE($\theta$) -- tirtais atvejais duoda panašius rezultatus. Čia reikėtų išskirti vieną atvejį, kai $\frac{\tau_{00}}{\sigma^2}=0,05$, kuomet MINQUE metodais gautų dispersijos komponenčių įverčių vidutinis santykinis poslinkis gautas stipriai mažesnis nei gautų REML metodu. 
+\indent Tikėtasi, jog MINQUE metodas prie $\chi^2$ skirstinio duos geresnius rezultatus, nei REML. Šis tyrimas to nepatvirtino. Vis gi, MINQUE metodas reikalauja didelių matricų operacijų ir daug kompiuterio resursų, todėl rekomenduojama naudoti REML metodą, kuomet antro lygio subjektų skaičius didelis (t.y. daugiau nei 35).
 
 \subsubsection*{Su svoriais}
-\indent Šiame skyrelyje pateikti skyrelyje \ref{subsubsec:susvoriais} aprašyto simuliacijų dizaino rezultatai. Jie pateikti \ref{table:wsimul} lentelėje šiodarbo \hyperlink{appendixb}{B} priede. Šiuo atveju REML ir MINQUE(1) bei MINQUE($\theta$) įverčiai skiriasi labai neženkliai. Šiek tiek didesnį vidutinį santykinį poslinkį ir išsibarstymą turi $\tau_{01}$ ir $\tau_{11}$ įverčiai MINQUE(1) metodu. Mažiausias vidutinis santykinis poslinkis stebimas parametrams $\gamma_{01}$ ir $\gamma_{10}$. Tokio dydžio poslinkį laikome nereikšmingu. Parametrų $\sigma^2$ ir $\tau_{00}$ MRBIAS yra tarp 0,05 ir 0,2, todėl laikomas vidutiniu poslinkiu. Likusių parametrų -- $\gamma_{00}$, $\tau_{01}$ ir $\tau_{11}$ -- poslinkį laikome dideliu. Mažiausias išsibarstymas (MRSE) yra parametrui $\sigma^2$, didžiausias -- $\tau_{01}$. 
+\indent Šiame skyrelyje pateikti skyrelyje \hyperlink{susvoriais}{\textbf{Su imties svoriais}} aprašyto simuliacijų dizaino rezultatai. Jie pateikti \ref{table:wsimul} lentelėje šio darbo \hyperlink{appendixb}{B} priede. Šiuo atveju REML ir MINQUE(1) bei MINQUE($\theta$) įverčiai skiriasi labai neženkliai. Šiek tiek didesnį vidutinį santykinį poslinkį ir išsibarstymą turi $\tau_{01}$ ir $\tau_{11}$ įverčiai MINQUE(1) metodu. Mažiausias vidutinis santykinis poslinkis stebimas parametrams $\gamma_{01}$ ir $\gamma_{10}$. Tokio dydžio poslinkį laikome nereikšmingu. Parametrų $\sigma^2$ ir $\tau_{00}$ MRBIAS yra tarp 0,05 ir 0,2, todėl laikomas vidutiniu poslinkiu. Likusių parametrų -- $\gamma_{00}$, $\tau_{01}$ ir $\tau_{11}$ -- poslinkį laikome dideliu. Mažiausias išsibarstymas (MRSE) yra parametrui $\sigma^2$, didžiausias -- $\tau_{01}$. 
 
 \indent Akivaizdžiai parametrų vertintų PWMINQUE poslinkis mažesnis nei nesvertinių metodų. Čia reikėtų pastebėti, jog įverčių išsibarstymas beveik visur didesnis vertinant su PWMINQUE, bet skirtumas nėra didelis palyginus su nauda gauta sumažėjus poslinkiui.    MRBIAS > 0,05 tik $\tau_{00}$ vertintam PWMINQUE(1) ir $\gamma_{00}$ abiems PWMINQUE. $\gamma_{00}$ poslinkis sumažėja, parametras yra pervertinamas, tačiau išsibarstymas mažesnis nei nesvertinių metodų. Šie rezultatai sutampa su gautais  Pfeffermann ir kt.\cite{pfeff} bei Steele ir kt.\cite{mlwin} PWIGLS metodui.
 
@@ -1028,8 +1016,8 @@ $u_{0j}$ - antro lygio paklaidos.
 \indent Pasak autorės, platesnių modelių sudaryti nepavyko. Šio magistro darbo autorė įžvelgia dvi galimas priežastis. Pirmoji - modeliams vertinti buvo naudotasi specialiu HLM modelių vertinimo paketu \textit{HLM6}, ši programa mokama, tačiau akademinei visuomenei suteikiama nemokama versija, kuri vertina tik labai mažos apimties modelius. Antra - TIMSS duomenys (aiškinantieji kintamieji) yra labai koreliuoti, pavyzdžiui mokyklos vietovė ir mokyklos mokinių finansinė padėtis arba mokyklos dydis. Todėl norint pažiūrėti kiekvieno iš tokių kintamųjų įtaką, juos reiktų modeliuoti atskirai.
 
 \subsection{TIMSS duomenys} \label{subsec:duom}
-\indent Šiame skyrelyje pateikti modeliavime naudoti duomenys. Magistro darbe nagrinėjami 2011 metų Lietuvos duomenys, kurie pateikti oficialiame TIMSS tinklapyje (\url{http://timss.bc.edu}). Pavadinimai: BCGLTUM5 - mokyklos failas, BSGLTUM5 - mokinių failas, BSTLTUM5 - mokytojų ir mokinių ryšių failas ir BTMLTUM5 - matematikos mokytojų failas. Nors pateiktos visos 5 galimos mokinio testo atlikimo reikšmės, toliau analizėje bus naudojama tik pirmoji - BSMMAT01. Lentelėje \ref{table:duom} pateiktas originalus kintamojo pavadinamas, jo aprašymas bei pavadinimas naudojamas šiame darbe. Kai kurie kategoriniai kintamieji per ranguoti, o indeksai centruoti mokyklos vidurkiu bei suvidurkinti kiekvienai mokyklai. Simbolis "*" reiškia, jog kintamasis modifikuotas ir nuo originalaus skiriasi. Atliekant vidurkinimą naudoti svoriai. Mokyklos, klasės ir mokiniai identifikuojami pagal IDSCHOOL, IDCLASS ir IDSTUD atitinkamai. Mokyklos, klasės ir mokinio svoriai pateikti kaip WGTFAC3, WGTFAC2 ir WGTFAC1. Taip pat pateikiami ir neatsakymo į klausymus koregavimo faktoriai WGTADJ3, WGTADJ2 ir WGTADJ1. Toliau naudojamų pavadinimų pradžioje pridėta raidė C reiškia, jog kintamasis centruotas pagal mokyklą, o M - mokyklos vidurkis. Centruojant buvo naudoti imties svoriai.
-
+\indent Šiame skyrelyje pateikti modeliavime naudoti duomenys. Magistro darbe nagrinėjami 2011 metų Lietuvos duomenys, kurie pateikti oficialiame TIMSS tinklapyje (\url{http://timss.bc.edu}). Pavadinimai: BCGLTUM5 - mokyklos failas, BSGLTUM5 - mokinių failas, BSTLTUM5 - mokytojų ir mokinių ryšių failas ir BTMLTUM5 - matematikos mokytojų failas. Nors pateiktos visos 5 galimos mokinio testo atlikimo reikšmės, toliau analizėje bus naudojama tik pirmoji - BSMMAT01. Lentelėje \ref{table:duom} pateiktas originalus kintamojo pavadinamas, jo aprašymas bei pavadinimas naudojamas šiame darbe. Kai kurie kategoriniai kintamieji per ranguoti, o indeksai centruoti mokyklos vidurkiu bei suvidurkinti kiekvienai mokyklai. Simbolis "*" reiškia, jog kintamasis modifikuotas ir nuo originalaus skiriasi. Atliekant vidurkinimą naudoti svoriai. Mokyklos, klasės ir mokiniai identifikuojami pagal IDSCHOOL, IDCLASS ir IDSTUD atitinkamai. Mokyklos, klasės ir mokinio svoriai pateikti kaip WGTFAC3, WGTFAC2 ir WGTFAC1. Taip pat pateikiami ir neatsakymo į klausymus koregavimo faktoriai WGTADJ3, WGTADJ2 ir WGTADJ1. Toliau naudojamų pavadinimų pradžioje pridėta raidė C reiškia, jog kintamasis centruotas pagal mokyklą, o M - mokyklos vidurkis. Centruojant buvo naudoti imties svoriai.\\
+\ 
 \begin{small}
 \begin{longtable}{| p{2,6cm} | p{5cm} | p{5cm} | p{2.1 cm} |}
 % \begin{tabular}{| p{2,5cm} | p{5cm} | p{5cm} | p{2,5cm} |}
@@ -1077,7 +1065,7 @@ MKITKALB.1& mokykloje. & 2 - 10\% - 50\%; & \\
 
 \subsection{HLM modelis 2011 metų TIMSS duomenims}
 
-\indent Šiame skyrelyje pateikiama detalesnė turimų ir nagrinėjamų TIMSS duomenų analizė, sudaromas nulinis modelis bei pateikiamas galutinis modelis ir jo statistikos. Nulinio ir galutinio modelio įverčiai pateikiami įvertinti visais nagrinėjamais metodais. Galiausiai aptariami rezultatai ir padaromos išvados.
+\indent Šiame skyrelyje pateikiama detalesnė turimų ir nagrinėjamų TIMSS duomenų analizė, sudaromas nulinis modelis bei pateikiamas galutinis modelis ir jo statistikos. Nulinio ir galutinio modelio įverčiai pateikiami įvertinti visais nagrinėjamais metodais. Galiausiai aptariami rezultatai.
 
 \indent Pirmiausia, domina aiškinamasis kintamasis - matematinio raštingumo testo rezultatai. Kaip jau buvo minėta, TIMSS pateikia 5 galimas testo atlikimo reikšmes, tačiau šiame darbe naudojama tik viena - pirmoji. Taip daroma, dėl paprastumo, vėliau rezultatus galima pritaikyti ir likusioms galimoms testo atlikimo reikšmėms. 
 Šiek tiek pangrinėkime aiškinamojo kintamojo pasiskirstymą. Paveikslėlyje \ref{fig:y} pateiktas pirmosios galimos matematinio raštingumo testo atlikimo reikšmės teorinių kvantilių grafikas. Jame galime įžvelgti šiek tiek sunkias uodegas. Aiškinamajam kintamajam buvo atliktas Shapiro-Wilk normalumo testas. Gauta testo statistika $W = 0.9977$ ir $\text{p-value}<0,01$. Todėl hipotezė apie aiškinamojo kintamojo pasiskirstymą pagal normalųjį skirstinį atmetama.
@@ -1091,7 +1079,7 @@ MKITKALB.1& mokykloje. & 2 - 10\% - 50\%; & \\
 
 \indent Aiškinantieji kintamieji šiame darbe negali būti laikomi pasiskirstę pagal normalųjį skirstinį, tačiau kategoriniai kintamieji nėra modeliuojami. Dudaitė savo daktaro disertacijoje \cite{liet2003} ne tik sudarinėjo labai menkus modelius, bet ir naudojo kategorinius kintamuosius (kurie įgyja iki 5 reikšmių) kaip regresorius. Šiame darbe kategoriniai kintamieji išskaidyti į fiktyvius kintamuosius. Tokių yra du mokinio lygyje ir keturi mokyklos lygyje. Pačiuose pateiktuose TIMSS duomenyse kategoriniai kintamieji suvesti į indeksus, kurie įgyja daugiau nei 5 reikšmes. Nors jie ir negali būti laikomi pasiskirstę pagal normalųjį dėsnį, modeliuojant nėra stipriai nusižengiama. Šeši indeksai yra imami kaip mokinio lygio aiškinantieji kintamieji ir 3 mokyklos lygio kintamieji. Detalesni kintamųjų aprašymai pateikti \ref{table:duom} lentelėje \ref{subsec:duom} skyrelyje. Modeliuoti ir suvidurkinti mokytojo bei klasės kintamieji, tačiau jie nepasirodė statistiškai reikšmingi, todėl apie šiuos kintamuosius šiame darbe nepasakojama.
 
-\indent ??? HLM modelio sudarymas yra sudėtingas procesas. Kad modeliai būtų palyginami, jie turi būti sudaryti tiems patiems duomenims. Čia susiduriama su problema, jog TIMSS duomenys turi daug neatsakytų reikšmių, t.y. trūkstamų duomenų. Modeliuojant atsižvelgiama ne tik į tai, kiek kintamasis paaiškina dispersijos, bet ir į tai, ar jis neturi daug praleistų reikšmių. Šiame darbe modeliai sudaryti įtraukiant po vieną pirmo po to antro lygio kintamąjį ir lyginant su nuliniu ir prieš tai gautu modeliais, kiekvieną kartą perskaičiuojant pašalinus mokinį ar mokyklą su trūkstamais duomenimis. Gavus galutinį modelį, visi modelių įverčiai buvo pervertinti jau galutiniam duomenų kiekiui. Taip išvengiama per didelio duomenų pašalinimo pirmame etape. Modeliai parinkti vadovaujantis logika ir \ref{subsec:parink} skyrelyje pateiktais kriterijais. Toliau bus pateikti tik nulinis ir galutinis modeliai, o tarpiniai modeliai praleisti.
+\indent HLM modelio sudarymas yra sudėtingas procesas. Kad modeliai būtų palyginami, jie turi būti sudaryti tiems patiems duomenims. Čia susiduriama su problema, jog TIMSS duomenys turi daug neatsakytų reikšmių, t.y. trūkstamų duomenų. Modeliuojant atsižvelgiama ne tik į tai, kiek kintamasis paaiškina dispersijos, bet ir į tai, ar jis neturi daug praleistų reikšmių. Šiame darbe modeliai sudaryti įtraukiant po vieną pirmo po to antro lygio kintamąjį ir lyginant su nuliniu ir prieš tai gautu modeliais, kiekvieną kartą perskaičiuojant pašalinus mokinį ar mokyklą su trūkstamais duomenimis. Gavus galutinį modelį, visi modelių įverčiai buvo pervertinti jau galutiniam duomenų kiekiui. Taip išvengiama per didelio duomenų pašalinimo pirmame etape. Modeliai parinkti vadovaujantis logika ir \ref{subsec:parink} skyrelyje pateiktais kriterijais. Toliau bus pateikti tik nulinis ir galutinis modeliai, o tarpiniai modeliai praleisti.
 
 \indent Pagrindines 2011 metų TIMSS tyrimo suvestines galima rasti jau minėtoje Nacionalinio egzaminų cento ataskaitoje \cite{timss2011lt}. Todėl šiame darbe bus pateikti trumpi rezultatai po duomenų pašalinimo. Pašalinus mokyklas ir mokinius su trūkstamais duomenimis iš 141 tyrime dalyvavusios mokyklos liko 128 mokyklos, o iš 4747 mokinių liko 4167 mokiniai. Tai optimalus skaičius siekiant paaiškinti kuo daugiau kaitos su kuo mažesniu mokinių praradimu. Svertinis pirmos galimos matematinio raštingumo reikšmės vidurkis likusiems duomenims yra 504,57. Toliau pateikiama nulinio modelio išraiška ir gauti įverčiai.
 
@@ -1110,7 +1098,7 @@ Tegul $Y_{ij}$ žymi $i$ - tojo mokinio iš $j$ - tosios mokyklos matematinio ra
 MatRes_{ij}=\gamma_{00}+u_{0j}+\varepsilon_{ij}.
 \]
 \indent Šis modelis įvertintas REML, MINQUE(1), PWMINQUE(1), MINQUE($\theta$) ir PWMINQUE($\theta$) metodais. Rezultatai pateikti  \ref{table:null} lentelėje. 
-Šio modelio $ICC \approx 0,15-0,2$. Tai rodo, jog apie 15\% -- 20\% mokinių rezultatų skirtumų lemia mokyklos. $DEFF$ yra labai aukštas visiems metodams, mažiausias PWMINQUE(1). Skyrelyje \ref{subsec:parink} minėta $R^2_1$ statistika yra apie 0,22 visais metodais. Čia reikėtų paminėti, jog PWMINQUE $R^2_1$ statistika skaičiuota $\bar{Y}$ keičiant į svertinį visos populiacijos vidurkį $\bar{Y}^*$.
+Šio modelio $ICC \approx 0,15-0,2$. Tai rodo, jog apie 15\% -- 20\% mokinių rezultatų skirtumų lemia mokyklos. $DEFF$ yra labai aukštas visiems metodams, mažiausias PWMINQUE(1). Skyrelyje \ref{subsec:parink} minėta $R^2_1$ statistika yra apie 0,22 visiems metodais. Čia reikėtų paminėti, jog PWMINQUE $R^2_1$ statistika skaičiuota $\bar{Y}$ keičiant į svertinį visos populiacijos vidurkį $\bar{Y}^*$.
 
 \begin{small}
 \begin{table}[H]
@@ -1143,7 +1131,8 @@ $R_1^2$ & 0.223  & 0.223  & 0.224 & 0.223& 0.225\\
 \begin{split}
 MatRes_{ij}&=\beta_{0j}+\beta_{1j}\times SSEX_{ij}+\beta_{2j} \times STHMWRK_{ij}+\beta_{3j}\times CSMCONF_{ij}+\\
 &+\beta_{4j}\times CSHEDRES_{ij}+\varepsilon_{ij};\\
-\beta_{0j}&=\gamma_{00}+\gamma_{01}\times MVIETA.2_j+\gamma_{02}\times MSUCCESS_j+\gamma_{03}\times MDYDIS_j+u_{0j};\\
+\beta_{0j}&=\gamma_{00}+\gamma_{01}\times MVIETA.2_j+\gamma_{02}\times MSUCCESS_j+\\
+&+\gamma_{03}\times MDYDIS_j+u_{0j};\\
 \beta_{1j}& = \gamma_{10};\\
 \beta_{2j}&=\gamma_{20};\\
 \beta_{3j}&=\gamma_{30}+u_{3j};\\
@@ -1165,7 +1154,7 @@ MatRes_{ij}&=\gamma_{00}+\gamma_{01}\times MVIETA.2_j+\gamma_{02}\times MSUCCESS
 
 \indent Modelis įvertintas visais aukščiau išvardintais metodais. Gauti parametrų įverčiai pateikti \ref{table:final} lentelėje. Prie fiksuotų koeficientų surašyti juos atitinkantys kintamieji, kad būtų paprasčiau atsirinkti ir interpretuoti įverčius. Įverčiai drastiškai nesiskiria, išskyrus  PWMINQUE(1) metodu gautus įverčius. Kaip jau buvo minėta, MINQUE metodas nėra apsaugotas nuo neigiamų atsitiktinių efektų kovariacijos matricos elementų įverčių. Šioje vietoje tai ir pastebime,  $\hat{\tau}_{11}^{PWMINQUE(1)}= -12.328$. Nors $\hat{\tau}_{11}^{MINQUE(1)}= 1.053$, atsitiktinių efektų kovariacijų matrica gaunama neigiamai apibrėžta. Taip nutiko, nes skirtumas tarp $\hat{\tau}_{11}$ ir $\hat{\sigma}^2$ labai didelis, o priskiriamos vienodos \textit{a priori} reikšmės.
 
-\indent Palyginus su nulinio modelio įverčiais, $\hat{\sigma}^2$ ir $\hat{\tau}_{00}$ galutinio modelio įverčiai ženkliai mažesni, tai reikškia, jog įtraukti kintamieji paaiškina nemažai mokinių matematikos rezultatų kintamumo. Mažiausias $\hat{\tau}_{00}=704.666$ gautas PWMINQUE($\theta$) metodu. Kaip ir buvo galima tikėtis, REML ir MINQUE($\theta$) panašūs.
+\indent Palyginus su nulinio modelio įverčiais, $\hat{\sigma}^2$ ir $\hat{\tau}_{00}$ galutinio modelio įverčiai ženkliai mažesni, tai reikškia, jog įtraukti kintamieji paaiškina nemažai mokinių matematikos rezultatų kintamumo. Mažiausias $\hat{\tau}_{00}=704.666$ gautas PWMINQUE($\theta$) metodu. Kaip ir buvo galima tikėtis, REML ir MINQUE($\theta$) panašūs. Kaip ir buvo galima tikėtis PWMINQUE($\theta$) metodu gauti įverčiai skiriasi nuo gautų MINQUE($\theta$).
 
 \begin{small}
 \begin{table}[H]
@@ -1190,7 +1179,7 @@ $\tau_{11}$ & 21.711 & 1.053 & -12.328 & 22.754 & 25.003 \\
 $R_1^2$ & 0.516 & 0.504 & -12.251 & 0.517 & 0.515\\
 \hline
 \end{tabular}
-\caption[Modelio (\ref{eq:timss2}) parametrų įverčiai bei statistikos]{Lentelėje pateikti modelio  (\ref{eq:timss2}) parametrų įverčiai bei statistikos $R_1^2$.}
+\caption[Modelio (\ref{eq:timss2}) parametrų įverčiai bei statistikos]{Modelio  (\ref{eq:timss2}) parametrų įverčiai bei statistikos $R_1^2$.}
 \label{table:final}
 \end{table}
 \end{small}
@@ -1206,7 +1195,7 @@ $R_1^2$ & 0.516 & 0.504 & -12.251 & 0.517 & 0.515\\
 
 \indent Mokyklų duomenys dažnai pateikiami su imties svoriais, į kuriuos reikėtų atsižvelgti vertinant modelius. Tam dažniausiai naudojamas PWIGLS metodas. Šio metodo $\R$ aplinkoje taip pat nepavyko rasti. Dėl išraiškų panašumo, PWIGLS svėrimo metodas bu pritaikytas MINQUE metodui ir vadinamas PWMINQUE. Monte Carlo simuliacijų būdu parodyta, jog šis metodas duoda mažiau paslinktus parametrų įverčius nei nesvertiniai metodai.
 
-\indent Lietuvos aštuntokų TIMSS 2011 duomenys hierchiniame lygmenyje buvo analizuoti nedaug. Atskirai sudaryto modelio Lietuvai nepavyko rasti. Tad šiame darbe sudarytas dviejų lygių (mokyklų ir mokinių) hierarchinis modelis su atsitiktiniu postūmiu ir posvyriu. Šis modelis įvertintas REML, MINQUE(1), PWMINQUE(1), MINQUE($\theta$) ir PWMINQUE($\theta$) metodais.
+\indent Lietuvos aštuntokų TIMSS 2011 duomenys hierchiniame lygmenyje buvo analizuoti nedaug. Atskirai sudaryto modelio Lietuvai nepavyko rasti. Tad šiame darbe sudarytas dviejų lygių (mokyklų ir mokinių) hierarchinis tiesinis modelis su atsitiktiniu postūmiu ir posvyriu. Šis modelis įvertintas REML, MINQUE(1), PWMINQUE(1), MINQUE($\theta$) ir PWMINQUE($\theta$) metodais. Atsitiktinių efektų vertintų PWMINQUE(1) ir MINQUE(1) metodais kovariacijų maticos gautos neigiamai apibrėžtos. Šiuo atveju buvo svarbios \textit{a priori} reikšmės.
 
 \indent Pagrindiniai šio magistro darbo rezultatai:
 \begin{itemize}
@@ -1653,7 +1642,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:simul}) fiksuotų efektų įverčių jungtinės statistikos]{Lentelėje pateiktos modelio (\ref{eq:simul}) fiksuotų efektų įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$.}
+\caption[Modelio (\ref{eq:simul}) fiksuotų efektų įverčių jungtinės statistikos]{Modelio (\ref{eq:simul}) fiksuotų efektų įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsec:stat}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$.}
 \label{table:jfixed}
 \end{sidewaystable}
 }
@@ -1709,7 +1698,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:simul}) dispersijos komponenčių įverčių jungtinės statistikos]{Lentelėje pateiktos modelio (\ref{eq:simul}) dispersijos komponenčių įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\caption[Modelio (\ref{eq:simul}) dispersijos komponenčių įverčių jungtinės statistikos]{Modelio (\ref{eq:simul}) dispersijos komponenčių įverčių jungtinės statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsec:stat}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (CAMRBIAS ir CMRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (CAMRBIAS ir CMRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \label{table:jrandom}
 \end{sidewaystable}
 }
@@ -1765,7 +1754,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
    \hline
 \end{tabular}%}
 }
-\caption[Modelio (\ref{eq:simul}) $\gamma_{00}=450$ vidutinis įvertis ir statistikos]{Lentelėje pateiktos modelio (\ref{eq:simul}) $\gamma_{00}=450$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\caption[Modelio (\ref{eq:simul}) $\gamma_{00}=450$ vidutinis įvertis ir statistikos]{Modelio (\ref{eq:simul}) $\gamma_{00}=450$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsec:stat}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \end{sidewaystable}
 }
 
@@ -1821,7 +1810,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:simul}) $\gamma_{01}=10$ vidutinis įvertis ir statistikos]{Lentelėje pateiktos modelio (\ref{eq:simul}) $\gamma_{01}=10$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\caption[Modelio (\ref{eq:simul}) $\gamma_{01}=10$ vidutinis įvertis ir statistikos]{Modelio (\ref{eq:simul}) $\gamma_{01}=10$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsec:stat}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \end{sidewaystable}
 }
 
@@ -1875,7 +1864,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:simul}) $\gamma_{10}=30$ vidutinis įvertis ir statistikos]{Lentelėje pateiktos modelio (\ref{eq:simul}) $\gamma_{10}=30$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\caption[Modelio (\ref{eq:simul}) $\gamma_{10}=30$ vidutinis įvertis ir statistikos]{Modelio (\ref{eq:simul}) $\gamma_{10}=30$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsec:stat}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \end{sidewaystable}
 }
 
@@ -1929,7 +1918,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:simul}) $\gamma_{11}=5$ vidutinis įvertis ir statistikos]{Lentelėje pateiktos modelio (\ref{eq:simul}) $\gamma_{11}=5$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\caption[Modelio (\ref{eq:simul}) $\gamma_{11}=5$ vidutinis įvertis ir statistikos]{Modelio (\ref{eq:simul}) $\gamma_{11}=5$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsec:stat}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \end{sidewaystable}
 }
 
@@ -1983,7 +1972,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:simul}) $\sigma^2=2000$ vidutinis įvertis ir statistikos]{Lentelėje pateiktos modelio (\ref{eq:simul}) $\sigma^2=2000$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\caption[Modelio (\ref{eq:simul}) $\sigma^2=2000$ vidutinis įvertis ir statistikos]{Modelio (\ref{eq:simul}) $\sigma^2=2000$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsec:stat}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \end{sidewaystable}
 }
 
@@ -2037,7 +2026,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:simul}) $\tau_{00}=100,\ 800,\ 2000$ vidutinis įvertis ir statistikos]{Lentelėje pateiktos modelio (\ref{eq:simul}) $\tau_{00}=100,\ 800,\ 2000$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\caption[Modelio (\ref{eq:simul}) $\tau_{00}=100,\ 800,\ 2000$ vidutinis įvertis ir statistikos]{Modelio (\ref{eq:simul}) $\tau_{00}=100,\ 800,\ 2000$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsec:stat}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \end{sidewaystable}
 }
 
@@ -2091,7 +2080,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:simul}) $\tau_{01}=50,\ 400,\ 1000$ vidutinis įvertis ir statistikos]{Lentelėje pateiktos modelio (\ref{eq:simul}) $\tau_{01}=50,\ 400,\ 1000$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\caption[Modelio (\ref{eq:simul}) $\tau_{01}=50,\ 400,\ 1000$ vidutinis įvertis ir statistikos]{Modelio (\ref{eq:simul}) $\tau_{01}=50,\ 400,\ 1000$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsec:stat}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \end{sidewaystable}
 }
 
@@ -2145,7 +2134,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:simul}) $\tau_{11}=100,\ 800,\ 2000$ vidutinis įvertis ir statistikos]{Lentelėje pateiktos modelio (\ref{eq:simul}) $\tau_{11}=100,\ 800,\ 2000$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsubsec:besvoriu}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
+\caption[Modelio (\ref{eq:simul}) $\tau_{11}=100,\ 800,\ 2000$ vidutinis įvertis ir statistikos]{Modelio (\ref{eq:simul}) $\tau_{11}=100,\ 800,\ 2000$ vidutinis įvertis ir statistikos, kurių išraiškos pateiktos skyrelyje \ref{subsec:stat}. Patamsintos statistikos tos, kurios nuo minimalios eilutės reikšmės skiriasi mažiau nei 0,005 arba 0,03 (MRBIAS ir MRSE atitinkamai). Stačiakampiu apvestos statistikos, kurios viršija 0,05 ir 0,5 (MRBIAS ir MRSE atitinkamai). Pirmoje eilutėje paklaidos normaliosios, antroje $\chi^2$}
 \end{sidewaystable}
 }
 
@@ -2153,14 +2142,14 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
 \centering
 %\captionsetup{width=19.5cm}
 \includegraphics[height=16cm]{Ngammaseqdg.pdf}
-\caption[Modelio (\ref{eq:simul}) su normaliosiomis paklaidomis fiksuotų efektų įverčių empiriniai kvantilių grafikai]{Paveikslėlyje pateikti modelio (\ref{eq:simul}) su normaliosiomis paklaidomis fiksuotų efektų įverčių empiriniai kvantilių grafikai.}
+\caption[Modelio (\ref{eq:simul}) su normaliosiomis paklaidomis fiksuotų efektų įverčių empiriniai kvantilių grafikai]{Modelio (\ref{eq:simul}) su normaliosiomis paklaidomis fiksuotų efektų įverčių empiriniai kvantilių grafikai.}
 \label{fig:Nf}
 \end{sidewaysfigure}
 
 \begin{sidewaysfigure}[H]
 \centering
 \includegraphics[height=16cm]{Nraneqdg.pdf}
-\caption[Modelio (\ref{eq:simul}) su normaliosiomis paklaidomis atsitiktinių efektų įverčių empiriniai kvantilių grafikai]{Paveikslėlyje pateikti modelio (\ref{eq:simul}) su normaliosiomis paklaidomis atsitiktinių efektų įverčių empiriniai kvantilių grafikai.}
+\caption[Modelio (\ref{eq:simul}) su normaliosiomis paklaidomis atsitiktinių efektų įverčių empiriniai kvantilių grafikai]{Modelio (\ref{eq:simul}) su normaliosiomis paklaidomis atsitiktinių efektų įverčių empiriniai kvantilių grafikai.}
 \label{fig:Nr}
 \end{sidewaysfigure}
 
@@ -2174,7 +2163,7 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
 \begin{sidewaysfigure}[H]
 \centering
 \includegraphics[height=16cm]{Xraneqdg.pdf}
-\caption[Modelio (\ref{eq:simul}) su $\chi^2$ paklaidomis atsitiktinių efektų įverčių empiriniai kvantilių grafikai]{Paveikslėlyje pateikti modelio (\ref{eq:simul}) su $\chi^2$ paklaidomis atsitiktinių efektų įverčių empiriniai kvantilių grafikai.}
+\caption[Modelio (\ref{eq:simul}) su $\chi^2$ paklaidomis atsitiktinių efektų įverčių empiriniai kvantilių grafikai]{Modelio (\ref{eq:simul}) su $\chi^2$ paklaidomis atsitiktinių efektų įverčių empiriniai kvantilių grafikai.}
 \label{fig:Xr}
 \end{sidewaysfigure}
 
@@ -2209,7 +2198,7 @@ $\gamma_{00}$ & 1 &  0.781 & -0.219 & 0.063 & 1.166 & 0.166 & 0.048 \\
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos]{Lentelėje pateiktos modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos. Statistikos plačiau aprašytos skyrelyje \ref{subsubsec:besvoriu}.}
+\caption[Modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos]{Modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos. Statistikos plačiau aprašytos skyrelyje \ref{subsubsec:besvoriu}.}
 \label{table:wsimul}
 \end{sidewaystable}
 

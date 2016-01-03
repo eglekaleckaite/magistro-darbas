@@ -13,11 +13,11 @@
 \contentsline {subparagraph}{I-MINQUE metodas}{11}{section*.5}
 \contentsline {subparagraph}{\textit {A priori} reik\IeC {\v s}m\IeC {\.e}s.}{11}{section*.6}
 \contentsline {subsection}{\numberline {3.4}Literat\IeC {\=u}ros ir tyrim\IeC {\k u} ap\IeC {\v z}valga}{11}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}Bagaka's MINQUE}{13}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.1}Bagaka's tyrimas}{13}{subsubsection.3.4.1}
 \contentsline {subparagraph}{Dvigubas eksponentinis skirstinys}{13}{section*.7}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{14}{section*.8}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{14}{section*.9}
-\contentsline {subsubsection}{\numberline {3.4.2}Delpish MINQUE}{14}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.2}Delpish tyrimas}{14}{subsubsection.3.4.2}
 \contentsline {subparagraph}{Dvimatis $\chi ^2$ skirstinys}{15}{section*.10}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} dizainas}{15}{section*.11}
 \contentsline {subparagraph}{Simuliacij\IeC {\k u} rezultatai}{15}{section*.12}
@@ -27,22 +27,22 @@
 \contentsline {subsection}{\numberline {4.3}PWMINQUE}{17}{subsection.4.3}
 \contentsline {section}{\numberline {5}EMPIRIN\IeC {\.E}S SIMULIACIJOS}{19}{section.5}
 \contentsline {subsection}{\numberline {5.1}Monte Carlo simuliacij\IeC {\k u} dizainai}{19}{subsection.5.1}
-\contentsline {subparagraph}{Vidutinis \IeC {\k i}vertis}{21}{section*.17}
-\contentsline {subparagraph}{Vidutinis santykinis poslinkis -- MRBIAS}{21}{section*.18}
-\contentsline {subparagraph}{Vidutin\IeC {\.e} santykin\IeC {\.e} kvadratin\IeC {\.e} paklaida -- MRSE }{21}{section*.19}
-\contentsline {subparagraph}{Empiriniai kvantili\IeC {\k u} sklaidos grafikai -- EQDG}{22}{section*.20}
-\contentsline {subsubsection}{\numberline {5.1.1}Su imties svoriais}{23}{subsubsection.5.1.1}
-\contentsline {subsection}{\numberline {5.2}Simuliacij\IeC {\k u} rezultatai}{23}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.2}Statistikos}{21}{subsection.5.2}
+\contentsline {subparagraph}{Vidutinis \IeC {\k i}vertis}{22}{section*.18}
+\contentsline {subparagraph}{Vidutinis santykinis poslinkis -- MRBIAS}{22}{section*.19}
+\contentsline {subparagraph}{Vidutin\IeC {\.e} santykin\IeC {\.e} kvadratin\IeC {\.e} paklaida -- MRSE }{22}{section*.20}
+\contentsline {subparagraph}{Empiriniai kvantili\IeC {\k u} sklaidos grafikai -- EQDG}{23}{section*.21}
+\contentsline {subsection}{\numberline {5.3}Simuliacij\IeC {\k u} rezultatai}{23}{subsection.5.3}
 \contentsline {section}{\numberline {6}HLM MODELIS TIMSS DUOMENIMS}{26}{section.6}
 \contentsline {subsection}{\numberline {6.1}TIMSS tyrimo apra\IeC {\v s}ymas}{26}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}TIMSS tyrim\IeC {\k u} ap\IeC {\v z}valga}{27}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}TIMSS duomenys}{28}{subsection.6.3}
 \contentsline {subsection}{\numberline {6.4}HLM modelis 2011 met\IeC {\k u} TIMSS duomenims}{30}{subsection.6.4}
-\contentsline {subparagraph}{Nulinis modelis}{31}{section*.24}
-\contentsline {subparagraph}{Galutinis modelis}{32}{section*.26}
+\contentsline {subparagraph}{Nulinis modelis}{31}{section*.25}
+\contentsline {subparagraph}{Galutinis modelis}{32}{section*.27}
 \contentsline {section}{\numberline {7}I\IeC {\v S}VADOS IR REKOMENDACIJOS}{34}{section.7}
 \contentsline {section}{LITERAT\IeC {\=U}RA IR \IeC {\v S}ALTINIAI}{35}{section.7}
-\contentsline {section}{A PRIEDAS}{38}{section*.29}
-\contentsline {section}{B PRIEDAS}{44}{section*.31}
-\contentsline {section}{LENTELI\IeC {\k U} S\IeC {\k A}RA\IeC {\v S}AS}{59}{table.caption.47}
-\contentsline {section}{ILIUSTRACIJ\IeC {\k U} S\IeC {\k A}RA\IeC {\v S}AS}{59}{section*.48}
+\contentsline {section}{A PRIEDAS}{38}{section*.30}
+\contentsline {section}{B PRIEDAS}{44}{section*.32}
+\contentsline {section}{LENTELI\IeC {\k U} S\IeC {\k A}RA\IeC {\v S}AS}{59}{table.caption.48}
+\contentsline {section}{ILIUSTRACIJ\IeC {\k U} S\IeC {\k A}RA\IeC {\v S}AS}{59}{section*.49}
