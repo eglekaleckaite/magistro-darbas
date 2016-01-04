@@ -1,18 +1,18 @@
 \select@language {lithuanian}
-\contentsline {table}{\numberline {1}{\ignorespaces Fiksuotos modelio (\ref {eq:simul}) parametr\IeC {\k u} ir kintam\IeC {\k u}j\IeC {\k u} reik\IeC {\v s}m\IeC {\.e}s}}{20}{table.caption.14}
-\contentsline {table}{\numberline {2}{\ignorespaces Pa\IeC {\v z}ym\IeC {\.e}jimai simuliacijose naudojamoms dispersijos komponen\IeC {\v c}i\IeC {\k u} kombinacijoms}}{20}{table.caption.15}
-\contentsline {table}{\numberline {3}{\ignorespaces Simuliacij\IeC {\k u} strukt\IeC {\=u}r\IeC {\k u} pa\IeC {\v z}ym\IeC {\.e}jimai}}{20}{table.caption.16}
+\contentsline {table}{\numberline {1}{\ignorespaces Fiksuotos modelio (\ref {eq:simul}) parametr\IeC {\k u} ir kintam\IeC {\k u}j\IeC {\k u} reik\IeC {\v s}m\IeC {\.e}s}}{20}{table.caption.15}
+\contentsline {table}{\numberline {2}{\ignorespaces Pa\IeC {\v z}ym\IeC {\.e}jimai simuliacijose naudojamoms dispersijos komponen\IeC {\v c}i\IeC {\k u} kombinacijoms}}{20}{table.caption.16}
+\contentsline {table}{\numberline {3}{\ignorespaces Simuliacij\IeC {\k u} strukt\IeC {\=u}r\IeC {\k u} pa\IeC {\v z}ym\IeC {\.e}jimai}}{20}{table.caption.17}
 \contentsline {table}{\numberline {4}{\ignorespaces Magistro darbe naudot\IeC {\k u} TIMSS duomen\IeC {\k u} detalizavimas}}{30}{table.4}
-\contentsline {table}{\numberline {5}{\ignorespaces Nulinio modelio parametr\IeC {\k u} \IeC {\k i}ver\IeC {\v c}iai ir statistikos.\relax }}{31}{table.caption.26}
-\contentsline {table}{\numberline {6}{\ignorespaces Modelio (\ref {eq:timss2}) parametr\IeC {\k u} \IeC {\k i}ver\IeC {\v c}iai bei statistikos}}{33}{table.caption.28}
-\contentsline {table}{\numberline {7}{\ignorespaces Modelio (\ref {eq:simul}) fiksuot\IeC {\k u} efekt\IeC {\k u} \IeC {\k i}ver\IeC {\v c}i\IeC {\k u} jungtin\IeC {\.e}s statistikos}}{44}{table.caption.34}
-\contentsline {table}{\numberline {8}{\ignorespaces Modelio (\ref {eq:simul}) dispersijos komponen\IeC {\v c}i\IeC {\k u} \IeC {\k i}ver\IeC {\v c}i\IeC {\k u} jungtin\IeC {\.e}s statistikos}}{45}{table.caption.35}
-\contentsline {table}{\numberline {9}{\ignorespaces Modelio (\ref {eq:simul}) $\gamma _{00}=450$ vidutinis \IeC {\k i}vertis ir statistikos}}{46}{table.caption.36}
-\contentsline {table}{\numberline {10}{\ignorespaces Modelio (\ref {eq:simul}) $\gamma _{01}=10$ vidutinis \IeC {\k i}vertis ir statistikos}}{47}{table.caption.37}
-\contentsline {table}{\numberline {11}{\ignorespaces Modelio (\ref {eq:simul}) $\gamma _{10}=30$ vidutinis \IeC {\k i}vertis ir statistikos}}{48}{table.caption.38}
-\contentsline {table}{\numberline {12}{\ignorespaces Modelio (\ref {eq:simul}) $\gamma _{11}=5$ vidutinis \IeC {\k i}vertis ir statistikos}}{49}{table.caption.39}
-\contentsline {table}{\numberline {13}{\ignorespaces Modelio (\ref {eq:simul}) $\sigma ^2=2000$ vidutinis \IeC {\k i}vertis ir statistikos}}{50}{table.caption.40}
-\contentsline {table}{\numberline {14}{\ignorespaces Modelio (\ref {eq:simul}) $\tau _{00}=100,\ 800,\ 2000$ vidutinis \IeC {\k i}vertis ir statistikos}}{51}{table.caption.41}
-\contentsline {table}{\numberline {15}{\ignorespaces Modelio (\ref {eq:simul}) $\tau _{01}=50,\ 400,\ 1000$ vidutinis \IeC {\k i}vertis ir statistikos}}{52}{table.caption.42}
-\contentsline {table}{\numberline {16}{\ignorespaces Modelio (\ref {eq:simul}) $\tau _{11}=100,\ 800,\ 2000$ vidutinis \IeC {\k i}vertis ir statistikos}}{53}{table.caption.43}
-\contentsline {table}{\numberline {17}{\ignorespaces Modelio (\ref {eq:wsimul}) simuliacij\IeC {\k u} \IeC {\k i}ver\IeC {\v c}i\IeC {\k u} statistikos}}{58}{table.caption.48}
+\contentsline {table}{\numberline {5}{\ignorespaces Nulinio modelio parametr\IeC {\k u} \IeC {\k i}ver\IeC {\v c}iai ir statistikos.\relax }}{31}{table.caption.27}
+\contentsline {table}{\numberline {6}{\ignorespaces Modelio (\ref {eq:timss2}) parametr\IeC {\k u} \IeC {\k i}ver\IeC {\v c}iai bei statistikos}}{33}{table.caption.29}
+\contentsline {table}{\numberline {7}{\ignorespaces Modelio (\ref {eq:simul}) fiksuot\IeC {\k u} efekt\IeC {\k u} \IeC {\k i}ver\IeC {\v c}i\IeC {\k u} jungtin\IeC {\.e}s statistikos}}{44}{table.caption.35}
+\contentsline {table}{\numberline {8}{\ignorespaces Modelio (\ref {eq:simul}) dispersijos komponen\IeC {\v c}i\IeC {\k u} \IeC {\k i}ver\IeC {\v c}i\IeC {\k u} jungtin\IeC {\.e}s statistikos}}{45}{table.caption.36}
+\contentsline {table}{\numberline {9}{\ignorespaces Modelio (\ref {eq:simul}) $\gamma _{00}=450$ vidutinis \IeC {\k i}vertis ir statistikos}}{46}{table.caption.37}
+\contentsline {table}{\numberline {10}{\ignorespaces Modelio (\ref {eq:simul}) $\gamma _{01}=10$ vidutinis \IeC {\k i}vertis ir statistikos}}{47}{table.caption.38}
+\contentsline {table}{\numberline {11}{\ignorespaces Modelio (\ref {eq:simul}) $\gamma _{10}=30$ vidutinis \IeC {\k i}vertis ir statistikos}}{48}{table.caption.39}
+\contentsline {table}{\numberline {12}{\ignorespaces Modelio (\ref {eq:simul}) $\gamma _{11}=5$ vidutinis \IeC {\k i}vertis ir statistikos}}{49}{table.caption.40}
+\contentsline {table}{\numberline {13}{\ignorespaces Modelio (\ref {eq:simul}) $\sigma ^2=2000$ vidutinis \IeC {\k i}vertis ir statistikos}}{50}{table.caption.41}
+\contentsline {table}{\numberline {14}{\ignorespaces Modelio (\ref {eq:simul}) $\tau _{00}=100,\ 800,\ 2000$ vidutinis \IeC {\k i}vertis ir statistikos}}{51}{table.caption.42}
+\contentsline {table}{\numberline {15}{\ignorespaces Modelio (\ref {eq:simul}) $\tau _{01}=50,\ 400,\ 1000$ vidutinis \IeC {\k i}vertis ir statistikos}}{52}{table.caption.43}
+\contentsline {table}{\numberline {16}{\ignorespaces Modelio (\ref {eq:simul}) $\tau _{11}=100,\ 800,\ 2000$ vidutinis \IeC {\k i}vertis ir statistikos}}{53}{table.caption.44}
+\contentsline {table}{\numberline {17}{\ignorespaces Modelio (\ref {eq:wsimul}) simuliacij\IeC {\k u} \IeC {\k i}ver\IeC {\v c}i\IeC {\k u} statistikos}}{58}{table.caption.49}

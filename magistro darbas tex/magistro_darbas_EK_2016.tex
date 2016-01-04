@@ -6,7 +6,7 @@
 \usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{url}
-\usepackage{hyperref}
+\usepackage[pdfencoding=auto]{hyperref}
 \usepackage{amssymb,amsmath}
 \usepackage{theorem}
 \usepackage{calc}
@@ -25,15 +25,20 @@
 \usepackage{bbm}
 \usepackage[toc,page]{appendix}
 \usepackage{longtable}
-\usepackage{lipsum}
+%\usepackage{lipsum}
 %\usepackage{tocbibind}
 %\usepackage{listings}
 \usepackage{rotating}
 \usepackage{rotfloat}
 \usepackage{enumerate}
 \usepackage{caption}
+\usepackage{bookmark}
 %\usepackage{adjustbox}
 
+\bookmarksetup{
+  numbered, 
+  open,
+}
 
 \oddsidemargin=0cm
 %\topmargin=1cm
@@ -101,11 +106,8 @@ Atidavimo į katedrą data \underline{2016-01-04\hskip 23pt} }
 \end{titlepage}
 
 \newpage
-\pagestyle{plain}
-\renewcommand\contentsname{TURINYS}
-\tableofcontents
-
-\newpage
+\pdfbookmark[1]{SANTRAUKA / ABSTRACT}{abstract}
+\section*{}%\currentpdfbookmark{SANTRAUKA / ABSTRACT}{sec:1}
 
 \begin{center}{\large\textbf{Dviejų lygių HLM modelių vertinimo metodų palyginimas MC simuliacijų būdu: REML vs MINQUE}}\end{center}
 
@@ -114,16 +116,6 @@ Atidavimo į katedrą data \underline{2016-01-04\hskip 23pt} }
 \begin{center}\textbf{Santrauka}\end{center}
 
 \indent Šio darbo tikslas buvo Monte Carlo simuliacijų būdu palyginti du HLM modelių parametrų vertinimo metodus -- REML ir MINQUE. Tikėtasi, jog MINQUE metodas, pasižymintis invariantiškumu ir nepaslinktumu bei nereikalaujantis žinių apie paklaidų ir atsitiktinių efektų pasikirstymą, duos mažiau paslinktus dispersijos komponenčių įverčius nei REML metodas, kai normalumo sąlyga negali būti užtikrinta. Specialus dėmesys skiriamas TIMSS duomenų stuktūrai, todėl stegtasi į ją atsižvelgti kuriant simuiacijų dizainą. Simuliacijų rezultatai nepatvirtino lūkesčių, akivaizdžiai mažesnis įverčių poslinkis gautas tik siauroje srityje, nesvarbu koks palaidų ir atsitiktinių efektų pasiskirstymas. HLM modelių vertinimui su imties svoriais vertinti MiNQUE metodu pritaikytas PWIGLS svėrimo metodas, pavadintas PWMINQUE. Simuliacijų būdu patvirtinta, jog šis metodas informatyviam ėmimui duoda mažiau paslinktus įverčius. Galiausiai, sudarytas dviejų lygių HLM modelis Lietuvos aštuntokų TIMSS 2011 duomenims. Šio modelio parametrai įvertinami REML ir MINQUE metodais.
-
-%\indent Hierarchinių tiesinių modelių modelių vertinimui dažniausiai naudojamas REML metodas yra paremtas normalumo prielaida, kuri mokyklos duomenims dažnai negali būti garantuota. Šiame darbe kaip alternatyvą buvo tirtas MINQUE metodas, kuris nereikalauja žinių apie paklaidų ir atsitiktinių efektų pasiskirsymą, yra invariantiškas ir nepaslinktas. Anksčiau atlikti tyrimai nebuvo taikyti hierarchinėms stuktūrms arba REML ir MINQUE HLM modeliams nelyginti tiesiogiai tarpusavyje. Tikėtasi, jog šis metodas duos mažiau paslinktus dispersijos komponenčių įverčius prie $\chi^2$ pasiskirstymo. Tačiau atliktas simuliacijų tyrimas to nepatvirtino.
-%
-%\indent Analizuoti trys \text{a prioi} reikšmių tipai -- MINQUE(0), MINQUE(1) ir MINQUE($\theta$). Atlikus Monte Carlo simuliacijas pastebėta, jog beveik visais atvejais MINQUE(0) gauti įverčiai labiausiai paslinkti ir su didžiausiu išsibastymu. Tik vienu atveju (kai $\frac{\tau_{00}}{\sigma^2}=0,05$) MINQUE(1) įverčių poslinkis buvo mažiausias, o išsibastymas nuo kitais metodais gautų įverčių skyrėsi nedaug. Kitais atvejais visi trys metodai -- REML, MINQUE(1) ir MINQUE($\theta$) -- davė labai panašius rezultatus. Čia MINQUE($\theta$) buvo neženkliai geresnis nei MINQUE(1). 
-%
-%\indent Šis darbas atliktas su laisvai prieinamu $\R$ statistinės analizės paketu, kuriame nepavyko rasti paketo HLM modelio dispersijos komponenčių vertinimui. Dėl šios priežasties buvo sukurtas lankstus funkcijų rinkinys, pritaikytas hierarchinių tiesinių modelių vertinimui su pasirinktomis \textit{a priori} reikšmėmis.
-%
-%\indent Mokyklų duomenys dažnai pateikiami su imties svoriais, į kuriuos reikėtų atsižvelgti vertinant modelius. Tam dažniausiai naudojamas PWIGLS metodas. Šio metodo $\R$ aplinkoje taip pat nepavyko rasti. Dėl išraiškų panašumo, PWIGLS svėrimo metodas bu pritaikytas MINQUE metodui ir vadinamas PWMINQUE. Monte Carlo simuliacijų būdu parodyta, jog šis metodas duoda mažiau paslinktus parametrų įverčius nei nesvertiniai metodai.
-%
-%\indent Lietuvos aštuntokų TIMSS 2011 duomenys hierchiniame lygmenyje buvo analizuoti nedaug. Atskirai sudaryto modelio Lietuvai nepavyko rasti. Tad šiame darbe sudarytas dviejų lygių (mokyklų ir mokinių) hierarchinis modelis su atsitiktiniu postūmiu ir posvyriu. Šis modelis įvertintas REML, MINQUE(1), PWMINQUE(1), MINQUE($\theta$) ir PWMINQUE($\theta$) metodais.
 
 \vspace{\baselineskip}
 
@@ -148,6 +140,13 @@ TIMSS, PWIGLS, HLM, MINQUE, PWMINQUE, REML
 TIMSS, PWIGLS, HLM, MINQUE, PWMINQUE, REML
 \end{small}
 \vspace{\baselineskip}
+
+
+\newpage
+\pagestyle{plain}
+\renewcommand\contentsname{TURINYS}
+\tableofcontents
+
 
 \newpage
 \section{ĮVADAS}
@@ -909,7 +908,7 @@ CMRSE_{kl}=\frac{1}{n_{kl}}\sum_{j=1}^{n_{kl}}MRSE_{jkl}.
 \indent Šiame skyrelyje pateikiami anksčiau aprašytų Monte Carlo simuliacijų rezultatai. Rezultatai lyginami statistikomis, pateiktomis skyrelyje \ref{subsec:stat}.
 
 \subsubsection*{Be svorių}
-\indent Šiame skyrelyje pateikiami simuliacijų nusakytų \hyperlink{:besvoriu}{\textbf{Be imties svorių}} skyrelyje rezultatai. Metodai lyginami statistikomis aprašytomis prie simuliacijų dizaino \ref{subsec:stat} skyrelyje. Vertinamų parametrų buvo 8 -- 4 fiksuoti ir 4 dispersijos komponentės. Kiekvienam iš jų sudarytos lentelės, kur kiekvienam iš nagrinėtų atvejų ir metodų pateiktos statistikos. Dėl rezultatų kiekio sudarytos jungtinės lentelės atskirai fiksuotiems parametrams ir dispersijos komponentėms, jose pateiktos jungtinės statistikos aprašytos minėtame skyrelyje. Lenteles galima rasti šio darbo \hyperlink{appendixb}{B} priede. Jame pateikiami ir EQDM grafikai.
+\indent Šiame skyrelyje pateikiami simuliacijų nusakytų \hyperlink{:besvoriu}{\textit{Be imties svorių}} skyrelyje rezultatai. Metodai lyginami statistikomis aprašytomis prie simuliacijų dizaino \ref{subsec:stat} skyrelyje. Vertinamų parametrų buvo 8 -- 4 fiksuoti ir 4 dispersijos komponentės. Kiekvienam iš jų sudarytos lentelės, kur kiekvienam iš nagrinėtų atvejų ir metodų pateiktos statistikos. Dėl rezultatų kiekio sudarytos jungtinės lentelės atskirai fiksuotiems parametrams ir dispersijos komponentėms, jose pateiktos jungtinės statistikos aprašytos minėtame skyrelyje. Lenteles galima rasti šio darbo \hyperlink{appendixb}{B} priede. Jame pateikiami ir EQDM grafikai.
 
 \indent Fiksuotų parametrų įverčių jungtinės statistikos pateiktos \ref{table:jfixed} lentelėje. Kaip ir buvo galima tikėtis, fiksuotų parametrų įverčiai daugeliu atvejų yra nepaslinkti su nedidele sklaida. CAMBRIAS prasme prasčiausiai pasirodė MINQUE(0) metodas, o tai patvirtina jog šis metodas linkęs pervertinti. Čia didžiausias poslinkis gautas $\gamma_{10}$ ir $\gamma_{11}$ parametrams.
 
@@ -928,7 +927,7 @@ MINQUE($\theta$) -- tirtais atvejais duoda panašius rezultatus. Čia reikėtų 
 \indent Tikėtasi, jog MINQUE metodas prie $\chi^2$ skirstinio duos geresnius rezultatus, nei REML. Šis tyrimas to nepatvirtino. Vis gi, MINQUE metodas reikalauja didelių matricų operacijų ir daug kompiuterio resursų, todėl rekomenduojama naudoti REML metodą, kuomet antro lygio subjektų skaičius didelis (t.y. daugiau nei 35).
 
 \subsubsection*{Su svoriais}
-\indent Šiame skyrelyje pateikti skyrelyje \hyperlink{susvoriais}{\textbf{Su imties svoriais}} aprašyto simuliacijų dizaino rezultatai. Jie pateikti \ref{table:wsimul} lentelėje šio darbo \hyperlink{appendixb}{B} priede. Šiuo atveju REML ir MINQUE(1) bei MINQUE($\theta$) įverčiai skiriasi labai neženkliai. Šiek tiek didesnį vidutinį santykinį poslinkį ir išsibarstymą turi $\tau_{01}$ ir $\tau_{11}$ įverčiai MINQUE(1) metodu. Mažiausias vidutinis santykinis poslinkis stebimas parametrams $\gamma_{01}$ ir $\gamma_{10}$. Tokio dydžio poslinkį laikome nereikšmingu. Parametrų $\sigma^2$ ir $\tau_{00}$ MRBIAS yra tarp 0,05 ir 0,2, todėl laikomas vidutiniu poslinkiu. Likusių parametrų -- $\gamma_{00}$, $\tau_{01}$ ir $\tau_{11}$ -- poslinkį laikome dideliu. Mažiausias išsibarstymas (MRSE) yra parametrui $\sigma^2$, didžiausias -- $\tau_{01}$. 
+\indent Šiame skyrelyje pateikti skyrelyje \hyperlink{susvoriais}{\textit{Su imties svoriais}} aprašyto simuliacijų dizaino rezultatai. Jie pateikti \ref{table:wsimul} lentelėje šio darbo \hyperlink{appendixb}{B} priede. Šiuo atveju REML ir MINQUE(1) bei MINQUE($\theta$) įverčiai skiriasi labai neženkliai. Šiek tiek didesnį vidutinį santykinį poslinkį ir išsibarstymą turi $\tau_{01}$ ir $\tau_{11}$ įverčiai MINQUE(1) metodu. Mažiausias vidutinis santykinis poslinkis stebimas parametrams $\gamma_{01}$ ir $\gamma_{10}$. Tokio dydžio poslinkį laikome nereikšmingu. Parametrų $\sigma^2$ ir $\tau_{00}$ MRBIAS yra tarp 0,05 ir 0,2, todėl laikomas vidutiniu poslinkiu. Likusių parametrų -- $\gamma_{00}$, $\tau_{01}$ ir $\tau_{11}$ -- poslinkį laikome dideliu. Mažiausias išsibarstymas (MRSE) yra parametrui $\sigma^2$, didžiausias -- $\tau_{01}$. 
 
 \indent Akivaizdžiai parametrų vertintų PWMINQUE poslinkis mažesnis nei nesvertinių metodų. Čia reikėtų pastebėti, jog įverčių išsibarstymas beveik visur didesnis vertinant su PWMINQUE, bet skirtumas nėra didelis palyginus su nauda gauta sumažėjus poslinkiui.    MRBIAS > 0,05 tik $\tau_{00}$ vertintam PWMINQUE(1) ir $\gamma_{00}$ abiems PWMINQUE. $\gamma_{00}$ poslinkis sumažėja, parametras yra pervertinamas, tačiau išsibarstymas mažesnis nei nesvertinių metodų. Šie rezultatai sutampa su gautais  Pfeffermann ir kt.\cite{pfeff} bei Steele ir kt.\cite{mlwin} PWIGLS metodui.
 
@@ -1210,8 +1209,8 @@ $R_1^2$ & 0.516 & 0.504 & -12.251 & 0.517 & 0.515\\
 
 \newpage
 \renewcommand\refname{LITERATŪRA IR ŠALTINIAI}
-\addcontentsline{toc}{section}{LITERATŪRA IR ŠALTINIAI}
 \begin{thebibliography}{1}
+\addcontentsline{toc}{section}{LITERATŪRA IR ŠALTINIAI}
 \bibitem{achen} C. Achen, Two-Step Hierarchical Estimation: Beyond Regression Analysis,  \textit{Political Analysis}, 2005, ruduo 13 (4), p. 447-456.
 \bibitem{timssCpalyg1} Y. Afana,  P. Lietz, The relationship between school resources and mathematics achievement at grade 8: A comparison of Israeli and Palestinian schools in TIMSS 2007, \textit{Journal for Educational Research Online 5.1}, 2013, p. 59-89.
 \bibitem{2007All} G. Akyuz, G. Berberoglu, \textit{Teacher and Classroom Characteristics and Their Relations to Mathematics Achievement of the Students in the TIMSS}, New Horizons in Education, 2010.
@@ -1282,7 +1281,7 @@ Dissertation, NC State University, Raleigh, U.S.A, 1989.
 
 
 #################################################################
-# MINQUE funkcija HLM (arba misriu efektu) modeliams vertinti
+## MINQUE funkcija HLM (arba misriu efektu) modeliams vertinti
 #################################################################
 ## Funkcija skirta vertinti HLM modelius MINQUE metodu. 
 ## Si funkcija vertina MINQUE su bet kokiomis a priori 
@@ -1499,9 +1498,9 @@ fillSMINQUE <- function(CQ, wgt2i) {
 
 
 #################################################################
-# Funkcija duomenu generavimui (naudojama pavyzdyje zemiau)
+## Funkcija duomenu generavimui (naudojama pavyzdyje zemiau)
 #################################################################
-# Pagal Weighting in MLwiN
+## Pagal Weighting in MLwiN
 makePOPW <- function(M = 300){
   require(msm)
   require(data.table)
@@ -1555,9 +1554,9 @@ makePOPW <- function(M = 300){
 }
 
 #################################################################
-# Naudojimosi pavyzdys
+## Naudojimosi pavyzdys
 #################################################################
-# Sugeneruojama populiacija su svoriais
+## Sugeneruojama populiacija su svoriais
 pop1 <- makePOPW(20)
 
 # Vertinimas be imties svoriu
@@ -1594,7 +1593,7 @@ min2$sigma
 \section*{SIMULIACIJŲ REZULTATAI}\label{sec:lenteles}
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
 % Mon Dec 28 21:00:27 2015
-{\footnotesize
+{
 \begin{sidewaystable}[H]
 \captionsetup{width=19cm}
 \centering
@@ -1705,10 +1704,10 @@ P & V & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE & CAMRBIAS & CMRS
 
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
 % Mon Dec 28 21:31:41 2015
-{\scriptsize
+{
 \begin{sidewaystable}[H]
 \centering
-\captionsetup{width=19.5cm}
+\captionsetup{width=20cm}
 {\scriptsize
 %\resizebox{0.86\textwidth}{!}{
 \begin{tabular}{cc|ccc|ccc|ccc|ccc|}
@@ -2198,19 +2197,20 @@ $\gamma_{00}$ & 1 &  0.781 & -0.219 & 0.063 & 1.166 & 0.166 & 0.048 \\
    \hline
 \end{tabular}
 }
-\caption[Modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos]{Modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos. Statistikos plačiau aprašytos skyrelyje \ref{subsubsec:besvoriu}.}
+\caption[Modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos]{Modelio (\ref{eq:wsimul}) simuliacijų įverčių statistikos. Statistikos plačiau aprašytos skyrelyje \ref{subsec:stat}.}
 \label{table:wsimul}
 \end{sidewaystable}
 
 \newpage
 
 %\begin{appendix}
-\addcontentsline{toc}{section}{LENTELIŲ SĄRAŠAS}
 \listoftables
+\addcontentsline{toc}{section}{LENTELIŲ SĄRAŠAS}
 %\end{appendix}
  %\begin{appendix}
- \addcontentsline{toc}{section}{ILIUSTRACIJŲ SĄRAŠAS}
  \listoffigures
+ \addcontentsline{toc}{section}{ILIUSTRACIJŲ SĄRAŠAS}
+
  %\end{appendix}
   
 

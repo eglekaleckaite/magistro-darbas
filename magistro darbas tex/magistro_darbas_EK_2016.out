@@ -1,30 +1,30 @@
-\BOOKMARK [1][-]{section.1}{IVADAS}{}% 1
-\BOOKMARK [1][-]{section.2}{HIERARCHINIAI TIESINIAI MODELIAI}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Hierarchinio tiesinio modelio apra\235ymas}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Modelio parinkimas}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{PARAMETRU VERTINIMO METODAI}{}% 5
-\BOOKMARK [2][-]{subsection.3.1}{Efektu vertinimas}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.2}{REML metodas}{section.3}% 7
-\BOOKMARK [2][-]{subsection.3.3}{MINQUE metodas}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.4}{Literaturos ir tyrimu ap\236valga}{section.3}% 9
-\BOOKMARK [3][-]{subsubsection.3.4.1}{Bagaka's tyrimas}{subsection.3.4}% 10
-\BOOKMARK [3][-]{subsubsection.3.4.2}{Delpish tyrimas}{subsection.3.4}% 11
-\BOOKMARK [1][-]{section.4}{DARBE TAIKOMAS MINQUE}{}% 12
-\BOOKMARK [2][-]{subsection.4.1}{MINQUE pritaikymas HLM}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.2}{A priori reik\235mes}{section.4}% 14
+\BOOKMARK [1][-]{section.1}{\376\377\001\056\000V\000A\000D\000A\000S}{}% 1
+\BOOKMARK [1][-]{section.2}{HIERARCHINIAI\040TIESINIAI\040MODELIAI}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Hierarchinio\040tiesinio\040modelio\040apra\235ymas}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Modelio\040parinkimas}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{\376\377\000P\000A\000R\000A\000M\000E\000T\000R\001\162\000\040\000V\000E\000R\000T\000I\000N\000I\000M\000O\000\040\000M\000E\000T\000O\000D\000A\000I}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{\376\377\000E\000f\000e\000k\000t\001\163\000\040\000v\000e\000r\000t\000i\000n\000i\000m\000a\000s}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{REML\040metodas}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{MINQUE\040metodas}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.4}{\376\377\000L\000i\000t\000e\000r\000a\000t\001\153\000r\000o\000s\000\040\000i\000r\000\040\000t\000y\000r\000i\000m\001\163\000\040\000a\000p\001\176\000v\000a\000l\000g\000a}{section.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Bagaka's\040tyrimas}{subsection.3.4}% 10
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Delpish\040tyrimas}{subsection.3.4}% 11
+\BOOKMARK [1][-]{section.4}{DARBE\040TAIKOMAS\040MINQUE}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{MINQUE\040pritaikymas\040HLM}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{\376\377\000A\000\040\000p\000r\000i\000o\000r\000i\000\040\000r\000e\000i\000k\001\141\000m\001\027\000s}{section.4}% 14
 \BOOKMARK [2][-]{subsection.4.3}{PWMINQUE}{section.4}% 15
-\BOOKMARK [1][-]{section.5}{EMPIRINES SIMULIACIJOS}{}% 16
-\BOOKMARK [2][-]{subsection.5.1}{Monte Carlo simuliaciju dizainai}{section.5}% 17
+\BOOKMARK [1][-]{section.5}{\376\377\000E\000M\000P\000I\000R\000I\000N\001\026\000S\000\040\000S\000I\000M\000U\000L\000I\000A\000C\000I\000J\000O\000S}{}% 16
+\BOOKMARK [2][-]{subsection.5.1}{\376\377\000M\000o\000n\000t\000e\000\040\000C\000a\000r\000l\000o\000\040\000s\000i\000m\000u\000l\000i\000a\000c\000i\000j\001\163\000\040\000d\000i\000z\000a\000i\000n\000a\000i}{section.5}% 17
 \BOOKMARK [2][-]{subsection.5.2}{Statistikos}{section.5}% 18
-\BOOKMARK [2][-]{subsection.5.3}{Simuliaciju rezultatai}{section.5}% 19
-\BOOKMARK [1][-]{section.6}{HLM MODELIS TIMSS DUOMENIMS}{}% 20
-\BOOKMARK [2][-]{subsection.6.1}{TIMSS tyrimo apra\235ymas}{section.6}% 21
-\BOOKMARK [2][-]{subsection.6.2}{TIMSS tyrimu ap\236valga}{section.6}% 22
-\BOOKMARK [2][-]{subsection.6.3}{TIMSS duomenys}{section.6}% 23
-\BOOKMARK [2][-]{subsection.6.4}{HLM modelis 2011 metu TIMSS duomenims}{section.6}% 24
-\BOOKMARK [1][-]{section.7}{I\227VADOS IR REKOMENDACIJOS}{}% 25
-\BOOKMARK [1][-]{section.7}{LITERATURA IR \227ALTINIAI}{}% 26
-\BOOKMARK [1][-]{section*.30}{A PRIEDAS}{}% 27
-\BOOKMARK [1][-]{section*.32}{B PRIEDAS}{}% 28
-\BOOKMARK [1][-]{table.caption.48}{LENTELIU SARA\227AS}{}% 29
-\BOOKMARK [1][-]{section*.49}{ILIUSTRACIJU SARA\227AS}{}% 30
+\BOOKMARK [2][-]{subsection.5.3}{\376\377\000S\000i\000m\000u\000l\000i\000a\000c\000i\000j\001\163\000\040\000r\000e\000z\000u\000l\000t\000a\000t\000a\000i}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{HLM\040MODELIS\040TIMSS\040DUOMENIMS}{}% 20
+\BOOKMARK [2][-]{subsection.6.1}{TIMSS\040tyrimo\040apra\235ymas}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.2}{\376\377\000T\000I\000M\000S\000S\000\040\000t\000y\000r\000i\000m\001\163\000\040\000a\000p\001\176\000v\000a\000l\000g\000a}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.3}{TIMSS\040duomenys}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.4}{\376\377\000H\000L\000M\000\040\000m\000o\000d\000e\000l\000i\000s\000\040\0002\0000\0001\0001\000\040\000m\000e\000t\001\163\000\040\000T\000I\000M\000S\000S\000\040\000d\000u\000o\000m\000e\000n\000i\000m\000s}{section.6}% 24
+\BOOKMARK [1][-]{section.7}{I\227VADOS\040IR\040REKOMENDACIJOS}{}% 25
+\BOOKMARK [1][-]{section*.29}{\376\377\000L\000I\000T\000E\000R\000A\000T\001\152\000R\000A\000\040\000I\000R\000\040\001\140\000A\000L\000T\000I\000N\000I\000A\000I}{}% 26
+\BOOKMARK [1][-]{section*.30}{A\040PRIEDAS}{}% 27
+\BOOKMARK [1][-]{section*.32}{B\040PRIEDAS}{}% 28
+\BOOKMARK [1][-]{section*.49}{\376\377\000L\000E\000N\000T\000E\000L\000I\001\162\000\040\000S\001\004\000R\000A\001\140\000A\000S}{}% 29
+\BOOKMARK [1][-]{section*.50}{\376\377\000I\000L\000I\000U\000S\000T\000R\000A\000C\000I\000J\001\162\000\040\000S\001\004\000R\000A\001\140\000A\000S}{}% 30
