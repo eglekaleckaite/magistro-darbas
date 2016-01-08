@@ -1,0 +1,515 @@
+\documentclass[utf8,hyperref={unicode,pdftex}]{beamer}
+%\documentclass[utf8]{beamer}
+
+\mode<presentation>
+{
+\usetheme{Warsaw}
+}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage[utf8]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subcaption}
+
+
+
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+
+\title[\hspace{130pt} p. \insertpagenumber\enspace iš \insertdocumentendpage\enspace ]{Dviejų lygių HLM modelių vertinimo metodų palyginimas MC simuliacijų būdu: REML vs MINQUE}
+\author[ E. Kaleckaitė]{Eglė Kaleckaitė\\
+Vadovas: Vydas Čekanavičius}
+\institute{Vilniaus Universitetas, Matematikos ir Informatikos Fakultetas}
+\date{2016 sausio 14d.}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Įvadas}
+\begin{itemize}
+\item Tikslai ir problemos;
+\item HLM ir TIMSS;
+\item Vertinimo procedūros: REML ir MINQUE;
+\item Atliktos simuliacijos ir rezultatai;
+\item TIMSS modelis;
+\item Apibendrinimas.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Tikslai ir problemos}
+\begin{itemize}
+\item Orientacija į TIMSS (\textit{angl. Trends in International Mathematics and Science Study}) ir į R;
+\item HLM modeliams vertinami REML metodu, kuris remiasi normalumo prielaida;
+\item Hierarchinėms struktūroms REML įverčiai yra paslinkti, mažesni nei iš tikrųjų (Timm\footnote{Timm, N.H., \textit{Applied Multivariate Analysis}, Springer Texts in Statistics, 2002});
+\item Tiriamas alternatyvus metodas MINQUE, kuris nereikalauja jokių žinių apie skirstinį;
+\item Tikimasi, jog MINQUE įverčiai turės mažesnį poslinkį;
+\item Mokyklų duomenys pateikiami su imties svoriais.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{HLM}
+\begin{itemize}
+\item HLM - hierarchinis tiesinis modelis (\textit{angl. Hierarchical Linear Model});
+\item Dviejų lygių modelio pavidalas: 
+\[ \left\{
+  \begin{array}{l}
+    Y_{ij} = \beta_{0j}+\sum^P_{p = 1} \beta_{pj}\times X_{pij}+\varepsilon_{ij}; \\
+    \beta_{pj} = \gamma_{p0} + \sum^{Q_p}_{q=1}\gamma_{pq}\times W_{pqj}+u_{pj};\ \forall p = 0 , \dots, P,
+  \end{array} \right.\]
+kur\\
+\begin{scriptsize}
+$j$ - j-otoji grupė;\\
+$i$ - i-tasis individas j-tojoje grupėje;\\
+$\beta_{0j}$ - atsitiktinis postūmis;\\
+$\beta_{pj}$ - atsitiktinis posvyris;\\
+$\gamma_{pq}$ - fiksuoti efektai;\\
+$X_{pij}$ - pirmo lygio kintamieji;\\
+$W_{pqj}$ - antro lygio kintamieji;\\
+$Y_{ij}$ - aiškinamasis kintamasis.
+\end{scriptsize}
+\small
+\item Bendras modelio pavidalas (jungtinė lygtis): $ Y_{ij} =\sum^P_{p = 1} \sum^{Q_p}_{q=1}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 1} X_{pij}\times u_{pj}+\epsilon_{ij}$ arba
+\begin{equation*}
+Y=X\gamma+Zu+\varepsilon
+\end{equation*}
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{TIMSS}
+\begin{itemize}
+\item TIMSS - Tarptautinis matematikos ir gamtos mokslų tyrimas (\textit{angl. Trends in International Mathematics and Science Study});
+\item Vykdomas kas keturis metus;
+\item Dalyvauja šalys iš visų žemynų (apie 70);
+\item Sudaroma dviejų pakopų sluoksninė lizdinė imtis kiekvienoje šalyje pagal jos poreikius ir TIMSS standartus;
+\item Apklausiami atrinkti mokiniai ir jų tėvai, mokytojai bei mokyklos;
+\item Testų rezultatai apdorojami taip, kad visų mokinių vidurkis 500 ir standatinis nuokypis 100, sudaromos 5 galimos rezultatų reikšmės (\textit{angl. plausible values});
+\item Modeliuose naudojami kintamieji -- indeksai, žymimieji bei dydžio kintamieji.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{REML}
+\begin{itemize}
+\item REML - apribotasis didžiausio tikėtinumo metodas (\textit{angl. Restricted Maximum Likelihood}), kurį pasiūlė Harley ir Rao\footnote{Harley, H. 0., Rao, J., \textit{Maximum-likelihood estimation for the mixed analysis of variance model}, Biometrika, 54, 1967, 93}\\
+\item Jei turimas modelis $Y_j=X_j\gamma+Z_ju_j+\varepsilon_j$, $u_j\sim \mathcal{N}(0_{n_j}, T)$, $\varepsilon_j\sim \mathcal{N}(0_{n_j}, \sigma^2 I_{n_j})$, kur $j=1,\dots,J$, o $Var(Y_j)=V_j=\sigma^2 I_{n_j} + Z_jTZ'_j$, tai REML įverčiai gaunami maksimizuojant \textit{log}-tikėtinumo funkciją, t.y.
+\[
+L(\sigma^2, T)=\sum_j L_j(\sigma^2, T) \to max,
+\]
+kur
+\begin{small}
+\[
+L_j(\sigma^2, T)=-\frac{1}{2}\left( log|V_j|+(Y_j-X_j\gamma)'V_j^{-1}(Y_j-X_j\gamma)+log|X'_jV_j^{-1}X_j|\right)
+\]
+\end{small}
+\item Fiksuotų parametrų įverčiai gaunami:
+\[\hat{\gamma}=(X'\hat{V}^{-1}X)^{-1}X'\hat{V}^{-1}Y\]
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{REML privalumai ir trūkumai}
+Privalumai:
+\begin{itemize}
+\item Invariantiškumas.
+\end{itemize}
+Trūkumai:
+\begin{itemize}
+\item Negarantuoja nepaslinktumo;
+\item Negarantuoja teigiamų dispersijos komponenčių įverčių;
+\item Procedūra iteratyvi.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{MINQUE}
+\begin{small}
+\begin{itemize}
+\item \indent MINQUE - mažiausios normos kvadratinis nepaslinktas įvertinys (\textit{angl. Minimum Norm Quadratic Unbiased Estimator})\footnote{Rao, C. R.  \textit{Estimation of heteroscedastic variances in linear models}, Journal of the American Statistical Association, 65, 161–172 psl., 1970};\\
+ 
+
+\item \indent Jei $Var(Y)=V= \sum^l_{r=1}\theta_r Q_r$, tai $g_1 \theta_1+\dots+g_l \theta_l$ MINQUE yra $Y'AY$, jei matrica $A$ gaunama išsprendus:
+\[tr(AVAV) \to min\]
+su sąlygomis:
+\[AX = 0\]
+\[tr(AQ_r)=g_r\]
+\item Tada $\hat{\theta} = (\hat{\theta_1},\dots,\hat{\theta_l})'=S^{-1}q$, kur $S=\{s_{ij}\}$, $s_{ij}=tr(CQ_iCQ_j)$, o
+$q=\{q_i\}$, $q_i=Y'CQ_iCY$, $C = \hat{V}^{-1}(I-X(X' \hat{V}^{-1}X)^{-1}X \hat{V}^{-1})$, $\hat{V}=\sum^l_{r=1}\alpha_rQ_r$, $\alpha_r$ - \textit{a priori} reikšmės.
+
+\item Fiksuotų parametrų įverčiai gaunami:
+\[\hat{\gamma}=(X'\hat{V}^{-1}X)^{-1}X'\hat{V}^{-1}Y\]
+\end{itemize}
+\end{small}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{MINQUE privalumai ir trūkumai}
+Privalumai:
+\begin{itemize}
+\item Nereikia žinoti skirstinio;
+\item Nepaslinktumas;
+\item Invariantiškumas.
+\end{itemize}
+Trūkumai:
+\begin{itemize}
+\item Priklauso nuo \textit{a priori} reikšmių;
+\item Negarantuoja teigiamų dispersijos komponenčių įverčių;
+\item Vertinimas reikalauja daug resursų (didelės matricos).
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Buvę tyrimai}
+\begin{itemize}
+\item Bagakas(1992)\footnote{ J. G. Bagakas,  \textit{ Two level nested hierarchical linear model with random intercepts
+via the bootstrap}, Unpublished doctoral dissertation, Michigan State University., 1992} pritaikė MINQUE($\theta$) su saviranka dviejų lygių hierarchiniam modeliui su atsitiktiniu postūmiu; rezai???
+\item Delpish(2006)\footnote{A. N. Delpish,  \textit{Comparison of Estimators in Hierarchical Linear Modeling: Restricted Maximum Likelihood Versus Bootstrap via Minimum Norm Quadratic Unbiased Estimators}, Florida State University, 2006} simuliacijų būdu parodė, jog dviejų iteracijų MINQUE(1) su saviranka duoda tikslesnius įverčius nei REML modeliui su atsitiktiniu postūmiu ir posvyriu. rezai ??
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Simuliacijų struktūra(1)}
+\begin{itemize}
+\item Modelis su atsitiktiniu posvyriu ir postūmiu:
+\begin{equation*} \label{eq:2lvldelpish}
+\left\{
+\begin{array}{l}
+Y_{ij} = \beta_{0j}+ \beta_{1j}\times X_{ij}+\varepsilon_{ij}; \\
+\beta_{0j} = \gamma_{00} +\gamma_{01}\times W_{j}+u_{0j};\\
+\beta_{1j} = \gamma_{10} +\gamma_{11}\times W_{j}+u_{1j};\\
+\end{array} \right.
+\end{equation*}
+čia \\
+\begin{small}
+$\varepsilon_{ij}\sim \left(0;\sigma^2\right)$;\\
+$\begin{pmatrix}
+u_{0j} \\
+u_{1j} \\
+\end{pmatrix}\sim \left(0_2, T\right), \mathbf{T}=\begin{pmatrix}
+\tau_{00} & \tau_{01} \\
+\tau_{10} & \tau_{11} \\
+\end{pmatrix}$; \\
+$\gamma_{pq}$ - fiksuoti modelio efektai,$\ p,g = \{0,1\}$;\\
+$W_j$ - antrojo lygio aiškinantysis kintamasis;\\
+$X_{ij}$ - pirmojo lygio aiškinantysis kintamasis.\\ 
+\ \\
+\end{small}
+\item 500 simuliacijų kievienam atvejui. Naudojami $\mathcal{N}$ ir $\chi^2_1$ paklaidų pasiskirstymai. Viso 36 atvejai.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Simuliacijų struktūra(2)}
+
+\begin{table}[!htb]
+\begin{small}
+
+
+\begin{subtable}{.5\linewidth}
+\begin{tabular}{|c|r|}
+\hline
+Pavadinimas & Reikšmė\\
+\hline
+$\gamma_{00}$& 450  \\
+$\gamma_{01}$& 10  \\
+$\gamma_{10}$& 30 \\
+$\gamma_{11}$& 5  \\
+$\sigma^2$& 2000  \\
+$X_{ij}$ &  $B\left(1; 0,2\right)$ \\
+$W_{j}$ &  Indeksas \\
+\hline
+\end{tabular}
+\end{subtable}
+
+
+
+\begin{subtable}{.5\linewidth}
+\begin{tabular}{|c|cc|}
+\hline
+ & \multicolumn{2}{c|}{$n_j$}\\
+\hline
+$m$& Nesubalansuotas & \ \ \ \ \ \ \ \ \ \ 30\ \ \ \ \ \ \ \ \ \ \\
+\hline
+20& P1&P2\\
+35&P3&P4\\
+80& P5&P6\\
+\hline
+\end{tabular}
+
+\begin{tabular}{|c|cccc|}
+\hline
+ Pažymėjimas & $\sigma^2$&$\tau_{00}$&$\tau_{01}=\tau_{10}$&$\tau_{11}$\\
+\hline
+V1&2000&100&50&100\\
+V2&2000&800&400&800\\
+V3&2000&2000&1000&2000\\
+\hline
+
+\hline
+\end{tabular}
+\end{subtable}
+\end{small}
+\end{table}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Simuliacijų rezultatai}
+
+\begin{itemize}
+\item Visų fiksuotų parametrų ir $\sigma^2$ įverčių santykinis poslinkis mažesnis nei 5\%;
+\item Poslinkis didesnis ir mažesnis tikslumas, kai turimos $\chi^2$ paklaidos visiems metodams ir nagrinėtiems atvejams;
+\item Didžiausias santykinis poslinkis dispersijos komponentėms gautas kuomet $\frac{\tau_{00}}{\sigma^2}=0,05$, nesvarbu koks paklaidų pasiskirstymas ar antro lygio subjektų skaičius;
+\item MINQUE(1) anksčiau minėtu atveju poslinkis mažesnis nei REML, o įverčių išsibarstymas nedaug didesnis;
+\item Beveik visais atvejais MINQUE($\theta$) įverčių poslinkis  ir išsibrstymas mažiausi, kai dizainas nesubalansuotas;
+\item Kuo didesnis antro lygio objektų skaičius tuo mažesni įverčių vidutiniai santykiniai poslinkiai bei išsibarstymai ir skirtumas tarp REML ir MINQUE(1), MINQUE($\theta$).
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{frame}
+%\frametitle{Jungtinės rezultatų lentelės fragmentas}
+%
+%\begin{table}
+%\centering
+%{\scriptsize 
+%\begin{tabular}{cc|cc|cc|}
+%   & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
+% &  & CAMRBIAS & CMRSE & CAMRBIAS & CMRSE \\ 
+%  \hline
+%\multirow{6}{*}{P1} & \multirow{2}{*}{V1} & 0.206 & \textbf{1.155} &  \textcolor{red}{0.104} & 1.283 \\ 
+%   &  & 0.254 & 1.968 & \textcolor{red}{0.115} & \textbf{1.861} \\ 
+%   & \multirow{2}{*}{V2} & 0.015 & 0.23 & \textcolor{red}{0.008} & \textbf{0.212} \\ 
+%   &  & 0.028 & 0.767  & \textcolor{red}{0.008} & \textbf{0.71} \\ 
+%   & \multirow{2}{*}{V3} & \textcolor{red}{0.005} & 0.16  & \textcolor{red}{0.005} & \textbf{0.151} \\ 
+%   &  & 0.023 & 0.625 & \textcolor{red}{0.007} & \textbf{0.588} \\ 
+%   \hline \hline
+%\multirow{6}{*}{P2} & \multirow{2}{*}{V1} & 0.246 & \textbf{1.116}  & \textcolor{red}{0.13} & 1.188 \\ 
+%   &  & 0.249 & \textbf{2.265} & \textcolor{red}{0.155} & 2.37 \\ 
+%   & \multirow{2}{*}{V2} & 0.01 & \textbf{0.212} & \textcolor{red}{0.009} & 0.214 \\ 
+%   &  & \textcolor{red}{0.014} & \textbf{0.8} & 0.018 & 0.811 \\ 
+%   & \multirow{2}{*}{V3} & \textcolor{red}{0.018} & \textbf{0.171} & 0.019 & 0.171 \\ 
+%   &  & 0.029 & 0.778 & \textcolor{red}{0.021} & \textbf{0.708} \\ 
+%\hline
+%\end{tabular}
+%}
+%\caption{ \textcolor{red}{Raudonai} pažymėti mažesni CAMRBIAS, o \textbf{patamsinti} mažesni CRMSE. }
+%\end{table}
+%
+%\centering
+%{
+%$MRBIAS=\frac{1}{S}\sum_{i=1}^S\frac{\hat{\theta}_i-\theta}{\theta}$;
+%$MRSE=\frac{1}{S}\sum_{i=1}^S\left(\frac{\hat{\theta}_{i}-\theta}{\theta}\right)^2$;\\
+%$CAMRBIAS=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}|MRBIAS_{\theta}|;CMRSE=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}MRSE_{\theta }$
+%
+%}
+%
+%
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{PWMINQUE ir simuliacijos}
+\begin{itemize}
+\item PWMINQUE -- tikimybėmis pasvertas MINQUE metodas;
+\item Svėrimo metodas pritaikytas pagal PWIGLS metodą\footnote{D. Pfeffermann, C. J. Skinner, D. J. Holmes, H. Goldstein, J. Rasbash, Weighting for unequal selection probabilities in multilevel models, \textit{Journal of Royal Statistical Society}, Series B, 1998, 60(l), p. 23 - 40.};
+\item Simuliacijoms naudota Steele ir kt. stuktūra\footnote{F. Steele, P. Clarke, H. Goldstein, \textit{Weighting in MLwiN}, Centre for Multilevel Modeling (CML), Bristol: University of Bristol, 2011};
+%\begin{equation*}\label{eq:wsimul}
+%\left\{
+%\begin{array}{l}
+%\begin{split}
+%Y_{ij}&=\beta_{0j}+\beta_{1j}X_{1ij}+\varepsilon_{ij}, &\varepsilon_{ij}\sim \mathcal{N}(0, \sigma^2);\\
+%\beta_{0j}&=\gamma_{00}+\gamma_{01}X_{2j}+u_{0j}, & u_{0j}\sim \mathcal{N}(0, \tau_{00});\\
+%\beta_{1j}&=\gamma_{10}+u_{1j}, & u_{1j}\sim \mathcal{N}(0, \tau_{11}).
+%\end{split}
+%\end{array} \right.
+%\end{equation*}
+%\begin{small}
+%čia $\sigma^2=1$ ir 
+% $\mathbf{T}=\begin{pmatrix}
+%\tau_{00} & \tau_{01} \\
+%\tau_{10} & \tau_{11} \\
+%\end{pmatrix}=\begin{pmatrix}
+%\frac{1}{4}& \frac{\sqrt{3}}{8} \\
+% \frac{\sqrt{3}}{8} & \frac{3}{4}\\
+%\end{pmatrix}$;\\
+% $\gamma_{00}=\gamma_{01}=\gamma_{10}=1$;\\
+%$X_2\sim \mathcal{B}(1;0,5)$;\\
+%$X_1\sim \mathcal{N}(0,1)$ - centruotas pagal $j$.
+%\end{small}
+\item Modelis vertintas REML, MINQUE(1), PWMINWUE(1), MINQUE($\theta$) ir PWMINQUE($\theta$) metodais;
+\item PWMINWUE(1) ir PWMINQUE($\theta$) metodais gautas vidutinis santykinis poslinkis akivaizdžiai mažesnis, išsibarstymas didesnis.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{frame}
+%\frametitle{PWMINQUE ir simuliacijos(2)}
+%\begin{itemize}
+%\item Sugeneruojama $M=300,\ N_j=30$. Parenkama $ m=35$, $n_j=20$ su tikimybėmis:
+%\begin{equation*}
+%\pi_j=
+%\left\{
+%\begin{array}{l}
+%0,225, \text{ kai } u_{0j} \notin \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| > 1;\\
+%0,425, \text{ kai } u_{0j} \in \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| > 1;\\
+%0,525, \text{ kai } u_{0j} \notin \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| \leq 1;\\
+%0,725, \text{ kai } u_{0j} \in \left(\bar{u}_0-2\times sd_0; \bar{u}_0+2\times sd_0\right) \text{ ir } |u_{1j}| \leq 1,
+%\end{array} \right.
+%\end{equation*}
+%ir
+%\begin{equation*}
+%\pi_{i|j}=
+%\left\{
+%\begin{array}{l}
+%0,25, \text{ kai } \varepsilon_{ij}>0;\\
+%0,75, \text{ kai } \varepsilon_{ij}\leq0.\\
+%
+%\end{array} \right.
+%\end{equation*}
+%\item Gaunami imties svoriai $w_j=\frac{m}{\pi_j}$, $w_{i|j}=\frac{n_j}{\pi_{i|j}}$ ir $w_{ij}=w_j\times w_{i|j}$.
+%\end{itemize}
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[shrink=20]
+\frametitle{TIMSS galutis modelis}
+\begin{equation*} \label{eq:timss2}
+\left\{
+\begin{array}{l}
+\begin{split}
+MatRes_{ij}&=\beta_{0j}+\beta_{1j}\times SSEX_{ij}+\beta_{2j} \times STHMWRK_{ij}+\beta_{3j}\times CSMCONF_{ij}+\\
+&+\beta_{4j}\times CSHEDRES_{ij}+\varepsilon_{ij};\\
+\beta_{0j}&=\gamma_{00}+\gamma_{01}\times MVIETA.2_j+\gamma_{02}\times MSUCCESS_j+\\
+&+\gamma_{03}\times MDYDIS_j+u_{0j};\\
+\beta_{1j}& = \gamma_{10};\\
+\beta_{2j}&=\gamma_{20};\\
+\beta_{3j}&=\gamma_{30}+u_{3j};\\
+\beta_{4j}&=\gamma_{40},\\
+\end{split}
+\end{array} \right.
+\end{equation*}
+
+\noindent čia $SSEX$ -- žymimasis, mokinio lytis (0 -- mergaitė, 1 -- berniukas);\\
+$STHMWRK$ -- žymimasis, mokinio skiriamas laikas namų darbams (0 -- 45 min ir mažiau, 1 -- daugiau nei 45 min);\\
+$CSMCONF$ -- indeksas,  mokinio pasitikėjimas savimi atliekant matematikos užduotis, centruotas pagal j;\\
+$CSHEDRES$ -- indeksas, mokinio namų mokymosi ištekliai, centruotas pagal j;\\
+$MVIETA.2$ -- žymimasis, mokyklos vietovė (1 -- mažas miestelis);\\
+$MSUCCESS$ -- indeksas, mokyklos skiriamas dėmesys akademinei sėkmei;\\
+$MDYDIS$ -- skaičius, mokyklos aštuntokų skaičius.\\
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{TIMSS galutio modelio įverčiai}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Parametras & REML & MINQUE(1) & PWMINQUE(1) & MINQUE($\theta$) & PWMINQUE($\theta$)\\
+\hline
+$\gamma_{00}$ & 471.913 & 481.680 & 399.091 & 471.271 & 444.265 \\ 
+$\gamma_{01}$ {\footnotesize  (MVIETA.2)}& -27.960 & -29.294 & -80.377 & -27.889 & -26.661 \\ 
+$\gamma_{02}$ {\footnotesize (MSUCCESS)} & 1.916 & 1.134 & 16.545 & 1.965 & 5.120 \\ 
+$\gamma_{03}$  {\footnotesize(MDYDIS)}& 0.018 & 0.015 & -0.063 & 0.018 & 0.006 \\ 
+$\gamma_{10}$ {\footnotesize (SSEX)} & 11.112 & 11.090 & 11.903 & 11.112 & 13.061 \\ 
+$\gamma_{20}$  {\footnotesize(STHMWRK)}& 6.539 & 6.521 & -8.669 & 6.533 & 4.518 \\ 
+$\gamma_{30}$  {\footnotesize(CSMCONF)}& 18.579 & 18.551 & 21.220 & 18.580 & 19.102 \\ 
+$\gamma_{40}$  {\footnotesize(CSHEDRES)}& 9.518 & 9.328 & 11.168 & 9.525 & 10.951 \\ 
+$\sigma^2$ &2843.308 & 2842.028 & 2858.521 & 2843.560 & 2890.473 \\
+$\tau_{00}$ & 946.783 & 998.554 & 853.321 & 928.238 & 704.666 \\ 
+$\tau_{01}$ & -92.772 & -82.178 & -141.233 & -91.622 & -106.479 \\ 
+$\tau_{11}$ & 21.711 & 1.053 & -12.328 & 22.754 & 25.003 \\
+\hline
+$R_1^2$ & 0.516 & 0.504 & -12.251 & 0.517 & 0.515\\
+\hline
+\end{tabular}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{frame}
+%\frametitle{Atlikta šiame darbe}
+%\begin{itemize}
+%\item Matricinis dviejų lygių HLM pavidalas MINQUE;
+%\item $R$ funkcijos dviejų lygių HLM modeliams vertinti MINQUE;
+%\item Simuliacijų būdu palyginti REML ir MINQUE(0), MINQUE(1) bei MINQUE($\theta$) per RBIAS (santykinis poslinkis) ir RMSE (santykinė kvadratinė paklaida);
+%\item Alternatyvus metodas WMINQUE vertinti su svoriais (PWIGLS);
+%\item Simuliacijų būdu parodyta, jog WMINQUE tikslesnis vertinant modelius su imties svoriais.
+%\end{itemize}
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Apibendrinimas}
+\begin{itemize}
+\item Sukurtas lankstus R funkcijų rinkinys dviejų lygių HLM vertinimui MINQUE metodu;
+\item Pritaikytas PWIGLS svėrimo metodas MINQUE metodui;
+\item Simuliacijų būdu patikrinta, jog REML metodo įverčiai dviejų lygių HLM nėra reikšmingai labiau paslinkti nei MINQUE kuomet turimas pakankamai didelis (m$\geq 35$) antrojo lygio objektų skaičius ir $\frac{\tau_{00}}{\sigma^2}\geq 0.4$;
+\item Beveik visais atvejais REML metodu gauti įverčiai stabilesni, kai turimas subalansuotas dizainas.
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Pabaiga}
+\huge
+Ačiū už dėmesį
+\end{frame}
+\end{document}
+
+%\begin{table}
+%\centering
+%{\footnotesize
+%\begin{tabular}{cc|cc|cc|}
+%   & & \multicolumn{2}{c|}{REML}&\multicolumn{2}{c|}{MINQUE($\theta$)}\\ \hline
+% &  & CAMRBIAS & CRMSE & CAMRBIAS & CRMSE \\ 
+%  \hline
+%\multirow{6}{*}{P1} & \multirow{2}{*}{V1} & 0.206 & \textbf{1.155} &  \textcolor{red}{0.104} & 1.283 \\ 
+%   &  & 0.254 & 1.968 & \textcolor{red}{0.115} & \textbf{1.861} \\ 
+%   & \multirow{2}{*}{V2} & 0.015 & 0.23 & \textcolor{red}{0.008} & \textbf{0.212} \\ 
+%   &  & 0.028 & 0.767  & \textcolor{red}{0.008} & \textbf{0.71} \\ 
+%   & \multirow{2}{*}{V3} & \textcolor{red}{0.005} & 0.16  & \textcolor{red}{0.005} & \textbf{0.151} \\ 
+%   &  & 0.023 & 0.625 & \textcolor{red}{0.007} & \textbf{0.588} \\ 
+%   \hline \hline
+%\multirow{6}{*}{P2} & \multirow{2}{*}{V1} & 0.246 & \textbf{1.116}  & \textcolor{red}{0.13} & 1.188 \\ 
+%   &  & 0.249 & \textbf{2.265} & \textcolor{red}{0.155} & 2.37 \\ 
+%   & \multirow{2}{*}{V2} & 0.01 & \textbf{0.212} & \textcolor{red}{0.009} & 0.214 \\ 
+%   &  & \textcolor{red}{0.014} & \textbf{0.8} & 0.018 & 0.811 \\ 
+%   & \multirow{2}{*}{V3} & \textcolor{red}{0.018} & \textbf{0.171} & 0.019 & 0.171 \\ 
+%   &  & 0.029 & 0.778 & \textcolor{red}{0.021} & \textbf{0.708} \\ 
+%\hline
+%\end{tabular}
+%}
+%\caption{ \textcolor{red}{Raudonai} pažymėti mažesni CAMRBIAS, o \textbf{patamsinti} mažesni CRMSE. }
+%\end{table}
+%    \end{column}
+%    \begin{column}{0.4\textwidth}
+%$MRBIAS_{\theta MVP}=\frac{1}{S}\sum_1^S\frac{\hat{\theta}_{MVP}-\theta}{\theta}$; $MRMSE_{\theta MVP}=\frac{1}{S}\sum_1^S\left(\frac{\hat{\theta}_{MVP}-\theta}{\theta}\right)^2$; $CAMRBIAS_{MVP}=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}|MRBIAS_{\theta MVP}|$;$CMRMSE_{MVP}=\frac{1}{n_{\theta}}\sum_1^{n_{\theta}}MRMSE_{\theta MVP}$
