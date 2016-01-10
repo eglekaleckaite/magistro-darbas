@@ -34,7 +34,7 @@ Vadovas: Vydas Čekanavičius}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Įvadas}
+\frametitle{Turinys}
 \begin{itemize}
 \item Tikslai ir problemos;
 \item HLM ir TIMSS;
@@ -50,12 +50,13 @@ Vadovas: Vydas Čekanavičius}
 \begin{frame}
 \frametitle{Tikslai ir problemos}
 \begin{itemize}
-\item Orientacija į TIMSS (\textit{angl. Trends in International Mathematics and Science Study}) ir į R;
 \item HLM modeliams vertinami REML metodu, kuris remiasi normalumo prielaida;
 \item Hierarchinėms struktūroms REML įverčiai yra paslinkti, mažesni nei iš tikrųjų (Timm\footnote{Timm, N.H., \textit{Applied Multivariate Analysis}, Springer Texts in Statistics, 2002});
 \item Tiriamas alternatyvus metodas MINQUE, kuris nereikalauja jokių žinių apie skirstinį;
 \item Tikimasi, jog MINQUE įverčiai turės mažesnį poslinkį;
-\item Mokyklų duomenys pateikiami su imties svoriais.
+\item Orientacija į TIMSS (\textit{angl. Trends in International Mathematics and Science Study}) ir į R;
+\item Mokyklų duomenys pateikiami su imties svoriais -- PWMINQUE;
+\item Sudarytas dviejų lygių tiesinis hierarchinis modelis su atsitiktiniu postūmiu ir poslinkiu Lietuvos aštuntokų TIMSS 2011 duomenims.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -79,13 +80,14 @@ $\beta_{pj}$ - atsitiktinis posvyris;\\
 $\gamma_{pq}$ - fiksuoti efektai;\\
 $X_{pij}$ - pirmo lygio kintamieji;\\
 $W_{pqj}$ - antro lygio kintamieji;\\
-$Y_{ij}$ - aiškinamasis kintamasis.
+$Y_{ij}$ - aiškinamasis kintamasis.\\
 \end{scriptsize}
-\small
-\item Bendras modelio pavidalas (jungtinė lygtis): $ Y_{ij} =\sum^P_{p = 1} \sum^{Q_p}_{q=1}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 1} X_{pij}\times u_{pj}+\epsilon_{ij}$ arba
+
+\item Bendras modelio pavidalas (jungtinė lygtis): \begin{small}$ Y_{ij} =\sum^P_{p = 1} \sum^{Q_p}_{q=1}\gamma_{pq}\times X_{pij}\times W_{pqj}+\sum^P_{p = 1} X_{pij}\times u_{pj}+\epsilon_{ij}$ arba
 \begin{equation*}
 Y=X\gamma+Zu+\varepsilon
 \end{equation*}
+\end{small}
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,10 +131,11 @@ L_j(\sigma^2, T)=-\frac{1}{2}\left( log|V_j|+(Y_j-X_j\gamma)'V_j^{-1}(Y_j-X_j\ga
 \frametitle{REML privalumai ir trūkumai}
 Privalumai:
 \begin{itemize}
-\item Invariantiškumas.
+\item Mažesnis dispersijos komponenčių įverčių poslinkis nei ML.
 \end{itemize}
 Trūkumai:
 \begin{itemize}
+\item Daroma normalumo prielaida;
 \item Negarantuoja nepaslinktumo;
 \item Negarantuoja teigiamų dispersijos komponenčių įverčių;
 \item Procedūra iteratyvi.
@@ -173,7 +176,7 @@ Privalumai:
 Trūkumai:
 \begin{itemize}
 \item Priklauso nuo \textit{a priori} reikšmių;
-\item Negarantuoja teigiamų dispersijos komponenčių įverčių;
+\item Negarantuoja neneigiamų dispersijos komponenčių įverčių;
 \item Vertinimas reikalauja daug resursų (didelės matricos).
 \end{itemize}
 \end{frame}
@@ -181,11 +184,30 @@ Trūkumai:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+\frametitle{MINQUE ir \textit{a priori} reikšmėsi}
+Tegu $\alpha_0, \alpha_1,\dots,\alpha_l$ žymi \textit{a priori} reikšmes.
+\begin{itemize}
+\item Kai $\alpha_0=1,\ \alpha_1,\dots, \alpha_l=0$, MINQUE(0);
+\item Kai $\alpha_0,\alpha_1,\dots, \alpha_l=1$, MINQUE(1);
+\item Kai $\alpha_0, \alpha_1,\dots,\alpha_l$ nuspėjami ar gaunami kitu metodu, tai MINQUE($\theta$). Šiame darbe gaunama iš dviejų žingsnių metodo, kuomet $\forall \  j$ vertiname
+\[
+Y_{ij} = \beta_{0j}+\sum^P_{p = 1} \beta_{pj}\times X_{pij}+\varepsilon_{ij}
+\]
+ir tuomet vertinami modeliai $\forall \ \beta_{pj}$
+\[\beta^*_{pj}= \gamma_{p0} + \sum^{Q_p}_{q=1}\gamma_{pq}\times W_{pqj}+u_{pj}.\]
+\end{itemize}
+Naudojamas ir I-MINQUE -- iteratyvus MINQUE. REML = I-MINQUE.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
 \frametitle{Buvę tyrimai}
 \begin{itemize}
-\item Bagakas(1992)\footnote{ J. G. Bagakas,  \textit{ Two level nested hierarchical linear model with random intercepts
-via the bootstrap}, Unpublished doctoral dissertation, Michigan State University., 1992} pritaikė MINQUE($\theta$) su saviranka dviejų lygių hierarchiniam modeliui su atsitiktiniu postūmiu; rezai???
-\item Delpish(2006)\footnote{A. N. Delpish,  \textit{Comparison of Estimators in Hierarchical Linear Modeling: Restricted Maximum Likelihood Versus Bootstrap via Minimum Norm Quadratic Unbiased Estimators}, Florida State University, 2006} simuliacijų būdu parodė, jog dviejų iteracijų MINQUE(1) su saviranka duoda tikslesnius įverčius nei REML modeliui su atsitiktiniu postūmiu ir posvyriu. rezai ??
+\item Bagaka's(1992)\footnote{ J. G. Bagaka's,  \textit{ Two level nested hierarchical linear model with random intercepts
+via the bootstrap}, Unpublished doctoral dissertation, Michigan State University., 1992} pritaikė MINQUE($\theta$) su saviranka dviejų lygių hierarchiniam modeliui su atsitiktiniu postūmiu;
+\item Delpish(2006)\footnote{. Delpish, Comparison of Estimators in Hierarchical Linear Modeling: Restricted Maximum Likelihood Versus Bootstrap via Minimum Norm Quadratic Unbiased Estimators, \textit{Electronic Theses, Treatises and Dissertations}, Paper 771, 2006} simuliacijų būdu parodė, jog dviejų iteracijų MINQUE(1) su saviranka duoda tikslesnius įverčius nei REML modeliui su atsitiktiniu postūmiu ir posvyriu.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -467,15 +489,15 @@ $R_1^2$ & 0.516 & 0.504 & -12.251 & 0.517 & 0.515\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Apibendrinimas}
+
 \begin{itemize}
-\item Sukurtas lankstus R funkcijų rinkinys dviejų lygių HLM vertinimui MINQUE metodu;
-\item Pritaikytas PWIGLS svėrimo metodas MINQUE metodui;
-\item Simuliacijų būdu patikrinta, jog REML metodo įverčiai dviejų lygių HLM nėra reikšmingai labiau paslinkti nei MINQUE kuomet turimas pakankamai didelis (m$\geq 35$) antrojo lygio objektų skaičius ir $\frac{\tau_{00}}{\sigma^2}\geq 0.4$;
-\item Beveik visais atvejais REML metodu gauti įverčiai stabilesni, kai turimas subalansuotas dizainas.
-
+\item Parašytos R funkcijos MINQUE metodui, kuris skirtas HLM modelių parametrų vertinimui.
+\item Sukurtas PWMINQUE metodas, simuliacijų būdu parodyta, jog šis metodas duoda mažiau paslinktus įverčius nei nesvertiniai metodai.
+\item Atliktos empirinės simuliacijos, kurios parodė, jog išskyrus vieną atvejį ($\frac{\tau_{00}}{\sigma^2}=0,05$) REML, MINQUE(1) ir MINQUE($\theta$) metodai yra panašūs. O tai nepateisino lūkesčių, jog pažeidus normalumo sąlyga MINQUE metodu gauti įverčiai bus mažiau paslinkti.
+\item Sudarytas hierarchinis tiesinis modelis su atsitiktiniu postūmiu Lietuvos matematinio raštingumo testo rezultatams, šis modelis įvertintas REML, MINQUE(1), PWMINQUE(1), MINQUE($\theta$) ir PWMINQUE($\theta$).
 \end{itemize}
-\end{frame}
 
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
